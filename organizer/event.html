@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event</title>
+        <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet"
+            href="../assets/lib/bootstrap-icon/bootstrap-icons.css">
+        <link rel="stylesheet" href="../assets/css/organizer.css">
+
+    </head>
+
+    <body>
+        <main>
+            <div class>
+                <div class="d-flex">
+                    <nav class="shadow sidebar">
+                        <ul>
+                            <li>
+                                <a href="#" class="active">
+                                    <i class="fas fa-menorah"></i>
+                                    <span class="nav-item">Event</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-ticket"></i>
+                                    <span class="nav-item">Request Ticket</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                    <span class="nav-item">Check-in
+                                        Ticket</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-user-group"></i>
+                                    <span class="nav-item">Event Group
+                                        Collaborated</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-user-group"></i>
+                                    <span class="nav-item">Organizer
+                                        Profile</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <section class="p-4 w-100">
+                        <div class>
+                            <h2>Event</h2>
+                        </div>
+                        <ul class="nav nav-underline" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="events-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#events-tab-pane"
+                                    type="button" role="tab"
+                                    aria-controls="events-tab-pane"
+                                    aria-selected="true">Events</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link text-dark"
+                                    id="vendor-recruitment-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#vendor-recruitment-tab-pane"
+                                    type="button" role="tab"
+                                    aria-controls="vendor-recruitment-tab-pane"
+                                    aria-selected="false">Vendor
+                                    Recruitment</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active"
+                                id="events-tab-pane" role="tabpanel"
+                                aria-labelledby="events-tab" tabindex="0">
+                                <div class="row my-4">
+                                    <div class="col-4 col-md-2">
+                                        <select class="form-select"
+                                            aria-label="Default select example">
+                                            <option value="1">All</option>
+                                            <option value="2">Upcoming</option>
+                                            <option value="3">Past</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-5 col-md-3">
+                                        <div class="input-group mb-3">
+                                            <input type="text"
+                                                class="form-control"
+                                                placeholder="Search">
+                                            <button class="btn btn-primary"
+                                                type="submit">Go</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="my-4">
+                                    <table
+                                        class="table table-borderless align-middle">
+                                        <thead class>
+                                            <tr class="border-bottom">
+                                                <th scope="col">Event</th>
+                                                <th scope="col">Sold</th>
+                                                <th scope="col">Gross</th>
+                                                <th
+                                                    scope="col">Participated</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- First Event Row -->
+                                            <tr
+                                                class="border-bottom position-relative">
+                                                <td class>
+                                                    <a href="event-details.html"
+                                                        class="stretched-link text-decoration-none bg-transparent"
+                                                        style="color: inherit;">
+                                                        <div
+                                                            class="d-flex align-items-center">
+                                                            <div class="me-3">
+                                                                <div
+                                                                    class="text-center text-brand fw-bold">
+                                                                    <div>NOV</div>
+                                                                    <div>23</div>
+                                                                </div>
+                                                            </div>
+                                                            <img
+                                                                src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
+                                                                alt="Event Image"
+                                                                class="rounded"
+                                                                width="150">
+                                                            <div class="ms-3">
+                                                                <h5
+                                                                    class="mb-0">Halowin</h5>
+                                                                <p
+                                                                    class="text-muted mb-0">Online
+                                                                    event</p>
+                                                                <p
+                                                                    class="text-muted mb-0 small">Saturday,
+                                                                    November 23,
+                                                                    2024
+                                                                    at 10:00 AM
+                                                                    EET</p>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+
+                                                    <div>0 / 10</div>
+                                                    <div class="progress"
+                                                        style="height: 5px;">
+                                                        <div
+                                                            class="progress-bar"
+                                                            role="progressbar"
+                                                            style="width: 0%;"
+                                                            aria-valuenow="0"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    $0.00
+                                                </td>
+                                                <td>
+                                                    10 people
+                                                </td>
+                                                <td>
+                                                    <div
+                                                        class="dropstart position-relative z-3">
+                                                        <button
+                                                            class="btn btn-light"
+                                                            type="button"
+                                                            id="dropdownMenu1"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            <i
+                                                                class="bi bi-three-dots"></i>
+                                                        </button>
+                                                        <ul
+                                                            class="dropdown-menu dropdown-menu-end"
+                                                            aria-labelledby="dropdownMenu1">
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">Promote
+                                                                    to
+                                                                    website</a>
+                                                            </li>
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">Edit</a></li>
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">Delete</a></li>
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">View</a></li>
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">Copy
+                                                                    Link</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <!-- Repeat the structure for the second event -->
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade"
+                                id="vendor-recruitment-tab-pane" role="tabpanel"
+                                aria-labelledby="vendor-recruitment-tab"
+                                tabindex="0">
+                                <div class="row my-4">
+                                    <div class="col-4 col-md-2">
+                                        <select class="form-select"
+                                            aria-label="Default select example">
+                                            <option value="1">All</option>
+                                            <option value="2">Upcoming</option>
+                                            <option value="3">Past</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-5 col-md-3">
+                                        <div class="input-group mb-3">
+                                            <input type="text"
+                                                class="form-control"
+                                                placeholder="Search">
+                                            <button class="btn btn-primary"
+                                                type="submit">Go</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="my-4">
+                                    <table
+                                        class="table table-borderless align-middle">
+                                        <thead class>
+                                            <tr class="border-bottom">
+                                                <th scope="col">Vendor
+                                                    Recruitment</th>
+                                                <th scope="col">Request</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- First Event Row -->
+                                            <tr
+                                                class="border-bottom position-relative">
+                                                <td class>
+                                                    <a href="event-details.html"
+                                                        class="stretched-link text-decoration-none bg-transparent"
+                                                        style="color: inherit;">
+                                                        <div
+                                                            class="d-flex align-items-center">
+                                                            <div class="me-3">
+                                                                <div
+                                                                    class="text-center text-brand fw-bold">
+                                                                    <div>NOV</div>
+                                                                    <div>23</div>
+                                                                </div>
+                                                            </div>
+                                                            <img
+                                                                src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
+                                                                alt="Event Image"
+                                                                class="rounded"
+                                                                width="150">
+                                                            <div class="ms-3">
+                                                                <h5
+                                                                    class="mb-0">Halowin</h5>
+                                                                <p
+                                                                    class="text-muted mb-0">Online
+                                                                    event</p>
+                                                                <p
+                                                                    class="text-muted mb-0 small">Saturday,
+                                                                    November 23,
+                                                                    2024
+                                                                    at 10:00 AM
+                                                                    EET</p>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <div>5 people</div>
+                                                </td>
+
+                                                <td>
+                                                    <div
+                                                        class="dropstart position-relative z-3">
+                                                        <button
+                                                            class="btn btn-light"
+                                                            type="button"
+                                                            id="dropdownMenu1"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            <i
+                                                                class="bi bi-three-dots"></i>
+                                                        </button>
+                                                        <ul
+                                                            class="dropdown-menu dropdown-menu-end"
+                                                            aria-labelledby="dropdownMenu1">
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">Edit</a></li>
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">Delete</a></li>
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">View</a></li>
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">Copy
+                                                                    Link</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <!-- Repeat the structure for the second event -->
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+        </main>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>

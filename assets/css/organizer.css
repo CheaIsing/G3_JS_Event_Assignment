@@ -11,7 +11,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-nav {
+.sidebar {
     position: sticky;
     top: 0;
     bottom: 0;
@@ -23,7 +23,7 @@ nav {
     transition: 0.3s;
 }
 
-nav:hover {
+.sidebar:hover {
     width: 280px;
     transition: 0.3s;
 }
@@ -62,17 +62,17 @@ nav:hover {
     text-decoration: none;
 }
 
-.sidebar nav ul li a.active {
+.sidebar ul li a.active {
     color: var(--c-brand) !important;
 }
 
-.sidebar nav ul li a {
+.sidebar ul li a {
     display: flex;
     align-items: center;
     padding-block: 2rem;
 }
 
-.sidebar nav i {
+.sidebar i {
     width: 70px;
     /* height: 40px; */
     font-size: 20px;
@@ -91,4 +91,21 @@ nav:hover {
 .sidebar a:hover i {
     color: var(--c-brand);
     transition: 0.3s;
+}
+
+.nav-underline .nav-item .nav-link.active {
+    color: var(--c-brand) !important;
+}
+
+.nav-underline .nav-item .nav-link:not(.active) {
+    color: inherit !important;
+}
+
+.nav-underline .nav-item .nav-link:not(.active):hover {
+    color: var(--c-brand) !important;
+}
+
+section.ticket-order .table td,
+section.ticket-order .table td {
+    padding-block: 1rem !important;
 }
