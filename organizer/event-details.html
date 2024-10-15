@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <link rel="stylesheet"
+            href="../assets/lib/bootstrap-icon/bootstrap-icons.css" />
+        <link rel="stylesheet" href="../assets/css/organizer.css" />
+    </head>
+
+    <body>
+        <main>
+            <div class>
+                <div class="d-flex">
+                    <nav class="shadow sidebar">
+                        <ul>
+                            <li>
+                                <a href="#" class="active">
+                                    <i class="fas fa-menorah"></i>
+                                    <span class="nav-item">Event</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-ticket"></i>
+                                    <span class="nav-item">Request Ticket</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                    <span class="nav-item">Check-in
+                                        Ticket</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-user-group"></i>
+                                    <span class="nav-item">Event Group
+                                        Collaborated</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-user-group"></i>
+                                    <span class="nav-item">Organizer
+                                        Profile</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="w-100 p-4">
+                        <section class>
+                            <div class="container-fluid">
+                                <div class="d-flex align-items-center">
+                                    <button type="button"
+                                        class="btn border-0 ps-0"
+                                        onclick="history.back()">
+                                        <i
+                                            class="fa-solid fa-angle-left fs-2"></i>
+                                    </button>
+                                    <h2>Summary</h2>
+                                </div>
+                                <div
+                                    class="my-4 d-flex w-100 justify-content-between align-content-center">
+                                    <div
+                                        class>
+                                        <h3>Halowinn</h3>
+                                        <div
+                                            class="d-inline-flex align-items-center">
+                                            <i
+                                                class="bi bi-calendar-event me-2"></i>
+                                            <span>Sat, Nov 23, 2024, 10:00
+                                                AM</span>
+                                        </div>
+                                    </div>
+                                    <div class="dropstart">
+                                        <button class="btn btn-light btn-lg"
+                                            type="button" id="dropdownMenu1"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <i class="bi bi-three-dots"></i>
+                                        </button>
+                                        <ul
+                                            class="dropdown-menu dropdown-menu-end"
+                                            aria-labelledby="dropdownMenu1">
+                                            <li><a class="dropdown-item"
+                                                    href="#">Edit</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="#">Delete</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="#">View
+                                                    Detail</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row my-4">
+                                    <!-- Earnings (Monthly) Card Example -->
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                        <div
+                                            class="card border-left-primary shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div
+                                                    class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div
+                                                            class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                            Tickets Sold
+                                                        </div>
+                                                        <div
+                                                            class="h5 mb-0 font-weight-bold text-gray-800">
+                                                            50/200 tickets
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i
+                                                            class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Earnings (Annual) Card Example -->
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                        <div
+                                            class="card border-left-success shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div
+                                                    class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div
+                                                            class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                            Tickets Earnings
+                                                        </div>
+                                                        <div
+                                                            class="h5 mb-0 font-weight-bold text-gray-800">
+                                                            $120.50
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i
+                                                            class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Tasks Card Example -->
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                        <div
+                                            class="card border-left-info shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div
+                                                    class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div
+                                                            class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                            Participated
+                                                        </div>
+                                                        <div
+                                                            class="row no-gutters align-items-center">
+                                                            <div
+                                                                class="col-auto">
+                                                                <div
+                                                                    class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                                    40 people
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div
+                                                                    class="progress progress-sm mr-2">
+                                                                    <div
+                                                                        class="progress-bar bg-info"
+                                                                        role="progressbar"
+                                                                        style="width: 50%"
+                                                                        aria-valuenow="50"
+                                                                        aria-valuemin="0"
+                                                                        aria-valuemax="100"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i
+                                                            class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Pending Requests Card Example -->
+                                    <div class="col-xl-3 col-md-6 mb-4">
+                                        <div
+                                            class="card border-left-warning shadow h-100 py-2">
+                                            <div class="card-body">
+                                                <div
+                                                    class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div
+                                                            class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                            Not Yet
+                                                            Participate</div>
+                                                        <div
+                                                            class="h5 mb-0 font-weight-bold text-gray-800">
+                                                            18 people</div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i
+                                                            class="fas fa-comments fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="container-fluid my-4">
+                                <div class="row justify-content-between g-5">
+                                    <div class="col-12 col-md-6">
+                                        <div class="card border-0 px-1">
+                                            <h5
+                                                class="card-title mb-3">Share</h5>
+                                            <div class="mb-3">
+                                                <label for="eventLink"
+                                                    class="form-label mb-3">Event
+                                                    link
+                                                    <i
+                                                        class="fas fa-info-circle"></i></label>
+                                                <div
+                                                    class="input-group mb-2">
+                                                    <input type="text"
+                                                        class="form-control"
+                                                        id="eventLink"
+                                                        value="https://www.eventlink.com/e/chrismas-tickets-104673..."
+                                                        readonly>
+                                                    <button
+                                                        class="btn btn-outline-primary"
+                                                        type="button"
+                                                        onclick="copyLink()">Copy
+                                                        link</button>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-3">
+                                                <a href="#" class="text-dark"><i
+                                                        class="fab fa-facebook fs-3"></i></a>
+                                                <a href="#" class="text-dark"><i
+                                                        class="fab fa-facebook-messenger fs-3"></i></a>
+                                                <a href="#" class="text-dark"><i
+                                                        class="fab fa-twitter fs-3"></i></a>
+                                                <a href="#" class="text-dark"><i
+                                                        class="fas fa-envelope fs-3"></i></a>
+                                                <a href="#" class="text-dark"><i
+                                                        class="fab fa-linkedin fs-3"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <h5 class="mb-3">Publish settings</h5>
+                                        <p class="mb-3">Is your event public or
+                                            private?</p>
+
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input"
+                                                type="radio"
+                                                name="publishOptions"
+                                                id="publicOption" checked>
+                                            <label class="form-check-label"
+                                                for="publicOption">
+                                                <strong>Public</strong>
+                                                <br>
+                                                <small class="text-muted">Shared
+                                                    on Eventbrite and search
+                                                    engines</small>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input"
+                                                type="radio"
+                                                name="publishOptions"
+                                                id="privateOption">
+                                            <label class="form-check-label"
+                                                for="privateOption">
+                                                <strong>Private</strong>
+                                                <br>
+                                                <small class="text-muted">Shared
+                                                    only with a select
+                                                    audience</small>
+                                            </label>
+                                        </div>
+
+                                        <button class="btn btn-brand my-3"
+                                            type="button">Publish Now</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="ticket-order">
+                            <div class="container-fluid my-5">
+                                <h5 class="mb-4">Sales by Ticket Type</h5>
+                                <table class="table align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Ticket type</th>
+                                            <th>Price</th>
+                                            <th>Sold</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>General Admission</td>
+                                            <td>free</td>
+                                            <td>0/10</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h5 class="mt-5">Ticket Orders</h5>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order #</th>
+                                            <th>Name</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>John Doe</td>
+                                            <td>2</td>
+                                            <td>$20.00</td>
+                                            <td>2023-10-01</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function copyLink() {
+            var copyText = document.getElementById("eventLink");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Link copied to clipboard");
+        }
+        </script>
+    </body>
+
+</html>

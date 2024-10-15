@@ -1,5 +1,18 @@
-:root{
+:root {
     --c-brand: #ff1694;
-    --c-brand-dark:#e11594;
+    --c-brand-dark: #e11594;
 }
 
+.text-brand {
+    color: var(--c-brand) !important;
+}
+
+.btn-brand {
+    background-color: var(--c-brand) !important;
+    color: #fff !important;
+    transition: .3s;
+}
+
+.btn-brand:hover {
+    background-color: var(--c-brand-dark) !important;
+}
