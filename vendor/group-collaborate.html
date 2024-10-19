@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event</title>
+        <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet"
+            href="../assets/lib/bootstrap-icon/bootstrap-icons.css">
+        <link rel="stylesheet" href="../assets/css/organizer.css">
+
+    </head>
+
+    <body>
+        <main>
+            <div class>
+                <div class="d-flex">
+                    <nav class="shadow sidebar">
+                        <ul>
+                            <li>
+                                <a href="vendor-business.html" >
+                                    <i class="fas fa-menorah"></i>
+                                    <span class="nav-item">Vendor Business</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="group-collaborate.html" class="active">
+                                    <i class="fa-solid fa-user-group"></i>
+                                    <span class="nav-item">Event Group Collaborated</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="profile.html">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span class="nav-item">Vendor Profile</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <section class="p-4 w-100">
+                        <div class>
+                            <h2>Group Collaborate</h2>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-4 col-md-2">
+                                <select class="form-select"
+                                    aria-label="Default select example">
+                                    <option value="1">All</option>
+                                    <option value="2">Upcoming</option>
+                                    <option value="3">Past</option>
+                                </select>
+                            </div>
+                            <div class="col-5 col-md-3">
+                                <div class="input-group mb-3">
+                                    <input type="text"
+                                        class="form-control"
+                                        placeholder="Search">
+                                    <button class="btn btn-primary"
+                                        type="submit">Go</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="my-4">
+                            <table
+                                class="table table-borderless align-middle">
+                                <thead class>
+                                    <tr class="border-bottom">
+                                        <th scope="col">Event</th>
+                                        <th scope="col">Member in Collaboration</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- First Event Row -->
+                                    <tr
+                                        class="border-bottom position-relative">
+                                        <td class>
+                                            <a href="event-details.html"
+                                                class="stretched-link text-decoration-none bg-transparent"
+                                                style="color: inherit;">
+                                                <div
+                                                    class="d-flex align-items-center">
+                                                    <div class="me-3">
+                                                        <div
+                                                            class="text-center text-brand fw-bold">
+                                                            <div>NOV</div>
+                                                            <div>23</div>
+                                                        </div>
+                                                    </div>
+                                                    <img
+                                                        src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
+                                                        alt="Event Image"
+                                                        class="rounded"
+                                                        width="150">
+                                                    <div class="ms-3">
+                                                        <h5
+                                                            class="mb-0">Halowin</h5>
+                                                        <p
+                                                            class="text-muted mb-0">Online
+                                                            event</p>
+                                                        <p
+                                                            class="text-muted mb-0 small">Saturday,
+                                                            November 23,
+                                                            2024
+                                                            at 10:00 AM
+                                                            EET</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            10 people
+                                        </td>
+                                        <td>
+                                            <div
+                                                class="dropstart position-relative z-3">
+                                                <button
+                                                    class="btn btn-light"
+                                                    type="button"
+                                                    id="dropdownMenu1"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    <i
+                                                        class="bi bi-three-dots"></i>
+                                                </button>
+                                                <ul
+                                                    class="dropdown-menu dropdown-menu-end"
+                                                    aria-labelledby="dropdownMenu1">
+
+                                                    <li><a
+                                                            class="dropdown-item"
+                                                            href="#">Delete</a></li>
+                                                    <li><a
+                                                            class="dropdown-item"
+                                                            href="#">View</a></li>
+
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Group Collaborate Event Card</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Event Details -->
+                    <h5 class="card-title">Event Collaboration: <strong>Annual
+                            Tech Expo 2024</strong></h5>
+                    <p class="card-text">Event Date: <strong>October 25,
+                            2024</strong></p>
+                    <p class="card-text">Location: <strong>Convention Center,
+                            Phnom Penh</strong></p>
+
+                    <!-- Number of members involved -->
+                    <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">Members in Collaboration:</p>
+                        <div class="ms-3">
+                            <span class="badge bg-primary">5 Members</span>
+                        </div>
+                    </div>
+
+                    <!-- Chat Area -->
+                    <div class="mb-3">
+                        <label for="chatBox" class="form-label">Collaborate with
+                            Vendors</label>
+                        <textarea class="form-control" id="chatBox" rows="4"
+                            placeholder="Type your message here..."></textarea>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-end">
+                        <button type="button"
+                            class="btn btn-secondary me-2">View Details</button>
+                        <button type="submit" class="btn btn-primary">Send
+                            Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
