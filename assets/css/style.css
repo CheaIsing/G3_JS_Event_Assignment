@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Poppins", sans-serif;
+}
 :root {
     --c-brand: #ff1694;
     --c-brand-dark: #e11594;
@@ -7,7 +16,7 @@
     color: var(--c-brand) !important;
 }
 
-.btn-brand {
+.btn-brand{
     background-color: var(--c-brand) !important;
     color: #fff !important;
     transition: .3s;
@@ -21,3 +30,30 @@ a{
     text-decoration: none;
     color: inherit;
 }
+.btn-outline-brand{
+    border: 1px solid var(--c-brand);
+    color: var(--c-brand);
+    transition: 0.3s;
+}
+.btn-outline-brand:hover{
+    background-color: var(--c-brand) !important;
+    color: #fff !important;
+}
+
+.form-check-input:checked{
+    background-color: var(--c-brand);
+    border-color: var(--c-brand);
+    box-shadow: #e11594;
+}
+.form-check-input:focus {
+    border-color: var(--c-brand);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #ff169225;
+}
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: var(--c-brand);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #ff169225;
+  }
