@@ -1,0 +1,86 @@
+.line {
+  width: 48%;
+  height: 5px;
+  background-color: var(--c-brand);
+  border-radius: 10px;
+}
+.text-or {
+  margin-top: -10px;
+  color: white;
+}
+a {
+  text-decoration: none;
+}
+.text-signup {
+  color: #ff1694;
+  font-weight: bold;
+}
+.Forgot-password {
+  color: #ff1694;
+}
+.Forgot-password:hover {
+  text-decoration: underline;
+}
+.text-signup:hover {
+  text-decoration: underline;
+}
+
+.btn-facebook {
+  border-color: #dddd;
+  color: #ffff;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.btn-facebook:hover,
+.btn-google:hover {
+  background-color: transparent;
+  color: #ff1694;
+}
+
+.btn-google {
+  border-color: #dddd;
+  color: #ffff;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+.btn-facebook,
+.btn-google,
+.btn-signup {
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+.btn-google:hover {
+  border-color: #ff1694;
+}
+.btn-facebook:hover {
+  border-color: #ff1694;
+}
+.image img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+.card-bg {
+  background-image: url(../img/9091671.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  padding: 20px; 
+  border-radius: 10px;
+}
+.card-bgsignup {
+  background-image: url(../img/3607424.jpg); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  height: 100%;
+  padding: 20px;
+  border-radius: 10px; 
+}
