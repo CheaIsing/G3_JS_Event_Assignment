@@ -9,11 +9,21 @@ body{
 }
 :root {
     --c-brand: #ff1694;
+    --c-brand-light: #ff1692ac;
     --c-brand-dark: #e11594;
-}
 
+}
+.fs-18{
+    font-size: 18px;
+}
 .text-brand {
     color: var(--c-brand) !important;
+}
+.text-brand-dark {
+    color: var(--c-brand-dark) !important;
+}
+.text-brand-light {
+    color: var(--c-brand-light) !important;
 }
 
 .btn-brand{
@@ -56,4 +66,4 @@ a{
     border-color: var(--c-brand);
     outline: 0;
     box-shadow: 0 0 0 0.25rem #ff169225;
-  }
+}
