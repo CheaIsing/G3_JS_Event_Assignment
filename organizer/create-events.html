@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create an Event</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/lib/bootstrap-icon/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../assets/css/lim_style.css" />
+</head>
+
+<body>
+    <main>
+        <div class="d-flex">
+            <nav class="shadow sidebar">
+                <ul>
+                    <li>
+                        <a href="#" class="active">
+                            <i class="fas fa-menorah"></i>
+                            <span class="nav-item">Event</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-ticket"></i>
+                            <span class="nav-item">Request Ticket</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-qrcode"></i>
+                            <span class="nav-item">Check-in
+                                Ticket</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-user-group"></i>
+                            <span class="nav-item">Event Group
+                                Collaborated</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-user-group"></i>
+                            <span class="nav-item">Organizer
+                                Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="w-100 p-4">
+                <section class="event-info">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn border-0 ps-0" onclick="history.back()">
+                                <i class="fa-solid fa-angle-left fs-2"></i>
+                            </button>
+                            <h2>Create an Event</h2>
+                        </div>
+                        <form action="" class="px-5">
+                            <div class="sub-form-wrapper p-4 border rounded-4 mt-4 ">
+                                <div class="form-display upload-cover ">
+                                    <h1 class="fw-bold">Upload an image as your cover</h1>
+                                    <img class="icon-img" src="/assets/lim_img/icon/plus.png" alt="">
+                                </div>
+                                <div class="main-form upload-img-form">
+                                    <h4 class="fw-bold pb-3">Add your image</h4>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <img class="tip-icon" src="/assets/lim_img/icon/bulb.png" alt="">
+                                        <p class="p-0 m-0"><span class="fw-bold">Tip:</span> Use photo that attracts
+                                            viewers.</p>
+                                    </div>
+                                    <div
+                                        class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
+                                        <i id="imgIcon" class="fa-regular fa-image fs-1 text-secondary pb-3"></i>
+                                        <label id="imgInputBtn" for="fileUpload" class="btn-outline-pink"><i
+                                                class="fa-regular fa-image fs-5 text-secondary"></i> Upload
+                                            Image</label>
+                                        <input class="d-none" id="fileUpload" type="file"></input>
+                                        <div class="d-flex">
+                                            <p id="fileName" class="text-secondary pt-3">No file chosen</p>
+                                            <button id="btnRemoveImgFile" class="ms-1 text-secondary fw-bold">X</button>
+                                        </div>
+                                        <img id="imageDisplay" src="" alt="img preview">
+
+                                    </div>
+                                    <div class="img-format pt-3 w-100">
+                                        <ul type="circle" class="d-flex justify-content-evenly">
+                                            <li>Recommended image size: 2160 x 1080px</li>
+                                            <li>Maximum file size: 10MB</li>
+                                            <li>Supported image files: .JPEG, .PNG</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/lim_main.js"></script>
+    <script>
+        let fileInput = document.getElementById('fileUpload');
+        let fileNameDisplay = document.getElementById('fileName');
+        let btnRemoveImgFile = document.getElementById('btnRemoveImgFile');
+        let imageDisplay = document.getElementById('imageDisplay');
+
+        // Update the file name display when a file is selected
+        fileInput.addEventListener('change', function () {
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = fileInput.files[0].name;
+
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    imageDisplay.src = event.target.result; // Set the image source
+                    imageDisplay.style.display = 'block';   // Display the image
+                }
+                reader.readAsDataURL(fileInput.files[0]); // Read the file as a data URL
+
+            }
+            document.getElementById('imgInputBtn').style.display = 'none';
+            document.getElementById('imgIcon').style.display = 'none';
+            btnRemoveImgFile.style.display = 'block';
+        });
+
+        function removeImageFile() {
+            fileInput.value = ''; // Clear the file input
+            fileNameDisplay.textContent = 'No file chosen';
+        }
+        btnRemoveImgFile.addEventListener('click', function () {
+            fileInput.value = '';
+            fileNameDisplay.textContent = 'No file chosen';
+            btnRemoveImgFile.style.display = 'none';
+        });
+
+        
+    </script>
+</body>
+
+</html>

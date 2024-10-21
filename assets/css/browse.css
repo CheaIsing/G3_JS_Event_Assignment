@@ -13,6 +13,17 @@ header,footer{
     background-size: cover;
     background-attachment: fixed;
 }
+.p-eventDetail .hero{
+    width: 100%;
+    height: 100%;
+    padding: 50px 0;
+    /* height: 180px; */
+    /* position: relative; */
+    z-index: 1;
+    background-image: url(../img/test-img/cta-event-search-banner.avif);
+    background-size: cover;
+    background-attachment: fixed;
+}
 .overlay{
     width: 100%;
     height: 100%;
@@ -20,12 +31,32 @@ header,footer{
     z-index: -1;
     background-color: rgba(0, 0, 0,0.65);
 }
+.fr-icon{
+    width: 90px;
+    height: 90px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 35px;
+    background-color: #ff16925d;
+}
 section{
     margin-bottom: 120px;
 }
 a.home-link{
     text-decoration: none;
     color: #000;
+}
+.w-15{
+    width: 15%;
+}
+li{
+    border-bottom: 1px solid var(--c-brand-light);
+}
+li:last-child{
+    border: none;
 }
 .hero img{
     width: 100%;
@@ -41,7 +72,6 @@ hr{
 }
 .search-result .card-list .card{
     width: 100%;
-    height: 150px;
 }
 .card-title{
     width: 100%;
@@ -49,14 +79,17 @@ hr{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.space-nowrap{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .search-result .card-list .card img{
     width: 100%;
-    height: 150px;
+    height: 100%;
     object-fit: cover;
 }
 .search-result .card-list .card-loca{
-    /* background-color: #ff169225; */
-    /* border: 1px solid rgb(147, 146, 146); */
     padding: 6px 0px;
     border-radius: 100px;
     font-size: 18px;
@@ -109,4 +142,7 @@ hr{
 }
 input[type='checkbox']:checked + .button {
     background-color: blue; /* Background turns blue when checked */
+}
+.w-20{
+    width: 28px;
 }
