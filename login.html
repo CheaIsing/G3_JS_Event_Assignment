@@ -1,119 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login page</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/mainstyle.css">
-  <link rel="stylesheet" href="assets/lib/bootstrap-icon/bootstrap-icons.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mainstyle.css">
+    <link rel="stylesheet" href="assets/lib/bootstrap-icon/bootstrap-icons.css">
+  </head>
 
-<body>
+  <body>
 
-  <header></header>
-  <main>
-    <section>
-      <div class="container my-5">
-        <div class="card card-bg shadow-sm border-0 d-flex">
-          <div class="row">
-            <div class="col-6">
-              <h3 class="text-brand">Create An Account</h3>
-              <div class="form-floating mb-3 mt-3">
-                <input type="email" class="form-control form-control-sm" id="email" placeholder="name@example.com"
-                  required>
-                <label for="email">Email address*</label>
-                <div class="invalid-feedback" id="email-error" style="display: none;">
-                  Please enter a valid email address (e.g., name@example.com).
+    <header></header>
+    <main>
+      <section>
+        <div class="container my-5">
+          <div class="card card-bg shadow-sm border-0 d-flex">
+            <div class="row">
+              <div class="col-6">
+                <h3 class="text-brand">Create An Account</h3>
+                <div class="form-floating mb-3 mt-3">
+                  <input type="email" class="form-control form-control-sm"
+                    id="login-email" placeholder="name@example.com"
+                    required>
+                  <label for="email">Email address*</label>
+                  <div class="invalid-feedback" id="email-error"
+                    style="display: none;">
+                    Please enter a valid email address (e.g., name@example.com).
+                  </div>
+                </div>
+
+                <div class="form-floating mb-3 d-grid position-relative">
+                  <input type="password" class="form-control" id="login-password"
+                    placeholder="Password">
+                  <label for="password">Password</label>
+                  <i class="bi bi-eye-slash-fill text-brand position-absolute"
+                    id="togglePassword"
+                    style="right: 10px; top: 30%; transform: translateY(-50%); cursor: pointer;"></i>
+                  <p class="ms-auto mt-2"><button type="button" class="Forgot-password bg-transparent border-0"
+                       data-bs-target="#exampleModalToggle"
+                      data-bs-toggle="modal">Forgot Password?</button></p>
+                </div>
+
+                <div class="d-grid gap-2 mb-3">
+                  <button class="btn btn-brand" type="button"
+                    id="btn-create-account">Create Account</button>
+                </div>
+
+                <div class="d-grid d-flex">
+                  <div class="line"></div>
+                  <p class="text-or">OR</p>
+                  <div class="line"></div>
+                </div>
+
+                <div class="mb-3">
+                  <button class="btn btn-facebook mb-2 w-100">
+                    <i
+                      class="bi bi-facebook btn-social-icon fs-5 me-3 text-brand"></i>
+                    Login with Facebook
+                  </button>
+                  <button class="btn btn-google mb-3 w-100">
+                    <i
+                      class="bi bi-google btn-social-icon fs-5 me-3 text-brand"></i>
+                    Sign up with Google
+                  </button>
+                </div>
+
+                <div class="text-center">
+                  <p class="text-white">Don't have an Account? <a
+                      class="text-signup" href="#">Sign Up</a></p>
                 </div>
               </div>
 
-              <div class="form-floating mb-3 d-grid position-relative">
-                <input type="password" class="form-control" id="password" placeholder="Password">
-                <label for="password">Password</label>
-                <i class="bi bi-eye-slash-fill text-brand position-absolute" id="togglePassword"
-                  style="right: 10px; top: 30%; transform: translateY(-50%); cursor: pointer;"></i>
-                <p class="ms-auto mt-2"><a class="Forgot-password" href="#">Forgot Password?</a></p>
-              </div>
-
-              <div class="d-grid gap-2 mb-3">
-                <button class="btn btn-brand" type="button" id="create-account">Create Account</button>
-              </div>
-
-              <div class="d-grid d-flex">
-                <div class="line"></div>
-                <p class="text-or">OR</p>
-                <div class="line"></div>
-              </div>
-
-              <div class="mb-3">
-                <button class="btn btn-facebook mb-2 w-100">
-                  <i class="bi bi-facebook btn-social-icon fs-5 me-3 text-brand"></i> Login with Facebook
-                </button>
-                <button class="btn btn-google mb-3 w-100">
-                  <i class="bi bi-google btn-social-icon fs-5 me-3 text-brand"></i> Sign up with Google
-                </button>
-              </div>
-
-              <div class="text-center">
-                <p class="text-white">Don't have an Account? <a class="text-signup" href="#">Sign Up</a></p>
+              <div
+                class="col-6 d-flex justify-content-center align-items-center">
+                <div class="logo">
+                  <img src="assets/img/Pruttikar_Logo1.png" alt
+                    style="width: 270px;">
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-            <div class="col-6 d-flex justify-content-center align-items-center">
-              <div class="logo">
-                <img src="assets/img/Pruttikar_Logo1.png" alt="" style="width: 270px;">
+    <div class="container">
+      <!-- Request To Change Password Modal -->
+      <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Request
+                To Change Password</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="email2" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" id="email-2"
+                    placeholder="Please Input Your Email">
+                </div>
+              </form>
+              <div>
+                <button class="btn btn-brand"
+                  data-bs-target="#exampleModalToggle2"
+                  data-bs-toggle="modal" style="width: 100%;">Submit</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
 
-  <footer></footer>
+      <!-- OTP Verification Modal -->
+      <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
+                <div class="logo">
+                  <img src="assets/img/Pruttikar_Text_Logo1.png" alt
+                    style="width: 150px;">
+                </div>
+              </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+              <h5>Enter the code that we sent to your Email</h5>
+              <div class="otp-timer mb-3 fw-bold fs-4">
+                <span id="timer">1:00</span>
+              </div>
+              <div class="otp-inputs mb-3">
+                <input type="text" maxlength="1">
+                <input type="text" maxlength="1">
+                <input type="text" maxlength="1">
+                <input type="text" maxlength="1">
+                <input type="text" maxlength="1">
+                <input type="text" maxlength="1">
+              </div>
+              <div class="resend-otp">
+                Didn't receive the OTP? <a href="#" id="resendBtn"
+                  class="fw-bold"
+                  onclick="resendOtp()">Resend</a>
+              </div>
+            </div>
 
-  <!-- JavaScript for toggling password visibility -->
-  <script>
-    const togglePassword = document.querySelector('#togglePassword');
-    const password = document.querySelector('#password');
+            <div class="p-3">
+              <button class="btn btn-brand" id="otpSubmitBtn"
+                style="width: 100%;" data-bs-target="#changePasswordModal"
+                data-bs-toggle="modal">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    togglePassword.addEventListener('click', function (e) {
-      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-      password.setAttribute('type', type);
-      this.classList.toggle('bi-eye');
-      this.classList.toggle('bi-eye-slash-fill');
-    });
-    const emailInput = document.querySelector('#email');
-    const emailError = document.querySelector('#email-error');
-    const createAccountBtn = document.querySelector('#create-account');
+      <!-- Password Change Modal -->
+      <div class="modal fade" id="changePasswordModal" tabindex="-1"
+        aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="changePasswordModalLabel">
+                <div class="logo">
+                  <img src="assets/img/Pruttikar_Text_Logo1.png" alt
+                    style="width: 150px;">
+                </div>
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h5 class="mb-3">Enter a new password to change password</h5>
+              <form id="passwordForm">
+                <div class="mb-3 form-group">
+                  <label for="newPassword" class="form-label">New
+                    password</label>
+                  <input type="password" class="form-control" id="newPassword"
+                    placeholder="New password">
+                  <i class="bi bi-eye toggle-password"
+                    onclick="togglePassword('newPassword')"></i>
+                </div>
+                <div class="mb-3 form-group">
+                  <label for="confirmPassword" class="form-label">Confirm
+                    password</label>
+                  <input type="password" class="form-control"
+                    id="confirmPassword" placeholder="Confirm password">
+                  <i class="bi bi-eye toggle-password"
+                    onclick="togglePassword('confirmPassword')"></i>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-brand"
+                    id="changePasswordSubmitBtn"
+                    style="width: 100%;">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    function isValidEmail(email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    }
+    </div>
 
-    createAccountBtn.addEventListener('click', function (e) {
-      const emailValue = emailInput.value.trim();
-      if (!isValidEmail(emailValue)) {
-        emailError.style.display = 'block';
-        emailInput.classList.add('is-invalid');
-      } else {
-        emailError.style.display = 'none';
-        emailInput.classList.remove('is-invalid');
-        alert("Account Created Successfully!");
-      }
-    });
+    <footer></footer>
 
-    emailInput.addEventListener('input', function () {
-      if (isValidEmail(this.value)) {
-        emailError.style.display = 'none';
-        emailInput.classList.remove('is-invalid');
-      }
-    });
-  </script>
-</body>
+    <!-- JavaScript for toggling password visibility -->
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/authentication.js"></script>
+  </body>
 
 </html>
