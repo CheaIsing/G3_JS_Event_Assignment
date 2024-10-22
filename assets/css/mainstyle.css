@@ -84,3 +84,14 @@ a {
   padding: 20px;
   border-radius: 10px; 
 }
+.otp-inputs input {
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
+  margin-left: 10px;
+  text-align: center;
+  border: 1px solid #ff1694;
+  border-radius: 8px;
+  outline: none;
+}
+
