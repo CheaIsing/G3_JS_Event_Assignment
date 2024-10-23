@@ -45,13 +45,13 @@
               </div>
 
               <div class="form-floating mb-3 d-grid position-relative">
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
                 <label for="password">Password</label>
                 <i class="bi bi-eye-slash-fill text-brand position-absolute" id="togglePassword" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
               </div>
 
               <div class="form-floating mb-3 d-grid position-relative">
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
                 <label for="confirmPassword">Confirm Password</label>
                 <i class="bi bi-eye-slash-fill text-brand position-absolute" id="toggleConfirmPassword" style="right: 10px; top: 30%; transform: translateY(-50%); cursor: pointer;"></i>
                 <div class="mb-3 mt-2 form-check ms-auto">
@@ -139,21 +139,57 @@
       if (!isValidEmail(emailValue)) {
         emailError.style.display = 'block';
         emailInput.classList.add('is-invalid');
+        // return;
       } else {
         emailError.style.display = 'none';
         emailInput.classList.remove('is-invalid');
+        // return;
       }
 
       if (usernameValue === '' || !isValidFullName(usernameValue)) {
         usernameError.style.display = 'block';
         usernameInput.classList.add('is-invalid');
+        // return;
       } else {
         usernameError.style.display = 'none';
         usernameInput.classList.remove('is-invalid');
+        // return;
       }
 
-      if (isValidEmail(emailValue) && isValidFullName(usernameValue)) {
-        alert("Account Created Successfully!");
+      if (isValidEmail(emailValue) && isValidFullName(usernameValue) ) {
+        if(password.value === confirmPassword.value){
+          
+          alert("Account Created Successfully!");
+          let full_name = document.getElementById('username').value;
+          let email = document.getElementById('email').value;
+          let password = document.getElementById('password').value;
+          let password_confirmation = document.getElementById('confirmPassword').value;
+          console.log(full_name, email, password, password_confirmation);
+          fetch('https://mps2.chandalen.dev/api/register', {
+            method: "POST",
+            headers: {"Accept" : "application/json",
+              "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+              full_name,
+              email,
+              password,
+              password_confirmation
+            })
+          })
+          .then(res=>res.json())
+          .then(json=>{
+            console.log(json);
+            alert('Register Sucessfull');
+            location.href = "login.html"
+            
+          })
+
+        }
+        else{
+          alert('password != confirm password');
+        }
+
       }
     });
 
