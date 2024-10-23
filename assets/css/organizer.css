@@ -109,3 +109,7 @@ section.ticket-order .table td,
 section.ticket-order .table td {
     padding-block: 1rem !important;
 }
+
+.table td {
+    vertical-align: middle;
+}

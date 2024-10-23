@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event</title>
+        <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet"
+            href="../assets/lib/bootstrap-icon/bootstrap-icons.css">
+        <link rel="stylesheet" href="../assets/css/organizer.css">
+
+    </head>
+
+    <body>
+        <main>
+            <div class>
+                <div class="d-flex">
+                    <nav class="shadow sidebar">
+                        <ul>
+                            <li>
+                                <a href="event.html">
+                                    <i class="fas fa-menorah"></i>
+                                    <span class="nav-item">Event</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="request-ticket.html">
+                                    <i class="fa-solid fa-ticket"></i>
+                                    <span class="nav-item">Request Ticket</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="check-in-ticket.html" class="active">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                    <span class="nav-item">Check-in
+                                        Ticket</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="group-collaborate.html">
+                                    <i class="fa-solid fa-user-group"></i>
+                                    <span class="nav-item">Event Group
+                                        Collaborated</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="profile.html">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span class="nav-item">Organizer
+                                        Profile</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <section class="p-4 w-100">
+                        <div class>
+                            <h2>Check-in Ticket</h2>
+                        </div>
+                        <div
+                            class="my-4 d-flex w-100 justify-content-between align-content-center">
+                            <div
+                                class>
+                                <h3>Halowinn</h3>
+                                <div
+                                    class="d-inline-flex align-items-center">
+                                    <i
+                                        class="bi bi-calendar-event me-2"></i>
+                                    <span>Sat, Nov 23, 2024, 10:00
+                                        AM</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div
+                            class="my-4 d-flex justify-content-between align-items-center">
+                            <h5 class>Ticket Checked-in</h5>
+                            <!-- Button trigger modal -->
+                            <button type="button"
+                                class="btn btn-brand"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Add Check-in
+                            </button>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Ticket Id</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>John Doe</td>
+                                    <td>$20.00</td>
+                                    <td>2023-10-01</td>
+                                    <td><button type="button"
+                                            class="btn btn-danger">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </section>
+                </div>
+            </div>
+        </main>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5"
+                            id="exampleModalLabel">Add Check-in</h1>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1"
+                                class="form-label">Input Ticket Id:</label>
+                            <input type="email" class="form-control"
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="button"
+                            class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>
