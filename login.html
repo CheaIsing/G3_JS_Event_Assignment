@@ -15,12 +15,16 @@
 
     <header></header>
     <main>
-      <section>
-        <div class="container my-5">
-          <div class="card card-bg shadow-sm border-0 d-flex">
+      <section class="section-login">
+        <div class="container py-5">
+           <div class="logo mb-4">
+                  <img src="assets/img/Pruttikar_Text_Logo2.png" alt
+                    style="width: 150px;">
+                </div>
+                <div class="card p-3 card-glassbg">
             <div class="row">
               <div class="col-6">
-                <h3 class="text-brand">Log in</h3>
+                <h3 class="text-brand fw-bold">Log In</h3>
                 <div class="form-floating mb-3 mt-3">
                   <input type="email" class="form-control form-control-sm"
                     id="login-email" placeholder="name@example.com"
@@ -45,45 +49,43 @@
                 </div>
 
                 <div class="d-grid gap-2 mb-3">
-                  <button class="btn btn-brand" type="button"
-                    id="btn-log-in">Log in</button>
+                  <button class="btn btn-brand " type="button"
+                    id="btn-log-in">Log In</button>
                 </div>
 
                 <div class="d-grid d-flex">
                   <div class="line"></div>
-                  <p class="text-or">OR</p>
+                  <p class="text-or p-2">OR</p>
                   <div class="line"></div>
                 </div>
 
                 <div class="mb-3">
-                  <button class="btn btn-facebook mb-2 w-100">
+                  <button class="btn btn-facebook btn-outline-brand mb-3 mb-2 w-100">
                     <i
-                      class="bi bi-facebook btn-social-icon fs-5 me-3 text-brand"></i>
+                      class="bi bi-facebook social-icon fs-5 me-3"></i>
                     Login with Facebook
                   </button>
-                  <button class="btn btn-google mb-3 w-100">
+                  <button class="btn btn-google btn-outline-brand mb-3 w-100">
                     <i
-                      class="bi bi-google btn-social-icon fs-5 me-3 text-brand"></i>
+                      class="bi bi-google social-icon fs-5 me-3 "></i>
                     Sign up with Google
                   </button>
                 </div>
 
                 <div class="text-center">
-                  <p class="text-white">Don't have an Account? <a
-                      class="text-signup" href="#">Sign Up</a></p>
+                  <p>Don't have an Account? <a
+                      class="text-signup" href="Signup.html">Sign Up</a></p>
                 </div>
               </div>
-
-              <div
-                class="col-6 d-flex justify-content-center align-items-center">
-                <div class="logo">
-                  <img src="assets/img/Pruttikar_Logo1.png" alt
-                    style="width: 270px;">
+              <div class="col-6">
+                <div class="image">
+                  <img src="assets/img/img-login.png" alt="">
                 </div>
+              </div>
               </div>
             </div>
-          </div>
-        </div>
+            </div>
+       
       </section>
     </main>
 
@@ -183,18 +185,18 @@
                 <div class="mb-3 form-group">
                   <label for="newPassword" class="form-label">New
                     password</label>
-                  <input type="password" class="form-control" id="newPassword"
+                  <input type="password" class="form-control d-grid position-relative" id="newPassword"
                     placeholder="New password">
-                  <i class="bi bi-eye toggle-password"
-                    onclick="togglePassword('newPassword')"></i>
+                  <i class="bi bi-eye toggle-password text-brand position-absolute"
+                    onclick="togglePassword('newPassword')" style="right: 25px; top: 39%; transform: translateY(-50%); cursor: pointer;"></i>
                 </div>
                 <div class="mb-3 form-group">
                   <label for="confirmPassword" class="form-label">Confirm
                     password</label>
-                  <input type="password" class="form-control"
+                  <input type="password" class="form-control d-grid position-relative"
                     id="confirmPassword" placeholder="Confirm password">
-                  <i class="bi bi-eye toggle-password"
-                    onclick="togglePassword('confirmPassword')"></i>
+                  <i class="bi bi-eye toggle-password text-brand position-absolute"
+                    onclick="togglePassword('confirmPassword')" style="right: 25px; top: 65%;cursor: pointer;"></i>
                 </div>
                 <div>
                   <button type="button" class="btn btn-brand"
