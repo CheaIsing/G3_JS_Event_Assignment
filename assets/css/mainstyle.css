@@ -4,9 +4,11 @@
   background-color: var(--c-brand);
   border-radius: 10px;
 }
+.section-login{
+ background-color: #f6daf1;
+}
 .text-or {
-  margin-top: -10px;
-  color: white;
+  margin-top: -18px;
 }
 a {
   text-decoration: none;
@@ -26,8 +28,7 @@ a {
 }
 
 .btn-facebook {
-  border-color: #dddd;
-  color: #ffff;
+  color: #000;
   background-color: transparent;
   display: flex;
   align-items: center;
@@ -35,15 +36,8 @@ a {
   padding: 0.5rem;
 }
 
-.btn-facebook:hover,
-.btn-google:hover {
-  background-color: transparent;
-  color: #ff1694;
-}
-
 .btn-google {
-  border-color: #dddd;
-  color: #ffff;
+  color: #000;
   background-color: transparent;
   display: flex;
   align-items: center;
@@ -53,7 +47,7 @@ a {
 .btn-facebook,
 .btn-google,
 .btn-signup {
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 .btn-google:hover {
   border-color: #ff1694;
@@ -65,15 +59,6 @@ a {
   width: 100%;
   height: 80%;
   object-fit: cover;
-}
-.card-bg {
-  background-image: url(../img/9091671.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100%;
-  padding: 20px; 
-  border-radius: 10px;
 }
 .card-bgsignup {
   background-image: url(../img/3607424.jpg); 
@@ -93,5 +78,22 @@ a {
   border: 1px solid #ff1694;
   border-radius: 8px;
   outline: none;
+}
+.social-icon{
+  color: #ff1694;
+}
+ .btn-facebook:hover .social-icon{
+  color:#fff;
+}
+.btn-google:hover .social-icon{
+  color: #fff;
+}
+.card-glassbg{
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(0px);
+-webkit-backdrop-filter: blur(0px);
+border: 1px solid rgba(255, 255, 255, 0.53);
 }
 
