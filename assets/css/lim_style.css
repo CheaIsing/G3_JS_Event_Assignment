@@ -15,6 +15,7 @@
     --c-brand: #ff1694;
     --c-brand-dark: #e11594;
     --c-light-gray: #F8F7FA;
+    --text-gray: #403247;
 }
 
 .text-brand {
@@ -142,13 +143,24 @@ section.ticket-order .table td {
     outline: 2px solid var(--c-brand) !important;
 }
 
-.sub-form-wrapper .form-display{
+.sub-form-wrapper-active {
+    outline: 2px solid var(--c-brand) !important;
+}
+
+.sub-form-wrapper .form-display {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.sub-form-wrapper .main-form{
+
+.sub-form-wrapper .main-form {
     display: none;
+}
+
+.sub-form-wrapper h5 , 
+.sub-form-wrapper p,
+.sub-form-wrapper h1{
+    color: var(--text-gray);
 }
 
 .tip-icon {
@@ -172,10 +184,39 @@ section.ticket-order .table td {
 .btn-outline-pink:hover p {
     color: #fff !important;
 }
+
 .btn-outline-pink:hover i {
     color: #fff !important;
 }
+
 .btn-outline-pink:hover label {
+    color: #fff !important;
+}
+
+.btn-pink {
+    padding: 15px 25px;
+    /* outline: 2px solid var(--c-brand); */
+    background-color: var(--c-brand);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    /* transition: 0.3s; */
+}
+
+.btn-pink:hover {
+    background-color: var(--c-brand-dark);
+    color: white;
+}
+
+.btn-pink:hover p {
+    color: #fff !important;
+}
+
+.btn-pink:hover i {
+    color: #fff !important;
+}
+
+.btn-pink:hover label {
     color: #fff !important;
 }
 
@@ -185,16 +226,53 @@ section.ticket-order .table td {
 
 }
 
-.img-format ul li{
+.img-format ul li {
     font-size: 14px;
 }
 
-#btnRemoveImgFile{
+#btnRemoveImgFile, #btnRemoveImg {
     background: none;
     display: none;
 }
 
-#imageDisplay{
+#imageDisplay, #photoDisplay {
     width: 300px;
     display: none;
+}
+
+.customized-form:focus {
+    border: none !important;
+    outline: 2px solid var(--c-brand) !important;
+    box-shadow: 0 0 0 0.1rem var(--c-brand) !important;
+}
+
+.step-side{
+    width: 15%;
+    padding: 15px;
+}
+
+.create-info{
+    width: 85%;
+    border-left: 1px solid lightgray;
+}
+
+#uploadChoiceModal{
+    background-color: #e1159310 !important;
+}
+
+.upload-private, .upload-public{
+    outline: 2px solid var(--c-brand) !important;
+    width: 49%;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.upload-private:hover{
+    background-color: var(--c-brand);;
+    color: white;
+}
+.upload-public:hover{
+    background-color: var(--c-brand);
+    color: white;
 }

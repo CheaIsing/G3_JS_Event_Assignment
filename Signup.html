@@ -15,20 +15,23 @@
 
   <header></header>
   <main>
-    <section>
-      <div class="container my-5">
-        <div class="card card-bgsignup shadow-sm border-0 d-flex">
+    <section class="section-login">
+      <div class="container py-5">
+        <div class="logo mb-3">
+          <img src="assets/img/Pruttikar_Text_Logo1.png" alt
+            style="width: 150px;">
+        </div>
+        <div class="card d-flex card-glassbg px-3">
           <div class="row">
-
             <div class="col-6 d-flex justify-content-center align-items-center">
               <div class="logo">
-                <img src="assets/img/Pruttikar_Logo1.png" alt="" style="width: 270px;">
+                <img src="assets/img/img-login.png" alt="" style="width: 100%;">
               </div>
             </div>
 
             <div class="col-6">
-              <h3 class="text-brand">Sign Up</h3>
-              <div class="form-floating mb-3 mt-3">
+              <h3 class="text-brand mt-4">Register</h3>
+              <div class="form-floating mb-3">
                 <input type="text" class="form-control form-control-sm" id="username" placeholder="Full Name" required>
                 <label for="username">Full Name*</label>
                 <div class="invalid-feedback" id="username-error" style="display: none;">
@@ -45,18 +48,18 @@
               </div>
 
               <div class="form-floating mb-3 d-grid position-relative">
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
                 <label for="password">Password</label>
                 <i class="bi bi-eye-slash-fill text-brand position-absolute" id="togglePassword" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
               </div>
 
               <div class="form-floating mb-3 d-grid position-relative">
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
                 <label for="confirmPassword">Confirm Password</label>
                 <i class="bi bi-eye-slash-fill text-brand position-absolute" id="toggleConfirmPassword" style="right: 10px; top: 30%; transform: translateY(-50%); cursor: pointer;"></i>
                 <div class="mb-3 mt-2 form-check ms-auto">
                     <input type="checkbox" class="form-check-input" id="check1">
-                    <label class="form-check-label text-white" for="check1">Remember Me</label>
+                    <label class="form-check-label" for="check1">Remember Me</label>
                   </div>
               </div>
 
@@ -64,19 +67,19 @@
 
               <div class="d-grid d-flex mb-3">
                 <div class="line"></div>
-                <p class="text-or">OR</p>
+                <p class="text-or p-2">OR</p>
                 <div class="line"></div>
               </div>
 
               <div class="mb-3">
-                <button class="btn btn-facebook mb-2 w-100">
-                  <i class="bi bi-facebook btn-social-icon fs-5 me-3 text-brand"></i> Login with Facebook
+                <button class="btn btn-facebook btn-outline-brand  mb-2 w-100">
+                  <i class="bi bi-facebook social-icon fs-5 me-3"></i> Login with Facebook
                 </button>
               </div>
 
               <div class="mb-3">
-                <button class="btn btn-google mb-3 w-100">
-                  <i class="bi bi-google btn-social-icon fs-5 me-3 text-brand"></i> Sign up with Google
+                <button class="btn btn-google btn-outline-brand mb-3 w-100">
+                  <i class="bi bi-google social-icon fs-5 me-3"></i> Sign up with Google
                 </button>
               </div>
 
@@ -85,7 +88,7 @@
               </div>
 
               <div class="text-center">
-                <p class="text-white">Have an Account? <a class="text-signup" href="#">Log In</a></p>
+                <p>Have an Account? <a class="text-signup" href="login.html">Log In</a></p>
               </div>
             </div>
 
@@ -139,21 +142,57 @@
       if (!isValidEmail(emailValue)) {
         emailError.style.display = 'block';
         emailInput.classList.add('is-invalid');
+        // return;
       } else {
         emailError.style.display = 'none';
         emailInput.classList.remove('is-invalid');
+        // return;
       }
 
       if (usernameValue === '' || !isValidFullName(usernameValue)) {
         usernameError.style.display = 'block';
         usernameInput.classList.add('is-invalid');
+        // return;
       } else {
         usernameError.style.display = 'none';
         usernameInput.classList.remove('is-invalid');
+        // return;
       }
 
-      if (isValidEmail(emailValue) && isValidFullName(usernameValue)) {
-        alert("Account Created Successfully!");
+      if (isValidEmail(emailValue) && isValidFullName(usernameValue) ) {
+        if(password.value === confirmPassword.value){
+          
+          alert("Account Created Successfully!");
+          let full_name = document.getElementById('username').value;
+          let email = document.getElementById('email').value;
+          let password = document.getElementById('password').value;
+          let password_confirmation = document.getElementById('confirmPassword').value;
+          console.log(full_name, email, password, password_confirmation);
+          fetch('https://mps2.chandalen.dev/api/register', {
+            method: "POST",
+            headers: {"Accept" : "application/json",
+              "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+              full_name,
+              email,
+              password,
+              password_confirmation
+            })
+          })
+          .then(res=>res.json())
+          .then(json=>{
+            console.log(json);
+            alert('Register Sucessfull');
+            location.href = "login.html"
+            
+          })
+
+        }
+        else{
+          alert('password != confirm password');
+        }
+
       }
     });
 
