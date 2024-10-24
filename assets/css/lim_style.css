@@ -18,6 +18,9 @@
     --text-gray: #403247;
 }
 
+
+
+/* input style */
 .text-brand {
     color: var(--c-brand) !important;
 }
@@ -136,7 +139,7 @@ section.ticket-order .table td {
 }
 
 .sub-form-wrapper .icon-img {
-    width: 5%;
+    width: 3%;
 }
 
 .sub-form-wrapper:hover {
@@ -157,10 +160,14 @@ section.ticket-order .table td {
     display: none;
 }
 
-.sub-form-wrapper h5 , 
+.sub-form-wrapper h5,
 .sub-form-wrapper p,
-.sub-form-wrapper h1{
+.sub-form-wrapper h1 {
     color: var(--text-gray);
+}
+
+.sub-form-wrapper h1 {
+    font-size: 25px !important;
 }
 
 .tip-icon {
@@ -230,12 +237,14 @@ section.ticket-order .table td {
     font-size: 14px;
 }
 
-#btnRemoveImgFile, #btnRemoveImg {
+#btnRemoveImgFile,
+#btnRemoveImg {
     background: none;
     display: none;
 }
 
-#imageDisplay, #photoDisplay {
+#imageDisplay,
+#photoDisplay {
     width: 300px;
     display: none;
 }
@@ -246,21 +255,22 @@ section.ticket-order .table td {
     box-shadow: 0 0 0 0.1rem var(--c-brand) !important;
 }
 
-.step-side{
+.step-side {
     width: 15%;
     padding: 15px;
 }
 
-.create-info{
+.create-info {
     width: 85%;
     border-left: 1px solid lightgray;
 }
 
-#uploadChoiceModal{
+#uploadChoiceModal {
     background-color: #e1159310 !important;
 }
 
-.upload-private, .upload-public{
+.upload-private,
+.upload-public {
     outline: 2px solid var(--c-brand) !important;
     width: 49%;
     padding: 15px;
@@ -268,11 +278,14 @@ section.ticket-order .table td {
     cursor: pointer;
     border-radius: 10px;
 }
-.upload-private:hover{
-    background-color: var(--c-brand);;
+
+.upload-private:hover {
+    background-color: var(--c-brand);
+    ;
     color: white;
 }
-.upload-public:hover{
+
+.upload-public:hover {
     background-color: var(--c-brand);
     color: white;
 }
