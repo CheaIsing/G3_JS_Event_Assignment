@@ -1,6 +1,47 @@
 const apiUrl = "https://mps2.chandalen.dev";
 const token = localStorage.getItem("authToken");
 
+let id = localStorage.getItem("vendorId");
+console.log(id);
+
+// getEventDetail(apiUrl, id);
+getVendorRecruitmentDetail(apiUrl,id);
+
+function getEventDetail(apiUrl, id) {
+  fetch(`${apiUrl}/api/events/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+
+      fetch(`${apiUrl}/api/events/summary-data/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((json2) => {
+            console.log(json);
+            console.log(json2);         
+        });
+    });
+}
+
+function getVendorRecruitmentDetail(apiUrl, id) {
+  fetch(`${apiUrl}/api/vendors/${id}` ,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  })
+  .then(res=>res.json())
+  .then(json=>{
+    console.log(json);
+    
+  })
+}
+
 function getMe() {
   fetch(`${apiUrl}/api/me`, {
     headers: {
@@ -11,7 +52,6 @@ function getMe() {
     .then((json) => {
       console.log(json.data.id);
       manageAsOrganizer.getAllEventCard(apiUrl, json.data.id);
-      manageAsOrganizer.getAllVendorRecruitment(apiUrl, json.data.id);
     });
 }
 
@@ -40,7 +80,7 @@ function getAllEventCard(apiUrl, id) {
 
             rowsHTML += `<tr class="border-bottom position-relative" >
                                                     <td class>
-                                                        <a href="javascript:void(0)" onclick="saveToStorage('eventId', ${ele.id})"
+                                                        <a href="event-details.html"
                                                             class="stretched-link text-decoration-none bg-transparent"
                                                             style="color: inherit;">
                                                             <div
@@ -129,93 +169,98 @@ function getAllEventCard(apiUrl, id) {
       });
     });
 }
+
+function getAllVendorRecruitment(url,id) {
+  fetch(`${url}/api/vendors/`)
+    .then((res) => res.json())
+    .then((json) => {
+      const { data } = json;
+      // console.log(data);
+
+      let rowsHTML = "";
+
+      data.forEach((ele) => {
+        rowsHTML += `<tr class="border-bottom position-relative">
+                                                <td class>
+                                                    <a href="vendor-recruitment-details.html"
+                                                        class="stretched-link text-decoration-none bg-transparent"
+                                                        style="color: inherit;">
+                                                        <div
+                                                            class="d-flex align-items-center">
+                                                            <div class="me-3">
+                                                                <div
+                                                                    class="text-center text-brand fw-bold">
+                                                                    ${ele.start_date}
+                                                                </div>
+                                                            </div>
+                                                            <img
+                                                                src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
+                                                                alt="Event Image"
+                                                                class="rounded"
+                                                                width="150">
+                                                            <div class="ms-3">
+                                                                <h5
+                                                                    class="mb-0">Halowin</h5>
+                                                                <p
+                                                                    class="text-muted mb-0">Online
+                                                                    event</p>
+                                                                <p
+                                                                    class="text-muted mb-0 small">$${ele.start_date} - ${ele.end_date}</p>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <div>5 people</div>
+                                                </td>
+
+                                                <td>
+                                                    <div
+                                                        class="dropstart position-relative z-3">
+                                                        <button
+                                                            class="btn btn-light"
+                                                            type="button"
+                                                            id="dropdownMenu1"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            <i
+                                                                class="bi bi-three-dots"></i>
+                                                        </button>
+                                                        <ul
+                                                            class="dropdown-menu dropdown-menu-end"
+                                                            aria-labelledby="dropdownMenu1">
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">Edit</a></li>
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">Delete</a></li>
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">View</a></li>
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="#">Copy
+                                                                    Link</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>`;
+      });
+
+      document.getElementById("vendor-recruitment-tbody").innerHTML = rowsHTML;
+    });
+}
+
 const manageAsOrganizer = {
   getMe,
   getAllEventCard,
-  saveToStorage: function (str, value) {
-    //   console.log(str, value, "helo");
-    localStorage.setItem(str, value);
-  },
-  getAllVendorRecruitment: (url, id) => {
-    fetch(`${url}/api/vendors?creator=${id}`)
-      .then((res) => res.json())
-      .then((json) => {
-        const { data } = json;
-        console.log(data);
-
-        let rowsHTML = "";
-
-        data.forEach((ele) => {
-          rowsHTML += `<tr class="border-bottom position-relative"">
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <div class="me-3">
-                                  <div class="text-center text-brand fw-bold">
-                                    ${ele.start_date}
-                                  </div>
-                                </div>
-                                <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                  alt="Event Image"
-                                  class="rounded"
-                                  width="150">
-                                <div class="ms-3">
-                                  <h5 class="mb-0">
-                                    <a href="javascript:void(0)" 
-                                        data-id="${ele.id}"
-                                       class="stretched-link text-decoration-none bg-transparent link-details"
-                                       style="color: inherit;">
-                                       ${ele.name}
-                                    </a>
-                                  </h5>
-                                  <p class="text-muted mb-0">
-                                    ${
-                                      ele.categories.length > 0
-                                        ? ele.categories[0].name
-                                        : "None"
-                                    }
-                                  </p>
-                                  <p class="text-muted mb-0 small">
-                                    ${ele.start_date} - ${ele.end_date}
-                                  </p>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <div>5 people</div>
-                            </td>
-                            <td>
-                              <div class="dropstart position-relative z-3">
-                                <button class="btn btn-light" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
-                                  <i class="bi bi-three-dots"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu1">
-                                  <li><a class="dropdown-item" href="#">Edit</a></li>
-                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                  <li><a class="dropdown-item" href="#">View</a></li>
-                                  <li><a class="dropdown-item" href="#">Copy Link</a></li>
-                                </ul>
-                              </div>
-                            </td>
-                          </tr>`;
-        });
-
-        document.getElementById("vendor-recruitment-tbody").innerHTML =
-          rowsHTML;
-
-        document.querySelectorAll(".link-details").forEach((link) => {
-          link.onclick = () => {
-            let id = link.dataset.id;
-
-            saveToStorage("vendorId", id);
-
-            location.href = "vendor-recruitment-details.html";
-          };
-        });
-      });
-  },
+  getAllVendorRecruitment,
 };
 
-// Optionally attach to window if you want to keep it outside of manageAsOrganizer
-window.saveToStorage = manageAsOrganizer.saveToStorage;
-
-manageAsOrganizer.getMe();
+function copyLink() {
+  var copyText = document.getElementById("eventLink");
+  copyText.select();
+  document.execCommand("copy");
+  alert("Link copied to clipboard");
+}
