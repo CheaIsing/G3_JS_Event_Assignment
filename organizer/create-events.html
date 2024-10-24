@@ -253,44 +253,11 @@
             </div>
         </div>
     </main>
+    <script src="./assets/js/authentication.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/lim_main.js"></script>
-    <!-- <script>
-        let fileInput = document.getElementById('fileUpload');
-        let fileNameDisplay = document.getElementById('fileName');
-        let btnRemoveImgFile = document.getElementById('btnRemoveImgFile');
-        let imageDisplay = document.getElementById('imageDisplay');
+    <script src="../assets/js/image_file_input.js"></script>
 
-        // Update the file name display when a file is selected
-        fileInput.addEventListener('change', function () {
-            if (fileInput.files.length > 0) {
-                fileNameDisplay.textContent = fileInput.files[0].name;
-
-                let reader = new FileReader();
-                reader.onload = function (event) {
-                    imageDisplay.src = event.target.result; // Set the image source
-                    imageDisplay.style.display = 'block';   // Display the image
-                }
-                reader.readAsDataURL(fileInput.files[0]); // Read the file as a data URL
-
-            }
-            document.getElementById('imgInputBtn').style.display = 'none';
-            document.getElementById('imgIcon').style.display = 'none';
-            btnRemoveImgFile.style.display = 'block';
-        });
-
-        function removeImageFile() {
-            fileInput.value = ''; // Clear the file input
-            fileNameDisplay.textContent = 'No file chosen';
-        }
-        btnRemoveImgFile.addEventListener('click', function () {
-            fileInput.value = '';
-            fileNameDisplay.textContent = 'No file chosen';
-            btnRemoveImgFile.style.display = 'none';
-        });
-
-
-    </script> -->
 </body>
 
 </html>

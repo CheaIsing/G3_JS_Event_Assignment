@@ -40,6 +40,32 @@ a{
     text-decoration: none;
     color: inherit;
 }
+
+
+.btn-outline-pink {
+    padding: 15px 25px;
+    outline: 2px solid var(--c-brand);
+    border-radius: 5px;
+    cursor: pointer;
+    /* transition: 0.3s; */
+}
+
+.btn-outline-pink:hover {
+    background-color: var(--c-brand);
+    color: white;
+}
+
+.btn-outline-pink:hover p {
+    color: #fff !important;
+}
+
+.btn-outline-pink:hover i {
+    color: #fff !important;
+}
+
+.btn-outline-pink:hover label {
+    color: #fff !important;
+}
 .btn-outline-brand{
     border: 1px solid var(--c-brand);
     color: var(--c-brand);
@@ -66,4 +92,34 @@ a{
     border-color: var(--c-brand);
     outline: 0;
     box-shadow: 0 0 0 0.25rem #ff169225;
+}
+ /* homepage header*/
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: 0.4s;
+}
+
+.logo img {
+    width: 200px;
+}
+
+header .fa-magnifying-glass {
+    left: 15px;
+    z-index: 1;
+}
+
+header .search-bar {
+    outline: 1px solid var(--c-brand);
+}
+
+header .btn-outline-pink {
+    padding: 7px 15px;
+    outline: 1px solid var(--c-brand);
+    background-color: #ff16925a;
+    background: transparent;
 }
