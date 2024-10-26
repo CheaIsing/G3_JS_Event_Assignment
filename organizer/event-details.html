@@ -72,12 +72,12 @@
                                     class="my-4 d-flex w-100 justify-content-between align-content-center">
                                     <div
                                         class>
-                                        <h3>Halowinn</h3>
+                                        <h3 id="event-name">Halowinn</h3>
                                         <div
                                             class="d-inline-flex align-items-center">
                                             <i
                                                 class="bi bi-calendar-event me-2"></i>
-                                            <span>Sat, Nov 23, 2024, 10:00
+                                            <span id="event-date">Sat, Nov 23, 2024, 10:00
                                                 AM</span>
                                         </div>
                                     </div>
@@ -110,11 +110,11 @@
                                                 <div
                                                     class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
-                                                        <div
+                                                        <div id=""
                                                             class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                             Tickets Sold
                                                         </div>
-                                                        <div
+                                                        <div id="total-ticket"
                                                             class="h5 mb-0 font-weight-bold text-gray-800">
                                                             50/200 tickets
                                                         </div>
@@ -140,7 +140,7 @@
                                                             class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                             Tickets Earnings
                                                         </div>
-                                                        <div
+                                                        <div id="total-income"
                                                             class="h5 mb-0 font-weight-bold text-gray-800">
                                                             $120.50
                                                         </div>
@@ -170,7 +170,7 @@
                                                             class="row no-gutters align-items-center">
                                                             <div
                                                                 class="col-auto">
-                                                                <div
+                                                                <div id="total-attendant"
                                                                     class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                                                     40 people
                                                                 </div>
@@ -209,7 +209,7 @@
                                                             class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                             Not Yet
                                                             Participate</div>
-                                                        <div
+                                                        <div id="not-attending"
                                                             class="h5 mb-0 font-weight-bold text-gray-800">
                                                             18 people</div>
                                                     </div>
@@ -354,6 +354,7 @@
                 </div>
             </div>
         </main>
+        <script src="../assets/js/authentication.js"></script>
         <script src="../assets/js/bootstrap.bundle.min.js"></script>
         <script src="../assets/js/organizer/event-detail.js">
             </script>

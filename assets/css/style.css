@@ -13,6 +13,9 @@ body{
     --c-brand-dark: #e11594;
 
 }
+.bg-brand{
+    background-color: var(--c-brand) !important;
+}
 .fs-18{
     font-size: 18px;
 }
