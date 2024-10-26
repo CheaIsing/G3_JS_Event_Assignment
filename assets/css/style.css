@@ -13,6 +13,10 @@ body{
     --c-brand-dark: #e11594;
 
 }
+
+.bg-brand-light{
+    background-color: var(--c-brand-light) !important;
+}
 .bg-brand{
     background-color: var(--c-brand) !important;
 }

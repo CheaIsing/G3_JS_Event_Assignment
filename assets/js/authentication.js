@@ -72,118 +72,6 @@ if (document.getElementById("btn-log-in")) {
   };
 }
 
-// if (document.getElementById("btn-forgot-pass")) {
-//   document.getElementById("btn-forgot-pass").onclick = () => {
-//     document.getElementById("btn-send-email-forgot-pass").onclick = () => {
-//       let = email = document.getElementById("forgot-pass-email").value;
-//       document.body.style.cursor = "wait";
-
-//       fetch(`${API_URL}/api/forgot/pass`, {
-//         method: "POST",
-//         headers: {
-//           Accept: "application/json",
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           email: email,
-//         }),
-//       })
-//         .then((res) => res.json())
-//         .then((json) => {
-//           console.log(json);
-//           document.body.style.cursor = "default";
-
-//           // Select all OTP input fields
-//           const otpInputs = document.querySelectorAll(".otp-inputs input");
-
-//           // Add event listener to each input field
-//           otpInputs.forEach((input, index) => {
-//             input.addEventListener("keydown", function (event) {
-//               // Check if the key pressed is a valid alphanumeric character
-//               if (event.key.match(/^[a-zA-Z0-9]$/)) {
-//                 otpInputs[index].value = ""; // Clear the current value for a new entry
-//                 // Move to the next input field after entering a character
-//                 if (index < otpInputs.length - 1) {
-//                   setTimeout(() => otpInputs[index + 1].focus(), 10); // Move to next input after a small delay
-//                 }
-//               } else if (event.key === "Backspace") {
-//                 // If backspace is pressed, move to the previous input field
-//                 if (index > 0) {
-//                   setTimeout(() => otpInputs[index - 1].focus(), 10); // Move to previous input
-//                 }
-//               }
-//             });
-//           });
-
-//           // Function to get the OTP value from all input fields
-//           function getOtpValue() {
-//             const otpInputs = document.querySelectorAll(".otp-inputs input");
-//             let otpCode = "";
-
-//             otpInputs.forEach((input) => {
-//               otpCode += input.value; // Append each input's value to form the complete OTP
-//             });
-
-//             console.log("OTP Code:", otpCode); // You can use this OTP code as needed
-//             return otpCode;
-//           }
-
-//           // Example: Submit button handler to retrieve the OTP
-//           document
-//             .getElementById("otpVerifyBtn")
-//             .addEventListener("click", function () {
-//               const otpCode = getOtpValue(); // Call the function to get the OTP
-//               // Perform any additional actions (e.g., send OTP to server)
-//               alert(`Entered OTP: ${otpCode} ${email}`);
-
-//               fetch(`${API_URL}/api/forgot/verify-otp`, {
-//                 method: "POST",
-//                 headers: {
-//                   Accept: "application/json",
-//                   "Content-Type": "application/json",
-//                 },
-//                 body: JSON.stringify({
-//                   otp: otpCode,
-//                   email: email,
-//                 }),
-//               })
-//                 .then((res) => res.json())
-//                 .then((json) => {
-//                   console.log(json);
-
-//                   document.getElementById("changePasswordSubmitBtn").onclick =
-//                     () => {
-//                       let newPass =
-//                         document.getElementById("newPassword").value;
-//                       let confirmPass =
-//                         document.getElementById("confirmPassword").value;
-//                       console.log(newPass, confirmPass);
-
-//                       fetch(`${API_URL}/api/reset/pass`, {
-//                         method: "POST",
-//                         headers: {
-//                           Accept: "application/json",
-//                           "Content-Type": "application/json",
-//                         },
-//                         body: JSON.stringify({
-//                           otp: otpCode,
-//                           email: email,
-//                           new_pass: newPass,
-//                           new_pass_confirmation: confirmPass,
-//                         }),
-//                       })
-//                         .then((res) => res.json())
-//                         .then((json) => {
-//                           console.log(json);
-//                         });
-//                     };
-//                 });
-//             });
-//         });
-//     };
-//   };
-// }
-
 if (document.getElementById("btn-forgot-pass")) {
   document.getElementById("btn-forgot-pass").onclick = () => {
     document.getElementById("btn-send-email-forgot-pass").onclick = () => {
@@ -265,15 +153,15 @@ function setupOtpInputFields() {
     const otpInputs = document.querySelectorAll(".otp-inputs input");
     let otpCode = "";
     otpInputs.forEach((input) => {
-      otpCode += input.value; // Append each input's value to form the complete OTP
+      otpCode += input.value; 
     });
     return otpCode;
   }
 
-  // Example: Submit button handler to retrieve the OTP
+  
   if (document.getElementById("otpVerifyBtn")) {
     document.getElementById("otpVerifyBtn").onclick = function () {
-      otpCode = getOtpValue(); // Call the function to get the OTP
+      otpCode = getOtpValue(); 
 
       fetch(`${API_URL}/api/forgot/verify-otp`, {
         method: "POST",
@@ -354,7 +242,7 @@ if (document.getElementById("changePasswordSubmitBtn")) {
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("An error occurred while changing the password.");
+        showToast("An error occurred while changing the password.", false);
       });
   };
 }
@@ -380,3 +268,70 @@ function logout() {
 // Example usage
 // Success toast
 // showToast("Failed to send your request!", "fail"); // Fail toast
+    
+// }
+
+if(document.getElementById('profileForm')){
+  document.getElementById('profileForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  
+    const form = this;
+    const firstName = document.getElementById('firstname');
+    const lastName = document.getElementById('lastname');
+    const email = document.getElementById('login-email');
+    const phoneNumber = document.getElementById('phonenumber');
+    const dateOfBirth = document.getElementById('datepicker');
+  
+    let isValid = true;
+  
+    // First name validation (letters only)
+    const namePattern = /^[A-Za-z]+$/;
+    if (!namePattern.test(firstName.value)) {
+      firstName.classList.add('is-invalid');
+      isValid = false;
+    } else {
+      firstName.classList.remove('is-invalid');
+    }
+  
+    // Last name validation (letters only)
+    if (!namePattern.test(lastName.value)) {
+      lastName.classList.add('is-invalid');
+      isValid = false;
+    } else {
+      lastName.classList.remove('is-invalid');
+    }
+  
+    // Email validation
+    if (!email.checkValidity()) {
+      email.classList.add('is-invalid');
+      isValid = false;
+    } else {
+      email.classList.remove('is-invalid');
+    }
+  
+    // Phone number validation (10-15 digits)
+    const phonePattern = /^\d{10,15}$/;
+    if (!phonePattern.test(phoneNumber.value)) {
+      phoneNumber.classList.add('is-invalid');
+      isValid = false;
+    } else {
+      phoneNumber.classList.remove('is-invalid');
+    }
+  
+    // Date of Birth validation
+    if (!dateOfBirth.value) {
+      dateOfBirth.classList.add('is-invalid');
+      isValid = false;
+    } else {
+      dateOfBirth.classList.remove('is-invalid');
+    }
+  
+    // If form is valid, submit the form
+    if (isValid) {
+      form.classList.add('was-validated');
+      form.submit();
+    }
+  });
+}
+
