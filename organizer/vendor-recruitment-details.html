@@ -72,13 +72,27 @@
                                     class="my-4 d-flex w-100 justify-content-between align-content-center">
                                     <div
                                         class>
-                                        <h3>Halowinn</h3>
-                                        <div
-                                            class="d-inline-flex align-items-center">
-                                            <i
-                                                class="bi bi-calendar-event me-2"></i>
-                                            <span>Sat, Nov 23, 2024, 10:00
-                                                AM</span>
+                                        <h3 id="vendor-title">Halowinn</h3>
+                                        <div class="d-flex flex-column">
+                                            <div
+                                                class="d-inline-flex align-items-center">
+                                                
+                                                <span id="vendor-categories">Concert, Technology</span>
+                                            </div>
+
+                                            <div
+                                                class="d-inline-flex align-items-center">
+                                                <i
+                                                    class="bi bi-calendar-event me-2"></i>
+                                                <span id="start-end-date">Sat, Nov 23, 2024, 10:00
+                                                    AM</span>
+                                            </div>
+                                            <div
+                                                class="d-inline-flex align-items-center">
+                                                <i
+                                                    class="bi bi-map me-2"></i>
+                                                <span id="location">PP</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="dropstart">
@@ -165,7 +179,7 @@
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="vendor-request-tbody">
                                         <!-- First Event Row -->
                                         <tr
                                             class="border-bottom position-relative">
@@ -245,7 +259,9 @@
             alert("Link copied to clipboard");
         }
         </script>
-        <script src="../assets/js/organizer/vendor-recruitment-detail.js"></script>
+        <script src="../assets/js/authentication.js"></script>
+        <script
+            src="../assets/js/organizer/vendor-recruitment-detail.js"></script>
     </body>
 
 </html>

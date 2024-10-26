@@ -86,11 +86,12 @@
                                                 <tr class="border-bottom">
                                                     <th scope="col">Usable</th>
                                                     <th
-                                                        scope="col">Check-in</th>
-                                                    <th scope="col"></th>
+                                                        scope="col">Purchased
+                                                        Date</th>
+                                                    <th scope="col">Qty</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="usable-tbody">
                                                 <!-- First Event Row -->
                                                 <!-- <tr
                                                     class="border-bottom position-relative">
@@ -209,258 +210,16 @@
                                                     </td>
                                                     <td>
                                                         <div class="col">
-                                                            <div
-                                                                class="modal fade "
-                                                                id="exampleModalToggle-1"
-                                                                aria-hidden="true"
-                                                                aria-labelledby="exampleModalToggleLabel"
-                                                                tabindex="-1">
-                                                                <div
-                                                                    class="modal-dialog modal-dialog-centered">
-                                                                    <div
-                                                                        class="modal-content">
-                                                                        <div
-                                                                            class="modal-header">
-                                                                            <h4>Even
-                                                                                Name
-                                                                                :
-                                                                                Halowin</h4>
-                                                                            <button
-                                                                                type="button"
-                                                                                class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div
-                                                                            class="modal-body ">
-                                                                            <div
-                                                                                class="card border-0">
-                                                                                <div
-                                                                                    class="row g-0">
-                                                                                    <div
-                                                                                        class="col-3">
-                                                                                        <img
-                                                                                            src="../assets/img/qr-code.png"
-                                                                                            class="img-fluid rounded-start "
-                                                                                            alt="...">
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-9">
-                                                                                        <div
-                                                                                            class="card-body">
-                                                                                            <p
-                                                                                                class="card-text">Vanda
-                                                                                                Solo
-                                                                                                Concert
-                                                                                                <br>
-                                                                                                Aeon
-                                                                                                2,
-                                                                                                Phnom
-                                                                                                Penh
-                                                                                                <br>
-                                                                                                Date:
-                                                                                                22
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2024
-                                                                                                -
-                                                                                                23
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2004
-                                                                                                <br>
-                                                                                                Ticket
-                                                                                                Id:
-                                                                                                ET-1257483
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                             <button
                                                                 class="btn btn-brand"
                                                                 data-bs-target="#exampleModalToggle-1"
-                                                                data-bs-toggle="modal">Proceed</button>
+                                                                data-bs-toggle="modal">View
+                                                                Ticket</button>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr
-                                                    class="border-bottom position-relative">
-                                                    <td class>
-                                                        <div
-                                                            class="d-flex align-items-center">
-                                                            <div class="me-3">
-                                                                <div
-                                                                    class="text-center text-brand fw-bold">
-                                                                    <div>NOV</div>
-                                                                    <div>23</div>
-                                                                </div>
-                                                            </div>
-                                                            <img
-                                                                src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                                                alt="Event Image"
-                                                                class="rounded"
-                                                                width="150">
-                                                            <div class="ms-3">
-                                                                <h5
-                                                                    class="mb-0">Halowin</h5>
-                                                                <p
-                                                                    class="text-muted mb-0">Online
-                                                                    event</p>
-                                                                <p
-                                                                    class="text-muted mb-0 small">Saturday,
-                                                                    November 23,
-                                                                    2024
-                                                                    at 10:00 AM
-                                                                    EET</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        15 / 10 / 2024
-                                                    </td>
-                                                    <td>
-                                                        2 Ticket
-                                                    </td>
-                                                    <td>
-                                                        <div class="col">
-                                                            <div
-                                                                class="modal fade "
-                                                                id="exampleModalToggle-2"
-                                                                aria-hidden="true"
-                                                                aria-labelledby="exampleModalToggleLabel"
-                                                                tabindex="-1">
-                                                                <div
-                                                                    class="modal-dialog modal-dialog-centered">
-                                                                    <div
-                                                                        class="modal-content">
-                                                                        <div
-                                                                            class="modal-header">
-                                                                            <h4>Even
-                                                                                Name
-                                                                                :
-                                                                                Halowin</h4>
-                                                                            <button
-                                                                                type="button"
-                                                                                class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div
-                                                                            class="modal-body">
-                                                                            <div
-                                                                                class="card border-0">
-                                                                                <div
-                                                                                    class="row g-0">
-                                                                                    <div
-                                                                                        class="col-3">
-                                                                                        <img
-                                                                                            src="../assets/img/qr-code.png"
-                                                                                            class="img-fluid rounded-start "
-                                                                                            alt="...">
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-9">
-                                                                                        <div
-                                                                                            class="card-body">
-                                                                                            <p
-                                                                                                class="card-text">Vanda
-                                                                                                Solo
-                                                                                                Concert
-                                                                                                <br>
-                                                                                                Aeon
-                                                                                                2,
-                                                                                                Phnom
-                                                                                                Penh
-                                                                                                <br>
-                                                                                                Date:
-                                                                                                22
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2024
-                                                                                                -
-                                                                                                23
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2004
-                                                                                                <br>
-                                                                                                Ticket
-                                                                                                Id:
-                                                                                                ET-1257483
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="modal-body ">
-                                                                            <div
-                                                                                class="card border-0">
-                                                                                <div
-                                                                                    class="row g-0">
-                                                                                    <div
-                                                                                        class="col-3">
-                                                                                        <img
-                                                                                            src="../assets/img/qr-code.png"
-                                                                                            class="img-fluid rounded-start "
-                                                                                            alt="...">
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-9">
-                                                                                        <div
-                                                                                            class="card-body">
-                                                                                            <p
-                                                                                                class="card-text">Vanda
-                                                                                                Solo
-                                                                                                Concert
-                                                                                                <br>
-                                                                                                Aeon
-                                                                                                2,
-                                                                                                Phnom
-                                                                                                Penh
-                                                                                                <br>
-                                                                                                Date:
-                                                                                                22
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2024
-                                                                                                -
-                                                                                                23
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2004
-                                                                                                <br>
-                                                                                                Ticket
-                                                                                                Id:
-                                                                                                ET-1257483
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <button
-                                                                class="btn btn-brand"
-                                                                data-bs-target="#exampleModalToggle-2"
-                                                                data-bs-toggle="modal">Proceed</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+
                                             </tbody>
                                         </table>
 
@@ -492,394 +251,6 @@
                                     </div>
                                 </div> -->
 
-                                <div class="my-4">
-                                    <div class="my-4">
-                                        <table
-                                            class="table table-borderless align-middle">
-                                            <thead class>
-                                                <tr class="border-bottom">
-                                                    <th scope="col">Pending</th>
-                                                    <th
-                                                        scope="col">Check-in</th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- First Event Row -->
-                                                <!-- <tr
-                                                    class="border-bottom position-relative">
-                                                    <td class>
-                                                        <a href="event-details.html"
-                                                            class="stretched-link text-decoration-none bg-transparent"
-                                                            style="color: inherit;">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="me-3">
-                                                                    <div
-                                                                        class="text-center text-brand fw-bold">
-                                                                        <div>NOV</div>
-                                                                        <div>23</div>
-                                                                    </div>
-                                                                </div>
-                                                                <img
-                                                                    src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                                                    alt="Event Image"
-                                                                    class="rounded"
-                                                                    width="150">
-                                                                <div class="ms-3">
-                                                                    <h5
-                                                                        class="mb-0">Halowin</h5>
-                                                                    <p
-                                                                        class="text-muted mb-0">Online
-                                                                        event</p>
-                                                                    <p
-                                                                        class="text-muted mb-0 small">Saturday,
-                                                                        November 23,
-                                                                        2024
-                                                                        at 10:00 AM
-                                                                        EET</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </td>
-            
-                                                    <td>
-                                                        10 / 100
-                                                    </td>
-                                                    <td>
-                                                        <div
-                                                            class="dropstart position-relative z-3">
-                                                            <button
-                                                                class="btn btn-light"
-                                                                type="button"
-                                                                id="dropdownMenu1"
-                                                                data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                                <i
-                                                                    class="bi bi-three-dots"></i>
-                                                            </button>
-                                                            <ul
-                                                                class="dropdown-menu dropdown-menu-end"
-                                                                aria-labelledby="dropdownMenu1">
-                                                                <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">Promote
-                                                                        to
-                                                                        website</a>
-                                                                </li>
-                                                                <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">Edit</a></li>
-                                                                <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">Delete</a></li>
-                                                                <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">View</a></li>
-                                                                <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">Copy
-                                                                        Link</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr> -->
-                                                <tr
-                                                    class="border-bottom position-relative">
-                                                    <td class>
-                                                        <div
-                                                            class="d-flex align-items-center">
-                                                            <div class="me-3">
-                                                                <div
-                                                                    class="text-center text-brand fw-bold">
-                                                                    <div>NOV</div>
-                                                                    <div>23</div>
-                                                                </div>
-                                                            </div>
-                                                            <img
-                                                                src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                                                alt="Event Image"
-                                                                class="rounded"
-                                                                width="150">
-                                                            <div class="ms-3">
-                                                                <h5
-                                                                    class="mb-0">Halowin</h5>
-                                                                <p
-                                                                    class="text-muted mb-0">Online
-                                                                    event</p>
-                                                                <p
-                                                                    class="text-muted mb-0 small">Saturday,
-                                                                    November 23,
-                                                                    2024
-                                                                    at 10:00 AM
-                                                                    EET</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        15 / 10 / 2024
-                                                    </td>
-                                                    <td>
-                                                        1 Ticket
-                                                    </td>
-                                                    <td>
-                                                        <div class="col">
-                                                            <div
-                                                                class="modal fade "
-                                                                id="exampleModalToggle-1"
-                                                                aria-hidden="true"
-                                                                aria-labelledby="exampleModalToggleLabel"
-                                                                tabindex="-1">
-                                                                <div
-                                                                    class="modal-dialog modal-dialog-centered">
-                                                                    <div
-                                                                        class="modal-content">
-                                                                        <div
-                                                                            class="modal-header">
-                                                                            <h4>Even
-                                                                                Name
-                                                                                :
-                                                                                Halowin</h4>
-                                                                            <button
-                                                                                type="button"
-                                                                                class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div
-                                                                            class="modal-body ">
-                                                                            <div
-                                                                                class="card border-0">
-                                                                                <div
-                                                                                    class="row g-0">
-                                                                                    <div
-                                                                                        class="col-3">
-                                                                                        <img
-                                                                                            src="../assets/img/qr-code.png"
-                                                                                            class="img-fluid rounded-start "
-                                                                                            alt="...">
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-9">
-                                                                                        <div
-                                                                                            class="card-body">
-                                                                                            <p
-                                                                                                class="card-text">Vanda
-                                                                                                Solo
-                                                                                                Concert
-                                                                                                <br>
-                                                                                                Aeon
-                                                                                                2,
-                                                                                                Phnom
-                                                                                                Penh
-                                                                                                <br>
-                                                                                                Date:
-                                                                                                22
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2024
-                                                                                                -
-                                                                                                23
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2004
-                                                                                                <br>
-                                                                                                Ticket
-                                                                                                Id:
-                                                                                                ET-1257483
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <button
-                                                                class="btn btn-brand"
-                                                                data-bs-target="#exampleModalToggle-1"
-                                                                data-bs-toggle="modal">Proceed</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr
-                                                    class="border-bottom position-relative">
-                                                    <td class>
-                                                        <div
-                                                            class="d-flex align-items-center">
-                                                            <div class="me-3">
-                                                                <div
-                                                                    class="text-center text-brand fw-bold">
-                                                                    <div>NOV</div>
-                                                                    <div>23</div>
-                                                                </div>
-                                                            </div>
-                                                            <img
-                                                                src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                                                alt="Event Image"
-                                                                class="rounded"
-                                                                width="150">
-                                                            <div class="ms-3">
-                                                                <h5
-                                                                    class="mb-0">Halowin</h5>
-                                                                <p
-                                                                    class="text-muted mb-0">Online
-                                                                    event</p>
-                                                                <p
-                                                                    class="text-muted mb-0 small">Saturday,
-                                                                    November 23,
-                                                                    2024
-                                                                    at 10:00 AM
-                                                                    EET</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        15 / 10 / 2024
-                                                    </td>
-                                                    <td>
-                                                        2 Ticket
-                                                    </td>
-                                                    <td>
-                                                        <div class="col">
-                                                            <div
-                                                                class="modal fade "
-                                                                id="exampleModalToggle-2"
-                                                                aria-hidden="true"
-                                                                aria-labelledby="exampleModalToggleLabel"
-                                                                tabindex="-1">
-                                                                <div
-                                                                    class="modal-dialog modal-dialog-centered">
-                                                                    <div
-                                                                        class="modal-content">
-                                                                        <div
-                                                                            class="modal-header">
-                                                                            <h4>Even
-                                                                                Name
-                                                                                :
-                                                                                Halowin</h4>
-                                                                            <button
-                                                                                type="button"
-                                                                                class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div
-                                                                            class="modal-body">
-                                                                            <div
-                                                                                class="card border-0">
-                                                                                <div
-                                                                                    class="row g-0">
-                                                                                    <div
-                                                                                        class="col-3">
-                                                                                        <img
-                                                                                            src="../assets/img/qr-code.png"
-                                                                                            class="img-fluid rounded-start "
-                                                                                            alt="...">
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-9">
-                                                                                        <div
-                                                                                            class="card-body">
-                                                                                            <p
-                                                                                                class="card-text">Vanda
-                                                                                                Solo
-                                                                                                Concert
-                                                                                                <br>
-                                                                                                Aeon
-                                                                                                2,
-                                                                                                Phnom
-                                                                                                Penh
-                                                                                                <br>
-                                                                                                Date:
-                                                                                                22
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2024
-                                                                                                -
-                                                                                                23
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2004
-                                                                                                <br>
-                                                                                                Ticket
-                                                                                                Id:
-                                                                                                ET-1257483
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="modal-body ">
-                                                                            <div
-                                                                                class="card border-0">
-                                                                                <div
-                                                                                    class="row g-0">
-                                                                                    <div
-                                                                                        class="col-3">
-                                                                                        <img
-                                                                                            src="../assets/img/qr-code.png"
-                                                                                            class="img-fluid rounded-start "
-                                                                                            alt="...">
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-9">
-                                                                                        <div
-                                                                                            class="card-body">
-                                                                                            <p
-                                                                                                class="card-text">Vanda
-                                                                                                Solo
-                                                                                                Concert
-                                                                                                <br>
-                                                                                                Aeon
-                                                                                                2,
-                                                                                                Phnom
-                                                                                                Penh
-                                                                                                <br>
-                                                                                                Date:
-                                                                                                22
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2024
-                                                                                                -
-                                                                                                23
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2004
-                                                                                                <br>
-                                                                                                Ticket
-                                                                                                Id:
-                                                                                                ET-1257483
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <button
-                                                                class="btn btn-brand"
-                                                                data-bs-target="#exampleModalToggle-2"
-                                                                data-bs-toggle="modal">Proceed</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-                                </div>
                             </div>
                             <div class="tab-pane fade"
                                 id="expired-tab-pane" role="tabpanel"
@@ -905,394 +276,6 @@
                                     </div>
                                 </div> -->
 
-                                <div class="my-4">
-                                    <div class="my-4">
-                                        <table
-                                            class="table table-borderless align-middle">
-                                            <thead class>
-                                                <tr class="border-bottom">
-                                                    <th scope="col">Expired</th>
-                                                    <th
-                                                        scope="col">Check-in</th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- First Event Row -->
-                                                <!-- <tr
-                                                    class="border-bottom position-relative">
-                                                    <td class>
-                                                        <a href="event-details.html"
-                                                            class="stretched-link text-decoration-none bg-transparent"
-                                                            style="color: inherit;">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="me-3">
-                                                                    <div
-                                                                        class="text-center text-brand fw-bold">
-                                                                        <div>NOV</div>
-                                                                        <div>23</div>
-                                                                    </div>
-                                                                </div>
-                                                                <img
-                                                                    src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                                                    alt="Event Image"
-                                                                    class="rounded"
-                                                                    width="150">
-                                                                <div class="ms-3">
-                                                                    <h5
-                                                                        class="mb-0">Halowin</h5>
-                                                                    <p
-                                                                        class="text-muted mb-0">Online
-                                                                        event</p>
-                                                                    <p
-                                                                        class="text-muted mb-0 small">Saturday,
-                                                                        November 23,
-                                                                        2024
-                                                                        at 10:00 AM
-                                                                        EET</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </td>
-            
-                                                    <td>
-                                                        10 / 100
-                                                    </td>
-                                                    <td>
-                                                        <div
-                                                            class="dropstart position-relative z-3">
-                                                            <button
-                                                                class="btn btn-light"
-                                                                type="button"
-                                                                id="dropdownMenu1"
-                                                                data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                                <i
-                                                                    class="bi bi-three-dots"></i>
-                                                            </button>
-                                                            <ul
-                                                                class="dropdown-menu dropdown-menu-end"
-                                                                aria-labelledby="dropdownMenu1">
-                                                                <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">Promote
-                                                                        to
-                                                                        website</a>
-                                                                </li>
-                                                                <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">Edit</a></li>
-                                                                <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">Delete</a></li>
-                                                                <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">View</a></li>
-                                                                <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">Copy
-                                                                        Link</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr> -->
-                                                <tr
-                                                    class="border-bottom position-relative">
-                                                    <td class>
-                                                        <div
-                                                            class="d-flex align-items-center">
-                                                            <div class="me-3">
-                                                                <div
-                                                                    class="text-center text-brand fw-bold">
-                                                                    <div>NOV</div>
-                                                                    <div>23</div>
-                                                                </div>
-                                                            </div>
-                                                            <img
-                                                                src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                                                alt="Event Image"
-                                                                class="rounded"
-                                                                width="150">
-                                                            <div class="ms-3">
-                                                                <h5
-                                                                    class="mb-0">Halowin</h5>
-                                                                <p
-                                                                    class="text-muted mb-0">Online
-                                                                    event</p>
-                                                                <p
-                                                                    class="text-muted mb-0 small">Saturday,
-                                                                    November 23,
-                                                                    2024
-                                                                    at 10:00 AM
-                                                                    EET</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        15 / 10 / 2024
-                                                    </td>
-                                                    <td>
-                                                        1 Ticket
-                                                    </td>
-                                                    <td>
-                                                        <div class="col">
-                                                            <div
-                                                                class="modal fade "
-                                                                id="exampleModalToggle-1"
-                                                                aria-hidden="true"
-                                                                aria-labelledby="exampleModalToggleLabel"
-                                                                tabindex="-1">
-                                                                <div
-                                                                    class="modal-dialog modal-dialog-centered">
-                                                                    <div
-                                                                        class="modal-content">
-                                                                        <div
-                                                                            class="modal-header">
-                                                                            <h4>Even
-                                                                                Name
-                                                                                :
-                                                                                Halowin</h4>
-                                                                            <button
-                                                                                type="button"
-                                                                                class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div
-                                                                            class="modal-body ">
-                                                                            <div
-                                                                                class="card border-0">
-                                                                                <div
-                                                                                    class="row g-0">
-                                                                                    <div
-                                                                                        class="col-3">
-                                                                                        <img
-                                                                                            src="../assets/img/qr-code.png"
-                                                                                            class="img-fluid rounded-start "
-                                                                                            alt="...">
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-9">
-                                                                                        <div
-                                                                                            class="card-body">
-                                                                                            <p
-                                                                                                class="card-text">Vanda
-                                                                                                Solo
-                                                                                                Concert
-                                                                                                <br>
-                                                                                                Aeon
-                                                                                                2,
-                                                                                                Phnom
-                                                                                                Penh
-                                                                                                <br>
-                                                                                                Date:
-                                                                                                22
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2024
-                                                                                                -
-                                                                                                23
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2004
-                                                                                                <br>
-                                                                                                Ticket
-                                                                                                Id:
-                                                                                                ET-1257483
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <button
-                                                                class="btn btn-brand"
-                                                                data-bs-target="#exampleModalToggle-1"
-                                                                data-bs-toggle="modal">Proceed</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr
-                                                    class="border-bottom position-relative">
-                                                    <td class>
-                                                        <div
-                                                            class="d-flex align-items-center">
-                                                            <div class="me-3">
-                                                                <div
-                                                                    class="text-center text-brand fw-bold">
-                                                                    <div>NOV</div>
-                                                                    <div>23</div>
-                                                                </div>
-                                                            </div>
-                                                            <img
-                                                                src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                                                alt="Event Image"
-                                                                class="rounded"
-                                                                width="150">
-                                                            <div class="ms-3">
-                                                                <h5
-                                                                    class="mb-0">Halowin</h5>
-                                                                <p
-                                                                    class="text-muted mb-0">Online
-                                                                    event</p>
-                                                                <p
-                                                                    class="text-muted mb-0 small">Saturday,
-                                                                    November 23,
-                                                                    2024
-                                                                    at 10:00 AM
-                                                                    EET</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        15 / 10 / 2024
-                                                    </td>
-                                                    <td>
-                                                        2 Ticket
-                                                    </td>
-                                                    <td>
-                                                        <div class="col">
-                                                            <div
-                                                                class="modal fade "
-                                                                id="exampleModalToggle-2"
-                                                                aria-hidden="true"
-                                                                aria-labelledby="exampleModalToggleLabel"
-                                                                tabindex="-1">
-                                                                <div
-                                                                    class="modal-dialog modal-dialog-centered">
-                                                                    <div
-                                                                        class="modal-content">
-                                                                        <div
-                                                                            class="modal-header">
-                                                                            <h4>Even
-                                                                                Name
-                                                                                :
-                                                                                Halowin</h4>
-                                                                            <button
-                                                                                type="button"
-                                                                                class="btn-close"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div
-                                                                            class="modal-body">
-                                                                            <div
-                                                                                class="card border-0">
-                                                                                <div
-                                                                                    class="row g-0">
-                                                                                    <div
-                                                                                        class="col-3">
-                                                                                        <img
-                                                                                            src="../assets/img/qr-code.png"
-                                                                                            class="img-fluid rounded-start "
-                                                                                            alt="...">
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-9">
-                                                                                        <div
-                                                                                            class="card-body">
-                                                                                            <p
-                                                                                                class="card-text">Vanda
-                                                                                                Solo
-                                                                                                Concert
-                                                                                                <br>
-                                                                                                Aeon
-                                                                                                2,
-                                                                                                Phnom
-                                                                                                Penh
-                                                                                                <br>
-                                                                                                Date:
-                                                                                                22
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2024
-                                                                                                -
-                                                                                                23
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2004
-                                                                                                <br>
-                                                                                                Ticket
-                                                                                                Id:
-                                                                                                ET-1257483
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="modal-body ">
-                                                                            <div
-                                                                                class="card border-0">
-                                                                                <div
-                                                                                    class="row g-0">
-                                                                                    <div
-                                                                                        class="col-3">
-                                                                                        <img
-                                                                                            src="../assets/img/qr-code.png"
-                                                                                            class="img-fluid rounded-start "
-                                                                                            alt="...">
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="col-9">
-                                                                                        <div
-                                                                                            class="card-body">
-                                                                                            <p
-                                                                                                class="card-text">Vanda
-                                                                                                Solo
-                                                                                                Concert
-                                                                                                <br>
-                                                                                                Aeon
-                                                                                                2,
-                                                                                                Phnom
-                                                                                                Penh
-                                                                                                <br>
-                                                                                                Date:
-                                                                                                22
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2024
-                                                                                                -
-                                                                                                23
-                                                                                                /
-                                                                                                10
-                                                                                                /
-                                                                                                2004
-                                                                                                <br>
-                                                                                                Ticket
-                                                                                                Id:
-                                                                                                ET-1257483
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <button
-                                                                class="btn btn-brand"
-                                                                data-bs-target="#exampleModalToggle-2"
-                                                                data-bs-toggle="modal">Proceed</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -1300,6 +283,146 @@
                 </div>
             </div>
         </main>
+        <div
+            class="modal fade"
+            id="exampleModalToggle-1"
+            aria-hidden="true"
+            aria-labelledby="exampleModalToggleLabel"
+            tabindex="-1">
+            <div
+                class="modal-dialog modal-dialog-centered modal-xl">
+                <div
+                    class="modal-content">
+                    <div
+                        class="modal-header">
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div
+                        class="modal-body ">
+                        <div class="container-fluid">
+                            <div class="row gy-5">
+                                <div class="col-12">
+                                    <div class="row g-0">
+                                        <div class="col-8 h-100">
+                                            <div class="card">
+                                                <div
+                                                    class="card-header text-center border-0 bg-brand-light">
+                                                    <h6>Yigf Event</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <div class="border">
+                                                                <img
+                                                                    style="width: 100px;height: 35px;"
+                                                                    src="assets/img/Pruttikar_Text_Logo2.png"
+                                                                    alt>
+                                                            </div>
+                                                            <div class="mt-3 border">
+                                                                <h5
+                                                                    class="text-brand">Event
+                                                                    Name</h5>
+                                                                <h5
+                                                                    class>Halowen</h5>
+                                                                <hr
+                                                                    style="width:95%; height: 5px;text-align:left;margin-left:0;background-color: black;">
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="col-2 m-auto mt-5">
+                                                            <img
+                                                                src="assets/img/ticket .png"
+                                                                alt>
+                                                        </div>
+                                                        <div class="col-6 ">
+                                                            <div class="mt-3">
+                                                                <h5
+                                                                    class="text-brand">Price
+                                                                    : <span
+                                                                        style="color:gold;">10$</span>
+                                                                </h5>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <h4>Location
+                                                                    :</h4>
+                                                                <h5>Tuol Kork,
+                                                                    PP</h5>
+                                                                <hr
+                                                                    style="width:80%; height: 5px;text-align:left;margin-left:0;background-color: black;">
+
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="card-footer border-0 bg-transparent">
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-4">
+                                                                    <h5>Start</h5>
+                                                                    <h6>Friday
+                                                                        25
+                                                                        October
+                                                                        2024</h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-4">
+                                                                    <h5>End
+                                                                    </h5>
+                                                                    <h6>8:00am -
+                                                                        11:00am</h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-4">
+                                                                    <h5>Phone
+                                                                        Number
+                                                                        :</h5>
+                                                                    <h6>012 345
+                                                                        678
+                                                                    </h6>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 h-100">
+                                            <div class="card">
+                                                <div
+                                                    class="card-header text-center border-0 bg-brand-light">
+                                                    <h6>Yigf Event</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div
+                                                            class="text-center">
+                                                            <img
+                                                                style="width: 200px;height: 200px;"
+                                                                src="assets/img/QR_Ticket-removebg-preview.png"
+                                                                alt>
+                                                            <p
+                                                                class="mt-3">01230251321656547000000000</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/authentication.js"></script>
+        <script src="assets/js/my-ticket.js"></script>
         <script src="../assets/js/bootstrap.bundle.min.js"></script>
     </body>
 
