@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event</title>
+        <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet"
+            href="../assets/lib/bootstrap-icon/bootstrap-icons.css">
+        <link rel="stylesheet" href="../assets/css/organizer.css">
+        <!-- <link rel="stylesheet" href="assets/css/browse.css"> -->
+        <style>
+        .tab-pane .nav-link.active{
+            background-color: var(--c-brand);
+            border-radius: 20px;
+            border: 1px solid var(--c-brand);
+        }
+
+        .tab-pane .nav-link:not(.active){
+            color: #111 ;
+            border: 1px solid var(--c-brand);
+            border-radius: 20px;
+        }
+
+        .tab-pane .nav-link:not(.active):hover{
+            background-color: var(--c-brand) ;
+            color: #fff;
+            border: 1px solid var(--c-brand);
+            border-radius: 20px;
+        }
+        .i-wish{
+    margin: 5px;
+    width: 35px;
+    height: 35px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-brand);
+    transition: 0.2s;
+    cursor: pointer;
+}
+.i-wish:hover, .i-wish.clicked{
+    background-color: var(--c-brand);
+    color: #fff;
+}
+
+        
+    </style>
+    </head>
+
+    <body>
+        <div class="container mt-5">
+            <!-- Profile Card -->
+            <div class="card mx-auto text-center shadow border-0"
+                style="max-width: 600px;">
+                <div class="card-body">
+                    <img class="rounded-circle mx-auto mb-3 " id="avarta"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-a42btlZ2PcExA47qaE5uLbGx2GPwWQVB9g&s"
+                        alt width="120px" height="120px">
+                    <h2 class="fw-bold" id="fullname">Sitora Yusufiy</h2>
+                    <div class="d-flex justify-content-evenly">
+                        <div class="mt-2 d-flex flex-column"><div
+                                class="fs-3" id="event-sum">2</div> <small>Total
+                                Events</small></div>
+                        <div class="mt-2 d-flex flex-column"><div
+                                class="fs-3" id="vendor-sum">0</div> <small>Total Vendor
+                                Recruitments</small></div>
+                        <div class="mt-2 d-flex flex-column"><div
+                                class="fs-3" id="business-sum">3</div> <small>Total
+                                Business</small></div>
+
+                    </div>
+                </div>
+                <div
+                    class="card-footer bg-transparent d-flex justify-content-between p-2 px-3 mt-3">
+                    <div>Email: <span id="email">cheaising@gmail.com</span> </div>
+                    <div>Phone: <span id="tel">070304926</span> </div>
+                </div>
+            </div>
+
+            <!-- Tabs Section -->
+            <div class="mt-5">
+                <ul class="nav nav-underline mb-3" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="events-tab"
+                            data-bs-toggle="tab" data-bs-target="#event"
+                            type="button" role="tab" aria-controls="event"
+                            aria-selected="true">Events</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-dark"
+                            id="vendor-recruitment-tab" data-bs-toggle="tab"
+                            data-bs-target="#vendor" type="button" role="tab"
+                            aria-controls="vendor" aria-selected="false">Vendor
+                            Recruitment</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-dark" id="business-tab"
+                            data-bs-toggle="tab" data-bs-target="#business"
+                            type="button" role="tab" aria-controls="business"
+                            aria-selected="false">Business</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="main-tabs-content">
+                    <!-- Event Tab -->
+                    <div class="tab-pane fade show active" id="event"
+                        role="tabpanel">
+                        <ul class="nav nav-pills mb-3" id="event-sub-tabs"
+                            role="tablist">
+                            <li class="nav-item me-3" role="presentation">
+                                <button class="nav-link active"
+                                    id="event-upcoming-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#event-upcoming"
+                                    type="button" role="tab">Upcoming</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="event-past-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#event-past" type="button"
+                                    role="tab">Past</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <!-- Upcoming Events -->
+                            <div class="tab-pane fade show active"
+                                id="event-upcoming" role="tabpanel">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="card position-relative">
+                                                <a href>
+                                                    <img
+                                                        src="../assets/img/test-img/cta-event-search-banner.avif"
+                                                        class="card-img-top object-fit-cover "
+                                                        alt="..." height="210">
+                                                </a>
+                                                <button
+                                                    class="i-wish border-0 position-absolute top-0 end-0">
+                                                    <i
+                                                        class="fa-regular fa-heart"></i>
+                                                </button>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <a href>Annual Charity
+                                                            Gala Annual
+                                                            CharityGalaAnnual
+                                                            Charity Gala</a>
+                                                    </h5>
+                                                    <p class="mb-0 "><i
+                                                            class="fa-regular fa-calendar text-brand me-2"></i><span
+                                                            class="c-loca">November
+                                                            15, 2024 </span></p>
+                                                    <p class="mb-0 "><i
+                                                            class="fa-regular fa-clock text-brand me-2"></i><span>6:00
+                                                            PM-10:00
+                                                            PM</span></p>
+                                                    <p class="card-text"><i
+                                                            class="fa-solid fa-location-dot me-2 text-brand"></i>
+                                                        <small
+                                                            class="text-body-secondary">OCIC,
+                                                            Phnom
+                                                            Penh</small></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            <!-- Past Events -->
+                            <div class="tab-pane fade" id="event-past"
+                                role="tabpanel">
+                                <!-- Past Event Card -->
+                                <div class="row g-4">
+                                    <div class="col-4">
+                                        <div class="card position-relative">
+                                            <a href>
+                                                <img
+                                                    src="../assets/img/test-img/cta-event-search-banner.avif"
+                                                    class="card-img-top object-fit-cover "
+                                                    alt="..." height="210">
+                                            </a>
+                                            <button
+                                                class="i-wish border-0 position-absolute top-0 end-0">
+                                                <i
+                                                    class="fa-regular fa-heart"></i>
+                                            </button>
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <a href>Annual Charity
+                                                        Gala Annual
+                                                        CharityGalaAnnual
+                                                        Charity Gala</a>
+                                                </h5>
+                                                <p class="mb-0 "><i
+                                                        class="fa-regular fa-calendar text-brand me-2"></i><span
+                                                        class="c-loca">November
+                                                        15, 2024 </span></p>
+                                                <p class="mb-0 "><i
+                                                        class="fa-regular fa-clock text-brand me-2"></i><span>6:00
+                                                        PM-10:00
+                                                        PM</span></p>
+                                                <p class="card-text"><i
+                                                        class="fa-solid fa-location-dot me-2 text-brand"></i>
+                                                    <small
+                                                        class="text-body-secondary">OCIC,
+                                                        Phnom
+                                                        Penh</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vendor Recruitment Tab -->
+                    <div class="tab-pane fade" id="vendor" role="tabpanel">
+                        <ul class="nav nav-pills mb-3" id="vendor-sub-tabs"
+                            role="tablist">
+                            <li class="nav-item me-3" role="presentation">
+                                <button class="nav-link active"
+                                    id="vendor-upcoming-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#vendor-upcoming"
+                                    type="button" role="tab">Upcoming</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="vendor-past-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#vendor-past" type="button"
+                                    role="tab">Past</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <!-- Upcoming Vendor Recruitments -->
+                            <div class="tab-pane fade show active"
+                                id="vendor-upcoming" role="tabpanel">
+                                <!-- Upcoming Vendor Recruitment Card -->
+                                 <div class="row g-4"></div>
+                            </div>
+                            <!-- Past Vendor Recruitments -->
+                            <div class="tab-pane fade" id="vendor-past"
+                                role="tabpanel">
+                                <!-- Past Vendor Recruitment Card -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Tab -->
+                    <div class="tab-pane fade" id="business" role="tabpanel">
+                        <ul class="nav nav-pills mb-3" id="business-sub-tabs"
+                            role="tablist">
+                            <li class="nav-item me-3" role="presentation">
+                                <button class="nav-link active"
+                                    id="business-upcoming-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#business-upcoming"
+                                    type="button" role="tab">Upcoming</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="business-past-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#business-past"
+                                    type="button" role="tab">Past</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <!-- Upcoming Business Events -->
+                            <div class="tab-pane fade show active"
+                                id="business-upcoming" role="tabpanel">
+                                <!-- Upcoming Business Event Card -->
+                                 <div class="row g-4"></div>
+                            </div>
+                            <!-- Past Business Events -->
+                            <div class="tab-pane fade" id="business-past"
+                                role="tabpanel">
+                                <!-- Past Business Event Card -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <script type="module" src="../assets/js/authentication.js"></script>
+        <script src="assets/js/view-profile.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>
