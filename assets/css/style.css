@@ -98,10 +98,12 @@ header {
     height: 70px;
     display: flex;
     align-items: center;
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     transition: 0.4s;
+    z-index: 999;
+    background-color: white;
 }
 
 .logo img {
@@ -123,3 +125,17 @@ header .btn-outline-pink {
     background-color: #ff16925a;
     background: transparent;
 }
+
+header .btn-pink{
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border-radius: 6px;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+} 
+header .btn-pink .fa-magnifying-glass{
+    color: white !important;
+    padding: 0 !important;
+} 
