@@ -30,15 +30,8 @@
                   <button class="nav-link tab-hover" id="v-pills-contact-tab" data-bs-toggle="pill"
                     data-bs-target="#v-pills-changeEmail" type="button" role="tab" aria-controls="v-pills-changeEmail"
                     aria-selected="false">
-                    <i class="bi bi-envelope social-icon me-3 fs-4"></i>Change Password
-                  </button>
-
-                  <button class="nav-link tab-hover" id="v-pills-email-tab" data-bs-toggle="pill"
-                    data-bs-target="#v-pills-changePassword" type="button" role="tab"
-                    aria-controls="v-pills-changePassword" aria-selected="false">
                     <i class="bi bi-lock social-icon me-3 fs-4"></i>Change Password
                   </button>
-
                   <button class="nav-link tab-hover" id="v-pills-delete-tab" data-bs-toggle="pill"
                     data-bs-target="#v-pills-deleteAccount" type="button" role="tab"
                     aria-controls="v-pills-deleteAccount" aria-selected="false">
@@ -55,25 +48,31 @@
                   aria-labelledby="v-pills-profile-tab">
                   <div class="user-profile text-center py-5 px-4">
                     <h4>Profile</h4>
-                    <div class="profile m-auto position-relative">
-                      <div class="change-img position-absolute">
+                    <div class="profile m-auto">
+                      <input type="file" class="form-control upload-img z-3" id="user-avatar"/>
+                      <div class="change-img">
                         <i class="bi bi-camera-fill fs-5"></i>
                       </div>
                     </div>
+                    <!-- <div class="profile m-auto">
+                      <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;">
+                      <label for="file" style="cursor: pointer;"></label>
+                      <img id="output" width="200" />
+                  </div> -->
                     <form class="mt-4 needs-validation" id="profileForm" novalidate>
                       <div class="row">
                         <div class="col-6">
                           <div class="form-floating mb-3">
-                            <input type="text" class="form-control form-control-sm" id="firstname"
-                              placeholder="First Name" required>
-                            <label for="firstname">User Name</label>
+                            <input type="text" class="form-control form-control-sm" id="username"
+                              placeholder="User Name" required>
+                            <label for="username">User Name</label>
                           </div>
                         </div>
                         <div class="col-6">
                           <div class="form-floating mb-3">
-                            <input type="text" class="form-control form-control-sm" id="lastname"
-                              placeholder="Last Name" required>
-                            <label for="lastname">Full Name*</label>
+                            <input type="text" class="form-control form-control-sm" id="fullname"
+                              placeholder="Full Name" required>
+                            <label for="fullname">Full Name*</label>
                             <div class="invalid-feedback">Last name is required and must contain only letters.</div>
                           </div>
                         </div>
@@ -103,8 +102,7 @@
                           </div>
                         </div>
                       </div>
-
-                      <button type="submit" class="btn btn-brand" style="width: 100%;">Save</button>
+                      <button type="submit" class="btn btn-brand" onclick="" style="width: 100%;">Update</button>
                     </form>
                   </div>
                 </div>
@@ -118,8 +116,7 @@
                     Change
                   </button>
                 </div>
-                <div class="tab-pane fade" id="v-pills-changePassword" role="tabpanel"
-                  aria-labelledby="v-pills-settings-tab">...F</div>
+               
                 <div class="tab-pane fade p-4" id="v-pills-deleteAccount" role="tabpanel"
                   aria-labelledby="v-pills-settings-tab">
                   <h4>Delete Account</h4>
@@ -128,7 +125,7 @@
               
                     <div class="col-12">
                       <div class="form-floating my-4 d-grid position-relative">
-                        <input type="password" class="form-control" id="password" placeholder="Current Password" required>
+                        <input type="password" class="form-control" id="d-password" placeholder="Current Password" required>
                         <label for="password">Current Password</label>
                         <i class="bi bi-eye-slash-fill text-brand position-absolute" id="togglePassword" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                       </div>
@@ -188,7 +185,8 @@
  </div>
 
   <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/authentication.js"></script>
+  <!-- <script src="assets/js/authentication.js"></script> -->
+  <script type="module" src="assets/js/profile.js"></script>
 </body>
 
 </html>

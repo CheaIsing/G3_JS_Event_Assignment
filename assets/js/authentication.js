@@ -267,7 +267,7 @@ function logout() {
 
 // Example usage
 // Success toast
-// showToast("Failed to send your request!", "fail"); // Fail toast
+showToast("Failed to send your request!", "fail"); // Fail toast
     
 // }
 

@@ -1,48 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="./assets/css/bootstrap.css">
-        <style>
-            *{
-                cursor: pointer !important;
-            }
-        </style>
-    </head>
-    <body class="waiting">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">
-            Launch demo modal
-        </button>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5"
-                            id="exampleModalLabel">Modal title</h1>
-                        <button type="button" class="btn-close"
-                            data-bs-dismiss="modal" aria-label="Close"></button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Setting</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/mainstyle.css">
+  <link rel="stylesheet" href="assets/lib/bootstrap-icon/bootstrap-icons.css">
+</head>
+
+<body>
+  <header></header>
+  <main>
+    <section class="section-login">
+      <div class="container py-5">
+        <div class="row">
+          <!-- Sidebar Menu -->
+          <div class="col-3">
+            <div class="card card-glassbg">
+              <div class="text-start">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <button class="nav-link tab-hover active btn-brand" id="v-pills-profile-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+                    aria-selected="false">
+                    <i class="bi bi-person-fill me-3 fs-4"></i>Profile
+                  </button>
+                  <button class="nav-link tab-hover" id="v-pills-contact-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-changeEmail" type="button" role="tab" aria-controls="v-pills-changeEmail"
+                    aria-selected="false">
+                    <i class="bi bi-lock social-icon me-3 fs-4"></i>Change Password
+                  </button>
+                  <button class="nav-link tab-hover" id="v-pills-delete-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-deleteAccount" type="button" role="tab"
+                    aria-controls="v-pills-deleteAccount" aria-selected="false">
+                    <i class="bi bi-person-x social-icon me-3 fs-4"></i>Delete Account
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="card card-glassbg">
+              <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
+                  aria-labelledby="v-pills-profile-tab">
+                  <div class="user-profile text-center py-5 px-4">
+                    <h4>Profile</h4>
+                    <div class="profile m-auto position-relative">
+                      <div class="change-img position-absolute">
+                        <i class="bi bi-camera-fill fs-5"></i>
+                      </div>
                     </div>
-                    <div class="modal-body">
-                        ...
+                    <form class="mt-4 needs-validation" id="profileForm" novalidate>
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control form-control-sm" id="username"
+                              placeholder="First Name" required>
+                            <label for="username">User Name</label>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control form-control-sm" id="fullname"
+                              placeholder="Last Name" required>
+                            <label for="fullname">Full Name*</label>
+                            <div class="invalid-feedback">Last name is required and must contain only letters.</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control form-control-sm" id="login-email"
+                          placeholder="name@example.com" required>
+                        <label for="login-email">Email address*</label>
+                        <div class="invalid-feedback">Please provide a valid email (e.g., name@example.com).</div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-floating mb-3">
+                            <input type="tel" class="form-control form-control-sm" id="phonenumber"
+                              placeholder="Phone Number" required>
+                            <label for="phonenumber">Phone Number*</label>
+                            <div class="invalid-feedback">Phone number is required and must be 10-15 digits.</div>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-floating mb-3">
+                            <input type="date" class="form-control form-control-sm" id="datepicker" required>
+                            <label for="datepicker">Date of Birth*</label>
+                            <div class="invalid-feedback">Date of birth is required.</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <button type="submit" class="btn btn-brand" style="width: 100%;">Update</button>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade p-4" id="v-pills-changeEmail" role="tabpanel"
+                  aria-labelledby="v-pills-settings-tab">
+                  <h4>Set Password</h4>
+                  <div class="line mb-4" style="width: 100%;"></div>
+                  <h5>Account Email Address</h5>
+                   <button type="button" class="btn btn-brand btn-lg mt-4 " data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                    Change
+                  </button>
+                </div>
+               
+                <div class="tab-pane fade p-4" id="v-pills-deleteAccount" role="tabpanel"
+                  aria-labelledby="v-pills-settings-tab">
+                  <h4>Delete Account</h4>
+                  <div class="line mb-3" style="width: 100%;"></div>
+                  <h6>Deleting Your account will remove all information from our database <br><br>this can't be undone.</h6>
+              
+                    <div class="col-12">
+                      <div class="form-floating my-4 d-grid position-relative">
+                        <input type="password" class="form-control" id="d-password" placeholder="Current Password" required>
+                        <label for="password">Current Password</label>
+                        <i class="bi bi-eye-slash-fill text-brand position-absolute" id="togglePassword" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                      </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save
-                            changes</button>
+                    <div class="mt-4">
+                      <button type="button" class="btn btn-brand btn-lg">Delete</button>
                     </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-        <script src="./assets/js/bootstrap.bundle.min.js"></script>
-        <script>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <!-- <script type="module" src="assets/js/profile.js"></script> -->
+
+  <script>
+  import { showToast } from "./ultilities.js";
+
+const API_URL = "https://mps2.chandalen.dev";
+const token = localStorage.getItem('authToken');
+
+document.addEventListener('DOMContentLoaded', () => {
+    Getme();
+});
+
+function Getme() {
+    fetch(`${API_URL}/api/me`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return res.json();
+    })
+    .then(json => {
+        console.log(json.data);
+        
+        // Populate form fields with fetched data
+        profileData(json.data);
+        showToast("Data fetched successfully!");
+    })
+    .catch(error => {
+        console.error("Error fetching data:", error);
+        showToast("Failed to fetch data", "error");
+    });
+}
+
+// Populate form fields with user data
+function profileData(data) {
+    document.getElementById('username').value = data.username || "";
+    document.getElementById('fullname').value = data.fullname || "";
+    document.getElementById('login-email').value = data.email || "";
+    document.getElementById('phonenumber').value = data.phone || "";
+    document.getElementById('datepicker').value = data.date || "";
+}
+
 
   </script>
-    </body>
+</body>
 </html>
