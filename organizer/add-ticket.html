@@ -56,19 +56,19 @@
                             </button>
                             <form action="" class="px-5">
                                 <h2 class="mb-5 ps-2">Create a vendor business post</h2>
-                                <div class="sub-form-wrapper-active p-4 border rounded-4 mt-4 ">
+                                <div class="sub-form-wrapper active p-4 border rounded-4 mt-4 ">
                                     <h4 class="fw-bold pb-3">Set up your event E-tickets</h4>
 
                                     <h5>Ticket Quantity*</h5>
                                     <div class="form-floating mb-5">
-                                        <input type="number" class="form-control customized-form" id="" placeholder="">
+                                        <input type="number" class="form-control customized-form" id="ticketQantity" placeholder="">
                                         <label for="floatingInput">Ticket Quantity <span
                                                 class="text-danger">*</span></label>
                                     </div>
 
                                     <h5>Ticket Price*</h5>
                                     <div class="form-floating mb-5">
-                                        <input type="text" class="form-control customized-form" id="" placeholder="">
+                                        <input type="text" class="form-control customized-form" id="price" placeholder="">
                                         <label for="floatingInput">$ </label>
                                     </div>
                                     <h5 class="fw-bold mb-3">Payment Method*</h5>
@@ -78,10 +78,10 @@
                                         <div
                                             class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
                                             <i id="imgIcon" class="fa-regular fa-image fs-1 text-secondary pb-3"></i>
-                                            <label id="imgInputBtn" for="fileUpload" class="btn-outline-pink"><i
+                                            <label id="imgInputBtn" for="khqrImg" class="btn-outline-pink"><i
                                                     class="fa-solid fa-qrcode fs-5 text-secondary"></i> Upload KHQR
                                                 Image</label>
-                                            <input class="d-none" id="fileUpload" type="file"></input>
+                                            <input class="d-none" id="khqrImg" type="file"></input>
                                             <div class="d-flex">
                                                 <p id="fileName" class="text-secondary pt-3">No file chosen</p>
                                                 <button id="btnRemoveImgFile" type="button"
@@ -98,43 +98,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <h5>Sale Duration*</h5>
-                                    <div class="datetime mb-5">
-                                        <div class="start-date d-flex">
-                                            <div class="form-floating mb-3 w-50 me-5">
-                                                <input type="date" class="form-control customized-form" id=""
-                                                    placeholder="">
-                                                <label for="floatingInput">Sale Start Date </label>
-                                            </div>
-                                            <div class="form-floating mb-3 me-5">
-                                                <input type="time" class="form-control customized-form" id=""
-                                                    placeholder="">
-                                                <label for="floatingInput">Start Time </label>
-                                            </div>
-
-                                        </div>
-                                        <div class="start-date d-flex">
-                                            <div class="form-floating mb-3 w-50 me-5">
-                                                <input type="date" class="form-control customized-form" id=""
-                                                    placeholder="">
-                                                <label for="floatingInput">Sale End Date </label>
-                                            </div>
-                                            <div class="form-floating mb-3 me-5">
-                                                <input type="time" class="form-control customized-form" id=""
-                                                    placeholder="">
-                                                <label for="floatingInput">End Time </label>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <h5>Ticket per order*</h5>
-                                    <div class="form-floating mb-5">
-                                        <input type="number" class="form-control customized-form" id="" placeholder="">
-                                        <label for="floatingInput">Maximum quantity per order<span
-                                                class="text-danger">*</span></label>
-                                    </div>
+                                    
                                 </div>
 
 
@@ -188,10 +152,11 @@
             </div>
         </div>
     </main>
-    <script src="../assets/js/authentication.js"></script>
+    <script type="module"  src="../assets/js/authentication.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/lim_main.js"></script>
+    <script src="../assets/js/header.js"></script>
     <script src="../assets/js/image_file_input.js"></script>
+    <!-- <script src="../assets/js/organizer/create_event.js"></script> -->
 </body>
 
 </html>
