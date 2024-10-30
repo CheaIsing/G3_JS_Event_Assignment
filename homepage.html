@@ -42,19 +42,10 @@
                         Ticket</button>
 
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
-                        <li><a class="dropdown-item" href="#">Manage as
-                                organizer</a></li>
-                        <li><a class="dropdown-item" href="#">Manage as
-                                vendor</a></li>
-                        <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                        <li><a class="dropdown-item" href="#">Following</a></li>
-                        <li><a class="dropdown-item" href="#">Account
-                                Setting</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Log
-                                out</a></li>
+                        <li><a class="dropdown-item" href="#">Browse events</a></li>
+                        <li><a class="dropdown-item" href="#">Browse vendor recruitments</a></li>
+                        <li><a class="dropdown-item" href="#">Browse vendor services</a></li>
+                        
                     </ul>
                 </div>
                 <div class="dropdown">
@@ -140,8 +131,8 @@
                     <ul class="nav nav-underline mb-5" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="event-tab" data-bs-toggle="pill" data-bs-target="#event"
-                                type="button" role="tab" aria-controls="event" aria-selected="true"><i
-                                    class="fa-regular fa-calendar-days"></i> All events</button>
+                                type="button" role="tab" aria-controls="event" aria-selected="true" ><i
+                                    class="fa-regular fa-calendar-days" ></i> All events</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="vendor-recruit-tab" data-bs-toggle="pill"
@@ -189,16 +180,93 @@
                                     </div>
                                 </div> -->
                             </div>
+                            <div class="btn-see-more-wrapper d-flex justify-content-center">
+                                <button class="btn-outline-pink py-2 mb-3" onclick="showMoreEvent()" id="btn-seemore-event">see more</button>
+                                <div class="spinner-border text-brand" id="eventPageSpinner" role="status"></div>
+                             </div>
                         </div>
                         <div class="tab-pane fade" id="vendor-recruit" role="tabpanel"
                             aria-labelledby="vendor-recruit-tab" tabindex="0">
+                            <p class="text-lightgray fw-bold fs-5"><i class="fa-solid fa-earth-americas"></i> Find your job opportunity here
+                                <!-- <span class="text-primary">Phnom Penh</span>, <span>Cambodia</span> -->
+                            </p>
+                            <div class="recruit-card-wrapper row mt-5" id="recruit-card-wrapper">
+                                <!-- <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+
+                                            <h5 class="card-title mt-2 mb-0 fw-bold">Title</h5>
+                                            <div class="duration">
+                                                <span class="text-secondary">Start Date: </span>
+                                                <span class="text-secondary">End Date: </span>
+                                            </div>
+                                            <p class="card-text py-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+                                                voluptatum sit quaerat nulla harum vitae temporibus, iusto maxime
+                                                quibusdam eos suscipit obcaecati quia blanditiis beatae accusantium
+                                                debitis laborum atque non.</p>
+
+                                            <p class="location"><i class="bi bi-geo-alt fs-5"></i>  ${element.location}</p>
+                                            <div class="pill-wrapper" id="pill-wrapper">
+                                                <span class="pill">Primary</span>
+                                            </div>
+                                            <div class="profile d-flex align-items-center mt-3">
+                                                <div class="pf-img me-2">
+                                                    <img src="" alt="">
+                                                </div>
+                                                <p>user1</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="btn-see-more-wrapper d-flex justify-content-center">
+                                <button class="btn-outline-pink py-2 mb-3" onclick="showMoreRecruit()" id="btn-seemore-recruit">see more</button>
+                                <div class="spinner-border text-brand" id="recruitPageSpinner" role="status"></div>
+                             </div>
+
                         </div>
                         <div class="tab-pane fade" id="businesss" role="tabpanel" aria-labelledby="businesss-tab"
-                            tabindex="0">...</div>
-                        <div class="tab-pane fade" id="pills-disabled" role="tabpanel"
-                            aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
-                    </div>
+                            tabindex="0">
+                            <p class="text-lightgray fw-bold fs-5"><i class="fa-solid fa-earth-americas"></i> Find organising service for your event here
+                                <!-- <span class="text-primary">Phnom Penh</span>, <span>Cambodia</span> -->
+                            </p>
+                            <div class="row vendor-card-wrapper mt-5" id="vendor-card-wrapper">
+                                <!-- <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
 
+                                            <h5 class="card-title mt-2 mb-0 fw-bold">Title</h5>
+                                            <div class="duration">
+                                                <span class="text-secondary">Start Date: </span>
+                                                <span class="text-secondary">End Date: </span>
+                                            </div>
+                                            <p class="card-text py-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+                                                voluptatum sit quaerat nulla harum vitae temporibus, iusto maxime
+                                                quibusdam eos suscipit obcaecati quia blanditiis beatae accusantium
+                                                debitis laborum atque non.</p>
+
+                                            <p class="location"><i class="bi bi-geo-alt fs-5"></i>  ${element.location}</p>
+                                            <div class="pill-wrapper" id="pill-wrapper">
+                                                <span class="pill">Primary</span>
+                                            </div>
+                                            <div class="profile d-flex align-items-center mt-3">
+                                                <div class="pf-img me-2">
+                                                    <img src="" alt="">
+                                                </div>
+                                                <p>user1</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="btn-see-more-wrapper d-flex justify-content-center">
+                                <button class="btn-outline-pink py-2 mb-3" onclick="showMoreVendor()" id="btn-seemore-vendor">see more</button>
+                                <div class="spinner-border text-brand" role="status" id="vendorPageSpinner"></div>
+                             </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -247,10 +315,10 @@
         </div>
     </footer>
 </body>
-<script src="./assets/js/authentication.js"></script>
+<!-- <script type="module" src="./assets/js/authentication.js"></script> -->
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
-<script src="./assets/js/lim_main.js"></script>
-<script src="./assets/js/organizer/get_all_event.js"></script>
+<script src="./assets/js/header.js"></script>
+<script src="./assets/js/organizer/get_all_post.js"></script>
 <script>
 
 </script>

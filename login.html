@@ -17,11 +17,11 @@
     <main>
       <section class="section-login">
         <div class="container py-5">
-           <div class="logo mb-4">
-                  <img src="assets/img/Pruttikar_Text_Logo2.png" alt
-                    style="width: 150px;">
-                </div>
-                <div class="card p-3 card-glassbg">
+          <div class="logo mb-4">
+            <img src="assets/img/Pruttikar_Text_Logo2.png" alt
+              style="width: 150px;">
+          </div>
+          <div class="card p-3 card-glassbg">
             <div class="row">
               <div class="col-6">
                 <h3 class="text-brand fw-bold">Log In</h3>
@@ -37,14 +37,17 @@
                 </div>
 
                 <div class="form-floating mb-3 d-grid position-relative">
-                  <input type="password" class="form-control" id="login-password"
+                  <input type="password" class="form-control"
+                    id="login-password"
                     placeholder="Password">
                   <label for="password">Password</label>
                   <i class="bi bi-eye-slash-fill text-brand position-absolute"
                     id="togglePassword"
                     style="right: 10px; top: 30%; transform: translateY(-50%); cursor: pointer;"></i>
-                  <p class="ms-auto mt-2"><button type="button" class="Forgot-password bg-transparent border-0"
-                       data-bs-target="#exampleModalToggle"
+                  <p class="ms-auto mt-2"><button type="button"
+                      id="btn-forgot-pass"
+                      class="Forgot-password bg-transparent border-0"
+                      data-bs-target="#exampleModalToggle"
                       data-bs-toggle="modal">Forgot Password?</button></p>
                 </div>
 
@@ -60,7 +63,8 @@
                 </div>
 
                 <div class="mb-3">
-                  <button class="btn btn-facebook btn-outline-brand mb-3 mb-2 w-100">
+                  <button
+                    class="btn btn-facebook btn-outline-brand mb-3 mb-2 w-100">
                     <i
                       class="bi bi-facebook social-icon fs-5 me-3"></i>
                     Login with Facebook
@@ -79,13 +83,13 @@
               </div>
               <div class="col-6">
                 <div class="image">
-                  <img src="assets/img/img-login.png" alt="">
+                  <img src="assets/img/img-login.png" alt>
                 </div>
               </div>
-              </div>
             </div>
-            </div>
-       
+          </div>
+        </div>
+
       </section>
     </main>
 
@@ -106,14 +110,14 @@
               <form>
                 <div class="mb-3">
                   <label for="email2" class="form-label">Email Address</label>
-                  <input type="email" class="form-control" id="email-2"
+                  <input type="email" class="form-control"
+                    id="forgot-pass-email"
                     placeholder="Please Input Your Email">
                 </div>
               </form>
               <div>
                 <button class="btn btn-brand"
-                  data-bs-target="#exampleModalToggle2"
-                  data-bs-toggle="modal" style="width: 100%;">Submit</button>
+                   style="width: 100%;" id="btn-send-email-forgot-pass">Send</button>
               </div>
             </div>
           </div>
@@ -156,9 +160,8 @@
             </div>
 
             <div class="p-3">
-              <button class="btn btn-brand" id="otpSubmitBtn"
-                style="width: 100%;" data-bs-target="#changePasswordModal"
-                data-bs-toggle="modal">Submit</button>
+              <button class="btn btn-brand" id="otpVerifyBtn"
+                style="width: 100%;" >Verify</button>
             </div>
           </div>
         </div>
@@ -185,23 +188,30 @@
                 <div class="mb-3 form-group">
                   <label for="newPassword" class="form-label">New
                     password</label>
-                  <input type="password" class="form-control d-grid position-relative" id="newPassword"
+                  <input type="password"
+                    class="form-control d-grid position-relative"
+                    id="newPassword"
                     placeholder="New password">
-                  <i class="bi bi-eye toggle-password text-brand position-absolute"
-                    onclick="togglePassword('newPassword')" style="right: 25px; top: 39%; transform: translateY(-50%); cursor: pointer;"></i>
+                  <i
+                    class="bi bi-eye toggle-password text-brand position-absolute"
+                    onclick="togglePassword('newPassword')"
+                    style="right: 25px; top: 39%; transform: translateY(-50%); cursor: pointer;"></i>
                 </div>
                 <div class="mb-3 form-group">
                   <label for="confirmPassword" class="form-label">Confirm
                     password</label>
-                  <input type="password" class="form-control d-grid position-relative"
+                  <input type="password"
+                    class="form-control d-grid position-relative"
                     id="confirmPassword" placeholder="Confirm password">
-                  <i class="bi bi-eye toggle-password text-brand position-absolute"
-                    onclick="togglePassword('confirmPassword')" style="right: 25px; top: 65%;cursor: pointer;"></i>
+                  <i
+                    class="bi bi-eye toggle-password text-brand position-absolute"
+                    onclick="togglePassword('confirmPassword')"
+                    style="right: 25px; top: 65%;cursor: pointer;"></i>
                 </div>
                 <div>
                   <button type="button" class="btn btn-brand"
                     id="changePasswordSubmitBtn"
-                    style="width: 100%;">Submit</button>
+                    style="width: 100%;">Subxmit</button>
                 </div>
               </form>
             </div>
@@ -215,6 +225,9 @@
 
     <!-- JavaScript for toggling password visibility -->
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+    </script>
     <script src="./assets/js/authentication.js"></script>
   </body>
 

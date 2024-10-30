@@ -5,7 +5,7 @@ let id = localStorage.getItem("vendorId");
 console.log(id);
 
 // getEventDetail(apiUrl, id);
-getVendorRecruitmentDetail(apiUrl,id);
+getVendorRecruitmentDetail(apiUrl, id);
 
 function getEventDetail(apiUrl, id) {
   fetch(`${apiUrl}/api/events/${id}`, {
@@ -15,7 +15,6 @@ function getEventDetail(apiUrl, id) {
   })
     .then((res) => res.json())
     .then((json) => {
-
       fetch(`${apiUrl}/api/events/summary-data/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -23,23 +22,114 @@ function getEventDetail(apiUrl, id) {
       })
         .then((res) => res.json())
         .then((json2) => {
-            console.log(json);
-            console.log(json2);         
+          console.log(json);
+          console.log(json2);
         });
     });
 }
 
 function getVendorRecruitmentDetail(apiUrl, id) {
-  fetch(`${apiUrl}/api/vendors/${id}` ,{
+  fetch(`${apiUrl}/api/vendors/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
-    }
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
   })
-  .then(res=>res.json())
-  .then(json=>{
-    console.log(json);
-    
-  })
+    .then((res) => res.json())
+    .then((json) => {
+      // console.log(json);
+
+      const { data } = json;
+      const { location, start_date, end_date, name, categories } = data;
+      const vendorId = data.id;
+      console.log(data);
+      document.getElementById("vendor-title").innerHTML = name;
+      document.getElementById("vendor-categories").innerHTML = categories;
+      document.getElementById("start-end-date").innerHTML =
+        start_date + " - " + end_date;
+      document.getElementById("location").innerHTML = location;
+
+      fetch(`${apiUrl}/api/vendors/candidates/${vendorId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          let rowsHTML = "";
+
+          json.data.forEach((ele) => {
+            rowsHTML += `<tr
+                                            class="border-bottom position-relative">
+                                            <td class>
+                                                <a href="event-details.html"
+                                                    class="stretched-link text-decoration-none bg-transparent"
+                                                    style="color: inherit;">
+                                                    1
+                                                </a>
+                                            </td>
+                                            <td>
+                                                ${ele.candidate.full_name}
+                                            </td>
+                                            <td>
+                                                cheaising@gmail.com
+                                            </td>
+                                            <td>
+                                                Food Services
+                                            </td>
+                                            <td>
+                                                ${ele.applied_at}
+                                            </td>
+                                            <td>
+                                                <div
+                                                    class="dropstart position-relative z-3">
+                                                    <button
+                                                        class="btn btn-light"
+                                                        type="button"
+                                                        id="dropdownMenu1"
+                                                        data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+                                                        <i
+                                                            class="bi bi-three-dots"></i>
+                                                    </button>
+                                                    <ul
+                                                        class="dropdown-menu dropdown-menu-end"
+                                                        aria-labelledby="dropdownMenu1">
+                                                        <li><a
+                                                                class="dropdown-item"
+                                                                href="#">Promote
+                                                                to
+                                                                website</a>
+                                                        </li>
+                                                        <li><a
+                                                                class="dropdown-item"
+                                                                href="#">Edit</a></li>
+                                                        <li><a
+                                                                class="dropdown-item"
+                                                                href="#">Delete</a></li>
+                                                        <li><a
+                                                                class="dropdown-item"
+                                                                href="#">View</a></li>
+                                                        <li><a
+                                                                class="dropdown-item"
+                                                                href="#">Copy
+                                                                Link</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>`;
+          });
+          document.getElementById("vendor-request-tbody").innerHTML = rowsHTML;
+        });
+
+      // vendor-title
+      // vendor-categories
+      // start-end-date
+      // location
+    });
 }
 
 function getMe() {
@@ -170,7 +260,7 @@ function getAllEventCard(apiUrl, id) {
     });
 }
 
-function getAllVendorRecruitment(url,id) {
+function getAllVendorRecruitment(url, id) {
   fetch(`${url}/api/vendors/`)
     .then((res) => res.json())
     .then((json) => {

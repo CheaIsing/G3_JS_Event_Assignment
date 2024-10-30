@@ -16,87 +16,7 @@
     </head>
 
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid px-4 py-1">
-                    <!-- Logo or Brand -->
-                    <a class="navbar-brand" href="#">
-                        <img src="your-logo-url.png" alt="Logo" width="30"
-                            height="30">
-                    </a>
 
-                    <!-- Search Bar -->
-                    <form class="d-flex w-25">
-                        <input class="form-control me-2" type="search"
-                            placeholder="Search events" aria-label="Search">
-                    </form>
-
-                    <!-- Create & Browse Buttons -->
-                    <div class="d-flex w-25 justify-content-evenly">
-                        <!-- Create Button triggers modal -->
-                        <button type="button" class="btn btn-brand me-2"
-                            data-bs-toggle="modal"
-                            data-bs-target="#createModal">
-                            + Create
-                        </button>
-
-                        <!-- Browse Dropdown -->
-                        <div class="dropdown me-2">
-                            <button
-                                class="btn btn-brand dropdown-toggle"
-                                type="button" id="browseDropdown"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Browse
-                            </button>
-                            <ul class="dropdown-menu"
-                                aria-labelledby="browseDropdown">
-                                <li><a class="dropdown-item"
-                                        href="#">Events</a></li>
-                                <li><a class="dropdown-item"
-                                        href="#">Vendors</a></li>
-                                <li><a class="dropdown-item" href="#">Vendor
-                                        Recruitment</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- My Ticket Button -->
-                        <a href="#" class="btn btn-brand">My
-                            Ticket</a>
-                    </div>
-
-                    <!-- Notification & User Account Dropdown -->
-                    <div class="dropdown">
-                        <a href="#" class="me-3 fs-3 text-brand">
-                            <i class="bi bi-bell"></i> <!-- Bell Icon -->
-                        </a>
-
-                        <a href="#" class="dropdown-toggle fs-3 text-brand"
-                            role="button" id="accountDropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle"></i>
-                            <!-- User Icon -->
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end"
-                            aria-labelledby="accountDropdown">
-                            <li><a class="dropdown-item" href="#">Manage as
-                                    organizer</a></li>
-                            <li><a class="dropdown-item" href="#">Manage as
-                                    vendor</a></li>
-                            <li><a class="dropdown-item"
-                                    href="#">Wishlist</a></li>
-                            <li><a class="dropdown-item"
-                                    href="#">Following</a></li>
-                            <li><a class="dropdown-item" href="#">Account
-                                    Setting</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Log
-                                    out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-        </header>
         <main>
             <div class>
                 <div class="d-flex">
@@ -166,8 +86,8 @@
                             <div class="tab-pane fade show active"
                                 id="events-tab-pane" role="tabpanel"
                                 aria-labelledby="events-tab" tabindex="0">
-                                <div class="row my-4">
-                                    <div class="col-4 col-md-2">
+                                <div class="d-flex align-items-center my-4">
+                                    <div class>
                                         <select class="form-select"
                                             aria-label="Default select example">
                                             <option value="1">All</option>
@@ -175,15 +95,20 @@
                                             <option value="3">Past</option>
                                         </select>
                                     </div>
-                                    <div class="col-5 col-md-3">
-                                        <div class="input-group mb-3">
+                                    <div class>
+                                        <div class="input-group ms-3">
                                             <input type="text"
                                                 class="form-control"
-                                                placeholder="Search">
-                                            <button class="btn btn-primary"
-                                                type="submit">Go</button>
+                                                placeholder="Search"
+                                                id="searchEventInput">
+
                                         </div>
                                     </div>
+
+                                    <button type="button"
+                                        class="btn btn-brand ms-auto">+ Create
+                                        Event</button>
+
                                 </div>
 
                                 <div class="my-4">
@@ -321,9 +246,8 @@
                                         <div class="input-group mb-3">
                                             <input type="text"
                                                 class="form-control"
-                                                placeholder="Search">
-                                            <button class="btn btn-primary"
-                                                type="submit">Go</button>
+                                                placeholder="Search"
+                                                id="searchVendorInput">
                                         </div>
                                     </div>
                                 </div>
@@ -341,9 +265,11 @@
                                         </thead>
                                         <tbody id="vendor-recruitment-tbody">
                                             <!-- First Event Row -->
-                                            <tr class="border-bottom position-relative">
+                                            <tr
+                                                class="border-bottom position-relative">
                                                 <td class>
-                                                    <a href="vendor-recruitment-details.html"
+                                                    <a
+                                                        href="vendor-recruitment-details.html"
                                                         class="stretched-link text-decoration-none bg-transparent"
                                                         style="color: inherit;">
                                                         <div
@@ -439,58 +365,75 @@
                         </p>
                         <!-- Social Media Links -->
                         <div class="d-flex justify-content-start">
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-circle me-2">
+                            <a href="#"
+                                class="btn btn-outline-primary btn-sm rounded-circle me-2">
                                 <i class="bi bi-facebook"></i>
                             </a>
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-circle me-2">
+                            <a href="#"
+                                class="btn btn-outline-primary btn-sm rounded-circle me-2">
                                 <i class="bi bi-pinterest"></i>
                             </a>
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-circle me-2">
+                            <a href="#"
+                                class="btn btn-outline-primary btn-sm rounded-circle me-2">
                                 <i class="bi bi-skype"></i>
                             </a>
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-circle">
+                            <a href="#"
+                                class="btn btn-outline-primary btn-sm rounded-circle">
                                 <i class="bi bi-twitter"></i>
                             </a>
                         </div>
                     </div>
-        
+
                     <!-- Links Section 1: About -->
                     <div class="col-lg-3 col-md-6 mb-4">
                         <h5 class="text-uppercase">About</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-3"><a href="#" class="text-dark">About Us</a></li>
-                            <li class="mb-3"><a href="#" class="text-dark">Corporate Sale</a></li>
-                            <li class="mb-3"><a href="#" class="text-dark">Terms & Policy</a></li>
-                            <li class="mb-3"><a href="#" class="text-dark">Community</a></li>
+                            <li class="mb-3"><a href="#" class="text-dark">About
+                                    Us</a></li>
+                            <li class="mb-3"><a href="#"
+                                    class="text-dark">Corporate Sale</a></li>
+                            <li class="mb-3"><a href="#" class="text-dark">Terms
+                                    & Policy</a></li>
+                            <li class="mb-3"><a href="#"
+                                    class="text-dark">Community</a></li>
                         </ul>
                     </div>
-        
+
                     <!-- Links Section 2: Support -->
                     <div class="col-lg-3 col-md-6 mb-4">
                         <h5 class="text-uppercase">Support</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-3"><a href="#" class="text-dark">Help</a></li>
-                            <li class="mb-3"><a href="#" class="text-dark">Support</a></li>
-                            <li class="mb-3"><a href="#" class="text-dark">Privacy Policy</a></li>
-                            <li class="mb-3"><a href="#" class="text-dark">Terms & Conditions</a></li>
-                            <li class="mb-3"><a href="#" class="text-dark">Help & Support</a></li>
+                            <li class="mb-3"><a href="#"
+                                    class="text-dark">Help</a></li>
+                            <li class="mb-3"><a href="#"
+                                    class="text-dark">Support</a></li>
+                            <li class="mb-3"><a href="#"
+                                    class="text-dark">Privacy Policy</a></li>
+                            <li class="mb-3"><a href="#" class="text-dark">Terms
+                                    & Conditions</a></li>
+                            <li class="mb-3"><a href="#" class="text-dark">Help
+                                    & Support</a></li>
                         </ul>
                     </div>
-        
+
                     <!-- Links Section 3: Contact -->
                     <div class="col-lg-2 col-md-6 mb-4">
                         <h5 class="text-uppercase">Contact</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-3"><a href="#" class="text-dark">Call Centre</a></li>
-                            <li class="mb-3"><a href="#" class="text-dark">Email Us</a></li>
-                            <li class="mb-3"><a href="#" class="text-dark">Terms & Conditions</a></li>
-                            <li class="mb-3"><a href="#" class="text-dark">Help Center</a></li>
+                            <li class="mb-3"><a href="#" class="text-dark">Call
+                                    Centre</a></li>
+                            <li class="mb-3"><a href="#" class="text-dark">Email
+                                    Us</a></li>
+                            <li class="mb-3"><a href="#" class="text-dark">Terms
+                                    & Conditions</a></li>
+                            <li class="mb-3"><a href="#" class="text-dark">Help
+                                    Center</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </footer>
-        
+
         <!-- Create Modal -->
         <div class="modal fade" id="createModal" tabindex="-1"
             aria-labelledby="createModalLabel" aria-hidden="true">
@@ -529,7 +472,8 @@
             </div>
         </div>
 
-        <script src="../assets/js/authentication.js"></script>
+        <script type="module" src="../assets/js/ultilities.js"></script>
+        <script type="module" src="../assets/js/authentication.js"></script>
         <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
         <script type="module" src="../assets/js/organizer/manage.js"></script>
