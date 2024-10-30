@@ -13,26 +13,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   } else {
     if (
-      !location.pathname.includes("index.html") &&
       !location.pathname.includes("login.html") &&
       !location.pathname.includes("Signup.html")
     ) {
+
+      if(location.pathname.includes("index.html")){
+        return;
+      }
       console.log(location.pathname);
 
-      let count = 0;
+      // let count = 0;
 
-      // Loop through each character in the string
-      for (let i = 0; i < location.pathname.length; i++) {
-        if (location.pathname[i] === "/") {
-          count++; // Increment the count if '/' is found
-        }
-      }
+      // // Loop through each character in the string
+      // for (let i = 0; i < location.pathname.length; i++) {
+      //   if (location.pathname[i] === "/") {
+      //     count++; // Increment the count if '/' is found
+      //   }
+      // }
 
-      let path = "";
-      for (let i = 1; i <= count; i++) {
-        path += "../";
-      }
-      location.href = `${path}index.html`;
+      // let path = "";
+      // for (let i = 1; i <= count; i++) {
+      //   path += "../";
+      // }
+      location.href = `index.html`;
 
       console.log(count);
 
@@ -54,14 +57,14 @@ if (document.getElementById("btn-log-in")) {
       })
         .then((res) => res.json())
         .then((json) => {
-
+          showToast(json.message, json.result);
           console.log(json);
           if(json.result == true){
 
             let token = json.data.token;
             localStorage.setItem("authToken", token);
             location.href = "homepage.html";
-            showToast(json.message, json.result);
+            
           }
           // else{
           //   showToast(json.message, 'fail');
@@ -247,6 +250,10 @@ if (document.getElementById("changePasswordSubmitBtn")) {
   };
 }
 
+if(document.getElementById('btn-logout')){
+  document.getElementById('btn-logout').onclick = logout;
+}
+
 function logout() {
   localStorage.removeItem("authToken");
   location.href = "index.html";
@@ -335,3 +342,4 @@ if(document.getElementById('profileForm')){
   });
 }
 
+document.getElementById('header')
