@@ -16,27 +16,33 @@
         header
     </header>
     <main>
-        <div class="container">
-            <p class="d-flex h-100 align-items-center my-auto">
-                <a href="" class="home-link">Home</a>
-                <i class="fa-solid fa-chevron-right mx-2 "></i>
-                <span class="text-brand">Browse Event</span>
-            </p>
-        </div>
+        <section class="mb-0">
+            <div class="container">
+                <p class="d-flex h-100 align-items-center my-auto">
+                    <a href="" class="home-link">Home</a>
+                    <i class="fa-solid fa-chevron-right mx-2 "></i>
+                    <span class="text-brand">Browse Event</span>
+                </p>
+            </div>
+        </section>
         <section class="hero  mb-5 ">
             <div class="overlay"></div>
             <h2 class="h-100 d-flex justify-content-center align-items-center text-white">Browse Event</h2>
         </section>
         <section class="browse">
             <div class="container">
-                <div class="row position-relative">
-                    <div class="col-3 position-sticky top-0">
+                <div class="row">
+                    <div class="col-3">
                         <div class="filter">
                             <h6 class="ps-4 py-2 m-0">Filter</h6>
                             <hr>
                             <hr>
                             <hr>
-                            <div class="ps-4 py-2">
+                            <div class="ps-4 py-2" id="catagory">
+                                <h6>Catagory</h6>
+                            </div>
+                            <hr>
+                            <div class="ps-4 py-2" >
                                 <h6>Catagory</h6>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="">
@@ -82,7 +88,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="ps-4 py-2">
+                            <!-- <div class="ps-4 py-2">
                                 <h6>Pricing</h6>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="">
@@ -135,7 +141,7 @@
                                     <input class="form-control" type="date" name="from" value="" id="">
                                 </div>
                             </div>
-                            <hr>
+                            <hr> -->
                             <div class=" my-3 me-4 text-end">
                                 <button type="button" class="btn btn-outline-secondary">Clear All</button>
                                 <Button type="button" class="btn btn-brand">Search</Button>
@@ -144,77 +150,53 @@
                     </div>
                     <div class="col-9">
                         <div class="search-result w-100">
-                            <h5 class="mt-2 mb-4">
-                                <span class="text-brand">9</span>
+                            <h5 class="mt-2 mb-4 show-re">
+                                <span class="text-brand" id="result-num">9</span>
                                 Results
                             </h5>
-                            <div class="card-list">
-                                <div class="card mb-4">
+                            <div class="card-list" id="list-card">
+                                <!-- <div class="card mb-4">
                                     <div class="row g-0">
-                                        <div class="col-md-3 position-relative">
+                                        <div class="col-3 position-relative">
                                             <img src="../assets/img/test-img/cta-event-search-banner.avif"
                                                 class="img-fluid rounded-start " alt="...">
-                                            <div class="i-wish position-absolute top-0 end-0">
+                                            <div class="i-wish add-wish position-absolute top-0 end-0">
                                                 <i class="fa-regular fa-heart"></i>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body py-4">
-                                                <h4 class="card-title">
-                                                    <a href="">Annual Charity Gala Annual Charity
-                                                        Gala
-                                                        Annual Charity Gala</a>
-                                                </h4>
-                                                <div class="card-loca">
-                                                    <i class="fa-regular fa-calendar text-brand me-2"></i><span
-                                                        class="c-loca">November 15, 2024 </span>
-                                                    <i class="fa-regular fa-clock text-brand ms-3 me-2"></i>6:00
-                                                    PM-10:00 PM
+                                        <div class="col-6 ">
+                                            <div class="card-body ps-4 pe-0 py-4">
+                                                <h3 class="card-title">
+                                                    <a href="">Annual Charity Gala Annual Charity Gala Annual Charity Gala</a>
+                                                </h3>
+                                                <div class="d-flex mb-2">
+                                                    <div class="m-0 fs-18 text-brand fw-medium"><i
+                                                            class="fa-regular fa-folder-open me-2 fs-18"></i><span
+                                                            class="">Music</span>
+                                                    </div>
+                                                    <div
+                                                        class=" ms-5 border-start border-danger ps-5 m-0 fs-18 text-brand fw-medium">
+                                                        <i class="fa-solid fa-tag me-2 fs-18"></i><span
+                                                            class="">Free</span>
+                                                    </div>
                                                 </div>
-                                                <p class="card-text"><i
-                                                        class="fa-solid fa-location-dot me-2 text-brand"></i> <small
-                                                        class="text-body-secondary">OCIC, Phnom Penh</small></p>
+                                                <div class="mb-2 d-flex align-items-center fs-18">
+                                                    <i class="fa-regular fa-calendar text-brand me-2 "></i><small
+                                                        class="text-body-secondary m-0">2024-10-30 17:00:00</small>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-location-dot me-2 text-brand"></i> <small
+                                                        class="text-body-secondary">OCIC, Phnom Penh</small>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3 py-4">
+                                        <div class="col-3 py-4">
                                             <p class="status">Upcoming</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card mb-4">
-                                    <div class="row g-0">
-                                        <div class="col-md-3 position-relative">
-                                            <img src="../assets/img/test-img/cta-event-search-banner.avif"
-                                                class="img-fluid rounded-start " alt="...">
-                                            <div class="i-wish position-absolute top-0 end-0">
-                                                <i class="fa-regular fa-heart"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-body py-4">
-                                                <h4 class="card-title">
-                                                    <a href="">Annual Charity Gala Annual Charity
-                                                        Gala
-                                                        Annual Charity Gala</a>
-                                                </h4>
-                                                <div class="card-loca">
-                                                    <i class="fa-regular fa-calendar text-brand me-2"></i><span
-                                                        class="c-loca">November 15, 2024 </span>
-                                                    <i class="fa-regular fa-clock text-brand ms-3 me-2"></i>6:00
-                                                    PM-10:00 PM
-                                                </div>
-                                                <p class="card-text"><i
-                                                        class="fa-solid fa-location-dot me-2 text-brand"></i> <small
-                                                        class="text-body-secondary">OCIC, Phnom Penh</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 py-4">
-                                            <p class="status">Upcoming</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> -->
                             </div>
-                            <button class="btn btn-outline-brand ms-auto">See More</button>
+                            <!-- <button class="btn btn-outline-brand ms-auto">See More</button> -->
                         </div>
                     </div>
                 </div>
@@ -226,24 +208,41 @@
                 <div class="recmt-items">
                     <div class="row">
                         <div class="col-4">
-                            <div class="card position-relative">
-                                <a href="">
+                            <div class="card position-relative bg-white shadow-light border-0">
+                                <a href="event-detail.html">
                                     <img src="../assets/img/test-img/cta-event-search-banner.avif"
                                         class="card-img-top object-fit-cover " alt="...">
                                 </a>
-                                <button class="i-wish border-0 position-absolute top-0 end-0">
+                                <button class="i-wish add-wish border-0 position-absolute top-0 end-0">
                                     <i class="fa-regular fa-heart"></i>
                                 </button>
                                 <div class="card-body">
-                                    <h5 class="card-title">
+                                    <div class="d-flex gap-1 mb-1">
+                                        <span class="px-2 py-1 rounded-2 bg-brand-light-50 ">Music</span>
+                                        <span class="px-2 py-1 rounded-2 bg-brand-light-50 ">Technology</span>
+                                    </div>
+                                    <h4 class="card-title">
                                         <a href="">Annual Charity Gala Annual CharityGalaAnnual Charity Gala</a>
-                                    </h5>
-                                    <p class="mb-0 "><i class="fa-regular fa-calendar text-brand me-2"></i><span
-                                            class="c-loca">November 15, 2024 </span></p>
-                                    <p class="mb-0 "><i class="fa-regular fa-clock text-brand me-2"></i><span>6:00
-                                            PM-10:00 PM</span></p>
-                                    <p class="card-text"><i class="fa-solid fa-location-dot me-2 text-brand"></i> <small
-                                            class="text-body-secondary">OCIC, Phnom Penh</small></p>
+                                    </h4>
+                                    <div class=" d-flex mb-2">
+                                        <div class="m-0 fs-18 fw-medium">
+                                            <i class="fa-solid fa-tag  text-brand me-2 fs-18"></i><small
+                                                class="text-body-secondary">Free</small>
+                                        </div>
+                                        <div class="ms-4  ps-3 m-0 fs-18 fw-medium">
+                                            <i class="fa-regular fa-hourglass  text-brand me-2 fs-18"></i>
+                                            <small class="text-body-secondary">Upcoming</small>
+
+                                        </div>
+                                    </div>
+                                    <div class="mb-2 card-time d-flex align-items-center fs-18">
+                                        <i class="fa-regular fa-calendar text-brand me-2 "></i><small
+                                            class="text-body-secondary m-0">2024-10-30 17:00:00</small>
+                                    </div>
+                                    <div class="card-time d-flex align-items-center">
+                                        <i class="fa-solid fa-location-dot me-2 text-brand"></i> <small
+                                            class="text-body-secondary">OCIC, Phnom Penh</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -258,17 +257,43 @@
 
 
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script>
-       document.addEventListener('DOMContentLoaded', () => {
-    const wishButtons = document.querySelectorAll('.i-wish'); // Select all buttons with the class i-wish
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wishButtons = document.querySelectorAll('.add-wish'); // Select all buttons with the class i-wish
 
-    wishButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            button.classList.toggle('clicked'); // Toggle the clicked class for each button
+            wishButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    button.classList.toggle('clicked'); // Toggle the clicked class for each button
+                });
+            });
         });
-    });
-});
+    </script> -->
+    <script>
+        const apiUrl = "https://mps2.chandalen.dev";
+        const token = localStorage.getItem("authToken");
+        function getCatagory(){
+            fetch(apiUrl+'/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search')
+            .then(res => res.json())
+            .then(json => {
+                let data=json.data;
+                listCata='';
+                data.forEach(element => {
+                    listCata+=`<div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="">
+                                        ${element.name}
+                                    </label>
+                                </div>`;
+                    console.log(element.name);
+                    
+                });
+                document.getElementById('catagory').innerHTML+=listCata;
+            })
+        }
     </script>
+    <script src="../assets/js/browseEvent.js"></script>
+    
+    
 </body>
 
 </html>

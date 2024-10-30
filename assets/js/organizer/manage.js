@@ -1,6 +1,6 @@
 import { showToast } from "../ultilities.js";
 const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem("authToken");
+const token =  localStorage.getItem("authToken");
 
 function getMe(searhE='', searchV = '') {
   fetch(`${apiUrl}/api/me`, {
@@ -55,8 +55,7 @@ function getAllEventCard(apiUrl, id, searchStr = '') {
 
             // console.log(json2);
             
-
-            rowsHTML += `<tr class="border-bottom position-relative" >
+            rowsHTML += `<tr class="border-bottom position-relative">
                                                     <td class>
                                                         <a href="javascript:void(0)" 
                                                             class="stretched-link text-decoration-none bg-transparent link-event-details"
