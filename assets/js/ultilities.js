@@ -1,4 +1,4 @@
-export function showToast(msg, condition) {
+function showToast(msg, condition) {
     
     let toastContainer = document.querySelector(".toast-container");
     if (!toastContainer) {

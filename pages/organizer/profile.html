@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event</title>
+        <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link rel="stylesheet" href="../../assets/css/style.css">
+        <link rel="stylesheet"
+            href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+        <link rel="stylesheet" href="../../assets/css/organizer.css">
+
+    </head>
+
+    <body>
+        <main>
+            <div class>
+                <div class="d-flex">
+                    <nav class="shadow sidebar">
+                        <ul>
+                            <li>
+                                <a href="event.html">
+                                    <i class="fas fa-menorah"></i>
+                                    <span class="nav-item">Event</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="request-ticket.html">
+                                    <i class="fa-solid fa-ticket"></i>
+                                    <span class="nav-item">Request Ticket</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="check-in-ticket.html">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                    <span class="nav-item">Check-in
+                                        Ticket</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="group-collaborate.html">
+                                    <i class="fa-solid fa-user-group"></i>
+                                    <span class="nav-item">Event Group
+                                        Collaborated</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="profile.html" class="active">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span class="nav-item">Organizer
+                                        Profile</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <section class="p-4 w-100">
+                        <div class>
+                            <h2>Organizer Profile</h2>
+                        </div>
+                        <!-- Organizer Profile Section -->
+                        <div class="card mb-4">
+                            <div class="card-body text-center">
+                                <img src="https://via.placeholder.com/150"
+                                    class="rounded-circle mb-3"
+                                    alt="User Image">
+                                <h5 class="card-title">User Name</h5>
+                                <textarea class="form-control mb-3" rows="3"
+                                    placeholder="Bio..."></textarea>
+                                <button class="btn btn-primary">Save
+                                    Change</button>
+                            </div>
+                        </div>
+
+                        <!-- About Vendor Section -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5>About Organizer</h5>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="typeOfEvents"
+                                            class="form-label">Type of
+                                            Events</label>
+                                        <input type="text" class="form-control"
+                                            id="typeOfEvents"
+                                            placeholder="Add text">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="location"
+                                            class="form-label">Location</label>
+                                        <input type="text" class="form-control"
+                                            id="location"
+                                            placeholder="Add text">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="experience"
+                                            class="form-label">Year of
+                                            Experience</label>
+                                        <input type="text" class="form-control"
+                                            id="experience"
+                                            placeholder="Add text">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="rating"
+                                            class="form-label">Rating</label>
+                                        <input type="text" class="form-control"
+                                            id="rating" placeholder="Add text">
+                                    </div>
+                                    <button class="btn btn-primary">Save
+                                        Change</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Portfolio & Gallery Section -->
+                        <div class="card mb-4">
+                            <div class="card-header d-flex align-items-center justify-content-between">
+                                <h5 class="mb-0">Portfolio & Gallery</h5>
+                                <button type="button" class="btn btn-brand">+ Add Image</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card">
+                                            <img
+                                                src="https://via.placeholder.com/150"
+                                                class="card-img-top"
+                                                alt="Portfolio Item">
+                                            <div class="card-body text-center">
+                                                <button
+                                                    class="btn btn-danger">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card">
+                                            <img
+                                                src="https://via.placeholder.com/150"
+                                                class="card-img-top"
+                                                alt="Portfolio Item">
+                                            <div class="card-body text-center">
+                                                <button
+                                                    class="btn btn-danger">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary mt-3">Save
+                                    Change</button>
+                            </div>
+                        </div>
+
+                        <!-- Contact Info Section -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5>Contact Info</h5>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="email"
+                                            class="form-label">Your Business
+                                            Contact Information</label>
+                                        <input type="email" class="form-control"
+                                            id="email" placeholder="Email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone"
+                                            class="form-label">Phone
+                                            Number</label>
+                                        <input type="text"
+                                            class="form-control mb-2" id="phone"
+                                            placeholder="Phone Number">
+                                        <button class="btn btn-link">Add more
+                                            number</button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="socialMedia"
+                                            class="form-label">Social Media
+                                            Link</label>
+                                        <input type="text"
+                                            class="form-control mb-2"
+                                            id="socialMedia"
+                                            placeholder="Social Media Link">
+                                        <button class="btn btn-link">Add more
+                                            Link</button>
+                                    </div>
+                                    <button class="btn btn-primary">Save
+                                        Change</button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <script src="../../assets/js/authentication.js"></script>
+
+        <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>

@@ -1,6 +1,6 @@
-import { showToast } from "./ultilities.js";
+
 const API_URL = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem('authToken');
+const token = localStorage.getItem('authToken');
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("authToken")) {
@@ -9,255 +9,72 @@ document.addEventListener("DOMContentLoaded", () => {
       location.pathname.includes("login.html") ||
       location.pathname.includes("Signup.html")
     ) {
-      location.href = "homepage.html";
+      location.href = "/pages/homepage.html";
     }
   } else {
-    if (
-      !location.pathname.includes("login.html") &&
-      !location.pathname.includes("Signup.html")
-    ) {
+    // if (
+    //   !location.pathname.includes("login.html") &&
+    //   !location.pathname.includes("Signup.html")
+    // ) {
 
-      if(location.pathname.includes("index.html")){
-        return;
-      }
-      console.log(location.pathname);
+    //   if(location.pathname.includes("index.html")){
+    //     return;
+    //   }
+    //   console.log(location.pathname);
 
-      // let count = 0;
+    //   // let count = 0;
 
-      // // Loop through each character in the string
-      // for (let i = 0; i < location.pathname.length; i++) {
-      //   if (location.pathname[i] === "/") {
-      //     count++; // Increment the count if '/' is found
-      //   }
-      // }
+    //   // // Loop through each character in the string
+    //   // for (let i = 0; i < location.pathname.length; i++) {
+    //   //   if (location.pathname[i] === "/") {
+    //   //     count++; // Increment the count if '/' is found
+    //   //   }
+    //   // }
 
-      // let path = "";
-      // for (let i = 1; i <= count; i++) {
-      //   path += "../";
-      // }
-      location.href = `index.html`;
+    //   // let path = "";
+    //   // for (let i = 1; i <= count; i++) {
+    //   //   path += "../";
+    //   // }
+    //   location.href = `index.html`;
 
-      console.log(count);
+    //   console.log(count);
 
-      // location.href = "index.html";
-    }
+    //   // location.href = "index.html";
+    // }
   }
 });
 
-if (document.getElementById("btn-log-in")) {
-  document.getElementById("btn-log-in").onclick = () => {
-    const email = document.getElementById("login-email").value;
-    const password = document.getElementById("login-password").value;
 
-    if (email && password) {
-      fetch(API_URL + "/api/login", {
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          showToast(json.message, json.result);
-          console.log(json);
-          if(json.result == true){
-
-            let token = json.data.token;
-            localStorage.setItem("authToken", token);
-            location.href = "homepage.html";
-            
-          }
-          // else{
-          //   showToast(json.message, 'fail');
-          //   return;
-          // }
-        });
-    }
-  };
-}
-
-if (document.getElementById("btn-forgot-pass")) {
-  document.getElementById("btn-forgot-pass").onclick = () => {
-    document.getElementById("btn-send-email-forgot-pass").onclick = () => {
-      const email = document.getElementById("forgot-pass-email").value;
-      document.body.style.cursor = "wait"; // Set the cursor to loading
-
-      fetch(`${API_URL}/api/forgot/pass`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          document.body.style.cursor = "default"; // Reset the cursor
-          console.log(json);
-
-          // Check if the response was successful
-          if (json.result === true) {
-            // Close the Forgot Password modal
-
-            const forgotPassModal =
-              document.getElementById("exampleModalToggle");
-            const bootstrapForgotPassModal =
-              bootstrap.Modal.getInstance(forgotPassModal);
-            bootstrapForgotPassModal.hide(); // Close the modal
-
-            // Open the OTP modal
-            const otpModal = new bootstrap.Modal(
-              document.getElementById("exampleModalToggle2")
-            );
-            otpModal.show();
-
-            // OTP inputs handling logic here
-            setupOtpInputFields();
-          } else {
-            showToast("Failed to send reset email. Please try again.", false);
-            // alert('Failed to send reset email. Please try again.');
-          }
-        })
-        .catch((error) => {
-          document.body.style.cursor = "default"; // Reset the cursor
-          console.error("Error:", error);
-          // alert('An error occurred. Please try again.');
-          showToast("An error occurred. Please try again.", false);
-        });
-    };
-  };
-}
-
-let otpCode = "";
-
-function setupOtpInputFields() {
-  // Select all OTP input fields
-  const otpInputs = document.querySelectorAll(".otp-inputs input");
-
-  // Add event listener to each input field
-  otpInputs.forEach((input, index) => {
-    input.addEventListener("keydown", function (event) {
-      if (event.key.match(/^[a-zA-Z0-9]$/)) {
-        otpInputs[index].value = ""; // Clear the current value for a new entry
-        // Move to the next input field after entering a character
-        if (index < otpInputs.length - 1) {
-          setTimeout(() => otpInputs[index + 1].focus(), 10); // Move to next input after a small delay
-        }
-      } else if (event.key === "Backspace") {
-        // If backspace is pressed, move to the previous input field
-        if (index > 0) {
-          setTimeout(() => otpInputs[index - 1].focus(), 10); // Move to previous input
-        }
-      }
-    });
-  });
-
-  // Function to get the OTP value from all input fields
-  function getOtpValue() {
-    const otpInputs = document.querySelectorAll(".otp-inputs input");
-    let otpCode = "";
-    otpInputs.forEach((input) => {
-      otpCode += input.value; 
-    });
-    return otpCode;
-  }
-
-  
-  if (document.getElementById("otpVerifyBtn")) {
-    document.getElementById("otpVerifyBtn").onclick = function () {
-      otpCode = getOtpValue(); 
-
-      fetch(`${API_URL}/api/forgot/verify-otp`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          otp: otpCode,
-          email: document.getElementById("forgot-pass-email").value,
-        }),
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          if (json.result === true) {
-            // Close the OTP modal
-            const otpModalInstance = bootstrap.Modal.getInstance(
-              document.getElementById("exampleModalToggle2")
-            );
-            otpModalInstance.hide(); // Close OTP modal
-
-            // Open the Change Password modal
-            const changePassModal = new bootstrap.Modal(
-              document.getElementById("changePasswordModal")
-            );
-            changePassModal.show();
-          } else {
-            // alert('OTP verification failed. Please try again.');
-            showToast("OTP verification failed. Please try again.", false);
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          // alert('An error occurred during OTP verification.');
-          showToast(
-            "An error occurred during OTP verification. Please try again.",
-            false
-          );
-        });
-    };
-  }
-}
-
-// Handle password change process
-if (document.getElementById("changePasswordSubmitBtn")) {
-  document.getElementById("changePasswordSubmitBtn").onclick = () => {
-    const newPass = document.getElementById("newPassword").value;
-    const confirmPass = document.getElementById("confirmPassword").value;
-    const email = document.getElementById("forgot-pass-email").value;
-
-    fetch(`${API_URL}/api/reset/pass`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        otp: otpCode,
-        email: email,
-        new_pass: newPass,
-        new_pass_confirmation: confirmPass,
-      }),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.result === true) {
-          // Close the Change Password modal
-          const changePassModalInstance = bootstrap.Modal.getInstance(
-            document.getElementById("changePasswordModal")
-          );
-          changePassModalInstance.hide();
-          // alert('Password changed successfully!');
-          showToast(json.message, json.result);
-        } else {
-          // alert('Password change failed. Please try again.');
-          showToast("Password change failed. Please try again.", false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        showToast("An error occurred while changing the password.", false);
-      });
-  };
-}
 
 if(document.getElementById('btn-logout')){
   document.getElementById('btn-logout').onclick = logout;
 }
 
 function logout() {
-  localStorage.removeItem("authToken");
-  location.href = "index.html";
-  showToast("Log out sucessfully", true);
+  
+  console.log(localStorage.getItem('authToken'));
+  
+
+  fetch(`${API_URL}/api/logout`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('authToken')}`
+    }
+  })
+  .then(res=>res.json())
+  .then(json=>{
+    console.log();
+    showToast(json.message, json.result);
+
+    if(json.result == true){
+      localStorage.removeItem("authToken");
+      setTimeout(()=>{
+        location.href = "/index.html";
+      }, 1500)
+    }
+    
+  })
+
 }
 
 // document.getElementById('btn-sign-up').onclick = () => {

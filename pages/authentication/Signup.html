@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up page</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/mainstyle.css">
+    <link rel="stylesheet"
+      href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+  </head>
+
+  <body>
+    <main>
+      <section class="section-login">
+        <div class="container py-5">
+          <div class="logo mb-3">
+            <img src="../../assets/img/P" alt
+              style="width: 150px;">
+          </div>
+          <div class="card d-flex card-glassbg px-3">
+            <div class="row">
+              <div
+                class="col-6 d-flex justify-content-center align-items-center">
+                <div class="logo">
+                  <img src="../../assets/img/img-login.png" alt
+                    style="width: 100%;">
+                </div>
+              </div>
+
+              <div class="col-6">
+                <h3 class="text-brand mt-4">Register</h3>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control form-control-sm"
+                    id="username" placeholder="Full Name" required>
+                  <label for="username">Full Name*</label>
+                  <div class="invalid-feedback" id="username-error"
+                    style="display: none;">
+                    Please enter a valid name (letters only, no numbers).
+                  </div>
+                </div>
+
+                <div class="form-floating mb-3 mt-3">
+                  <input type="email" class="form-control form-control-sm"
+                    id="email" placeholder="name@example.com" required>
+                  <label for="email">Email address*</label>
+                  <div class="invalid-feedback" id="email-error"
+                    style="display: none;">
+                    Please enter a valid email address (e.g., name@example.com).
+                  </div>
+                </div>
+
+                <div class="form-floating mb-3 d-grid position-relative">
+                  <input type="password" class="form-control" id="password" placeholder="Password" required>
+                  <label for="password">Password*</label>
+                  <i class="bi bi-eye-slash-fill text-brand position-absolute bg-white px-1" id="togglePassword" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                  <div class="invalid-feedback" id="password-error" style="display: none;">
+                    Password must be at least 8 characters, include one uppercase letter, one lowercase letter, and one number.
+                  </div>
+                </div>
+                
+                <div class="form-floating mb-3 d-grid position-relative">
+                  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                  <label for="confirmPassword">Confirm Password*</label>
+                  <i class="bi bi-eye-slash-fill text-brand position-absolute bg-white ps-1 pe-1" id="toggleConfirmPassword" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                  <div class="invalid-feedback" id="confirm-password-error" style="display: none;">
+                    Passwords do not match.
+                  </div>
+                </div>
+                
+
+                <div class="d-grid d-flex mb-3">
+                  <div class="line"></div>
+                  <p class="text-or p-2">OR</p>
+                  <div class="line"></div>
+                </div>
+
+                <div class="mb-3">
+                  <button
+                    class="btn btn-facebook btn-outline-brand  mb-2 w-100">
+                    <i class="bi bi-facebook social-icon fs-5 me-3"></i> Login
+                    with Facebook
+                  </button>
+                </div>
+
+                <div class="mb-3">
+                  <button class="btn btn-google btn-outline-brand mb-3 w-100">
+                    <i class="bi bi-google social-icon fs-5 me-3"></i> Sign up
+                    with Google
+                  </button>
+                </div>
+
+                <div class="d-grid gap-2 mb-3">
+                  <button class="btn btn-brand" type="button" id="Sign-up">Sign
+                    Up</button>
+                </div>
+
+                <div class="text-center">
+                  <p>Have an Account? <a class="text-signup"
+                      href="login.html">Log In</a></p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/ultilities.js"></script>
+
+    <script>
+      const togglePassword = document.querySelector('#togglePassword');
+      const password = document.querySelector('#password');
+      const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+      const confirmPassword = document.querySelector('#confirmPassword');
+      const emailInput = document.querySelector('#email');
+      const emailError = document.querySelector('#email-error');
+      const usernameInput = document.querySelector('#username');
+      const usernameError = document.querySelector('#username-error');
+      const signUpBtn = document.querySelector('#Sign-up');
+      const passwordError = document.querySelector('#password-error');
+      const confirmPasswordError = document.querySelector('#confirm-password-error');
+  
+      togglePassword.addEventListener('click', function () {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle('bi-eye');
+        this.classList.toggle('bi-eye-slash-fill');
+      });
+  
+      toggleConfirmPassword.addEventListener('click', function () {
+        const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPassword.setAttribute('type', type);
+        this.classList.toggle('bi-eye');
+        this.classList.toggle('bi-eye-slash-fill');
+      });
+  
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+  
+      function isValidFullName(name) {
+        const nameRegex = /^[a-zA-Z\s]+$/;
+        return nameRegex.test(name);
+      }
+  
+      function isValidPassword(password) {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()_+[\]{};':"\\|,.<>\/?~-]{8,}$/;
+        return passwordRegex.test(password);
+      }
+  
+      signUpBtn.addEventListener('click', function () {
+        const emailValue = emailInput.value.trim();
+        const usernameValue = usernameInput.value.trim();
+        const passwordValue = password.value;
+        const confirmPasswordValue = confirmPassword.value;
+        let formIsValid = true;
+  
+        if (!isValidEmail(emailValue)) {
+          emailError.style.display = 'block';
+          emailInput.classList.add('is-invalid');
+          formIsValid = false;
+        } else {
+          emailError.style.display = 'none';
+          emailInput.classList.remove('is-invalid');
+        }
+  
+        if (usernameValue === '' || !isValidFullName(usernameValue)) {
+          usernameError.style.display = 'block';
+          usernameInput.classList.add('is-invalid');
+          formIsValid = false;
+        } else {
+          usernameError.style.display = 'none';
+          usernameInput.classList.remove('is-invalid');
+        }
+  
+        if (!isValidPassword(passwordValue)) {
+          passwordError.style.display = 'block';
+          password.classList.add('is-invalid');
+          document.getElementById('togglePassword').style.top = "29%"
+          formIsValid = false;
+        } else {
+          passwordError.style.display = 'none';
+          password.classList.remove('is-invalid');
+          document.getElementById('togglePassword').style.top = "50%"
+        }
+  
+        if (passwordValue !== confirmPasswordValue) {
+          confirmPasswordError.style.display = 'block';
+          confirmPassword.classList.add('is-invalid');
+          document.getElementById('toggleConfirmPassword').style.top = "37%"
+          formIsValid = false;
+        } else {
+          confirmPasswordError.style.display = 'none';
+          confirmPassword.classList.remove('is-invalid');
+          document.getElementById('toggleConfirmPassword').style.top = "50%"
+        }
+  
+        if (formIsValid) {
+          fetch('https://mps2.chandalen.dev/api/register', {
+            method: "POST",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              full_name: usernameValue,
+              email: emailValue,
+              password: passwordValue,
+              password_confirmation: confirmPasswordValue
+            })
+          })
+          .then(res => res.json())
+          .then(json => {
+            console.log(json);
+            showToast(typeof json.data.email != 'string' ? json.data.email[0] : json.message, json.result);
+            if(json.result == true){
+              setTimeout(()=>{
+                location.href = "./login.html"; 
+              }, 1500);
+            }
+          })
+          .catch(error => {console.error('Error:', error)
+          });
+        }
+      });
+  
+      emailInput.addEventListener('input', function () {
+        if (isValidEmail(this.value)) {
+          emailError.style.display = 'none';
+          emailInput.classList.remove('is-invalid');
+        }
+      });
+  
+      usernameInput.addEventListener('input', function () {
+        if (isValidFullName(this.value)) {
+          usernameError.style.display = 'none';
+          usernameInput.classList.remove('is-invalid');
+        }
+      });
+  
+      password.addEventListener('input', function () {
+        if (isValidPassword(this.value)) {
+          passwordError.style.display = 'none';
+          password.classList.remove('is-invalid');
+          document.getElementById('togglePassword').style.top = "50%"
+        }
+      });
+  
+      confirmPassword.addEventListener('input', function () {
+        if (password.value === confirmPassword.value) {
+          confirmPasswordError.style.display = 'none';
+          confirmPassword.classList.remove('is-invalid');
+          document.getElementById('toggleConfirmPassword').style.top = "50%"
+        }
+      });
+    </script>
+    
+    <script src="../../assets/js/authentication.js"></script>
+
+  </body>
+
+</html>

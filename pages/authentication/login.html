@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/mainstyle.css">
+    <link rel="stylesheet"
+      href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+  </head>
+
+  <body>
+    <main>
+      <section class="section-login">
+        <div class="container py-5">
+          <div class="logo mb-4">
+            <a href="../../index.html"><img
+                src="../../assets/img/Pruttikar_Text_Logo2.png" alt
+                style="width: 150px;"></a>
+          </div>
+          <div class="card p-3 card-glassbg">
+            <div class="row">
+              <div class="col-6">
+                <h3 class="text-brand fw-bold">Log In</h3>
+                <div class="form-floating mb-3 mt-3">
+                  <input type="email" class="form-control form-control-sm"
+                    id="login-email" placeholder="name@example.com"
+                    required>
+                  <label for="email">Email address*</label>
+                  <div class="invalid-feedback" id="email-error"
+                    style="display: none;">
+                    Please enter a valid email address (e.g., name@example.com).
+                  </div>
+                </div>
+
+                <div class="form-floating mb-3 d-grid position-relative">
+                  <input type="password" class="form-control"
+                    id="login-password" placeholder="Password" required>
+                  <label for="password">Password</label>
+                  <i
+                    class="bi bi-eye-slash-fill text-brand position-absolute bg-white px-1"
+                    id="togglePassword"
+                    style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                  <div class="invalid-feedback" id="password-error"
+                    style="display: none;">
+                    Password must be at least 8 characters, include one
+                    uppercase letter, one lowercase letter, and one number.
+                  </div>
+                </div>
+                <div class="mb-3 d-flex justify-content-end">
+                  <button type="button"
+                    id="btn-forgot-pass"
+                    class="Forgot-password bg-transparent border-0 ms-auto"
+                    data-bs-target="#exampleModalToggle"
+                    data-bs-toggle="modal">Forgot Password?</button>
+                </div>
+
+                <div class="d-grid gap-2 mb-3">
+                  <button class="btn btn-brand " type="button"
+                    id="btn-log-in">Log In</button>
+                </div>
+
+                <div class="d-grid d-flex">
+                  <div class="line"></div>
+                  <p class="text-or p-2">OR</p>
+                  <div class="line"></div>
+                </div>
+
+                <div class="mb-3">
+                  <button
+                    class="btn btn-facebook btn-outline-brand mb-3 mb-2 w-100">
+                    <i
+                      class="bi bi-facebook social-icon fs-5 me-3"></i>
+                    Login with Facebook
+                  </button>
+                  <button class="btn btn-google btn-outline-brand mb-3 w-100">
+                    <i
+                      class="bi bi-google social-icon fs-5 me-3 "></i>
+                    Sign up with Google
+                  </button>
+                </div>
+
+                <div class="text-center">
+                  <p>Don't have an Account? <a
+                      class="text-signup" href="Signup.html">Sign Up</a></p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="image">
+                  <img src="../../assets/img/img-login.png" alt>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <div class="container">
+      <!-- Request To Change Password Modal -->
+      <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Request
+                To Change Password</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                
+                <div class="mb-3">
+                  <label for="email2" class="form-label">Email Address*</label>
+                  <input type="email" class="form-control fs-6"
+                  id="forgot-pass-email"
+                  placeholder="Please Input Your Email">
+                  <div class="invalid-feedback" id="email-change-pass-error"
+                    style="display: none;">
+                    Please enter a valid email address (e.g., name@example.com).
+                  </div>
+                </div>
+              </form>
+              <div>
+                <button class="btn btn-brand"
+                  style="width: 100%;"
+                  id="btn-send-email-forgot-pass">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OTP Verification Modal -->
+      <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
+                <div class="logo">
+                  <img src="../../assets/img/Pruttikar_Text_Logo1.png" alt
+                    style="width: 150px;">
+                </div>
+              </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+              <h5>Enter the code that we sent to your Email</h5>
+              <div class="otp-timer mb-3 fw-bold fs-4">
+                <span id="timer">1:00</span>
+              </div>
+              <div class="otp-inputs mb-3">
+                <input type="text" maxlength="1">
+                <input type="text" maxlength="1">
+                <input type="text" maxlength="1">
+                <input type="text" maxlength="1">
+                <input type="text" maxlength="1">
+                <input type="text" maxlength="1">
+              </div>
+              <div class="resend-otp">
+                Didn't receive the OTP? <a href="#" id="resendBtn"
+                  class="fw-bold"
+                  onclick="resendOtp()">Resend</a>
+              </div>
+            </div>
+
+            <div class="p-3">
+              <button class="btn btn-brand" id="otpVerifyBtn"
+                style="width: 100%;">Verify</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Password Change Modal -->
+      <div class="modal fade" id="changePasswordModal" tabindex="-1"
+        aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="changePasswordModalLabel">
+                <div class="logo">
+                  <img src="../../assets/img/Pruttikar_Text_Logo1.png" alt
+                    style="width: 150px;">
+                </div>
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h5 class="mb-3">Enter a new password to change password</h5>
+              <form id="passwordForm">
+               
+                <div class="form-floating mb-3">
+                  <input type="password"
+                  class="form-control d-grid position-relative"
+                  id="newPassword"
+                  placeholder="New password">
+                  <i
+                  class="bi bi-eye toggle-password text-brand position-absolute"
+                  onclick="togglePassword('newPassword')"
+                  style="right: 25px; top: 39%; transform: translateY(-50%); cursor: pointer;"></i>
+                  <label for="newPassword" class="form-label">New
+                    password</label>
+                    <div class="invalid-feedback" id="new-password-error"
+                    style="display: none;">
+                    Password must be at least 8 characters, include one
+                    uppercase letter, one lowercase letter, and one number.
+                  </div>
+                </div>
+                <div class="form-floating mb-3">
+                  
+                  <input type="password"
+                    class="form-control d-grid position-relative"
+                    id="confirmPassword" placeholder="Confirm password">
+                  <i
+                    class="bi bi-eye toggle-password text-brand position-absolute"
+                    onclick="togglePassword('confirmPassword')"
+                    style="right: 25px; top: 65%;cursor: pointer;"></i>
+                    <label for="confirmPassword" class="form-label">Confirm
+                      password</label>
+                    <div class="invalid-feedback" id="confirm-password-error"
+                    style="display: none;">
+                    Password must be at least 8 characters, include one
+                    uppercase letter, one lowercase letter, and one number.
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-brand"
+                    id="changePasswordSubmitBtn"
+                    style="width: 100%;">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer></footer>
+
+    <!-- JavaScript for toggling password visibility -->
+    <script>
+      // Email Regex Validation
+      function validateEmail(email) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
+      }
+      
+      // Password Regex Validation (at least 8 characters, 1 uppercase, 1 lowercase, and 1 number)
+      function validatePassword(password) {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()_+[\]{};':"\\|,.<>\/?~-]{8,}$/;
+        return passwordRegex.test(password);
+      }
+      
+      // OTP Validation (only 6 numeric characters)
+      function validateOTP(otp) {
+        const otpRegex = /^\d{6}$/;
+        return otpRegex.test(otp);
+      }
+      
+      // Show or Hide Password
+      document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordField = document.getElementById('login-password');
+        if (passwordField.type === 'password') {
+          passwordField.type = 'text';
+          this.classList.toggle('bi-eye');
+          this.classList.toggle('bi-eye-slash');
+        } else {
+          passwordField.type = 'password';
+          this.classList.toggle('bi-eye');
+          this.classList.toggle('bi-eye-slash');
+        }
+      });
+      
+      // Validate Form on Submit
+      document.getElementById('btn-log-in').addEventListener('click', function () {
+        const emailField = document.getElementById('login-email');
+        const passwordField = document.getElementById('login-password');
+        const emailError = document.getElementById('email-error');
+        const passwordError = document.getElementById('password-error');
+      
+        let isValid = true;
+      
+        // Email Validation
+        if (!validateEmail(emailField.value)) {
+          emailField.classList.add('is-invalid');
+          emailError.style.display = 'block';
+          isValid = false;
+        } else {
+          emailField.classList.remove('is-invalid');
+          emailError.style.display = 'none';
+        }
+
+        // Password Validation
+        if (!validatePassword(passwordField.value)) {
+          passwordField.classList.add('is-invalid');
+          passwordError.style.display = 'block';
+          isValid = false;
+          document.getElementById('togglePassword').style.top = "30%";
+        } else {
+          passwordField.classList.remove('is-invalid');
+          passwordError.style.display = 'none';
+          document.getElementById('togglePassword').style.top = "50%";
+        }
+      
+        // Proceed if all fields are valid
+        if (isValid) {
+          // Submit form logic here
+          
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+      fetch(API_URL + "/api/login", {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          showToast(json.message, json.result);
+          console.log(json);
+          if(json.result == true){
+
+            let token = json.data.token;
+            localStorage.setItem("authToken", token);
+            setTimeout(()=>{
+              location.href = "/pages/homepage.html";
+            }, 1500);
+            
+          }
+        });
+    }
+  
+        }
+      );
+      
+
+      document.getElementById('login-email').addEventListener('input', (e)=>{
+          if (validateEmail(e.target.value)) {
+            e.target.classList.remove('is-invalid');
+            document.getElementById('email-error').style.display = 'none';
+        }});
+
+        document.getElementById('login-password').addEventListener('input', (e)=>{
+          if (validatePassword(e.target.value)) {
+            e.target.classList.remove('is-invalid');
+            document.getElementById('password-error').style.display = 'none';
+            document.getElementById('togglePassword').style.top = "50%";
+        }});
+
+        if (document.getElementById("btn-forgot-pass")) {
+  document.getElementById("btn-forgot-pass").onclick = () => {
+    document.getElementById("btn-send-email-forgot-pass").onclick = () => {
+      const email = document.getElementById("forgot-pass-email").value;
+      if(!validateEmail(email)){
+        document.getElementById("forgot-pass-email").classList.add('is-invalid');
+        document.getElementById('email-change-pass-error').style.display = 'block';
+        return;
+      }
+      else{
+        document.getElementById("forgot-pass-email").classList.remove('is-invalid');
+        document.getElementById('email-change-pass-error').style.display = 'none';
+      }
+
+      document.body.style.cursor = "wait"; // Set the cursor to loading
+
+
+      fetch(`${API_URL}/api/forgot/pass`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          document.body.style.cursor = "default"; // Reset the cursor
+          console.log(json);
+
+          // Check if the response was successful
+          if (json.result === true) {
+            // Close the Forgot Password modal
+
+            const forgotPassModal =
+              document.getElementById("exampleModalToggle");
+            const bootstrapForgotPassModal =
+              bootstrap.Modal.getInstance(forgotPassModal);
+            bootstrapForgotPassModal.hide(); // Close the modal
+
+            // Open the OTP modal
+            const otpModal = new bootstrap.Modal(
+              document.getElementById("exampleModalToggle2")
+            );
+            otpModal.show();
+
+            // OTP inputs handling logic here
+            setupOtpInputFields();
+          } else {
+            showToast("Failed to send reset email. Please try again.", false);
+            // alert('Failed to send reset email. Please try again.');
+          }
+        })
+        .catch((error) => {
+          document.body.style.cursor = "default"; // Reset the cursor
+          console.error("Error:", error);
+          // alert('An error occurred. Please try again.');
+          showToast("An error occurred. Please try again.", false);
+        });
+    };
+  };
+}
+
+document.getElementById("forgot-pass-email").addEventListener('input', ()=>{
+  if(validateEmail(document.getElementById("forgot-pass-email").value)){
+    document.getElementById("forgot-pass-email").classList.remove('is-invalid');
+        document.getElementById('email-change-pass-error').style.display = 'none';
+  }
+})
+
+let otpCode = "";
+
+function setupOtpInputFields() {
+  // Select all OTP input fields
+  const otpInputs = document.querySelectorAll(".otp-inputs input");
+
+  // Add event listener to each input field
+  otpInputs.forEach((input, index) => {
+    input.addEventListener("keydown", function (event) {
+      if (event.key.match(/^[a-zA-Z0-9]$/)) {
+        otpInputs[index].value = ""; // Clear the current value for a new entry
+        // Move to the next input field after entering a character
+        if (index < otpInputs.length - 1) {
+          setTimeout(() => otpInputs[index + 1].focus(), 10); // Move to next input after a small delay
+        }
+      } else if (event.key === "Backspace") {
+        // If backspace is pressed, move to the previous input field
+        if (index > 0) {
+          setTimeout(() => otpInputs[index - 1].focus(), 10); // Move to previous input
+        }
+      }
+    });
+  });
+
+  // Function to get the OTP value from all input fields
+  function getOtpValue() {
+    const otpInputs = document.querySelectorAll(".otp-inputs input");
+    let otpCode = "";
+    otpInputs.forEach((input) => {
+      otpCode += input.value; 
+    });
+    return otpCode;
+  }
+
+  
+  if (document.getElementById("otpVerifyBtn")) {
+    document.getElementById("otpVerifyBtn").onclick = function () {
+      otpCode = getOtpValue(); 
+
+      fetch(`${API_URL}/api/forgot/verify-otp`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          otp: otpCode,
+          email: document.getElementById("forgot-pass-email").value,
+        }),
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.result === true) {
+            // Close the OTP modal
+            const otpModalInstance = bootstrap.Modal.getInstance(
+              document.getElementById("exampleModalToggle2")
+            );
+            otpModalInstance.hide(); // Close OTP modal
+
+            // Open the Change Password modal
+            const changePassModal = new bootstrap.Modal(
+              document.getElementById("changePasswordModal")
+            );
+            changePassModal.show();
+          } else {
+            // alert('OTP verification failed. Please try again.');
+            showToast("OTP verification failed. Please try again.", false);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          // alert('An error occurred during OTP verification.');
+          showToast(
+            "An error occurred during OTP verification. Please try again.",
+            false
+          );
+        });
+    };
+  }
+}
+
+// Handle password change process
+if (document.getElementById("changePasswordSubmitBtn")) {
+  document.getElementById("changePasswordSubmitBtn").onclick = () => {
+    const newPass = document.getElementById("newPassword").value;
+    const confirmPass = document.getElementById("confirmPassword").value;
+    const email = document.getElementById("forgot-pass-email").value;
+    let isvalid = true;
+
+    if(!validatePassword(newPass)){
+      document.getElementById('newPassword').classList.add('is-invalid');
+      document.getElementById('new-password-error').style.display = "block"
+      isvalid = false
+    }
+    else{
+      document.getElementById('newPassword').classList.remove('is-invalid');
+      document.getElementById('new-password-error').style.display = "none"
+      isvalid = true
+    }
+
+    if(newPass != confirmPass){
+      document.getElementById('confirmPassword').classList.add('is-invalid');
+      document.getElementById('confirm-password-error').style.display = "block"
+      isvalid = false
+    }
+    else{
+      document.getElementById('confirmPassword').classList.remove('is-invalid');
+      document.getElementById('confirm-password-error').style.display = "none"
+      isvalid = true
+    }
+
+    if(isvalid == true){
+      fetch(`${API_URL}/api/reset/pass`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        otp: otpCode,
+        email: email,
+        new_pass: newPass,
+        new_pass_confirmation: confirmPass,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.result === true) {
+          // Close the Change Password modal
+          const changePassModalInstance = bootstrap.Modal.getInstance(
+            document.getElementById("changePasswordModal")
+          );
+          changePassModalInstance.hide();
+          // alert('Password changed successfully!');
+          showToast(json.message, json.result);
+        } else {
+          // alert('Password change failed. Please try again.');
+          showToast("Password change failed. Please try again.", false);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        showToast("An error occurred while changing the password.", false);
+      });
+    }
+  };
+}
+      // Resend OTP (placeholder functionality)
+      function resendOtp() {
+        alert("OTP resent!");
+      }
+      
+      </script>
+
+    <script src="../..//assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/ultilities.js"></script>
+    <script src="../../assets/js/authentication.js"></script>
+  </body>
+
+</html>

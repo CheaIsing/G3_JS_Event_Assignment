@@ -1,5 +1,5 @@
-const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem("authToken");
+// const apiUrl = "https://mps2.chandalen.dev";
+// const token = localStorage.getItem("authToken");
 document.addEventListener('DOMContentLoaded', () => {
     const wishButtons = document.querySelectorAll('.add-wish'); // Select all buttons with the class i-wish
 
@@ -46,7 +46,7 @@ function getAllEvent() {
                 listE += `<div class="card mb-4">
                                     <div class="row g-0">
                                         <div class="col-3 position-relative">
-                                            <img src="../assets/img/test-img/cta-event-search-banner.avif"
+                                            <img src="../../assets/img/test-img/cta-event-search-banner.avif"
                                                 class="img-fluid rounded-start " alt="...">
                                             <div class="i-wish add-wish position-absolute top-0 end-0" >
                                                 <i class="fa-regular fa-heart"></i>
