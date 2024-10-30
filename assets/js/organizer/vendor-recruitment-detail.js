@@ -20,7 +20,7 @@ function getEventDetail(apiUrl, id) {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((res) => res.json())
+        .then((res) => res.jGITson())
         .then((json2) => {
           console.log(json);
           console.log(json2);

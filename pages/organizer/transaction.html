@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event</title>
+        <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link rel="stylesheet" href="../../assets/css/style.css">
+        <link rel="stylesheet"
+            href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+        <link rel="stylesheet" href="../../assets/css/organizer.css">
+
+    </head>
+
+    <body>
+        <header></header>
+        <main>
+            <div class>
+                <div class="d-flex">
+                    <nav class="shadow sidebar">
+                        <ul>
+                            <li>
+                                <a href="event.html">
+                                    <i class="fas fa-menorah"></i>
+                                    <span class="nav-item">Event</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="request-ticket.html" class="active">
+                                    <i class="fa-solid fa-ticket"></i>
+                                    <span class="nav-item">Request Ticket</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="check-in-ticket.html">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                    <span class="nav-item">Check-in
+                                        Ticket</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="group-collaborate.html">
+                                    <i class="fa-solid fa-user-group"></i>
+                                    <span class="nav-item">Event Group
+                                        Collaborated</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="profile.html">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span class="nav-item">Organizer
+                                        Profile</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <section class="p-4 w-100">
+                        <div class="d-flex align-items-center">
+                            <button type="button"
+                                class="btn border-0 ps-0"
+                                onclick="history.back()">
+                                <i
+                                    class="fa-solid fa-angle-left fs-2"></i>
+                            </button>
+                            <h2>Transaction</h2>
+                        </div>
+                        <div
+                            class="my-4 d-flex w-100 justify-content-between align-content-center">
+                            <div
+                                class>
+                                <h3>Halowinn</h3>
+                                <div
+                                    class="d-inline-flex align-items-center">
+                                    <i
+                                        class="bi bi-calendar-event me-2"></i>
+                                    <span>Sat, Nov 23, 2024, 10:00
+                                        AM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gy-3">
+                            <div class="col-12">
+                                <div
+                                    class="mt-4 d-flex w-100 align-items-center justify-content-between">
+                                    <div
+                                        class="d-flex align-content-center">
+                                        <div class="me-3">
+                                            <img
+                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe9Ybgu-3psgpmfvul2z879e4kMQvSbaw9ItYfnM4R-McgtimDw40Nx7nn8qZIflmD_9E&usqp=CAU"
+                                                alt
+                                                class="object-fit-cover rounded-circle"
+                                                width="75" height="75">
+                                        </div>
+                                        <div
+                                            class>
+                                            <h5 class="mb-0">Jonh
+                                                Doe</h5>
+                                            <div
+                                                class>
+                                                <small>Sat, Nov 23,
+                                                    2024,
+                                                    10:00
+                                                    AM</small>
+                                            </div>
+                                            <div><small>
+                                                    <a
+                                                        href="#"
+                                                        class="text-decoration-none"
+                                                        style="color: inherit;">jonhdoe@gmail.com</a>
+                                                </small></div>
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="button"
+                                            class="btn btn-brand me-2">Approve</button>
+                                        <!-- Button trigger modal -->
+                                        <button type="button"
+                                            class="btn btn-danger"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            Disapprove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <p>Ticket Request Quantity : 2 Tickets</p>
+                                <p>Price per tickets: $10.00</p>
+                                <p>Total: $20.00</p>
+                                <img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZUxcU22KvvHHOkx0IbCa4mPhl0sWnW5iBkJ4kdBO3Axk4ZM4TmcmN-9w_-D7xdY5ArI4&usqp=CAU"
+                                    class="w-25 border border-2" alt>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5"
+                            id="exampleModalLabel">Disapprove request</h1>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class>
+                            <textarea class="form-control"
+                                placeholder="Input reason for disapprove"
+                                id="floatingTextarea2" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="button"
+                            class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>

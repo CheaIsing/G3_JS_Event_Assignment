@@ -1,9 +1,9 @@
-header,footer{
+/* header,footer{
     width: 100%;
     height: 90px;
     background-color: var(--c-brand);
     text-align: center;
-}
+} */
 .p-browseEvent .hero{
     width: 100%;
     height: 180px;
@@ -17,12 +17,20 @@ header,footer{
     width: 100%;
     height: 100%;
     padding: 50px 0;
-    /* height: 180px; */
-    /* position: relative; */
     z-index: 1;
     background-image: url(../img/test-img/cta-event-search-banner.avif);
     background-size: cover;
     background-attachment: fixed;
+}
+.bg-brand-light-50{
+   background-color: #ff169269;
+}
+.nonfound{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .overlay{
     width: 100%;
@@ -45,15 +53,28 @@ header,footer{
 section{
     margin-bottom: 120px;
 }
+.bg-brand-20{
+    background-color: #ff16922b
+}
+.bg-brand{
+    background-color: var(--c-brand);
+}
+.shadow-light{
+    box-shadow: 0px 0px 8px 3px #00000013;
+}
 a.home-link{
     text-decoration: none;
     color: #000;
+    transition: 0.5s;
+}
+a.home-link:hover{
+    color: var(--c-brand);
 }
 .w-15{
     width: 15%;
 }
 li{
-    border-bottom: 1px solid var(--c-brand-light);
+    border-bottom: 1px solid rgb(191, 189, 189);
 }
 li:last-child{
     border: none;
@@ -125,6 +146,10 @@ hr{
     background-color: var(--c-brand);
     color: #fff;
 }
+.add-wish.clicked{
+    background-color: var(--c-brand);
+    color: #fff;
+}
 .card-title a{
     text-decoration: none;
     color: #000;
@@ -145,4 +170,45 @@ input[type='checkbox']:checked + .button {
 }
 .w-20{
     width: 28px;
+}
+.border-brand{
+    border-style: solid;
+    border-color: var(--c-brand);
+}
+.border-brand-start{
+    height: auto;
+    border: 0px;
+    border-left: 3px;
+    border-style: solid;
+    border-color: var(--c-brand);
+}
+
+.outline-brand{
+    border: 1px solid var(--c-brand);
+}
+.related-section .title p{
+    width: 100%;
+    /* height: 40px; */
+    color: rgb(191, 189, 189);
+    position: relative;
+    display: flex ;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.related-section .title p::before,
+.related-section .title p::after{
+    content:"";
+    width: 150px;
+    /* width: 100%; */
+    height: 1px;
+    background-color: rgb(191, 189, 189);
+    position: absolute;
+    top: 50%;
+    /* bottom: 0; */
+    right: 52%;
+
+}
+.related-section .title p::after{
+    left: 52%;
 }
