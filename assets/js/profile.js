@@ -26,11 +26,9 @@ function Getme(){
         console.log(json.data);
         profileData(json.data);
         // Call showToast or another function to process the data if needed
-        showToast("Data fetched successfully!");
     })
     .catch(error => {
          console.error('Error fetching data:', error);
-        showToast("Failed to fetch data", "error");
     });
 }
 function profileData(data){
