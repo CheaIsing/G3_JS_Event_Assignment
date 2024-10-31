@@ -46,15 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-if(document.getElementById('btn-logout')){
-  document.getElementById('btn-logout').onclick = logout;
-}
+console.log(document.getElementById('btn-logout'));
+
+  if(document.getElementById('btn-logout')){
+    document.getElementById('btn-logout').addEventListener('click', ()=>{
+      logout();
+    })
+  }
+
 
 function logout() {
   
   console.log(localStorage.getItem('authToken'));
   
-
   fetch(`${API_URL}/api/logout`, {
     method: "DELETE",
     headers: {
