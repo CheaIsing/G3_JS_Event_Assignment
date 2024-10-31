@@ -1,14 +1,5 @@
-// const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
-document.addEventListener('DOMContentLoaded', () => {
-    const wishButtons = document.querySelectorAll('.add-wish'); // Select all buttons with the class i-wish
-
-    wishButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            button.classList.toggle('clicked'); // Toggle the clicked class for each button
-        });
-    });
-});
+const apiUrl = "https://mps2.chandalen.dev";
+const token = localStorage.getItem("authToken");
 getAllEvent();
 function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
     // Create Date objects from the input strings  
@@ -25,7 +16,7 @@ function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
     }
 }
 function getAllEvent() {
-    let url = `https://mps2.chandalen.dev/api/events?page=1&per_page=50&search`;
+    let url = apiUrl+`/api/events?page=1&per_page=50&search`;
     fetch(url)
         .then(res => res.json())
         .then(json => {
@@ -41,7 +32,7 @@ function getAllEvent() {
             });
             let listE = '';
             data.forEach(element => {
-                let price = element.ticket_price == 0 ? 'Free' : `${element.ticket_price}`;
+                let price = element.ticket_price == 0 ? 'Free' : `$${element.ticket_price}`;
                 let catagory = element.event_categories.map(cata => cata.name).join(' &nbsp; ');
                 listE += `<div class="card mb-4">
                                     <div class="row g-0">
@@ -82,13 +73,22 @@ function getAllEvent() {
                                         </div>
                                     </div>
                                 </div>`;
-                // console.log(catagory);
             });
             document.getElementById('list-card').innerHTML = listE;
+            const wishButtons = document.querySelectorAll('.add-wish'); // Select all buttons with the class i-wish
+            console.log(wishButtons);
+            wishButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    button.classList.toggle('clicked'); // Toggle the clicked class for each button
+                });
+            });
         })
 }
 function getEDetail(card) {
     id = card.dataset.id;
     sessionStorage.setItem('itemID', id);
     location.href = 'http://127.0.0.1:5501/browse/event-detail.html';
+}
+function addWishlist(id){
+    
 }
