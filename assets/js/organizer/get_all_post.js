@@ -128,13 +128,13 @@ function loadEventCards() {
         const newCard = document.createElement('div');
         newCard.className = "card";
         newCard.innerHTML = `       <div class="card-content">
-                                        <img class="card-img-top" src="./assets/img/party/party1.png" alt="Title" />
+                                        <img class="card-img-top" src="../assets/img/party/party1.png" alt="Title" />
                                         <div class="card-body">
                                             <div class="d-flex event-pill-wrapper"></div>
                                             <h5 class="card-title mt-2 mb-0">${element.name}</h5>
-                                            <p class="card-text"><i class="bi bi-calendar-week"></i> Start-Date: ${element.start_date}</p>
-                                            <p class="text-secondary"><i class="bi bi-geo-alt"></i> $${element.location}</p>
-                                            <p><i class="bi bi-ticket-perforated"></i> Ticket price: $${element.ticket_price}</p>
+                                            <p class="card-text">${element.start_date}</p>
+                                            <p class="text-secondary">${element.location}</p>
+                                            <p>Ticket price: $${element.ticket_price}</p>
                                             <div class="profile d-flex align-items-center">
                                                 <div class="pf-img me-2">
                                                     <img src="${element.creator.avatar}" alt="">
@@ -200,7 +200,7 @@ function loadRecruitCards() {
                                             </div>
                                             <p class="card-text py-3">${element.description}</p>
 
-                                            <p class="location"><i class="bi bi-geo-alt fs-5"></i>  ${element.location}</p>
+                                            <p class="location"><i class="bi bi-geo-alt fs-5 text-brand"></i>  ${element.location}</p>
                                             <div class="d-flex recruit-pill-wrapper"></div>
                                             <div class="profile d-flex align-items-center mt-3">
                                                 <div class="pf-img me-2">
