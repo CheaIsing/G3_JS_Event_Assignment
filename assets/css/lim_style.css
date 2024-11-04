@@ -744,3 +744,20 @@ footer .contact-info .social-media a:hover {
 .vendor-card-wrapper .card-content .duration span{
     font-size: 14px;
 }
+
+/* quillJS */
+.main-form #editor,
+.main-form #agendaEditor{
+    height: 250px;
+    border: 2px solid #ff1694;
+    border-radius: 0 0 10px 10px;
+}
+
+.main-form .ql-toolbar.ql-snow {
+    border: 2px solid #ff1694 !important;
+    border-bottom: none !important;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    padding: 8px;
+    border-radius: 10px 10px 0 0;
+}
