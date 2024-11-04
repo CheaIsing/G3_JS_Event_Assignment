@@ -1,4 +1,4 @@
-import { showToast } from "../ultilities.js";
+// import { showToast } from "../ultilities.js";
 const apiUrl = "https://mps2.chandalen.dev";
 const token =  localStorage.getItem("authToken");
 
@@ -15,6 +15,22 @@ function getMe(searhE='', searchV = '') {
       manageAsOrganizer.getAllVendorRecruitment(apiUrl, json.data.id, searchV);
     });
 }
+
+const formatDate = (dateStr) => {
+  const date = new Date(dateStr);
+
+  const options = {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+
+  return date.toLocaleString("en-US", options).replace(",", " •");
+};
+
 
 function getAllEventCard(apiUrl, id, searchStr = '') {
   let path = `${apiUrl}/api/events?creator=${id}`
@@ -53,6 +69,8 @@ function getAllEventCard(apiUrl, id, searchStr = '') {
               categories = categories.substring(0, categories.length - 2);
             }
 
+            console.log(ele);
+            
             // console.log(json2);
             
             rowsHTML += `<tr class="border-bottom position-relative">
@@ -79,7 +97,7 @@ function getAllEventCard(apiUrl, id, searchStr = '') {
                                                                     <p
                                                                         class="text-muted mb-0">${categories ? categories : "No Categories"}</p>
                                                                     <p
-                                                                        class="text-muted mb-0 small">${ele.start_date} - ${ele.end_date}
+                                                                        class="text-muted mb-0 small">${formatDate(ele.start_date)} - ${formatDate(ele.end_date)}
                                                                         </p>
                                                                 </div>
                                                             </div>
@@ -112,7 +130,7 @@ function getAllEventCard(apiUrl, id, searchStr = '') {
                                                         <div
                                                             class="dropstart position-relative z-3">
                                                             <button
-                                                                class="btn btn-light"
+                                                                class="btn btn-brand"
                                                                 type="button"
                                                                 id="dropdownMenu1"
                                                                 data-bs-toggle="dropdown"
@@ -202,10 +220,6 @@ const manageAsOrganizer = {
                                     ${ele.start_date}
                                   </div>
                                 </div>
-                                <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                  alt="Event Image"
-                                  class="rounded"
-                                  width="150">
                                 <div class="ms-3">
                                   <h5 class="mb-0">
                                     <a href="javascript:void(0)" 

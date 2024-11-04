@@ -1,85 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+const apiUrl = "https://mps2.chandalen.dev";
+const token = localStorage.getItem("authToken");
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Event</title>
-        <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-        <link rel="stylesheet" href="../../assets/css/style.css">
-        <link rel="stylesheet"
-            href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
-        <link rel="stylesheet" href="../../assets/css/organizer.css">
 
-    </head>
+function getMe(searhB='') {
+    fetch(`${apiUrl}/api/me`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json.data.id);
+        getAllBusinessCard(apiUrl, json.data.id, searhB)
+      });
+  }
 
-    <body>
-        <header></header>
-        <main>
-            <div class>
-                <div class="d-flex">
-                    <nav class="shadow sidebar">
-                        <ul>
-                            <li>
-                                <a href="vendor-business.html" class="active">
-                                    <i class="fas fa-menorah"></i>
-                                    <span class="nav-item">Vendor Business</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="group-collaborate.html" >
-                                    <i class="fa-solid fa-user-group"></i>
-                                    <span class="nav-item">Event Group Collaborated</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="profile.html">
-                                    <i class="fa-solid fa-user"></i>
-                                    <span class="nav-item">Vendor Profile</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-
-                    <section class="p-4 w-100">
-                        <div class>
-                            <h2>Vendor Business</h2>
-                        </div>
-                        
-                        <div class="row my-4">
-                            <div class="col-4 col-md-2">
-                                <select class="form-select"
-                                    aria-label="Default select example">
-                                    <option value="1">All</option>
-                                    <option value="2">Upcoming</option>
-                                    <option value="3">Past</option>
-                                </select>
-                            </div>
-                            <div class="col-5 col-md-3">
-                                <div class="input-group mb-3">
-                                    <input type="text"
-                                        class="form-control"
-                                        placeholder="Search">
-                                    <button class="btn btn-primary"
-                                        type="submit">Go</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="my-4">
-                            <table
-                                class="table table-borderless align-middle">
-                                <thead class>
-                                    <tr class="border-bottom">
-                                        <th scope="col">Vendor Business</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- First Event Row -->
-                                    <tr
+function getAllBusinessCard(apiUrl, id, searhB="") {
+    fetch(`${apiUrl}/api/businesses?creator=${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json.data);
+          let rowsHTML = '';
+          json.data.forEach(ele=>{
+            rowsHTML+=`
+             <tr
                                         class="border-bottom position-relative">
                                         <td class>
                                             
@@ -151,19 +99,8 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                    </tr>
-
-                                    <!-- Repeat the structure for the second event -->
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </section>
-                </div>
-            </div>
-        </main>
-        <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-        <script src="../../assets/js/organizer/business.js"></script>
-    </body>
-
-</html>
+                                    </tr>`
+          })
+        });
+}
+getMe()
