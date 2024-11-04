@@ -2,10 +2,8 @@ const apiUrl = "https://mps2.chandalen.dev";
 const token = localStorage.getItem("authToken");
 console.log(token);
 
-function createNewEvent() {
-
+function createRecruit() {
     // Create event form variables
-    let thumbnailFile = document.getElementById('fileUpload').files[0];
     let eventName = document.getElementById('postTitle').value;
     let startDate = document.getElementById('startDate').value;
     let startTime = document.getElementById('startTime').value;
@@ -19,7 +17,6 @@ function createNewEvent() {
     let province = document.getElementById('province').value;
     let country = document.getElementById('country').value;
     let fullAddress = `${address1}, ${address2}, ${province}, ${city}, ${country}`;
-    let descPhoto = document.getElementById('photoUpload').files[0];
     let categoriesSelect = document.getElementById('categorySelect');
     let categoriesList = []
     for (let catOption of categoriesSelect.options) {
@@ -32,15 +29,10 @@ function createNewEvent() {
 
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
     // console.log("Editor Content:", descQuillContent);
-    let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
-    // console.log("Editor Content:", agendaQuillContent);
+    
 
-    let description = `<div class="descQill">${descQuillContent}</div><div class="agendaQill"><h2 class="fw-bold text-brand"><i class="fa-solid fa-calendar-days"></i> Agenda</h2>${agendaQuillContent}</div>`;
+    let description = `${descQuillContent}`;
 
-    // add ticket form variables
-    let ticketQty = document.getElementById('ticketQuantity').value;
-    let ticketPrice = document.getElementById('price').value;
-    let khqrImg = document.getElementById('khqrImg').value;
 
     let eventData = new FormData();
     eventData.append('name', eventName);
@@ -49,16 +41,14 @@ function createNewEvent() {
     eventData.append('end_date', fullEndDate);
     eventData.append('location', fullAddress);
     eventData.append('description', description);
-    eventData.append('ticket_opacity', ticketQty);
-    eventData.append('ticket_price', ticketPrice);
-    eventData.append('event_category_ids', JSON.stringify(categoriesList));
+    eventData.append('vendor_category_ids', JSON.stringify(categoriesList));
 
-    // eventData.forEach((element, key) => {
-    //     console.log(element, key);
+    eventData.forEach((element, key) => {
+        console.log(element, key);
 
-    // })
+    })
 
-    fetch(`${apiUrl}/api/events`, {
+    fetch(`${apiUrl}/api/vendors`, {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -85,10 +75,11 @@ function createNewEvent() {
     //     return response.json();
     // })
     // .catch(error => console.error('Request Failed:', error));
+
 }
 
-// Fetch Event Categories
-fetch(`${apiUrl}/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search`, {
+// Fetch vendor Categories
+fetch(`${apiUrl}/api/vendor-categories`, {
     headers: {
         Authorization: `Bearer ${token}`
     }
@@ -101,6 +92,6 @@ fetch(`${apiUrl}/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=
             let opt = document.createElement('option');
             opt.value = element.id;
             opt.innerHTML = element.name;
-            eventCatSelect.appendChild(opt);            
+            eventCatSelect.appendChild(opt);
         });
     })

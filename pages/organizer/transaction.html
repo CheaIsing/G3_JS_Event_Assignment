@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row gy-3">
+                        <div class="row transaction-row gy-3">
                             <div class="col-12">
                                 <div
                                     class="mt-4 d-flex w-100 align-items-center justify-content-between">
@@ -93,15 +93,17 @@
                                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe9Ybgu-3psgpmfvul2z879e4kMQvSbaw9ItYfnM4R-McgtimDw40Nx7nn8qZIflmD_9E&usqp=CAU"
                                                 alt
                                                 class="object-fit-cover rounded-circle"
-                                                width="75" height="75">
+                                                width="75" height="75"
+                                                id="requester-avarta">
                                         </div>
                                         <div
                                             class>
-                                            <h5 class="mb-0">Jonh
+                                            <h5 class="mb-0" id="requester">Jonh
                                                 Doe</h5>
                                             <div
                                                 class>
-                                                <small>Sat, Nov 23,
+                                                <small id="request-date">Sat,
+                                                    Nov 23,
                                                     2024,
                                                     10:00
                                                     AM</small>
@@ -110,7 +112,8 @@
                                                     <a
                                                         href="#"
                                                         class="text-decoration-none"
-                                                        style="color: inherit;">jonhdoe@gmail.com</a>
+                                                        style="color: inherit;"
+                                                        id="request-email">jonhdoe@gmail.com</a>
                                                 </small></div>
 
                                         </div>
@@ -129,12 +132,15 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <p>Ticket Request Quantity : 2 Tickets</p>
-                                <p>Price per tickets: $10.00</p>
-                                <p>Total: $20.00</p>
+                                <p>Ticket Request Quantity : <span id="amount">2
+                                        Tickets</span></p>
+                                <p>Price per tickets: <span
+                                        id="price-unit">$10.00</span></p>
+                                <p>Total: <span id="total">$20.00</span></p>
                                 <img
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZUxcU22KvvHHOkx0IbCa4mPhl0sWnW5iBkJ4kdBO3Axk4ZM4TmcmN-9w_-D7xdY5ArI4&usqp=CAU"
-                                    class="w-25 border border-2" alt>
+                                    class="w-25 border border-2"
+                                    alt="transaction-img" id="transaction-img">
                             </div>
                         </div>
                     </section>
@@ -153,24 +159,32 @@
                         <button type="button" class="btn-close"
                             data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <div class>
+                    <div class="modal-body" id="modal-disapprove">
+                        <div class="mb-3">
+                            <label for="validationTextarea"
+                                class="form-label">Enter Reasons for Disapproving</label>
                             <textarea class="form-control"
-                                placeholder="Input reason for disapprove"
-                                id="floatingTextarea2" rows="5"></textarea>
+                                id="reason-disapprove"
+                                placeholder="Required example textarea"
+                                required></textarea>
+                            <div class="invalid-feedback" id="textarea-err">
+                                Please enter a message in the textarea.
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             data-bs-dismiss="modal">Close</button>
                         <button type="button"
-                            class="btn btn-primary">Send</button>
+                            class="btn btn-primary btn-disapprove">Send</button>
                     </div>
                 </div>
             </div>
         </div>
 
+        <script src="../../assets/js/ultilities.js"></script>
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../../assets/js/organizer/transaction.js"></script>
     </body>
 
 </html>

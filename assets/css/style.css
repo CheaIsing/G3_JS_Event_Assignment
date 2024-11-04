@@ -146,3 +146,33 @@ header .btn-pink .fa-magnifying-glass{
     color: white !important;
     padding: 0 !important;
 } 
+
+/* Lim code */
+
+.btn-pink {
+    padding: 15px 25px;
+    /* outline: 2px solid var(--c-brand); */
+    background-color: var(--c-brand);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    /* transition: 0.3s; */
+}
+
+.btn-pink:hover {
+    background-color: var(--c-brand-dark);
+    color: white;
+}
+
+.btn-pink:hover p {
+    color: #fff !important;
+}
+
+.btn-pink:hover i {
+    color: #fff !important;
+}
+
+.btn-pink:hover label {
+    color: #fff !important;
+}
+

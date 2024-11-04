@@ -16,6 +16,7 @@
     </head>
 
     <body>
+        
         <header></header>
         <main>
             <div class>
@@ -84,7 +85,7 @@
                                 class="btn btn-brand"
                                 data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
-                                Add Check-in
+                                <small><i class="fa-solid fa-plus me-1"></i></small> Add Check-in
                             </button>
                         </div>
                         <table class="table">
@@ -104,7 +105,7 @@
                                     <td>$20.00</td>
                                     <td>2023-10-01</td>
                                     <td><button type="button"
-                                            class="btn btn-danger">Delete</button></td>
+                                            class="btn btn-danger rounded-circle"><i class="fa-regular fa-trash-can"></i></button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -120,32 +121,33 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5"
-                            id="exampleModalLabel">Add Check-in</h1>
+                            id="exampleModalLabel">Check-in Ticket</h1>
                         <button type="button" class="btn-close"
                             data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="mb-3">
+                        <div class="">
                             <label for="exampleInputEmail1"
                                 class="form-label">Input Ticket Id:</label>
                             <input type="text" class="form-control"
                                 id="check-in-input"
                                 aria-describedby="emailHelp">
                         </div>
+                        
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">Close</button>
+                    <div class="modal-footer border-0 pt-0">
+                        
                         <button type="button"
-                            class="btn btn-primary" id="btn-checked-in">Send</button>
+                            class="btn btn-brand w-100" id="btn-checked-in">Send</button>
                     </div>
                 </div>
             </div>
         </div>
         
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-        <script type="module" src="../../assets/js/authentication.js"></script>
-        <script type="module" src="../../assets/js/organizer/check-in.js"></script>
+        <!-- <script type="module" src="../../assets/js/authentication.js"></script> -->
+         <script src="../../assets/js/ultilities.js"></script>
+        <script type="module" src="../../assets/js/organizer/check-in-detail.js"></script>
     </body>
 
 </html>

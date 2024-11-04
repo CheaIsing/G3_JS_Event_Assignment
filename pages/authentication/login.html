@@ -206,7 +206,7 @@
                   placeholder="New password">
                   <i
                   class="bi bi-eye toggle-password text-brand position-absolute"
-                  onclick="togglePassword('newPassword')"
+                  
                   style="right: 25px; top: 39%; transform: translateY(-50%); cursor: pointer;"></i>
                   <label for="newPassword" class="form-label">New
                     password</label>
@@ -223,7 +223,7 @@
                     id="confirmPassword" placeholder="Confirm password">
                   <i
                     class="bi bi-eye toggle-password text-brand position-absolute"
-                    onclick="togglePassword('confirmPassword')"
+                    onclick=""
                     style="right: 25px; top: 65%;cursor: pointer;"></i>
                     <label for="confirmPassword" class="form-label">Confirm
                       password</label>
@@ -517,65 +517,62 @@ if (document.getElementById("changePasswordSubmitBtn")) {
     const email = document.getElementById("forgot-pass-email").value;
     let isvalid = true;
 
-    if(!validatePassword(newPass)){
-      document.getElementById('newPassword').classList.add('is-invalid');
-      document.getElementById('new-password-error').style.display = "block"
-      isvalid = false
-    }
-    else{
-      document.getElementById('newPassword').classList.remove('is-invalid');
-      document.getElementById('new-password-error').style.display = "none"
-      isvalid = true
+
+    // Validate New Password
+    if (!validatePassword(newPass)) {
+      document.getElementById("newPassword").classList.add("is-invalid");
+      document.getElementById("new-password-error").style.display = "block";
+      isvalid = false;
+    } else {
+      document.getElementById("newPassword").classList.remove("is-invalid");
+      document.getElementById("new-password-error").style.display = "none";
     }
 
-    if(newPass != confirmPass){
-      document.getElementById('confirmPassword').classList.add('is-invalid');
-      document.getElementById('confirm-password-error').style.display = "block"
-      isvalid = false
-    }
-    else{
-      document.getElementById('confirmPassword').classList.remove('is-invalid');
-      document.getElementById('confirm-password-error').style.display = "none"
-      isvalid = true
+    // Validate Confirm Password Match
+    if (newPass !== confirmPass) {
+      document.getElementById("confirmPassword").classList.add("is-invalid");
+      document.getElementById("confirm-password-error").style.display = "block";
+      isvalid = false;
+    } else {
+      document.getElementById("confirmPassword").classList.remove("is-invalid");
+      document.getElementById("confirm-password-error").style.display = "none";
     }
 
-    if(isvalid == true){
+    // Proceed only if all validations pass
+    if (isvalid) {
       fetch(`${API_URL}/api/reset/pass`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        otp: otpCode,
-        email: email,
-        new_pass: newPass,
-        new_pass_confirmation: confirmPass,
-      }),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.result === true) {
-          // Close the Change Password modal
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          otp: otpCode,
+          email: email,
+          new_pass: newPass,
+          new_pass_confirmation: confirmPass,
+        }),
+      })
+        .then((res) => res.json())
+        .then((json) => {
           const changePassModalInstance = bootstrap.Modal.getInstance(
             document.getElementById("changePasswordModal")
           );
-          changePassModalInstance.hide();
-          // alert('Password changed successfully!');
-          showToast(json.message, json.result);
-        } else {
-          // alert('Password change failed. Please try again.');
-          showToast("Password change failed. Please try again.", false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        showToast("An error occurred while changing the password.", false);
-      });
+          if (json.result === true) {
+            changePassModalInstance.hide();
+            showToast(json.message, json.result);
+          } else {
+            showToast("Password change failed. Please try again.", false);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          showToast("An error occurred while changing the password.", false);
+        });
     }
   };
 }
-      // Resend OTP (placeholder functionality)
+    // Resend OTP (placeholder functionality)
       function resendOtp() {
         alert("OTP resent!");
       }

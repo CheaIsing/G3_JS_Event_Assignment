@@ -5,32 +5,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create an Event</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <link rel="stylesheet" href="../assets/lib/bootstrap-icon/bootstrap-icons.css" />
-    <link rel="stylesheet" href="../assets/css/lim_style.css" />
+    <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../../assets/css/lim_style.css" />
+    <!-- quillJs -->
+    <link rel="stylesheet" href="../../assets/lib/QuilJs/quill.snow.css">
+
 </head>
 
 <body>
     <header></header>
-    <main>
+    <main>      
         <div class="d-flex">
             <nav class="shadow sidebar">
                 <ul>
                     <li>
-                        <a href="#" class="active">
+                        <a href="event.html" class="active">
                             <i class="fas fa-menorah"></i>
                             <span class="nav-item">Event</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="request-ticket.html">
                             <i class="fa-solid fa-ticket"></i>
                             <span class="nav-item">Request Ticket</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="check-in-ticket.html">
                             <i class="fa-solid fa-qrcode"></i>
                             <span class="nav-item">Check-in
                                 Ticket</span>
@@ -65,15 +68,15 @@
                         </div>
                         <form action="" class="px-5">
                             <h2>Create an Event</h2>
-                            <div class="sub-form-wrapper p-4 border rounded-4 mt-4 ">
-                                <div class="form-display upload-cover ">
+                            <div class="sub-form-wrapper active p-4 border rounded-4 mt-4 ">
+                                <div class="form-display active upload-cover ">
                                     <h1 class="fw-bold">Upload an image as your cover</h1>
-                                    <img class="icon-img" src="/assets/lim_img/icon/plus.png" alt="">
+                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
                                 </div>
-                                <div class="main-form upload-img-form">
+                                <div class="main-form active upload-img-form">
                                     <h4 class="fw-bold pb-3">Add your image</h4>
                                     <div class="d-flex align-items-center mb-3">
-                                        <img class="tip-icon" src="/assets/lim_img/icon/bulb.png" alt="">
+                                        <img class="tip-icon" src="../../assets/lim_img/icon/bulb.png" alt="">
                                         <p class="p-0 m-0"><span class="fw-bold">Tip:</span> Use photo that attracts
                                             viewers.</p>
                                     </div>
@@ -86,7 +89,8 @@
                                         <input class="d-none" id="fileUpload" type="file"></input>
                                         <div class="d-flex">
                                             <p id="fileName" class="text-secondary pt-3">No file chosen</p>
-                                            <button id="btnRemoveImgFile" type="button" class="ms-1 text-secondary fw-bold">X</button>
+                                            <button id="btnRemoveImgFile" type="button"
+                                                class="ms-1 text-secondary fw-bold">X</button>
                                         </div>
                                         <img id="imageDisplay" src="" alt="img preview">
 
@@ -107,43 +111,30 @@
                                         <h1 class="fw-bold">Event Title</h1>
                                         <p>Give an attractive brief paragraph about your event.</p>
                                     </div>
-                                    <img class="icon-img" src="/assets/lim_img/icon/plus.png" alt="">
+                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
                                 </div>
                                 <div class="main-form">
                                     <h4 class="fw-bold pb-3">Event Overview</h4>
                                     <h5>Event Title*</h5>
                                     <div class="form-floating mb-5">
-                                        <input type="text" class="form-control customized-form" id="" placeholder="">
+                                        <input type="text" class="form-control customized-form" id="postTitle"
+                                            placeholder="">
                                         <label for="floatingInput">Event title <span
                                                 class="text-danger">*</span></label>
                                     </div>
-                                    <h5>Brief Detail</h5>
-                                    <p>Grab people's attention with a short decription about your event</p>
-                                    <div class="form-floating mb-5">
-                                        <input type="email" class="form-control customized-form" id="" placeholder="">
-                                        <label for="floatingInput">Briefly Detail </label>
-                                    </div>
+
                                     <div class="category-select d-flex">
                                         <div class="w-25 me-5">
                                             <h5>Event Categories*</h5>
                                             <select class="form-select customized-form"
-                                                aria-label="Default select example">
-                                                <option selected>Select a category</option>
+                                                aria-label="Default select example" multiple id="categorySelect">
+                                                <!-- <option selected>Select a category</option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option value="3">Three</option> -->
                                             </select>
                                         </div>
-                                        <div class="w-25">
-                                            <h5>Event Type*</h5>
-                                            <select class="form-select customized-form"
-                                                aria-label="Default select example">
-                                                <option selected>Select a type</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -152,24 +143,32 @@
                                     <div class="title">
                                         <h1 class="fw-bold">Date and Location</h1>
                                     </div>
-                                    <img class="icon-img" src="../assets/lim_img/icon/plus.png" alt="">
+                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
                                 </div>
                                 <div class="main-form">
                                     <h4 class="fw-bold pb-3">Date and Location</h4>
                                     <h5>Date and time*</h5>
                                     <div class="datetime d-flex">
-                                        <div class="form-floating mb-3 w-50 me-5">
-                                            <input type="date" class="form-control customized-form" id=""
+                                        <div class="form-floating mb-3 w-25 me-5">
+                                            <input type="date" class="form-control customized-form" id="startDate"
                                                 placeholder="">
-                                            <label for="floatingInput">Date </label>
+                                            <label for="floatingInput">Start Date </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
-                                            <input type="time" class="form-control customized-form" id=""
+                                            <input type="time" class="form-control customized-form" id="startTime"
                                                 placeholder="">
                                             <label for="floatingInput">Start Time </label>
                                         </div>
+
+                                    </div>
+                                    <div class="datetime d-flex mb-4">
+                                        <div class="form-floating mb-3 w-25 me-5">
+                                            <input type="date" class="form-control customized-form" id="endDate"
+                                                placeholder="">
+                                            <label for="floatingInput">End Date </label>
+                                        </div>
                                         <div class="form-floating mb-3 me-5">
-                                            <input type="time" class="form-control customized-form" id=""
+                                            <input type="time" class="form-control customized-form" id="endTime"
                                                 placeholder="">
                                             <label for="floatingInput">End Time </label>
                                         </div>
@@ -177,28 +176,293 @@
                                     <h5>Location*</h5>
                                     <div class="location-info d-flex flex-wrap">
                                         <div class="form-floating mb-3 me-5">
-                                            <input type="text" class="form-control customized-form" id=""
+                                            <input type="text" class="form-control customized-form" id="address1"
                                                 placeholder="">
                                             <label for="floatingInput">Address 1 </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
-                                            <input type="text" class="form-control customized-form" id=""
+                                            <input type="text" class="form-control customized-form" id="address2"
                                                 placeholder="">
                                             <label for="floatingInput">Address 2 </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
-                                            <input type="text" class="form-control customized-form" id=""
+                                            <input type="text" class="form-control customized-form" id="city"
                                                 placeholder="">
                                             <label for="floatingInput">City </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
-                                            <input type="text" class="form-control customized-form" id=""
+                                            <input type="text" class="form-control customized-form" id="province"
                                                 placeholder="">
                                             <label for="floatingInput">State/Province </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
-                                            <input type="text" class="form-control customized-form" id=""
+                                            <select id="country" name="country" class="form-control customized-form"
                                                 placeholder="">
+                                                <option value="Afghanistan">Afghanistan</option>
+                                                <option value="Åland Islands">Åland Islands</option>
+                                                <option value="Albania">Albania</option>
+                                                <option value="Algeria">Algeria</option>
+                                                <option value="American Samoa">American Samoa</option>
+                                                <option value="Andorra">Andorra</option>
+                                                <option value="Angola">Angola</option>
+                                                <option value="Anguilla">Anguilla</option>
+                                                <option value="Antarctica">Antarctica</option>
+                                                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                                <option value="Argentina">Argentina</option>
+                                                <option value="Armenia">Armenia</option>
+                                                <option value="Aruba">Aruba</option>
+                                                <option value="Australia">Australia</option>
+                                                <option value="Austria">Austria</option>
+                                                <option value="Azerbaijan">Azerbaijan</option>
+                                                <option value="Bahamas">Bahamas</option>
+                                                <option value="Bahrain">Bahrain</option>
+                                                <option value="Bangladesh">Bangladesh</option>
+                                                <option value="Barbados">Barbados</option>
+                                                <option value="Belarus">Belarus</option>
+                                                <option value="Belgium">Belgium</option>
+                                                <option value="Belize">Belize</option>
+                                                <option value="Benin">Benin</option>
+                                                <option value="Bermuda">Bermuda</option>
+                                                <option value="Bhutan">Bhutan</option>
+                                                <option value="Bolivia">Bolivia</option>
+                                                <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                                <option value="Botswana">Botswana</option>
+                                                <option value="Bouvet Island">Bouvet Island</option>
+                                                <option value="Brazil">Brazil</option>
+                                                <option value="British Indian Ocean Territory">British Indian Ocean
+                                                    Territory</option>
+                                                <option value="Brunei Darussalam">Brunei Darussalam</option>
+                                                <option value="Bulgaria">Bulgaria</option>
+                                                <option value="Burkina Faso">Burkina Faso</option>
+                                                <option value="Burundi">Burundi</option>
+                                                <option value="Cambodia" selected>Cambodia</option>
+                                                <option value="Cameroon">Cameroon</option>
+                                                <option value="Canada">Canada</option>
+                                                <option value="Cape Verde">Cape Verde</option>
+                                                <option value="Cayman Islands">Cayman Islands</option>
+                                                <option value="Central African Republic">Central African Republic
+                                                </option>
+                                                <option value="Chad">Chad</option>
+                                                <option value="Chile">Chile</option>
+                                                <option value="China">China</option>
+                                                <option value="Christmas Island">Christmas Island</option>
+                                                <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                                                <option value="Colombia">Colombia</option>
+                                                <option value="Comoros">Comoros</option>
+                                                <option value="Congo">Congo</option>
+                                                <option value="Congo, The Democratic Republic of The">Congo, The
+                                                    Democratic Republic of The</option>
+                                                <option value="Cook Islands">Cook Islands</option>
+                                                <option value="Costa Rica">Costa Rica</option>
+                                                <option value="Cote D'ivoire">Cote D'ivoire</option>
+                                                <option value="Croatia">Croatia</option>
+                                                <option value="Cuba">Cuba</option>
+                                                <option value="Cyprus">Cyprus</option>
+                                                <option value="Czech Republic">Czech Republic</option>
+                                                <option value="Denmark">Denmark</option>
+                                                <option value="Djibouti">Djibouti</option>
+                                                <option value="Dominica">Dominica</option>
+                                                <option value="Dominican Republic">Dominican Republic</option>
+                                                <option value="Ecuador">Ecuador</option>
+                                                <option value="Egypt">Egypt</option>
+                                                <option value="El Salvador">El Salvador</option>
+                                                <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                                <option value="Eritrea">Eritrea</option>
+                                                <option value="Estonia">Estonia</option>
+                                                <option value="Ethiopia">Ethiopia</option>
+                                                <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)
+                                                </option>
+                                                <option value="Faroe Islands">Faroe Islands</option>
+                                                <option value="Fiji">Fiji</option>
+                                                <option value="Finland">Finland</option>
+                                                <option value="France">France</option>
+                                                <option value="French Guiana">French Guiana</option>
+                                                <option value="French Polynesia">French Polynesia</option>
+                                                <option value="French Southern Territories">French Southern Territories
+                                                </option>
+                                                <option value="Gabon">Gabon</option>
+                                                <option value="Gambia">Gambia</option>
+                                                <option value="Georgia">Georgia</option>
+                                                <option value="Germany">Germany</option>
+                                                <option value="Ghana">Ghana</option>
+                                                <option value="Gibraltar">Gibraltar</option>
+                                                <option value="Greece">Greece</option>
+                                                <option value="Greenland">Greenland</option>
+                                                <option value="Grenada">Grenada</option>
+                                                <option value="Guadeloupe">Guadeloupe</option>
+                                                <option value="Guam">Guam</option>
+                                                <option value="Guatemala">Guatemala</option>
+                                                <option value="Guernsey">Guernsey</option>
+                                                <option value="Guinea">Guinea</option>
+                                                <option value="Guinea-bissau">Guinea-bissau</option>
+                                                <option value="Guyana">Guyana</option>
+                                                <option value="Haiti">Haiti</option>
+                                                <option value="Heard Island and Mcdonald Islands">Heard Island and
+                                                    Mcdonald Islands</option>
+                                                <option value="Holy See (Vatican City State)">Holy See (Vatican City
+                                                    State)</option>
+                                                <option value="Honduras">Honduras</option>
+                                                <option value="Hong Kong">Hong Kong</option>
+                                                <option value="Hungary">Hungary</option>
+                                                <option value="Iceland">Iceland</option>
+                                                <option value="India">India</option>
+                                                <option value="Indonesia">Indonesia</option>
+                                                <option value="Iran, Islamic Republic of">Iran, Islamic Republic of
+                                                </option>
+                                                <option value="Iraq">Iraq</option>
+                                                <option value="Ireland">Ireland</option>
+                                                <option value="Isle of Man">Isle of Man</option>
+                                                <option value="Israel">Israel</option>
+                                                <option value="Italy">Italy</option>
+                                                <option value="Jamaica">Jamaica</option>
+                                                <option value="Japan">Japan</option>
+                                                <option value="Jersey">Jersey</option>
+                                                <option value="Jordan">Jordan</option>
+                                                <option value="Kazakhstan">Kazakhstan</option>
+                                                <option value="Kenya">Kenya</option>
+                                                <option value="Kiribati">Kiribati</option>
+                                                <option value="Korea, Democratic People's Republic of">Korea, Democratic
+                                                    People's Republic of</option>
+                                                <option value="Korea, Republic of">Korea, Republic of</option>
+                                                <option value="Kuwait">Kuwait</option>
+                                                <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                                <option value="Lao People's Democratic Republic">Lao People's Democratic
+                                                    Republic</option>
+                                                <option value="Latvia">Latvia</option>
+                                                <option value="Lebanon">Lebanon</option>
+                                                <option value="Lesotho">Lesotho</option>
+                                                <option value="Liberia">Liberia</option>
+                                                <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                                                <option value="Liechtenstein">Liechtenstein</option>
+                                                <option value="Lithuania">Lithuania</option>
+                                                <option value="Luxembourg">Luxembourg</option>
+                                                <option value="Macao">Macao</option>
+                                                <option value="Macedonia, The Former Yugoslav Republic of">Macedonia,
+                                                    The Former Yugoslav Republic of</option>
+                                                <option value="Madagascar">Madagascar</option>
+                                                <option value="Malawi">Malawi</option>
+                                                <option value="Malaysia">Malaysia</option>
+                                                <option value="Maldives">Maldives</option>
+                                                <option value="Mali">Mali</option>
+                                                <option value="Malta">Malta</option>
+                                                <option value="Marshall Islands">Marshall Islands</option>
+                                                <option value="Martinique">Martinique</option>
+                                                <option value="Mauritania">Mauritania</option>
+                                                <option value="Mauritius">Mauritius</option>
+                                                <option value="Mayotte">Mayotte</option>
+                                                <option value="Mexico">Mexico</option>
+                                                <option value="Micronesia, Federated States of">Micronesia, Federated
+                                                    States of</option>
+                                                <option value="Moldova, Republic of">Moldova, Republic of</option>
+                                                <option value="Monaco">Monaco</option>
+                                                <option value="Mongolia">Mongolia</option>
+                                                <option value="Montenegro">Montenegro</option>
+                                                <option value="Montserrat">Montserrat</option>
+                                                <option value="Morocco">Morocco</option>
+                                                <option value="Mozambique">Mozambique</option>
+                                                <option value="Myanmar">Myanmar</option>
+                                                <option value="Namibia">Namibia</option>
+                                                <option value="Nauru">Nauru</option>
+                                                <option value="Nepal">Nepal</option>
+                                                <option value="Netherlands">Netherlands</option>
+                                                <option value="Netherlands Antilles">Netherlands Antilles</option>
+                                                <option value="New Caledonia">New Caledonia</option>
+                                                <option value="New Zealand">New Zealand</option>
+                                                <option value="Nicaragua">Nicaragua</option>
+                                                <option value="Niger">Niger</option>
+                                                <option value="Nigeria">Nigeria</option>
+                                                <option value="Niue">Niue</option>
+                                                <option value="Norfolk Island">Norfolk Island</option>
+                                                <option value="Northern Mariana Islands">Northern Mariana Islands
+                                                </option>
+                                                <option value="Norway">Norway</option>
+                                                <option value="Oman">Oman</option>
+                                                <option value="Pakistan">Pakistan</option>
+                                                <option value="Palau">Palau</option>
+                                                <option value="Palestinian Territory, Occupied">Palestinian Territory,
+                                                    Occupied</option>
+                                                <option value="Panama">Panama</option>
+                                                <option value="Papua New Guinea">Papua New Guinea</option>
+                                                <option value="Paraguay">Paraguay</option>
+                                                <option value="Peru">Peru</option>
+                                                <option value="Philippines">Philippines</option>
+                                                <option value="Pitcairn">Pitcairn</option>
+                                                <option value="Poland">Poland</option>
+                                                <option value="Portugal">Portugal</option>
+                                                <option value="Puerto Rico">Puerto Rico</option>
+                                                <option value="Qatar">Qatar</option>
+                                                <option value="Reunion">Reunion</option>
+                                                <option value="Romania">Romania</option>
+                                                <option value="Russian Federation">Russian Federation</option>
+                                                <option value="Rwanda">Rwanda</option>
+                                                <option value="Saint Helena">Saint Helena</option>
+                                                <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                                <option value="Saint Lucia">Saint Lucia</option>
+                                                <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon
+                                                </option>
+                                                <option value="Saint Vincent and The Grenadines">Saint Vincent and The
+                                                    Grenadines</option>
+                                                <option value="Samoa">Samoa</option>
+                                                <option value="San Marino">San Marino</option>
+                                                <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                                                <option value="Saudi Arabia">Saudi Arabia</option>
+                                                <option value="Senegal">Senegal</option>
+                                                <option value="Serbia">Serbia</option>
+                                                <option value="Seychelles">Seychelles</option>
+                                                <option value="Sierra Leone">Sierra Leone</option>
+                                                <option value="Singapore">Singapore</option>
+                                                <option value="Slovakia">Slovakia</option>
+                                                <option value="Slovenia">Slovenia</option>
+                                                <option value="Solomon Islands">Solomon Islands</option>
+                                                <option value="Somalia">Somalia</option>
+                                                <option value="South Africa">South Africa</option>
+                                                <option value="South Georgia and The South Sandwich Islands">South
+                                                    Georgia and The South Sandwich Islands</option>
+                                                <option value="Spain">Spain</option>
+                                                <option value="Sri Lanka">Sri Lanka</option>
+                                                <option value="Sudan">Sudan</option>
+                                                <option value="Suriname">Suriname</option>
+                                                <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                                                <option value="Swaziland">Swaziland</option>
+                                                <option value="Sweden">Sweden</option>
+                                                <option value="Switzerland">Switzerland</option>
+                                                <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                                                <option value="Taiwan">Taiwan</option>
+                                                <option value="Tajikistan">Tajikistan</option>
+                                                <option value="Tanzania, United Republic of">Tanzania, United Republic
+                                                    of</option>
+                                                <option value="Thailand">Thailand</option>
+                                                <option value="Timor-leste">Timor-leste</option>
+                                                <option value="Togo">Togo</option>
+                                                <option value="Tokelau">Tokelau</option>
+                                                <option value="Tonga">Tonga</option>
+                                                <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                                                <option value="Tunisia">Tunisia</option>
+                                                <option value="Turkey">Turkey</option>
+                                                <option value="Turkmenistan">Turkmenistan</option>
+                                                <option value="Turks and Caicos Islands">Turks and Caicos Islands
+                                                </option>
+                                                <option value="Tuvalu">Tuvalu</option>
+                                                <option value="Uganda">Uganda</option>
+                                                <option value="Ukraine">Ukraine</option>
+                                                <option value="United Arab Emirates">United Arab Emirates</option>
+                                                <option value="United Kingdom">United Kingdom</option>
+                                                <option value="United States">United States</option>
+                                                <option value="United States Minor Outlying Islands">United States Minor
+                                                    Outlying Islands</option>
+                                                <option value="Uruguay">Uruguay</option>
+                                                <option value="Uzbekistan">Uzbekistan</option>
+                                                <option value="Vanuatu">Vanuatu</option>
+                                                <option value="Venezuela">Venezuela</option>
+                                                <option value="Viet Nam">Viet Nam</option>
+                                                <option value="Virgin Islands, British">Virgin Islands, British</option>
+                                                <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+                                                <option value="Wallis and Futuna">Wallis and Futuna</option>
+                                                <option value="Western Sahara">Western Sahara</option>
+                                                <option value="Yemen">Yemen</option>
+                                                <option value="Zambia">Zambia</option>
+                                                <option value="Zimbabwe">Zimbabwe</option>
+                                            </select>
                                             <label for="floatingInput">Country</label>
                                         </div>
                                     </div>
@@ -209,19 +473,22 @@
                                     <div class="title">
                                         <h1 class="fw-bold">Add full description</h1>
                                     </div>
-                                    <img class="icon-img" src="../assets/lim_img/icon/plus.png" alt="">
+                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
                                 </div>
                                 <div class="main-form">
                                     <h4 class="fw-bold pb-3">Description</h4>
-                                    <h5>Add full description about your business</h5>
-                                    <div class="form-floating mb-5">
-                                        <textarea name="" class="form-control customized-form" id="" placeholder=""
-                                            style="height: 150px !important;"></textarea>
-                                        <label for="floatingInput">Your description</label>
+                                    <h5>Add full description about your event</h5>
+                                    <div class="description mt-3 mb-5">
+                                        <div id="editor"></div>
+                                    </div>
+                                    <h5>Add full <span class="text-brand fw-bold">agenda</span> of your event</h5>
+                                    <div class="description mt-3 mb-5">
+                                        <div id="agendaEditor"></div>
                                     </div>
                                     <div class="upload-img-form">
                                         <h4 class="fw-bold pb-3">Add your image</h4>
-                                        <div class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
+                                        <div
+                                            class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
                                             <i id="photoIcon" class="fa-regular fa-image fs-1 text-secondary pb-3"></i>
                                             <label id="photoInputBtn" for="photoUpload" class="btn-outline-pink"><i
                                                     class="fa-regular fa-image fs-5 text-secondary"></i> Upload
@@ -229,10 +496,11 @@
                                             <input class="d-none" id="photoUpload" type="file"></input>
                                             <div class="d-flex">
                                                 <p id="photoName" class="text-secondary pt-3">No file chosen</p>
-                                                <button id="btnRemoveImg" type="button" class="ms-1 text-secondary fw-bold">X</button>
+                                                <button id="btnRemoveImg" type="button"
+                                                    class="ms-1 text-secondary fw-bold">X</button>
                                             </div>
                                             <img id="photoDisplay" src="" alt="img preview">
-    
+
                                         </div>
                                         <div class="img-format pt-3 w-100">
                                             <ul type="circle" class="d-flex justify-content-evenly">
@@ -244,20 +512,85 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-end my-5">
-                                <button class="btn-pink">Add Ticket</button>
+                            <div class="sub-form-wrapper p-4 border rounded-4 mt-4 ">
+                                <div class="form-display">
+                                    <div class="title">
+                                        <h1 class="fw-bold">Add Ticket</h1>
+                                    </div>
+                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
+                                </div>
+                                <div class="main-form">
+                                    <h4 class="fw-bold pb-3">Set up your event E-tickets</h4>
+
+                                    <h5>Ticket Quantity*</h5>
+                                    <div class="form-floating mb-5">
+                                        <input type="number" class="form-control customized-form" id="ticketQuantity"
+                                            placeholder="">
+                                        <label for="floatingInput">Ticket Quantity <span
+                                                class="text-danger">*</span></label>
+                                    </div>
+
+                                    <h5>Ticket Price*</h5>
+                                    <div class="form-floating mb-5">
+                                        <input type="text" class="form-control customized-form" id="price"
+                                            placeholder="">
+                                        <label for="floatingInput">$ </label>
+                                    </div>
+                                    <h5 class="fw-bold mb-3">Payment Method*</h5>
+                                    <div class="upload-img-form mb-5">
+                                        <h5>Add your KHQR image*</h5>
+
+                                        <div
+                                            class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
+                                            <i id="imgIcon" class="fa-regular fa-image fs-1 text-secondary pb-3"></i>
+                                            <label id="imgInputBtn" for="khqrImg" class="btn-outline-pink"><i
+                                                    class="fa-solid fa-qrcode fs-5 text-secondary"></i> Upload KHQR
+                                                Image</label>
+                                            <input class="d-none" id="khqrImg" type="file"></input>
+                                            <div class="d-flex">
+                                                <p id="fileName" class="text-secondary pt-3">No file chosen</p>
+                                                <button id="btnRemoveImgFile" type="button"
+                                                    class="ms-1 text-secondary fw-bold">X</button>
+                                            </div>
+                                            <img id="imageDisplay" src="" alt="img preview">
+
+                                        </div>
+                                        <div class="img-format pt-3 w-100">
+                                            <ul type="circle" class="d-flex justify-content-evenly">
+                                                <li>Recommended image size: 2160 x 1080px</li>
+                                                <li>Maximum file size: 10MB</li>
+                                                <li>Supported image files: .JPEG, .PNG</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
+                            <div class="d-flex justify-content-end my-5">
+                                <button class="btn-pink" onclick="createNewEvent()" type="button">Upload</button>
+                            </div>
+
                         </form>
                     </div>
                 </section>
-
+                
             </div>
         </div>
     </main>
-    <script src="../assets/js/authentication.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/lim_main.js"></script>
-    <script src="../assets/js/image_file_input.js"></script>
+    <!-- quillJS -->
+    <script src="../../assets/lib/QuilJs/quill.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.descQuill = new Quill('#editor', { theme: 'snow' });
+            window.agendaQuill = new Quill('#agendaEditor', { theme: 'snow' });
+        });
+    </script>
+    <script type="module" src="../../assets/js/authentication.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/image_file_input.js"></script>
+    <script src="../../assets/js/organizer/create_event.js"></script>
+    <script src="../../assets/js/form_collapse.js"></script>
 
 </body>
 
