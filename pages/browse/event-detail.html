@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/browse.css">
+    <link rel="stylesheet" href="../../assets/css/card_style.css">
+    <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
 </head>
 
 <body class="p-eventDetail">
@@ -26,8 +27,8 @@
         <section class="hero mb-5 ">
              <div class="container p-4 px-5 text-center bg-white">
                 <div class="content text-center" >
-                    <p class="text-brand-dark p-0 fs-18" id="ev-date">December 25, 2020</p>
-                    <h1 class="display-6 fw-bold card-title" id="ev-title">Annual Charity Gala Annual Charity Gala Annual Charity</h1>
+                    <p class="text-brand-dark p-0 fs-18" id="ev-date"></p>
+                    <h1 class="display-6 fw-bold card-title" id="ev-title"></h1>
                     <p class="px-4 text-secondary mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus beatae rem harum doloremque eius quis quia dolorem recusandae optio, pariatur iure alias voluptatibus eaque quibusdam, illo, laborum deleniti? Nesciunt?</p>
                 </div>
              </div>
@@ -40,16 +41,7 @@
                             <div class="mb-3" style="height: 400px;">
                                 <img id="ev-img" src="../../assets/img/test-img/cta-event-search-banner.avif" alt="" class="object-fit-cover w-100 h-100">
                             </div>
-                            <div class="mb-3 p-3" id="description">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                            </div>
+                            <div class="mb-3 p-3" id="ev-description"></div>
                         </div>
                     </div>
                     <div class="col-4 m-0 p-0 ">
@@ -68,28 +60,28 @@
                                         <i class="fa-regular fa-calendar-check fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Start Date</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-startDate">15 October ,2022</p>
+                                            <p class="m-0 text-body-secondary" id="ev-startDate"></p>
                                         </div>
                                     </li>                                
                                     <li class="d-flex py-3">
                                         <i class="fa-regular fa-calendar-xmark fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">End Date</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-endDate">15 October ,2022</p>
+                                            <p class="m-0 text-body-secondary" id="ev-endDate"></p>
                                         </div>
                                     </li>
                                     <li class="d-flex py-3">
                                         <i class="fa-regular fa-circle-check fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Status</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-status">Upcoming</p>
+                                            <p class="m-0 text-body-secondary" id="ev-status"></p>
                                         </div>
                                     </li>                                
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Location</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-location">AEon,PhnomPenh</p>
+                                            <p class="m-0 text-body-secondary" id="ev-location"></p>
                                         </div>
                                     </li>                                
                                     <!-- <li class="d-flex py-3">
@@ -103,37 +95,37 @@
                                         <i class="fa-regular fa-folder-open fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Catagory</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-catagory">Music</p>
+                                            <p class="m-0 text-body-secondary" id="ev-catagory"></p>
                                         </div>
                                     </li>                                
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-tag fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Price</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-price">Free</p>
+                                            <p class="m-0 text-body-secondary" id="ev-price"></p>
                                         </div>
                                     </li>                              
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-ticket fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Ticket Opacity</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-ticket-op">200</p>
+                                            <p class="m-0 text-body-secondary" id="ev-ticket-op"></p>
                                         </div>
                                     </li>                              
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-ticket fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Remaining Tickets</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-ticket-remain">10</p>
+                                            <p class="m-0 text-body-secondary" id="ev-ticket-remain"></p>
                                         </div>
                                     </li>                              
                                 </ul>
                             </div>
                             <div class=" bg-white shadow-light mb-4 py-3 px-4">
                                 <h4 class="fw-semibold mb-3">Organized By</h4>
-                                <div class="d-flex " id="ev-organizer">
-                                    <img src="../../assets/img/3607424.jpg" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
-                                    <a href=""  class=" fs-4 fw-semibold m-0 ms-3"> hello world hellllo</a>
+                                <div class="d-flex align-items-center" >
+                                    <img src="../../assets/img/3607424.jpg" id="ev-org-pf" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+                                    <a href="javascript: void(0)"  class=" fs-4 fw-semibold m-0 ms-3" id="ev-org-name" onclick="viewOrgDetail(this)"></a>
                                     </div>
                                 </div>
                             </div>
@@ -141,9 +133,10 @@
                                 <div class="bg-white p-3 ">
                                     <div class="mb-3 d-flex justify-content-between align-items-center">
                                         <h3 class="m-0">Price</h3>
-                                        <p class="m-0"><span class="fs-5 fw-semibold" id="ev-price">10$</span> / Ticket</p>
+                                        <p class="m-0"><span class="fs-5 fw-semibold text-brand" id="ev-price1">10$</span> / Ticket</p>
                                     </div>
-                                    <button class="w-100 btn btn-brand">Purchase</button>
+                                    <button class="w-100 btn btn-brand" data-bs-target="#paymentModal"
+                                    data-bs-toggle="modal">Purchase</button>
                                 </div>
                             </div>
                         </div>
@@ -160,7 +153,11 @@
                     </p>
                     <span class="text-secondary ">You might also love these events.</span>
                 </div>
-                <div class="row">
+                <div class="row event-card-wrapper" id="related-events">
+                    
+                    
+                </div>        
+                <!-- <div class="row">
                     <div class="col-4">
                         <div class="card shadow border-0 position-relative">
                             <a href="">
@@ -227,7 +224,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         
@@ -236,23 +233,146 @@
         footer
     </footer>
 
+    <!-- Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-between">
+                    <h5 class="modal-title" id="paymentModalLabel">Ticket Payment</h5>
+                    <button type="button" class="btn btn-lg" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fs-2">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>QR Code Payment</h5>
+                    <div class="text-center mb-3">
+                        <img src="https://via.placeholder.com/150" alt="QR Code" class="img-fluid">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ticketCount">Tickets</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="decrement">-</span>
+                            </div>
+                            <input type="number" class="form-control text-center" id="ticketCount" value="1"
+                                aria-label="Ticket count">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="increment">+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Amount</h6>
+                            <p id="ticketAmount">$40.00</p>
+                        </div>
+                        <div class="col">
+                            <h6>Price</h6>
+                            <p id="price">$10.00</p>
+                        </div>
+                        <div class="col">
+                            <h6>Total</h6>
+                            <p id="totalPrice">$40.00</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadImage">Upload Image</label>
+                        <input type="file" class="form-control" id="uploadImage" required>
+                        <div class="invalid-feedback">Please upload an image before proceeding.</div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="proceedButton">Proceed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     <script src="../../assets/js/ultilities.js"></script>
         <script src="../../assets/js/authentication.js"></script>
         <script src="../../assets/js/header.js"></script>
 
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const wishButtons = document.querySelectorAll('.add-wish'); // Select all buttons with the class i-wish
-
-            wishButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    button.classList.toggle('clicked'); // Toggle the clicked class for each button
-                });
-            });
-        });
+    <script src="../../assets/js/browseEvent-detail.js">   
     </script>
-    <script></script>
+        <script>
+            const ticketPrice = 10.00; // Fixed price per ticket
+            // Function to update total price
+            function updateTotalPrice() {
+                const count = parseInt(document.getElementById('ticketCount').value);
+                const totalPrice = (count * ticketPrice).toFixed(2);
+                document.getElementById('totalPrice').innerText = totalPrice;
+                document.getElementById('ticketAmount').innerText = count; // Update ticket amount in success modal
+            }
+    
+            // Update ticket count and total price on button click
+            document.getElementById('increment').addEventListener('click', function () {
+                let count = parseInt(document.getElementById('ticketCount').value);
+                count++;
+                document.getElementById('ticketCount').value = count;
+                updateTotalPrice();
+            });
+    
+            document.getElementById('decrement').addEventListener('click', function () {
+                let count = parseInt(document.getElementById('ticketCount').value);
+                if (count > 1) {
+                    count--;
+                    document.getElementById('ticketCount').value = count;
+                    updateTotalPrice();
+                }
+            });
+    
+            // Initialize total price on page load
+            updateTotalPrice();
+
+            document.getElementById('proceedButton').addEventListener('click', function () {
+    const fileInput = document.getElementById('uploadImage');
+    
+    // Check if a file is selected
+    if (fileInput.files.length === 0) {
+        // Add invalid class to show error message
+        fileInput.classList.add('is-invalid');
+    } else {
+        // Remove any previous invalid class if a file is selected
+        fileInput.classList.remove('is-invalid');
+        fileInput.classList.add('is-valid');
+        
+        // Proceed with any necessary actions, like submitting the form or moving to the next step
+        alert("Proceeding with the file upload...");
+    }
+});
+        </script>
+    
+    <!-- <script>
+        // Script to handle ticket count increment and decrement
+        document.getElementById('decrement').addEventListener('click', function () {
+            var countInput = document.getElementById('ticketCount');
+            if (countInput.value > 0) {
+                countInput.value--;
+                updateTotal();
+            }
+        });
+
+        document.getElementById('increment').addEventListener('click', function () {
+            var countInput = document.getElementById('ticketCount');
+            countInput.value++;
+            updateTotal();
+        });
+
+        function updateTotal() {
+            var count = document.getElementById('ticketCount').value;
+            var price = 10.00; // Set price per ticket
+            var total = (count * price).toFixed(2);
+            document.querySelector('.row :nth-child(3) p').textContent = `$${total}`;
+        }
+    </script> -->
 </body>
 
 </html>
