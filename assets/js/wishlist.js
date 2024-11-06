@@ -23,7 +23,7 @@ function getAllWish() {
                 listE += `<div class="card mb-4">
                                     <div class="row g-0">
                                         <div class="col-3 position-relative">
-                                            <img src="../assets/img/test-img/cta-event-search-banner.avif"
+                                            <img src="../../assets/img/test-img/cta-event-search-banner.avif"
                                                 class="img-fluid rounded-start " alt="...">
                                             
                                         </div>
@@ -63,7 +63,7 @@ function getAllWish() {
             if (eNum == 0) {
                 document.getElementById('show-re').innerHTML = `<div class="nonfound">
                                     <div class="content">
-                                        <img src="../assets/img/noFound.png" alt="" height="280px;">
+                                        <img src="../../assets/img/noFound.png" alt="" height="220px;">
                                         <h3 class="text-center text-brand mt-2">No Content</h3>
                                     </div>
                                 </div>`;

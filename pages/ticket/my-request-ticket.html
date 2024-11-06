@@ -29,24 +29,24 @@
                         <ul class="nav nav-underline my-3" id="myTab"
                             role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a href="myticket.html" class="nav-link active"
-                                    id="events-tab">Owned Tickets</a>
+                                <a href="myticket.html"
+                                    class="nav-link text-dark"
+                                    id="events-tab">Owned Tickets </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a href="my-request-ticket.html"
-                                    class="nav-link text-dark">Requested
+                                    class="nav-link active">Requested
                                     Tickets</a>
                             </li>
                         </ul>
 
                         <div>
-                            <select name id class="form-select my-4"
-                                id="select-filter" style="width: 120px;">
+                            <select name class="form-select my-4"
+                                id="select-filter" style="width: 150px;">
                                 <option value="all">All</option>
                                 <option value="approved">Approved</option>
                                 <option value="pending">Pending</option>
                                 <option value="rejected">Rejected</option>
-                                <option value="expired">Expired</option>
                             </select>
                         </div>
 
@@ -59,9 +59,10 @@
                                             <th scope="col">Event</th>
                                             <th
                                                 scope="col">
-                                                Status</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Expired</th>
+                                                Date</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Qty</th>
+                                            <th scope="col">Total</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
@@ -118,7 +119,7 @@
                                                     <button
                                                         class="btn btn-brand position-relative z-3"
                                                         data-bs-target="#exampleModalToggle-1"
-                                                        data-bs-toggle="modal">Display
+                                                        data-bs-toggle="modal">View
                                                         Ticket</button>
                                                 </div>
                                             </td>
@@ -141,12 +142,12 @@
             aria-labelledby="exampleModalToggleLabel"
             tabindex="-1">
             <div
-                class="modal-dialog modal-dialog-centered modal-xl">
+                class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
                 <div
                     class="modal-content">
                     <div
                         class="modal-header">
-                        <h4>View Detail</h4>
+                        <h4>View Ticket Transaction</h4>
                         <button
                             type="button"
                             class="btn-close btn-lg"
@@ -156,11 +157,43 @@
                     <div
                         class="modal-body ">
                         <div class="container-fluid">
-                            <div class="row gy-5 ticket-modal">
-
+                            <div class="row g-4">
+                                <div class="col-5">
+                                    <img src="../../assets/img/party/conference.png" class="w-100 object-fit-cover rounded-3" height="140" alt="">
+                                </div>
+                                <div class="col-7">
+                                    <div class="d-flex flex-column justify-content-center h-100" id="event-detail-desc">
+                                        <!-- <h4>Halloween On November</h4>
+                                    <div class="mb-2">Street 72, Tuoul Kork, Phnom Penh</div>
+                                    <div class="mb-2">Sat, Nov 03 - Sun Nov 04</div>
+                                    <div>07:00 AM - 05:00 PM</div> -->
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="">
+                                        <h4 class="mb-3">Ticket Detail</h4>
+                                    </div>
+                                    <div>
+                                        <div class="mb-4"><label for="" class="fw-normal fs-5">Status:</label> <span id="status" class="fs-5"></span></div> 
+                                        <div class="mb-4"><label for="" class="fw-normal fs-5">Ticket Bought:</label> <span id="amount" class="fs-5"></span>
+                                        </div>
+                                        <div class="mb-4"><label for="" class="fw-normal fs-5">Price Per Ticket:</label> <span id="price" class="fs-5"></span>
+                                        </div>
+                                        <div class=""><label for="" class="fw-normal fs-5">Total Price:</label> <span id="total" class="fs-5"></span>
+                                        </div>
+                                               
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <h4>Transaction File</h4>
+                                    <img id="transaction-file" src class="rounded-3 object-fit-cover w-50" alt height="">
+                                </div>
+                                <div class="col-12" id="rejected-reason-col">
+                                    <!-- <div class="mb-4"><h4>Reject Reason</h4> <span id="reason-reject">jhgjfdkhkj</span></div>  -->
+                                </div>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
@@ -169,7 +202,8 @@
         <script src="../../assets/js/ultilities.js"></script>
         <script src="../../assets/js/authentication.js"></script>
         <script src="../../assets/js/header.js"></script>
-        <script src="../../assets/js/owned-ticket.js"></script>
+        <script src="../../assets/js/my-ticket.js"></script>
+        <!-- <script src="../../assets/js/ticket-detail.js"></script> -->
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     </body>
 

@@ -32,11 +32,10 @@ function createNewEvent() {
 
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
     // console.log("Editor Content:", descQuillContent);
-    // let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
+    let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
     // console.log("Editor Content:", agendaQuillContent);
 
-    // let description = `<div class="descQill">${descQuillContent}</div><div class="agendaQill"><h2 class="fw-bold text-brand"><i class="fa-solid fa-calendar-days"></i> Agenda</h2>${agendaQuillContent}</div>`;
-    let description = `<div class="descQill">${descQuillContent}</div>`;
+    let description = `<div class="descQill">${descQuillContent}</div><div class="agendaQill"><h2 class="fw-bold text-brand"><i class="fa-solid fa-calendar-days"></i> Agenda</h2>${agendaQuillContent}</div>`;
 
     // add ticket form variables
     let ticketQty = document.getElementById('ticketQuantity').value;
