@@ -1,0 +1,318 @@
+.event-card-wrapper .card {
+    width: calc(100% / 4 - 20px);
+    border: none !important;
+    margin: 0px 20px 50px 0;
+}
+
+.event-card-wrapper .card .card-body {
+    padding: 20px 10px !important;
+
+}
+
+.event-card-wrapper .card .card-body .card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.event-card-wrapper .card .card-content {
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    transform: 0.3s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.event-card-wrapper .card .card-content:hover {
+    border-radius: 0 0 10px 10px;
+    /* outline: 2px solid var(--c-brand) !important; */
+    box-shadow: 0px 0px 8px #e115936c;
+}
+
+.event-card-wrapper .card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.btn-rounded {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    /* transition: 1s; */
+}
+
+.btn-rounded:hover {
+    background-color: var(--c-brand);
+    color: white;
+}
+
+.event-card-wrapper .card .btn-rounded {
+    position: absolute;
+}
+
+.event-card-wrapper .card .btn-rounded:nth-child(1) {
+    top: -30%;
+    right: -30%;
+}
+
+.event-card-wrapper .card .btn-rounded:nth-child(2) {
+    top: -30%;
+    right: -30%;
+}
+
+.event-card-wrapper .card .card-content:hover .btn-rounded:nth-child(1) {
+    top: 3%;
+    right: 3%;
+}
+
+.event-card-wrapper .card .card-content:hover .btn-rounded:nth-child(2) {
+    right: 3%;
+    top: 15%;
+}
+
+.event-card-wrapper .card .card-content .pf-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid #4032475e;
+}
+
+.event-card-wrapper .card .card-content .pf-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+
+}
+
+.event-card-wrapper p {
+    margin-bottom: 5px !important;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-gray);
+}
+
+.event-card-wrapper .card .card-content .profile p {
+    margin: 0 !important;
+}
+
+footer {
+    background-color: var(--text-gray);
+    color: white;
+}
+
+footer .logo {
+    height: 100px;
+}
+
+footer .quick-link a {
+    padding-bottom: 15px;
+}
+
+footer .quick-link a:hover {
+    color: var(--c-brand-dark);
+}
+
+footer .contact-info .social-media a {
+    font-size: 50px;
+    padding-right: 10px;
+}
+
+footer .contact-info .social-media a:hover {
+    color: #e11594;
+}
+
+.pill1 {
+    background-color: #e1159322;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.pill2 {
+    background-color: #158ce122;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.pill3 {
+    background-color: #15e17e22;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.pill4 {
+    background-color: #9de11522;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.pill5 {
+    background-color: #e1341522;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.recruit-card-wrapper {
+    margin-left: -10px;
+}
+
+.recruit-card-wrapper .card {
+    width: calc(100% / 2 - 20px);
+    border: none !important;
+    margin: 0px 20px 50px 0;
+}
+
+.recruit-card-wrapper .card .card-body {
+    padding: 20px 10px !important;
+
+}
+
+.card .card-body .card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0 !important;
+    margin: 15px 0  !important;
+}
+
+.recruit-card-wrapper .card .card-content {
+    width: 100%;
+    border-radius: 10px;
+    transform: 0.3s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid #40324710;
+}
+
+.recruit-card-wrapper .card .card-content:hover {
+    border-radius: 10px;
+    /* outline: 2px solid var(--c-brand) !important; */
+    box-shadow: 0px 0px 8px #e115936c;
+}
+
+.recruit-card-wrapper .card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
+.recruit-card-wrapper .card .card-content .pf-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid #4032475e;
+}
+
+.recruit-card-wrapper .card .card-content .pf-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+
+}
+
+.recruit-card-wrapper p {
+    margin-bottom: 5px !important;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-gray);
+}
+
+.recruit-card-wrapper .card .card-content .profile p {
+    margin: 0 !important;
+}
+
+.recruit-card-wrapper .card-content .duration span{
+    font-size: 14px;
+}
+
+.btn-see-more-wrapper .btn-outline-pink{
+    display: none;
+}
+
+.btn-see-more-wrapper .spinner-border{
+    display: none;
+}
+
+/* Vendor Card Style */
+.vendor-card-wrapper {
+    margin-left: -10px;
+}
+
+.vendor-card-wrapper .card {
+    width: calc(100% / 2 - 20px);
+    border: none !important;
+    margin: 0px 20px 50px 0;
+}
+
+.vendor-card-wrapper .card .card-body {
+    padding: 20px 10px !important;
+
+}
+
+
+
+.vendor-card-wrapper .card .card-content {
+    width: 100%;
+    border-radius: 10px;
+    transform: 0.3s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid #40324710;
+}
+
+.vendor-card-wrapper .card .card-content:hover {
+    border-radius: 10px;
+    /* outline: 2px solid var(--c-brand) !important; */
+    box-shadow: 0px 0px 8px #e115936c;
+}
+
+.vendor-card-wrapper .card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.vendor-card-wrapper .card .card-content .pf-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid #4032475e;
+}
+
+.vendor-card-wrapper .card .card-content .pf-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+
+}
+
+.vendor-card-wrapper p {
+    margin-bottom: 5px !important;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-gray);
+}
+
+.vendor-card-wrapper .card .card-content .profile p {
+    margin: 0 !important;
+}
+
+.vendor-card-wrapper .card-content .duration span{
+    font-size: 14px;
+}

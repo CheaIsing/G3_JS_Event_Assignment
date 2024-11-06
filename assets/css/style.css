@@ -14,6 +14,10 @@ body{
 
 }
 
+.bg-brand-light-50{
+    background-color: #ffcbeb54 !important;
+}
+
 .bg-brand-light{
     background-color: var(--c-brand-light) !important;
 }

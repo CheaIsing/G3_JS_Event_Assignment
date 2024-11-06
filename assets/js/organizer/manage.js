@@ -142,8 +142,8 @@ function getAllEventCard(apiUrl, id, searchStr = '') {
                                                                 class="dropdown-menu dropdown-menu-end"
                                                                 aria-labelledby="dropdownMenu1">
                                                                 <li><a
-                                                                        class="dropdown-item"
-                                                                        href="#">Edit</a></li>
+                                                                        class="dropdown-item edit-event-btn"
+                                                                        href="javascript:void(0);" data-event-detail-id="${ele.id}">Edit</a></li>
                                                                 <li><a
                                                                         class="dropdown-item delete-event-btn"
                                                                         href="javascript:void(0);" data-event-detail-id="${ele.id}">Delete</a></li>
@@ -177,6 +177,19 @@ function getAllEventCard(apiUrl, id, searchStr = '') {
                 console.log(eventId);
                 
                 deleteEventPost(eventId)
+              }
+            })
+
+            // Edit Event
+            document.querySelectorAll('.edit-event-btn').forEach(btn=>{
+              btn.onclick = () => {
+                let id = btn.dataset.eventDetailId;
+
+                console.log(id);
+                sessionStorage.setItem('editEventId', id);
+
+                location.href = 'edit-event.html'
+                
               }
             })
 

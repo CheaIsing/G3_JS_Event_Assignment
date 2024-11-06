@@ -43,7 +43,7 @@ function showToast(msg, condition) {
   });
 }
 
-const formatDate = (dateStr) => {
+function formatDate (dateStr) {
   const date = new Date(dateStr);
 
   const options = {
@@ -56,4 +56,27 @@ const formatDate = (dateStr) => {
   };
 
   return date.toLocaleString("en-US", options).replace(",", " •");
-};
+}
+
+function formatDateStringMonth(dateString) {
+  const date = new Date(dateString); // Convert the string to a Date object
+  
+  // Define options for formatting
+  const options = { month: 'short' };
+
+  // Use toLocaleString to format the date
+  const formattedDate = date.toLocaleString('en-US', options).toUpperCase(); // Convert to uppercase
+
+  return formattedDate.replace(',', ''); // Remove comma if present
+}
+function formatDateStringDay(dateString) {
+  const date = new Date(dateString); // Convert the string to a Date object
+  
+  // Define options for formatting
+  const options = {  day: '2-digit' };
+
+  // Use toLocaleString to format the date
+  const formattedDate = date.toLocaleString('en-US', options).toUpperCase(); // Convert to uppercase
+
+  return formattedDate.replace(',', ''); // Remove comma if present
+}

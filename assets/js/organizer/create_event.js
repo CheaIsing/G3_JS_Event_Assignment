@@ -68,7 +68,16 @@ function createNewEvent() {
     })
         .then(res => res.json())
         .then(json => {
-            alert('Success created');
+            console.log(json);
+            
+            showToast(json.message, json.result);
+
+
+            if(json.result == true){
+                setTimeout(()=>{
+                    // location.href = 'event.html'
+                }, 1500)
+            }
 
         })
     // .then(response => {

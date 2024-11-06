@@ -16,23 +16,38 @@
     </head>
 
     <body>
+        <header id="header"></header>
         <main>
-            <div class>
+            <div class="container">
                 <div class="d-flex">
 
                     <section class="p-4 w-100">
+                        <div>
+                            <h2>Event</h2>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src="../../assets/img/party/conference.png" class="object-fit-cover rounded-4 img-fluid w-100" alt="" >
+                                </div>
+                            </div>
+                            
+
+                        </div>
                         <div class>
                             <h2>Ticket Detail</h2>
                         </div>
                         <div>
                             <p>Amount Ticket Bought: <span id="amount"></span>
                             </p>
-                            <p>Status: <span id="status"></span></p>                   
-                                <p>Transaction File</p>
-                            <img id="transaction-file" src alt width="250px">
-                            <button type="button"
-                                    class="btn btn-brand">Update
-                                    Transaction</button>
+                            <p>Price Per Ticket: <span id="amount"></span>
+                            </p>
+                            <p>Total Price: <span id="amount"></span>
+                            </p>
+                            <div class="mb-3">Status: <span id="status"></span></div>                  
+                                              
+                                <h5>Transaction File:</h5>
+                            <img id="transaction-file" src class="rounded-3" alt width="250px">
+                            
                         </div>
                     </section>
                 </div>
@@ -181,8 +196,10 @@
                 </div>
             </div>
         </div>
-        <!-- <script type="module" src="../../assets/js/authentication.js"></script> -->
-        <script type="module" src="../../assets/js/ticket-detail.js"></script>
+        <script src="../../assets/js/ultilities.js"></script>
+        <script src="../../assets/js/authentication.js"></script>
+        <script src="../../assets/js/header.js"></script>
+        <script src="../../assets/js/ticket-detail.js"></script>
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     </body>
 
