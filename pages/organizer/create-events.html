@@ -70,7 +70,7 @@
                             <h2>Create an Event</h2>
                             <div class="sub-form-wrapper active p-4 border rounded-4 mt-4 ">
                                 <div class="form-display active upload-cover ">
-                                    <h1 class="fw-bold">Upload an image as your cover</h1>
+                                    <h1 class="fw-bold">Upload an image as your thumbnail</h1>
                                     <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
                                 </div>
                                 <div class="main-form active upload-img-form">
@@ -482,8 +482,14 @@
                                         <div id="editor"></div>
                                     </div>
                                     <h5>Add full <span class="text-brand fw-bold">agenda</span> of your event</h5>
-                                    <div class="description mt-3 mb-5">
-                                        <div id="agendaEditor"></div>
+                                    <div class="description mt-3 mb-5 d-flex align-items-center">
+                                        <!-- <div id="agendaEditor"></div> -->
+                                        <div class="form-floating agenda w-75">
+                                            <input type="text" class="form-control customized-form" id="agenda"
+                                                placeholder="">
+                                            <label for="floatingInput">Agenda </label>
+                                        </div>
+                                        <button type="button" class="btn-outline-pink ms-4"><i class="fa-solid fa-plus"></i> Add a new agenda</button>
                                     </div>
                                     <div class="upload-img-form">
                                         <h4 class="fw-bold pb-3">Add your image</h4>
@@ -532,7 +538,7 @@
 
                                     <h5>Ticket Price*</h5>
                                     <div class="form-floating mb-5">
-                                        <input type="text" class="form-control customized-form" id="price"
+                                        <input type="number" class="form-control customized-form" id="price"
                                             placeholder="">
                                         <label for="floatingInput">$ </label>
                                     </div>
@@ -583,7 +589,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             window.descQuill = new Quill('#editor', { theme: 'snow' });
-            window.agendaQuill = new Quill('#agendaEditor', { theme: 'snow' });
+            // window.agendaQuill = new Quill('#agendaEditor', { theme: 'snow' });
         });
     </script>
     <script type="module" src="../../assets/js/authentication.js"></script>

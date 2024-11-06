@@ -554,7 +554,7 @@ footer .contact-info .social-media a:hover {
 }
 
 .recruit-card-wrapper .card {
-    width: calc(100% / 2 - 20px);
+    width: calc(100%);
     border: none !important;
     margin: 0px 20px 50px 0;
 }
@@ -595,7 +595,8 @@ footer .contact-info .social-media a:hover {
 .recruit-card-wrapper .card .card-content:hover {
     border-radius: 10px;
     /* outline: 2px solid var(--c-brand) !important; */
-    box-shadow: 0px 0px 8px #e115936c;
+    box-shadow: 0px 0px 8px #e1159340;
+    border-color: white;
 }
 
 .recruit-card-wrapper .card .card-img-top {
@@ -654,7 +655,8 @@ footer .contact-info .social-media a:hover {
 }
 
 .recruit-card-wrapper p {
-    margin-bottom: 5px !important;
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
     font-size: 14px;
     font-weight: 500;
     color: var(--text-gray);
@@ -665,7 +667,7 @@ footer .contact-info .social-media a:hover {
 }
 
 .recruit-card-wrapper .card-content .duration span{
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .btn-see-more-wrapper .btn-outline-pink{
@@ -707,7 +709,8 @@ footer .contact-info .social-media a:hover {
 .vendor-card-wrapper .card .card-content:hover {
     border-radius: 10px;
     /* outline: 2px solid var(--c-brand) !important; */
-    box-shadow: 0px 0px 8px #e115936c;
+    box-shadow: 0px 0px 8px #e1159340;
+    border-color: white;
 }
 
 .vendor-card-wrapper .card .card-img-top {

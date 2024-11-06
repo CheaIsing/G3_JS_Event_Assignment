@@ -1,6 +1,6 @@
 const apiUrl = "https://mps2.chandalen.dev";
 const token = localStorage.getItem("authToken");
-console.log(token);
+// console.log(token);
 
 function createNewEvent() {
 
@@ -32,10 +32,11 @@ function createNewEvent() {
 
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
     // console.log("Editor Content:", descQuillContent);
-    let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
+    // let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
     // console.log("Editor Content:", agendaQuillContent);
 
-    let description = `<div class="descQill">${descQuillContent}</div><div class="agendaQill"><h2 class="fw-bold text-brand"><i class="fa-solid fa-calendar-days"></i> Agenda</h2>${agendaQuillContent}</div>`;
+    // let description = `<div class="descQill">${descQuillContent}</div><div class="agendaQill"><h2 class="fw-bold text-brand"><i class="fa-solid fa-calendar-days"></i> Agenda</h2>${agendaQuillContent}</div>`;
+    let description = `<div class="descQill">${descQuillContent}</div>`;
 
     // add ticket form variables
     let ticketQty = document.getElementById('ticketQuantity').value;
@@ -68,7 +69,21 @@ function createNewEvent() {
     })
         .then(res => res.json())
         .then(json => {
-            alert('Success created');
+            const { data } = json;
+            let imgFIle = new FormData();
+            imgFIle.append("thumbnail", thumbnailFile);
+
+            fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Accept": "application/json;"
+                },
+                body: imgFIle
+            })
+            .then(res=>res.json())
+            .then(json=>{
+            })
 
         })
     // .then(response => {
@@ -101,6 +116,6 @@ fetch(`${apiUrl}/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=
             let opt = document.createElement('option');
             opt.value = element.id;
             opt.innerHTML = element.name;
-            eventCatSelect.appendChild(opt);            
+            eventCatSelect.appendChild(opt);
         });
     })
