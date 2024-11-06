@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css" />
     <link rel="stylesheet" href="../../assets/css/lim_style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- quillJs -->
     <link rel="stylesheet" href="../../assets/lib/QuilJs/quill.snow.css">
 
 </head>
 
 <body>
-    <header></header>
+    <header id="header"></header>
     <main>      
         <div class="d-flex">
             <nav class="shadow sidebar">
@@ -67,7 +68,7 @@
                             </button>
                         </div>
                         <form action="" class="px-5">
-                            <h2>Create an Event</h2>
+                            <h2>Update an Event</h2>
                             <div class="sub-form-wrapper active p-4 border rounded-4 mt-4 ">
                                 <div class="form-display active upload-cover ">
                                     <h1 class="fw-bold">Upload an image as your cover</h1>
@@ -586,10 +587,11 @@
             window.agendaQuill = new Quill('#agendaEditor', { theme: 'snow' });
         });
     </script>
-    <script type="module" src="../../assets/js/authentication.js"></script>
+    <script src="../../assets/js/authentication.js"></script>
+    <script src="../../assets/js/ultilities.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/image_file_input.js"></script>
-    <script src="../../assets/js/organizer/create_event.js"></script>
+    <script src="../../assets/js/organizer/edit-event.js"></script>
     <script src="../../assets/js/form_collapse.js"></script>
 
 </body>

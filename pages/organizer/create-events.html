@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css" />
     <link rel="stylesheet" href="../../assets/css/lim_style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- quillJs -->
     <link rel="stylesheet" href="../../assets/lib/QuilJs/quill.snow.css">
 
 </head>
 
 <body>
-    <header></header>
+    <header id="header"></header>
     <main>      
         <div class="d-flex">
             <nav class="shadow sidebar">
@@ -586,7 +587,8 @@
             window.agendaQuill = new Quill('#agendaEditor', { theme: 'snow' });
         });
     </script>
-    <script type="module" src="../../assets/js/authentication.js"></script>
+    <!-- <script src="../../assets/js/authentication.js"></script> -->
+    <script src="../../assets/js/ultilities.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/image_file_input.js"></script>
     <script src="../../assets/js/organizer/create_event.js"></script>
