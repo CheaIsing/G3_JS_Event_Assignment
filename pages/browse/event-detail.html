@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/browse.css">
+    <link rel="stylesheet" href="../../assets/css/card_style.css">
+    <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
 </head>
 
 <body class="p-eventDetail">
@@ -26,8 +27,8 @@
         <section class="hero mb-5 ">
              <div class="container p-4 px-5 text-center bg-white">
                 <div class="content text-center" >
-                    <p class="text-brand-dark p-0 fs-18" id="ev-date">December 25, 2020</p>
-                    <h1 class="display-6 fw-bold card-title" id="ev-title">Annual Charity Gala Annual Charity Gala Annual Charity</h1>
+                    <p class="text-brand-dark p-0 fs-18" id="ev-date"></p>
+                    <h1 class="display-6 fw-bold card-title" id="ev-title"></h1>
                     <p class="px-4 text-secondary mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus beatae rem harum doloremque eius quis quia dolorem recusandae optio, pariatur iure alias voluptatibus eaque quibusdam, illo, laborum deleniti? Nesciunt?</p>
                 </div>
              </div>
@@ -40,16 +41,7 @@
                             <div class="mb-3" style="height: 400px;">
                                 <img id="ev-img" src="../../assets/img/test-img/cta-event-search-banner.avif" alt="" class="object-fit-cover w-100 h-100">
                             </div>
-                            <div class="mb-3 p-3" id="description">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor mollitia voluptatum, ea deleniti at provident debitis vel asperiores aperiam laborum ducimus animi quis magnam, pariatur sequi eius voluptatem nisi.
-                            </div>
+                            <div class="mb-3 p-3" id="ev-description"></div>
                         </div>
                     </div>
                     <div class="col-4 m-0 p-0 ">
@@ -68,28 +60,28 @@
                                         <i class="fa-regular fa-calendar-check fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Start Date</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-startDate">15 October ,2022</p>
+                                            <p class="m-0 text-body-secondary" id="ev-startDate"></p>
                                         </div>
                                     </li>                                
                                     <li class="d-flex py-3">
                                         <i class="fa-regular fa-calendar-xmark fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">End Date</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-endDate">15 October ,2022</p>
+                                            <p class="m-0 text-body-secondary" id="ev-endDate"></p>
                                         </div>
                                     </li>
                                     <li class="d-flex py-3">
                                         <i class="fa-regular fa-circle-check fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Status</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-status">Upcoming</p>
+                                            <p class="m-0 text-body-secondary" id="ev-status"></p>
                                         </div>
                                     </li>                                
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Location</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-location">AEon,PhnomPenh</p>
+                                            <p class="m-0 text-body-secondary" id="ev-location"></p>
                                         </div>
                                     </li>                                
                                     <!-- <li class="d-flex py-3">
@@ -103,37 +95,37 @@
                                         <i class="fa-regular fa-folder-open fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Catagory</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-catagory">Music</p>
+                                            <p class="m-0 text-body-secondary" id="ev-catagory"></p>
                                         </div>
                                     </li>                                
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-tag fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Price</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-price">Free</p>
+                                            <p class="m-0 text-body-secondary" id="ev-price"></p>
                                         </div>
                                     </li>                              
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-ticket fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Ticket Opacity</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-ticket-op">200</p>
+                                            <p class="m-0 text-body-secondary" id="ev-ticket-op"></p>
                                         </div>
                                     </li>                              
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-ticket fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Remaining Tickets</h6>
-                                            <p class="m-0 text-body-secondary" id="ev-ticket-remain">10</p>
+                                            <p class="m-0 text-body-secondary" id="ev-ticket-remain"></p>
                                         </div>
                                     </li>                              
                                 </ul>
                             </div>
                             <div class=" bg-white shadow-light mb-4 py-3 px-4">
                                 <h4 class="fw-semibold mb-3">Organized By</h4>
-                                <div class="d-flex " id="ev-organizer">
-                                    <img src="../../assets/img/3607424.jpg" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
-                                    <a href=""  class=" fs-4 fw-semibold m-0 ms-3"> hello world hellllo</a>
+                                <div class="d-flex align-items-center" >
+                                    <img src="../../assets/img/3607424.jpg" id="ev-org-pf" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+                                    <a href="javascript: void(0)"  class=" fs-4 fw-semibold m-0 ms-3" id="ev-org-name" onclick="viewOrgDetail(this)"></a>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +133,7 @@
                                 <div class="bg-white p-3 ">
                                     <div class="mb-3 d-flex justify-content-between align-items-center">
                                         <h3 class="m-0">Price</h3>
-                                        <p class="m-0"><span class="fs-5 fw-semibold" id="ev-price">10$</span> / Ticket</p>
+                                        <p class="m-0"><span class="fs-5 fw-semibold text-brand" id="ev-price1">10$</span> / Ticket</p>
                                     </div>
                                     <button class="w-100 btn btn-brand">Purchase</button>
                                 </div>
@@ -160,7 +152,11 @@
                     </p>
                     <span class="text-secondary ">You might also love these events.</span>
                 </div>
-                <div class="row">
+                <div class="row event-card-wrapper" id="related-events">
+                    
+                    
+                </div>        
+                <!-- <div class="row">
                     <div class="col-4">
                         <div class="card shadow border-0 position-relative">
                             <a href="">
@@ -227,7 +223,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         
@@ -238,18 +234,8 @@
 
 
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const wishButtons = document.querySelectorAll('.add-wish'); // Select all buttons with the class i-wish
-
-            wishButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    button.classList.toggle('clicked'); // Toggle the clicked class for each button
-                });
-            });
-        });
+    <script src="../../assets/js/browseEvent-detail.js">   
     </script>
-    <script></script>
 </body>
 
 </html>

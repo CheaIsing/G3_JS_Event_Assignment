@@ -1,6 +1,7 @@
 const apiUrl = "https://mps2.chandalen.dev";
 const token = localStorage.getItem("authToken");
 getAllEvent();
+getAllCatagory();
 function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
     // Create Date objects from the input strings  
     const startDateTime = new Date(startDateTimeStr);
@@ -15,6 +16,24 @@ function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
         return "Past";
     }
 }
+function getAllCatagory(){
+    fetch(apiUrl+'/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search')
+            .then(res=>res.json())
+            .then(json=>{
+                let data=json.data;
+                let listCata='';
+                data.forEach(element => {
+                    listCata+=`<div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="cata${element.id}">
+                                    <label class="form-check-label" for="">
+                                    ${element.name}
+                                    </label>
+                                </div>`;
+                });
+                document.getElementById('catagory').innerHTML+=listCata;
+            }
+            )
+}
 function getAllEvent() {
     let url = apiUrl+`/api/events?page=1&per_page=50&search`;
     fetch(url)
@@ -23,17 +42,17 @@ function getAllEvent() {
             let data = json.data;
             // get status
             data.forEach(element => {
-                element.to = checkDateTimeRange(element.start_date, element.end_date);
+                element.status = checkDateTimeRange(element.start_date, element.end_date);
             });
             // Sort events based on status
             data.sort((a, b) => {
                 const statusOrder = { "Showing": 0, "Upcoming": 1, "Past": 2 };
-                return statusOrder[a.to] - statusOrder[b.to];
+                return statusOrder[a.status] - statusOrder[b.status];
             });
             let listE = '';
             data.forEach(element => {
                 let price = element.ticket_price == 0 ? 'Free' : `$${element.ticket_price}`;
-                let catagory = element.event_categories.map(cata => cata.name).join(' &nbsp; ');
+                let catagory = element.event_categories.map(cata => cata.name).join(',&nbsp;');
                 listE += `<div class="card mb-4">
                                     <div class="row g-0">
                                         <div class="col-3 position-relative">
@@ -69,7 +88,7 @@ function getAllEvent() {
                                             </div>
                                         </div>
                                         <div class="col-3 py-4">
-                                            <p class="status">${element.to}</p>
+                                            <p class="status">${element.status}</p>
                                         </div>
                                     </div>
                                 </div>`;
@@ -87,8 +106,9 @@ function getAllEvent() {
 function getEDetail(card) {
     id = card.dataset.id;
     sessionStorage.setItem('itemID', id);
-    location.href = 'http://127.0.0.1:5501/browse/event-detail.html';
+    location.href = '/pages/browse/event-detail.html';
 }
 function addWishlist(id){
     
 }
+
