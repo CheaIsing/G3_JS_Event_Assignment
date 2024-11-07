@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
 
     console.log("helo");
+
+    
     
     document.getElementById('header').innerHTML = 
     `<div class="container">
@@ -71,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </nav>
             </div>`
-            
+    
   }
 });
 

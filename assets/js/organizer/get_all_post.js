@@ -1,5 +1,5 @@
 const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
+const token = localStorage.getItem("authToken");
 
 let id = localStorage.getItem("vendorId");
 
@@ -131,7 +131,7 @@ function loadEventCards() {
                                         <img class="card-img-top" src="../assets/img/party/party1.png" alt="Title" />
                                         <div class="card-body">
                                             <div class="d-flex event-pill-wrapper"></div>
-                                            <h5 class="card-title mt-2 mb-0">${element.name}</h5>
+                                            <h5 class="card-title mt-2 mb-4">${element.name}</h5>
                                             <p class="card-text">${element.start_date}</p>
                                             <p class="text-secondary">${element.location}</p>
                                             <p>Ticket price: $${element.ticket_price}</p>
@@ -191,26 +191,26 @@ function loadRecruitCards() {
         const newCard = document.createElement('div');
         newCard.className = "card";
         newCard.innerHTML = `<div class="card-content px-3">
-                                        <div class="card-body">
-
-                                            <h5 class="card-title mt-2 mb-0 fw-bold">${element.name}</h5>
-                                            <div class="duration">
-                                                <span class="text-secondary">Start Date: ${element.start_date} </span><br>
-                                                <span class="text-secondary">End Date: ${element.end_date}</span>
-                                            </div>
-                                            <p class="card-text py-3">${element.description}</p>
-
-                                            <p class="location"><i class="bi bi-geo-alt fs-5 text-brand"></i>  ${element.location}</p>
-                                            <div class="d-flex recruit-pill-wrapper"></div>
-                                            <div class="profile d-flex align-items-center mt-3">
+                                    <div class="card-body">
+                                        <div class="profile d-flex align-items-center justify-content-between mb-3">
+                                            <div class="d-flex align-items-center">
                                                 <div class="pf-img me-2">
                                                     <img src="${element.creator.avatar}" alt="">
                                                 </div>
                                                 <p>${element.creator.full_name}</p>
                                             </div>
-
+                                            <div class="d-flex recruit-pill-wrapper"></div>
                                         </div>
-                                    </div>`;
+                                        <h5 class="card-title mt-2 mb-0 fw-bold">${element.name}</h5>
+                                        <p class="card-text py-3">${element.description} </p>
+                                        <div class="duration">
+                                            <span class="text-secondary"><i class="bi bi-calendar fs-6 text-brand"></i> Start Date: ${element.start_date} </span><br>
+                                            <span class="location"><i class="bi bi-geo-alt fs-6 text-brand"></i>
+                                                ${element.location}</span>
+                                        </div>
+
+                                    </div>
+                                </div>`;
 
         cardContainer.appendChild(newCard);
 
@@ -310,3 +310,4 @@ function loadVendorCards() {
 
     }
 }
+
