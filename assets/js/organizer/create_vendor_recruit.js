@@ -1,6 +1,6 @@
 const apiUrl = "https://mps2.chandalen.dev";
 const token = localStorage.getItem("authToken");
-console.log(token);
+// console.log(token);
 
 function createRecruit() {
     // Create event form variables

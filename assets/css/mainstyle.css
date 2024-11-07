@@ -86,7 +86,7 @@ border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(0px);
 -webkit-backdrop-filter: blur(0px);
-border: 1px solid rgba(255, 255, 255, 0.53);
+border: 1px solid rgba(255, 255, 255, 0.6);
 }
 .nav-link {
   text-align: left !important;
@@ -94,33 +94,47 @@ border: 1px solid rgba(255, 255, 255, 0.53);
 }
 .tab-hover{
   color: #000;
+  border-radius: 0 !important;
 }
 .tab-hover:hover .social-icon {
-  color: #f6daf1;
+  color: #fff;
 }
 .tab-hover:hover{
   background-color: #ff1694;
-  color: #f6daf1;
+  color: #fff;
+  border: 0 !important;
 }
-.profile {
+
+.tab-hover.active{
+  background-color: var(--c-brand) !important;
+}
+
+/* Page Setting */
+.profile-setting {
+  position: relative;
   width: 150px;
   height: 150px;
   border-radius: 50%;
   overflow: hidden;
-  position: relative;
-  background-color: #ff1694;
-  transition: 0.3s;
-}
-.profile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-.upload-img{
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
+  background-color: #e5dbe0;
 }
 
+.overlay-camera-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
 
+.profile-setting:hover .overlay-camera-image {
+  opacity: 1;
+}

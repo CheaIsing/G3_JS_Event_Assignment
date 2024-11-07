@@ -14,8 +14,10 @@ function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
     return "Past";
   }
 }
+
 //get info event
 let id = sessionStorage.getItem("itemID");
+let ticketPrice = 0;
 fetch(apiUrl + "/api/events/" + id)
   .then((res) => res.json())
   .then((json) => {
@@ -44,7 +46,144 @@ fetch(apiUrl + "/api/events/" + id)
       .getElementById("ev-org-name")
       .setAttribute("data-id", data.creator.id);
     document.getElementById("ev-price1").innerHTML = price;
+    // console.log(document.getElementById('proceedButton'));
+    ticketPrice = data.ticket_price;
+    document.getElementById("summary-total").innerHTML = `
+    <div class="col d-flex flex-column  ">
+                            <h6>Amount</h6>
+                            <p id="ticketAmount" class="
+                            ps-4 ms-1" >1</p>
+                        </div>
+                        <div class="col d-flex flex-column align-items-center justify-content-center">
+                            <h6>Price</h6>
+                            <p id="price">$${data.ticket_price.toFixed(2)}</p>
+                        </div>
+                        <div class="col d-flex flex-column align-items-center justify-content-center">
+                            <h6>Total</h6>
+                            <p id="totalPrice">$${data.ticket_price.toFixed(
+                              2
+                            )}</p>
+                        </div>`;
+
+    document
+      .getElementById("proceedButton")
+      .addEventListener("click", function () {
+        // Check if a file is selected
+        if (fileInput.files.length === 0) {
+          // Add invalid class to show error message
+          fileInput.classList.add("is-invalid");
+        } else {
+          // Remove any previous invalid class if a file is selected
+
+          fileInput.classList.remove("is-invalid");
+          fileInput.classList.add("is-valid");
+
+          // Proceed with any necessary actions, like submitting the form or moving to the next step
+          alert("Proceeding with the file upload...");
+          const formData = new FormData();
+          formData.append('transaction_file', fileInput.files[0]);
+          document
+      .getElementById("proceedButton").disabled = true;
+
+          
+
+          fetch(`${apiUrl}/api/tickets/request-buy`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`, 
+              "Accept": "application/json",
+               "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              event_id : parseInt(id),
+              amount: parseInt(document.getElementById("ticketAmount").innerText)
+            })
+          })
+          .then(res=>res.json())
+          .then(json=>{
+            console.log(json);
+            document
+      .getElementById("proceedButton").disabled = false;
+      sessionStorage.setItem('transaction_file_id', json.data.id);
+      fetch(`${apiUrl}/api/tickets/transaction-file/${json.data.id}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`, 
+          "Accept": "application/json",
+           "Content-Type": "application/json"
+        },
+        body: formData
+      })
+      .then(res=>res.json())
+      .then(json2=>{
+        console.log(json2);
+        if(json2.result == true){
+          const bootstrapForgotPassModal =
+              bootstrap.Modal.getInstance(document.getElementById("paymentModal"));
+            bootstrapForgotPassModal.hide(); // Close the modal
+
+            const bsSucessModal = bootstrap.Modal.getInstance(document.getElementById('sucessModalToggle2'))
+            bsSucessModal.show();
+        }
+
+      })            
+          })
+          // console.log(
+          //   Number(document.getElementById("ticketAmount").innerText)
+          // );
+          // console.log(Number(id));
+        }
+      });
+
+    // Remove invalid styling when a file is selected
+    fileInput.addEventListener("change", function () {
+      if (fileInput.files.length > 0) {
+        fileInput.classList.remove("is-invalid");
+        fileInput.classList.add("is-valid");
+      } else {
+        fileInput.classList.remove("is-valid");
+        fileInput.classList.add("is-invalid");
+      }
+    });
   });
+// Fixed price per ticket
+const fileInput = document.getElementById("uploadImage");
+
+function updateTotalPrice() {
+  const count = parseInt(document.querySelector(".number").innerText);
+  console.log(count);
+
+  const totalPrice = count * ticketPrice;
+  console.log(totalPrice);
+
+  document.getElementById("totalPrice").innerText = `$${totalPrice.toFixed(2)}`;
+  document.getElementById("ticketAmount").innerText = count; // Update displayed ticket amount
+}
+
+function increaseValue(button, maxCount) {
+  const countElement = button.previousElementSibling;
+  let count = parseInt(countElement.innerText);
+  if (count < maxCount) {
+    count++;
+    countElement.innerText = count;
+    updateTotalPrice();
+  }
+}
+
+function decreaseValue(button) {
+  const countElement = button.nextElementSibling;
+  let count = parseInt(countElement.innerText);
+  if (count == 0) {
+    count = 1;
+    return;
+  }
+  if (count > 1) {
+    count--;
+    countElement.innerText = count;
+    updateTotalPrice();
+  }
+}
+
 displayRelatedItems();
 function displayRelatedItems() {
   let url = apiUrl + `/api/events?page=1&per_page=4&search`;

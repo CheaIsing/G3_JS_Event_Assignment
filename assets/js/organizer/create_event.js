@@ -1,6 +1,6 @@
 const apiUrl = "https://mps2.chandalen.dev";
 const token = localStorage.getItem("authToken");
-console.log(token);
+// console.log(token);
 
 function createNewEvent() {
 
@@ -68,16 +68,21 @@ function createNewEvent() {
     })
         .then(res => res.json())
         .then(json => {
-            console.log(json);
-            
-            showToast(json.message, json.result);
+            const { data } = json;
+            let imgFIle = new FormData();
+            imgFIle.append("thumbnail", thumbnailFile);
 
-
-            if(json.result == true){
-                setTimeout(()=>{
-                    // location.href = 'event.html'
-                }, 1500)
-            }
+            fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Accept": "application/json;"
+                },
+                body: imgFIle
+            })
+            .then(res=>res.json())
+            .then(json=>{
+            })
 
         })
     // .then(response => {
@@ -110,6 +115,6 @@ fetch(`${apiUrl}/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=
             let opt = document.createElement('option');
             opt.value = element.id;
             opt.innerHTML = element.name;
-            eventCatSelect.appendChild(opt);            
+            eventCatSelect.appendChild(opt);
         });
     })

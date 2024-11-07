@@ -86,7 +86,8 @@
 //                     </div>
 //                 </nav>
 //             </div>`;
-
+const apiUrl1 = "https://mps2.chandalen.dev";
+const token1 = localStorage.getItem("authToken");
 
 window.onscroll = function () {
   scrollFunction();
@@ -99,3 +100,47 @@ function scrollFunction() {
     document.getElementById("header").style.boxShadow = "none";
   }
 }
+
+  
+  let searchClicked = document.getElementById('searchEvent');
+  searchClicked.addEventListener('focus', ()=>{
+    document.querySelector('.search-dropdown').style.display = 'block';
+    document.querySelector('.overlay').style.display = 'block';
+  })
+
+  searchClicked.addEventListener("blur", ()=>{
+    document.querySelector('.overlay').style.display = 'none';
+    document.querySelector('.search-dropdown').style.display = 'none';
+  })
+  
+  document.getElementById('searchEvent').addEventListener('keyup', function(){
+    let searchEventbyName = document.getElementById('searchEvent').value;
+    fetch(`${apiUrl1}/api/events?page=1&per_page=50&search=${searchEventbyName}`,{
+        headers: {
+            Authorization: `Bearer ${token1}`
+        }
+    })
+    .then(res=>res.json())
+    .then(json=>{
+        const {data} = json;
+        let searchList = "";
+        data.slice(0, 5).forEach(element=>{
+            searchList += `<li class="search-dropdown-item">
+                            <i class="fa-solid fa-magnifying-glass text-brand fs-6 pe-2"></i>
+                            <span>${element.name}</span>
+                        </li>`;
+        })
+        document.getElementById('search-dropdown').innerHTML = searchList;
+    })
+})
+
+fetch(`${apiUrl1}/api/me`, {
+  headers:{
+    Authorization: `Bearer ${token1}`
+  }
+})
+.then(res=>res.json())
+.then(json=>{
+  const {data} = json;
+  document.getElementById('userEmail').innerText = data.email;
+})
