@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       location.href = "/pages/homepage.html";
     }
   } else {
+
     console.log("helo");
     
     document.getElementById('header').innerHTML = 
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="logo">
                         <a href="homepage.html">
                             <img
-                                src="assets/lim_img/logo/Prutika_Logo_text(2).png"
+                                src="../../assets/lim_img/logo/Prutika_Logo_text(2).png"
                                 alt>
                         </a>
                     </div>
@@ -47,29 +48,30 @@ document.addEventListener("DOMContentLoaded", () => {
                                 class="fa-solid fa-caret-down text-brand"></i>
                             <!-- User Icon -->
                         </a>
-                        <a href="pages/authentication/login.html"
+                        <a href="../../pages/authentication/login.html"
                             class="btn-outline-pink ms-3 d-flex align-items-center"><i
                                 class="fa-solid fa-ticket pe-1 text-brand"></i>My
                             Ticket</a>
 
                         <ul class="dropdown-menu dropdown-menu-end"
                             aria-labelledby="browseDropdown">
-                            <li><a class="dropdown-item" href="pages/browse/browse-event.html">Browse Events</a></li>
-                            <li><a class="dropdown-item" href="pages/browse/browse-recruitment.html">Browse Vendor Recruitments</a></li>
+                            <li><a class="dropdown-item" href="../../pages/browse/browse-event.html">Browse Events</a></li>
+                            <li><a class="dropdown-item" href="../../pages/browse/browse-recruitment.html">Browse Vendor Recruitments</a></li>
                             <li><a class="dropdown-item"
-                                    href="pages/browse/browse-vendor.html">Browse Business</a></li>
+                                    href="../../pages/browse/browse-vendor.html">Browse Business</a></li>
                             
                             
                         </ul>
                     </div>
                     <div>
-                        <a href="./pages/authentication/login.html"
+                        <a href="../../pages/authentication/login.html"
                             class="btn btn-brand me-2">Log In</a>
-                        <a href="Signup.html"
+                        <a href="../../pages/authentication/Signup.html"
                             class="btn btn-outline-brand text-dark">Register</a>
                     </div>
                 </nav>
             </div>`
+            
   }
 });
 
