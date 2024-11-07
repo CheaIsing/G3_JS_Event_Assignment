@@ -52,6 +52,15 @@ a{
     color: inherit;
 }
 
+.border-brand{
+    border: 2px solid var(--c-brand) !important;
+}
+
+.form-control.is-valid,
+.form-control.is-invalid {
+    background-image: none !important;
+    padding-right: 0.5rem !important;
+}
 
 .btn-outline-pink {
     padding: 15px 25px;
