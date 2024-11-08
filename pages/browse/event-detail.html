@@ -247,36 +247,28 @@
                 <div class="modal-body">
                     <h5>QR Code Payment</h5>
                     <div class="text-center mb-3">
-                        <img src="https://via.placeholder.com/150" alt="QR Code" class="img-fluid">
+                        <img src="../../assets/img/QR_Ticket-removebg-preview.png" alt="QR Code" class="img-fluid" width="50%">
                     </div>
 
                     <div class="form-group">
                         <label for="ticketCount">Tickets</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="decrement">-</span>
-                            </div>
-                            <input type="number" class="form-control text-center" id="ticketCount" value="1"
-                                aria-label="Ticket count">
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="increment">+</span>
-                            </div>
-                        </div>
+                        <div class="quantity-field d-flex" >
+                            <button 
+                              class="value-button decrease-button btn btn-outline-brand" 
+                              onclick="decreaseValue(this)" 
+                              title="Azalt">-</button>
+                              <div class="number w-100 text-center border d-flex align-items-center justify-content-center rounded-3 mx-2">1</div>
+                            <button 
+                              class="value-button increase-button btn btn-outline-brand" 
+                              onclick="increaseValue(this, 5)"
+                              title="Arrtır"
+                            >+
+                            </button>
+                          </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <h6>Amount</h6>
-                            <p id="ticketAmount">$40.00</p>
-                        </div>
-                        <div class="col">
-                            <h6>Price</h6>
-                            <p id="price">$10.00</p>
-                        </div>
-                        <div class="col">
-                            <h6>Total</h6>
-                            <p id="totalPrice">$40.00</p>
-                        </div>
+                    <div class="row mt-3" id="summary-total">
+                        
                     </div>
 
                     <div class="form-group">
@@ -293,6 +285,31 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="sucessModalToggle2" aria-hidden="true"
+        aria-labelledby="sucessModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <div class="card-body text-center">
+                            <img src="../../assets/img/checked.png" class="rounded-circle mb-3"
+                                alt="">
+                            <h2 class="mt-4">Request Ticket Payment was process
+                                sucessufully</h2>
+                            <p class="mt-5 mb-5">A Payment has been made for the
+                                ticket of 2 Ticket <br>
+                                Wait for the approving from the Event Organizer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </div>
 
     <script src="../../assets/js/ultilities.js"></script>
@@ -303,51 +320,7 @@
     <script src="../../assets/js/browseEvent-detail.js">   
     </script>
         <script>
-            const ticketPrice = 10.00; // Fixed price per ticket
-            // Function to update total price
-            function updateTotalPrice() {
-                const count = parseInt(document.getElementById('ticketCount').value);
-                const totalPrice = (count * ticketPrice).toFixed(2);
-                document.getElementById('totalPrice').innerText = totalPrice;
-                document.getElementById('ticketAmount').innerText = count; // Update ticket amount in success modal
-            }
-    
-            // Update ticket count and total price on button click
-            document.getElementById('increment').addEventListener('click', function () {
-                let count = parseInt(document.getElementById('ticketCount').value);
-                count++;
-                document.getElementById('ticketCount').value = count;
-                updateTotalPrice();
-            });
-    
-            document.getElementById('decrement').addEventListener('click', function () {
-                let count = parseInt(document.getElementById('ticketCount').value);
-                if (count > 1) {
-                    count--;
-                    document.getElementById('ticketCount').value = count;
-                    updateTotalPrice();
-                }
-            });
-    
-            // Initialize total price on page load
-            updateTotalPrice();
-
-            document.getElementById('proceedButton').addEventListener('click', function () {
-    const fileInput = document.getElementById('uploadImage');
-    
-    // Check if a file is selected
-    if (fileInput.files.length === 0) {
-        // Add invalid class to show error message
-        fileInput.classList.add('is-invalid');
-    } else {
-        // Remove any previous invalid class if a file is selected
-        fileInput.classList.remove('is-invalid');
-        fileInput.classList.add('is-valid');
-        
-        // Proceed with any necessary actions, like submitting the form or moving to the next step
-        alert("Proceeding with the file upload...");
-    }
-});
+                
         </script>
     
     <!-- <script>
