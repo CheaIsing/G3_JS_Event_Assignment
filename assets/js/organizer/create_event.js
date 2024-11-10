@@ -2,6 +2,91 @@ const apiUrl = "https://mps2.chandalen.dev";
 const token = localStorage.getItem("authToken");
 // console.log(token);
 
+
+let agendaCount = 1;
+let agendaWrapper = document.getElementById('agenda-wrapper');
+function createNewAgenda() {
+    agendaCount++;
+    let agendaDiv = document.createElement('div');
+    agendaDiv.className = "form-floating agenda mt-3";
+    // create a label 
+    let agendaLabel = document.createElement('label');
+    agendaLabel.setAttribute("for", `floatingInput`);
+    agendaLabel.textContent = `Agenda ${agendaCount}`;
+
+    // create an input 
+    let agendaInput = document.createElement('input');
+    agendaInput.type = 'text';
+    agendaInput.className = "form-control customized-form";
+    agendaInput.id = `agenda${agendaCount}`;
+
+
+    // Create a start time input
+    let agendaStDiv = document.createElement('div');
+    agendaStDiv.className = "form-floating agenda mt-3 w-25 me-5";
+
+    let agendaStLabel = document.createElement('label');
+    agendaStLabel.setAttribute("for", `floatingInput`);
+    agendaStLabel.textContent = `Start Time`;
+
+    let agendaStInput = document.createElement('input');
+    agendaStInput.type = 'time';
+    agendaStInput.className = "form-control customized-form me-5";
+    agendaStInput.id = `agendaStarttime${agendaCount}`;
+
+    agendaStDiv.appendChild(agendaStInput);
+    agendaStDiv.appendChild(agendaStLabel);
+
+    // Create a End time input
+    let agendaEtDiv = document.createElement('div');
+    agendaEtDiv.className = "form-floating agenda mt-3 w-25";
+
+    let agendaEtLabel = document.createElement('label');
+    agendaEtLabel.setAttribute("for", `floatingInput`);
+    agendaEtLabel.textContent = `End Time`;
+
+    let agendaEtInput = document.createElement('input');
+    agendaEtInput.type = 'time';
+    agendaEtInput.className = "form-control customized-form ";
+    agendaEtInput.id = `agendaEndtime${agendaCount}`;
+
+    agendaEtDiv.appendChild(agendaEtInput);
+    agendaEtDiv.appendChild(agendaEtLabel);
+
+    let dateDiv = document.createElement('div');
+    dateDiv.className = 'datetime d-flex mb-4';
+    dateDiv.appendChild(agendaStDiv);
+    dateDiv.appendChild(agendaEtDiv);
+    
+    agendaDiv.appendChild(agendaInput);
+    agendaDiv.appendChild(agendaLabel);
+    
+    let labelCount = document.createElement('h5');
+    labelCount.className = "text-brand fw-bold mb-3 mt-4";
+    labelCount.innerText = `+ Agenda ${agendaCount}`;
+
+     // Create a Desc for agenda
+     let agendaDescDiv = document.createElement('div');
+     agendaDescDiv.className = "form-floating agenda mt-3";
+ 
+     let agendaDescLabel = document.createElement('label');
+     agendaDescLabel.setAttribute("for", `floatingInput`);
+     agendaDescLabel.textContent = `Agenda Description`;
+ 
+     let agendaDescInput = document.createElement('textarea');
+     agendaDescInput.placeholder = '';
+     agendaDescInput.className = "form-control customized-form";
+     agendaDescInput.id = `agendaDesc${agendaCount}`;
+ 
+     agendaDescDiv.appendChild(agendaDescInput);
+     agendaDescDiv.appendChild(agendaDescLabel);
+
+
+    agendaWrapper.appendChild(labelCount);
+    agendaWrapper.appendChild(agendaDiv);
+    agendaWrapper.appendChild(agendaDescDiv);
+    agendaWrapper.appendChild(dateDiv);
+}
 function createNewEvent() {
 
     // Create event form variables
@@ -32,10 +117,17 @@ function createNewEvent() {
 
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
     // console.log("Editor Content:", descQuillContent);
-    let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
+    // let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
     // console.log("Editor Content:", agendaQuillContent);
-
-    let description = `<div class="descQill">${descQuillContent}</div><div class="agendaQill"><h2 class="fw-bold text-brand"><i class="fa-solid fa-calendar-days"></i> Agenda</h2>${agendaQuillContent}</div>`;
+    let description = `<div class="descQill">${descQuillContent}</div>`; 
+    for (let i = 1; i <= agendaCount; i++) {
+        description += `<div class="agenda mb-3 border rounded-2 p-3">
+        <p class="text-secondary pb-2">${document.getElementById(`agendaStarttime${i}`).value} - ${document.getElementById(`agendaEndtime${i}`).value}</p>
+        <h4>${document.getElementById(`agenda${i}`).value}</h4>
+        <p>${document.getElementById(`agendaDesc${i}`).value}</p>
+        </div>`
+    }
+    document.getElementById('test').innerHTML = description;
 
     // add ticket form variables
     let ticketQty = document.getElementById('ticketQuantity').value;
@@ -58,33 +150,34 @@ function createNewEvent() {
 
     // })
 
-    fetch(`${apiUrl}/api/events`, {
-        method: 'POST',
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "Accept": "application/json;"
-        },
-        body: eventData
-    })
-        .then(res => res.json())
-        .then(json => {
-            const { data } = json;
-            let imgFIle = new FormData();
-            imgFIle.append("thumbnail", thumbnailFile);
+    // fetch(`${apiUrl}/api/events`, {
+    //     method: 'POST',
+    //     headers: {
+    //         "Authorization": `Bearer ${token}`,
+    //         "Accept": "application/json;"
+    //     },
+    //     body: eventData
+    // })
+    //     .then(res => res.json())
+    //     .then(json => {
+    //         const { data } = json;
+    //         let imgFIle = new FormData();
+    //         imgFIle.append("thumbnail", thumbnailFile);
 
-            fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Accept": "application/json;"
-                },
-                body: imgFIle
-            })
-            .then(res=>res.json())
-            .then(json=>{
-            })
+    //         fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //                 "Accept": "application/json;"
+    //             },
+    //             body: imgFIle
+    //         })
+    //             .then(res => res.json())
+    //             .then(json => {
 
-        })
+    //             })
+
+    //     })
     // .then(response => {
     //     if (!response.ok) {
     //         // Extract the JSON error message from the response

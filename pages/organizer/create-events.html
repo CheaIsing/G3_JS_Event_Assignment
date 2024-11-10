@@ -17,7 +17,7 @@
 
 <body>
     <header id="header"></header>
-    <main>      
+    <main>
         <div class="d-flex">
             <nav class="shadow sidebar">
                 <ul>
@@ -483,14 +483,35 @@
                                         <div id="editor"></div>
                                     </div>
                                     <h5>Add full <span class="text-brand fw-bold">agenda</span> of your event</h5>
-                                    <div class="description mt-3 mb-5 d-flex align-items-center">
+                                    <div class="description mt-3 mb-5 ">
                                         <!-- <div id="agendaEditor"></div> -->
-                                        <div class="form-floating agenda w-75">
-                                            <input type="text" class="form-control customized-form" id="agenda"
-                                                placeholder="">
-                                            <label for="floatingInput">Agenda </label>
+                                        <div id="agenda-wrapper">
+                                            <h5 class="fw-bold text-brand mb-3 mt-4">+Agenda 1</h5>
+                                            <div class="form-floating agenda mb-3">
+                                                <input type="text" class="form-control customized-form" id="agenda1"
+                                                    placeholder="">
+                                                <label for="floatingInput">Title</label>
+                                            </div>
+                                            <div class="form-floating agenda mb-3">
+                                                <textarea name="" id="agendaDesc1" placeholder=""
+                                                    class="form-control customized-form"></textarea>
+                                                <label for="form-floating">Agenda Description</label>
+                                            </div>
+                                            <div class="datetime d-flex mb-4">
+                                                <div class="form-floating mb-3 me-5 w-25">
+                                                    <input type="time" class="form-control customized-form"
+                                                        id="agendaStarttime1" placeholder="">
+                                                    <label for="floatingInput">Start Time </label>
+                                                </div>
+                                                <div class="form-floating mb-3 me-5 w-25">
+                                                    <input type="time" class="form-control customized-form"
+                                                        id="agendaEndtime1" placeholder="">
+                                                    <label for="floatingInput">End Time </label>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <button type="button" class="btn-outline-pink ms-4"><i class="fa-solid fa-plus"></i> Add a new agenda</button>
+                                        <button type="button" class="btn-outline-pink" onclick="createNewAgenda()"><i
+                                                class="fa-solid fa-plus"></i> Add a new agenda</button>
                                     </div>
                                     <div class="upload-img-form">
                                         <h4 class="fw-bold pb-3">Add your image</h4>
@@ -517,6 +538,15 @@
                                             </ul>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="agenda mb-3 border rounded-2 p-3">
+                                <div class="agenda-content ps-2">
+                                    <p class="text-secondary pb-2">
+                                        ${document.getElementById(`agendaStarttime${i}`).value} -
+                                        ${document.getElementById(`agendaEndtime${i}`).value}</p>
+                                    <h4>${document.getElementById(`agenda${i}`).value}</h4>
+                                    <p>${document.getElementById(`agendaDesc${i}`).value}</p>
                                 </div>
                             </div>
                             <div class="sub-form-wrapper p-4 border rounded-4 mt-4 ">
@@ -580,7 +610,7 @@
                         </form>
                     </div>
                 </section>
-                
+
             </div>
         </div>
     </main>

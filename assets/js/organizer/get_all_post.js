@@ -1,5 +1,9 @@
 const apiUrl = "https://mps2.chandalen.dev";
+<<<<<<< HEAD
 // const token = localStorage.getItem("authToken");
+=======
+const token2 = localStorage.getItem("authToken");
+>>>>>>> 164bdc233df9b1df3c8dce981e078df80fdc4d76
 
 let id = localStorage.getItem("vendorId");
 
@@ -50,11 +54,30 @@ function getAllEventCard() {
       //hide placeHolder card
       document.getElementById("event-card-wrapper").innerHTML = "";
 
+<<<<<<< HEAD
       loadEventCards();
     });
+=======
+    document.getElementById('event-card-wrapper').innerHTML = placeHolderCard;
+    fetch(`${apiUrl}/api/events?page=1&per_page=100&search`, {
+        headers: {
+            Authorization: `Bearer ${token2}`
+        }
+    })
+        .then(res => res.json())
+        .then(json => {
+            const { data } = json;
+            allEventData = data;
+            //hide placeHolder card
+            document.getElementById('event-card-wrapper').innerHTML = "";
+
+            loadEventCards();
+        })
+>>>>>>> 164bdc233df9b1df3c8dce981e078df80fdc4d76
 }
 
 function getAllRecruitCard() {
+<<<<<<< HEAD
   document.getElementById("recruit-card-wrapper").innerHTML = placeHolderCard;
   fetch(`${apiUrl}/api/vendors?page=1&per_page=50&search`, {
     headers: {
@@ -65,6 +88,18 @@ function getAllRecruitCard() {
     .then((json) => {
       const { data } = json;
       allRecruitData = data;
+=======
+    document.getElementById('recruit-card-wrapper').innerHTML = placeHolderCard;
+    fetch(`${apiUrl}/api/vendors?page=1&per_page=50&search`, {
+        headers: {
+            Authorization: `Bearer ${token2}`
+        }
+    })
+        .then(res => res.json())
+        .then(json => {
+            const { data } = json;
+            allRecruitData = data;
+>>>>>>> 164bdc233df9b1df3c8dce981e078df80fdc4d76
 
       //hide placeHolder card
       document.getElementById("recruit-card-wrapper").innerHTML = "";
@@ -72,17 +107,17 @@ function getAllRecruitCard() {
     });
 }
 
-function getAllVendorCard() {
-  document.getElementById("vendor-card-wrapper").innerHTML = placeHolderCard;
-  fetch(`${apiUrl}/api/businesses?page=1&per_page=50&search`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      const { data } = json;
-      allVendorData = data;
+function getAllVendorCard(){
+    document.getElementById('vendor-card-wrapper').innerHTML = placeHolderCard;
+    fetch(`${apiUrl}/api/businesses?page=1&per_page=50&search`, {
+        headers: {
+            Authorization: `Bearer ${token2}`
+        }
+    })
+        .then(res => res.json())
+        .then(json => {
+            const { data } = json;
+            allVendorData = data;
 
       //hide placeHolder card
       document.getElementById("vendor-card-wrapper").innerHTML = "";
@@ -112,16 +147,13 @@ function showMoreVendor() {
 function loadEventCards() {
   const cardContainer = document.getElementById("event-card-wrapper");
 
-  // Check if there's more data to load
-  for (
-    let i = 0;
-    i < incrementCount && currentIndex < allEventData.length;
-    i++
-  ) {
-    const element = allEventData[currentIndex];
-    const newCard = document.createElement("div");
-    newCard.className = "card";
-    newCard.innerHTML = `       <div class="card-content h-100">
+    // Check if there's more data to load
+    for (let i = 0; i < incrementCount && currentIndex < allEventData.length; i++) {
+        
+        const element = allEventData[currentIndex];
+        const newCard = document.createElement('div');
+        newCard.className = "card";
+        newCard.innerHTML = `       <div class="card-content">
                                         <img class="card-img-top" src="../assets/img/party/party1.png" alt="Title" />
                                         <div class="card-body">
                                             <div class="d-flex event-pill-wrapper"></div>
