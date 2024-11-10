@@ -550,12 +550,15 @@ function updatePassword() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
+        
         document.body.style.cursor = "default";
+        showToast(data.message, data.result);
         document.getElementById("btn-change-pass").disabled = false;
         if (data.result) {
           // document.getElementById("btn-change-pass").disabled = false;
 
-          showToast(data.message, data.result);
+          
           setTimeout(() => {
             location.reload();
           }, 1500);
