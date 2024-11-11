@@ -81,53 +81,54 @@ fetch(apiUrl + "/api/events/" + id)
           // Proceed with any necessary actions, like submitting the form or moving to the next step
           alert("Proceeding with the file upload...");
           const formData = new FormData();
-          formData.append('transaction_file', fileInput.files[0]);
-          document
-      .getElementById("proceedButton").disabled = true;
-
-          
+          formData.append("transaction_file", fileInput.files[0]);
+          document.getElementById("proceedButton").disabled = true;
 
           fetch(`${apiUrl}/api/tickets/request-buy`, {
             method: "POST",
             headers: {
-              Authorization: `Bearer ${token}`, 
-              "Accept": "application/json",
-               "Content-Type": "application/json"
+              Authorization: `Bearer ${token}`,
+              Accept: "application/json",
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              event_id : parseInt(id),
-              amount: parseInt(document.getElementById("ticketAmount").innerText)
-            })
+              event_id: parseInt(id),
+              amount: parseInt(
+                document.getElementById("ticketAmount").innerText
+              ),
+            }),
           })
-          .then(res=>res.json())
-          .then(json=>{
-            console.log(json);
-            document
-      .getElementById("proceedButton").disabled = false;
-      sessionStorage.setItem('transaction_file_id', json.data.id);
-      fetch(`${apiUrl}/api/tickets/transaction-file/${json.data.id}`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`, 
-          "Accept": "application/json",
-           "Content-Type": "application/json"
-        },
-        body: formData
-      })
-      .then(res=>res.json())
-      .then(json2=>{
-        console.log(json2);
-        if(json2.result == true){
-          const bootstrapForgotPassModal =
-              bootstrap.Modal.getInstance(document.getElementById("paymentModal"));
-            bootstrapForgotPassModal.hide(); // Close the modal
+            .then((res) => res.json())
+            .then((json) => {
+              console.log(json);
+              document.getElementById("proceedButton").disabled = false;
+              sessionStorage.setItem("transaction_file_id", json.data.id);
+              fetch(`${apiUrl}/api/tickets/transaction-file/${json.data.id}`, {
+                method: "POST",
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                  Accept: "application/json",
+                  // "Content-Type": "application/json",
+                },
+                body: formData,
+              })
+                .then((res) => res.json())
+                .then((json2) => {
+                  console.log(json2);
+                  if (json2.result == true) {
+                    const bootstrapForgotPassModal =
+                      bootstrap.Modal.getInstance(
+                        document.getElementById("paymentModal")
+                      );
+                    bootstrapForgotPassModal.hide(); // Close the modal
 
-            const bsSucessModal = bootstrap.Modal.getInstance(document.getElementById('sucessModalToggle2'))
-            bsSucessModal.show();
-        }
-
-      })            
-          })
+                    const bsSucessModal = bootstrap.Modal.getInstance(
+                      document.getElementById("sucessModalToggle2")
+                    );
+                    bsSucessModal.show();
+                  }
+                });
+            });
           // console.log(
           //   Number(document.getElementById("ticketAmount").innerText)
           // );

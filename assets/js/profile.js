@@ -397,11 +397,20 @@ function validateField(field, validationFunction, errorMessageId, callback) {
 
 function updateinfo(event) {
   event.preventDefault();
+  // Attach event listeners to input fields for validation on change
+emailInput.addEventListener("input", () =>
+  validateField(emailInput, isValidEmail, "email-info-err")
+);
+fullnameInput.addEventListener("input", () =>
+  validateField(fullnameInput, isValidFullName, "fullname-info-err")
+);
+phoneInput.addEventListener("input", () =>
+  validateField(phoneInput, isValidPhoneNumber, "phone-info-err")
+);
+dobInput.addEventListener("input", () =>
+  validateField(dobInput, isValidateDOB, "dob-info-err")
+);
 
-  const emailInput = document.getElementById("login-email");
-  const fullnameInput = document.getElementById("fullname");
-  const phoneInput = document.getElementById("phonenumber");
-  const dobInput = document.getElementById("datepicker");
 
   let isValid = true;
 
@@ -444,37 +453,8 @@ function updateinfo(event) {
   }
 }
 
-// Attach event listeners to input fields for validation on change
-emailInput.addEventListener("input", () =>
-  validateField(emailInput, isValidEmail, "email-info-err")
-);
-fullnameInput.addEventListener("input", () =>
-  validateField(fullnameInput, isValidFullName, "fullname-info-err")
-);
-phoneInput.addEventListener("input", () =>
-  validateField(phoneInput, isValidPhoneNumber, "phone-info-err")
-);
-dobInput.addEventListener("input", () =>
-  validateField(dobInput, isValidateDOB, "dob-info-err")
-);
 
-currentPassword.addEventListener("input", () => {
-  validateField(currentPassword, validatePassword, "currentPassErr", moveEye);
-});
-newPassword.addEventListener("input", () => {
-  validateField(newPassword, validatePassword, "newPassErr", moveEye);
-});
-confirmNewPassword.addEventListener("input", () => {
-  validateField(
-    confirmNewPassword,
-    validatePassword,
-    "confirmNewPassErr",
-    moveEye
-  );
-});
-dPassword.addEventListener("input", () => {
-  validateField(dPassword, validatePassword, "dPassErr", moveEye);
-});
+
 
 function validatePassword(password) {
   const passwordRegex =
@@ -508,6 +488,20 @@ function moveEye() {
 }
 
 function updatePassword() {
+  currentPassword.addEventListener("input", () => {
+    validateField(currentPassword, validatePassword, "currentPassErr", moveEye);
+  });
+  newPassword.addEventListener("input", () => {
+    validateField(newPassword, validatePassword, "newPassErr", moveEye);
+  });
+  confirmNewPassword.addEventListener("input", () => {
+    validateField(
+      confirmNewPassword,
+      validatePassword,
+      "confirmNewPassErr",
+      moveEye
+    );
+  });
   let isValid = true;
 
   isValid =
@@ -526,12 +520,11 @@ function updatePassword() {
 
   moveEye();
 
-  if (newPassword.value !== confirmNewPassword.value) {
-    showToast("New password and confirm password do not match.", false);
-    return;
-  }
-
   if (isValid) {
+    if (newPassword.value !== confirmNewPassword.value) {
+      showToast("New password and confirm password do not match.", false);
+      return;
+    }
     document.body.style.cursor = "wait";
     document.getElementById("btn-change-pass").disabled = true;
     const data = {
@@ -568,6 +561,9 @@ function updatePassword() {
 }
 
 function deleteAccount() {
+  dPassword.addEventListener("input", () => {
+    validateField(dPassword, validatePassword, "dPassErr", moveEye);
+  });
   const password = document.getElementById("d-password").value;
 
   let isValid = true;
