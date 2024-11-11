@@ -1,7 +1,6 @@
 // getAllEvent();
 const apiUrl = "https://mps2.chandalen.dev";
 // const token = localStorage.getItem("authToken");
-alert("dhgh")
 getAllWish();
 function getAllWish() {
     fetch(apiUrl + '/api/wishlists', {
@@ -87,7 +86,7 @@ function getAllWish() {
 function getEDetail(card) {
     id = card.dataset.id;
     sessionStorage.setItem('itemID', id);
-    location.href = '../../browse/event-detail.html';
+    location.href = '/pages/browse/event-detail.html';
 }
 function deleteItem(card) {
     id = card.dataset.id;
@@ -100,7 +99,7 @@ function deleteItem(card) {
     })
         .then(res => res.json())
         .then(json => {
-            alert("delete Item successfully");
+            showToast(json.message, json.result);
             getAllWish();
         })
 }

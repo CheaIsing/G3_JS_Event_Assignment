@@ -103,6 +103,7 @@ function scrollFunction() {
 
   
   let searchClicked = document.getElementById('searchEvent');
+  
   searchClicked.addEventListener('focus', ()=>{
     document.querySelector('.search-dropdown').style.display = 'block';
     document.querySelector('.overlay').style.display = 'block';

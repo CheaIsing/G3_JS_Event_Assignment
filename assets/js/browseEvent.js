@@ -16,26 +16,26 @@ function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
         return "Past";
     }
 }
-function getAllCatagory(){
-    fetch(apiUrl+'/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search')
-            .then(res=>res.json())
-            .then(json=>{
-                let data=json.data;
-                let listCata='';
-                data.forEach(element => {
-                    listCata+=`<div class="form-check">
+function getAllCatagory() {
+    fetch(apiUrl + '/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search')
+        .then(res => res.json())
+        .then(json => {
+            let data = json.data;
+            let listCata = '';
+            data.forEach(element => {
+                listCata += `<div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="cata${element.id}">
-                                    <label class="form-check-label" for="">
+                                    <label class="form-check-label" for="cata${element.id}">
                                     ${element.name}
                                     </label>
                                 </div>`;
-                });
-                document.getElementById('catagory').innerHTML+=listCata;
-            }
-            )
+            });
+            document.getElementById('catagory').innerHTML += listCata;
+        }
+        )
 }
 function getAllEvent() {
-    let url = apiUrl+`/api/events?page=1&per_page=50&search`;
+    let url = apiUrl + `/api/events?page=1&per_page=50&search`;
     fetch(url)
         .then(res => res.json())
         .then(json => {
@@ -50,15 +50,20 @@ function getAllEvent() {
                 return statusOrder[a.status] - statusOrder[b.status];
             });
             let listE = '';
+            let numResult = 0
             data.forEach(element => {
                 let price = element.ticket_price == 0 ? 'Free' : `$${element.ticket_price}`;
                 let catagory = element.event_categories.map(cata => cata.name).join(',&nbsp;');
+                let catas = "";
+                element.event_categories.forEach((cata) => {
+                    catas += `<div class="pill${cata.id} me-1">${cata.name}</div>`;
+                });
                 listE += `<div class="card mb-4">
                                     <div class="row g-0">
                                         <div class="col-3 position-relative">
                                             <img src="../../assets/img/test-img/cta-event-search-banner.avif"
                                                 class="img-fluid rounded-start " alt="...">
-                                            <div class="i-wish add-wish position-absolute top-0 end-0" >
+                                            <div class="i-wish add-wish position-absolute top-0 end-0" data-id="${element.id}">
                                                 <i class="fa-regular fa-heart"></i>
                                             </div>
                                         </div>
@@ -68,10 +73,8 @@ function getAllEvent() {
                                                     <a href="javascript: void(0)" onclick="getEDetail(this)" data-id="${element.id}">${element.name}</a>
                                                 </h3>
                                                 <div class="d-flex mb-2">
-                                                    <div class="m-0 fs-18 text-brand fw-medium">
-                                                            <i class="fa-regular fa-folder-open me-2 fs-18"></i><span
-                                                            class="">${catagory}</span>
-                                                    </div>
+                                                    
+                                                    <div class="d-flex event-pill-wrapper">${catas}</div>
                                                     <div class=" ms-5 border-start border-danger ps-5 m-0 fs-18 text-brand fw-medium">
                                                         <i class="fa-solid fa-tag me-2 fs-18"></i><span
                                                             class="">${price}</span>
@@ -92,15 +95,19 @@ function getAllEvent() {
                                         </div>
                                     </div>
                                 </div>`;
+                numResult++;
             });
             document.getElementById('list-card').innerHTML = listE;
-            const wishButtons = document.querySelectorAll('.add-wish'); // Select all buttons with the class i-wish
-            console.log(wishButtons);
-            wishButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    button.classList.toggle('clicked'); // Toggle the clicked class for each button
-                });
-            });
+            document.getElementById('result-num').innerHTML = numResult;
+            const wishButtons = document.querySelectorAll('.add-wish');
+wishButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const eventId = button.dataset.id; 
+        // console.log(eventId);
+        addWishlist(eventId);
+        button.classList.toggle('clicked');
+    });
+});
         })
 }
 function getEDetail(card) {
@@ -108,7 +115,36 @@ function getEDetail(card) {
     sessionStorage.setItem('itemID', id);
     location.href = '/pages/browse/event-detail.html';
 }
-function addWishlist(id){
+// const wishButtons = document.querySelectorAll('.add-wish'); // Select all buttons with the class i-wish
+//             console.log(wishButtons);
+//             wishButtons.forEach(button => {
+//                 button.addEventListener('click', () => {
+//                     button.classList.toggle('clicked'); // Toggle the clicked class for each button
+//                 });
+//             });
+// function addWishlist(id) {
     
+// }
+// Function to add an event to the wishlist
+function addWishlist(eventId) {
+    const Url = "https://mps2.chandalen.dev/api/wishlists/";
+    const token = localStorage.getItem("authToken");
+    const formData = new FormData();
+    formData.append('event_id', eventId);
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: formData
+    };
+    // Make the API call
+    fetch(Url, requestOptions)
+        .then(res => res.json())
+        .then(data => {
+            showToast("Event is added to wishlist", true);
+            console.log('Success:', data);
+        })
 }
 

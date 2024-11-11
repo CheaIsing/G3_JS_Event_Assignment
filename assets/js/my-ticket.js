@@ -18,6 +18,12 @@ function getAllTicket() {
         const { data } = json;
         console.log(data);
 
+        if(data.length <= 0){
+          document.getElementById("ticket-tbody").innerHTML = '<tr><td colspan="5"><h3 class="text-center w-100 mt-5">No Requested Tickets to Display...</h3></td></tr>';
+          return;
+        }
+
+        
         let filterData = data;
 
         document

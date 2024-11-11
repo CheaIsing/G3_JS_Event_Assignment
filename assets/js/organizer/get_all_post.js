@@ -1,5 +1,5 @@
 const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
+const token2 = localStorage.getItem("authToken");
 
 let id = localStorage.getItem("vendorId");
 
@@ -44,9 +44,9 @@ getAllVendorCard();
 function getAllEventCard() {
 
     document.getElementById('event-card-wrapper').innerHTML = placeHolderCard;
-    fetch(`${apiUrl}/api/events?page=1&per_page=50&search`, {
+    fetch(`${apiUrl}/api/events?page=1&per_page=100&search`, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token2}`
         }
     })
         .then(res => res.json())
@@ -65,7 +65,7 @@ function getAllRecruitCard() {
     document.getElementById('recruit-card-wrapper').innerHTML = placeHolderCard;
     fetch(`${apiUrl}/api/vendors?page=1&per_page=50&search`, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token2}`
         }
     })
         .then(res => res.json())
@@ -83,7 +83,7 @@ function getAllVendorCard(){
     document.getElementById('vendor-card-wrapper').innerHTML = placeHolderCard;
     fetch(`${apiUrl}/api/businesses?page=1&per_page=50&search`, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token2}`
         }
     })
         .then(res => res.json())
@@ -124,6 +124,7 @@ function loadEventCards() {
 
     // Check if there's more data to load
     for (let i = 0; i < incrementCount && currentIndex < allEventData.length; i++) {
+        
         const element = allEventData[currentIndex];
         const newCard = document.createElement('div');
         newCard.className = "card";
@@ -310,4 +311,3 @@ function loadVendorCards() {
 
     }
 }
-

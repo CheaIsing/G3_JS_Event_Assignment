@@ -9,6 +9,11 @@ function getOwnedTickets() {
       console.log(json.data);
       let rowsHtml = "";
 
+      if(json.data.length <= 0){
+        document.getElementById("ticket-tbody").innerHTML = '<tr><td colspan="5"><h3 class="text-center w-100 mt-5">No Owned Tickets to Display...</h3></td></tr>';
+          return;;
+      }
+
       //   let categories = "";
 
       json.data.forEach(async (ele) => {

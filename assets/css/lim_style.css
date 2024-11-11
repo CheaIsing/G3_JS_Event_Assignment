@@ -556,7 +556,7 @@ footer .contact-info .social-media a:hover {
 .recruit-card-wrapper .card {
     width: calc(100%);
     border: none !important;
-    margin: 0px 20px 50px 0;
+    margin: 0px 20px 15px 0;
 }
 
 .recruit-card-wrapper .card .card-body {
@@ -765,5 +765,7 @@ footer .contact-info .social-media a:hover {
     border-radius: 10px 10px 0 0;
 }
 
-
+.description .agenda-wrapper .agenda:nth-child(even){
+    background-color: #e11594;
+}
 

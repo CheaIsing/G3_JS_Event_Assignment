@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
       location.pathname.includes("login.html") ||
       location.pathname.includes("Signup.html")
     ) {
+
       location.href = "/pages/homepage.html";
     }
   } else {

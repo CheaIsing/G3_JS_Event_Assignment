@@ -16,8 +16,76 @@
 </head>
 
 <body>
-    <header id="header"></header>
-    <main>      
+    <header class="border" id="header">
+        <div class="container">
+            <nav class="d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <a href="homepage.html">
+                        <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                    </a>
+                </div>
+                <div class="d-flex align-items-center w-25 position-relative ">
+                    <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
+                    <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
+                        aria-describedby="helpId" placeholder="Search Event " />
+                    <button class="btn-pink text-white"><i
+                            class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
+                    <ul class="search-dropdown position-absolute" id="search-dropdown">
+  
+                    </ul>
+                </div>
+                <div class="action-btn d-flex">
+                    <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
+                            href="../../pages/organizer/create-events.html">Create
+                            a
+                            post</a> </button>
+                    <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Browse <i class="fa-solid fa-caret-down text-brand"></i>
+                        <!-- User Icon -->
+                    </a>
+                    <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
+                            class="fa-solid fa-ticket pe-1 text-brand"></i>My
+                        Ticket</a>
+  
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
+                        <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
+                                events</a></li>
+                        <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
+                                vendor recruitments</a></li>
+                        <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
+                                vendor services</a></li>
+  
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
+                        id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                        <!-- User Icon -->
+                        <span class="ps-1 fs-6" id="userEmail"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                        <li><a class="dropdown-item" href="../organizer/event.html">Manage
+                                as
+                                organizer</a></li>
+                        <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
+                                vendor</a></li>
+                        <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
+                        <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
+                                Setting</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="javascript:void(0);" id="btn-logout">Log
+                                out</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
         <div class="d-flex">
             <nav class="shadow sidebar">
                 <ul>
@@ -483,14 +551,35 @@
                                         <div id="editor"></div>
                                     </div>
                                     <h5>Add full <span class="text-brand fw-bold">agenda</span> of your event</h5>
-                                    <div class="description mt-3 mb-5 d-flex align-items-center">
+                                    <div class="description mt-3 mb-5 ">
                                         <!-- <div id="agendaEditor"></div> -->
-                                        <div class="form-floating agenda w-75">
-                                            <input type="text" class="form-control customized-form" id="agenda"
-                                                placeholder="">
-                                            <label for="floatingInput">Agenda </label>
+                                        <div id="agenda-wrapper">
+                                            <h5 class="fw-bold text-brand mb-3 mt-4">+Agenda 1</h5>
+                                            <div class="form-floating agenda mb-3">
+                                                <input type="text" class="form-control customized-form" id="agenda1"
+                                                    placeholder="">
+                                                <label for="floatingInput">Title</label>
+                                            </div>
+                                            <div class="form-floating agenda mb-3">
+                                                <textarea name="" id="agendaDesc1" placeholder=""
+                                                    class="form-control customized-form"></textarea>
+                                                <label for="form-floating">Agenda Description</label>
+                                            </div>
+                                            <div class="datetime d-flex mb-4">
+                                                <div class="form-floating mb-3 me-5 w-25">
+                                                    <input type="time" class="form-control customized-form"
+                                                        id="agendaStarttime1" placeholder="">
+                                                    <label for="floatingInput">Start Time </label>
+                                                </div>
+                                                <div class="form-floating mb-3 me-5 w-25">
+                                                    <input type="time" class="form-control customized-form"
+                                                        id="agendaEndtime1" placeholder="">
+                                                    <label for="floatingInput">End Time </label>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <button type="button" class="btn-outline-pink ms-4"><i class="fa-solid fa-plus"></i> Add a new agenda</button>
+                                        <button type="button" class="btn-outline-pink" onclick="createNewAgenda()"><i
+                                                class="fa-solid fa-plus"></i> Add a new agenda</button>
                                     </div>
                                     <div class="upload-img-form">
                                         <h4 class="fw-bold pb-3">Add your image</h4>
@@ -517,6 +606,15 @@
                                             </ul>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="agenda mb-3 border rounded-2 p-3">
+                                <div class="agenda-content ps-2">
+                                    <p class="text-secondary pb-2">
+                                        ${document.getElementById(`agendaStarttime${i}`).value} -
+                                        ${document.getElementById(`agendaEndtime${i}`).value}</p>
+                                    <h4>${document.getElementById(`agenda${i}`).value}</h4>
+                                    <p>${document.getElementById(`agendaDesc${i}`).value}</p>
                                 </div>
                             </div>
                             <div class="sub-form-wrapper p-4 border rounded-4 mt-4 ">
@@ -580,7 +678,7 @@
                         </form>
                     </div>
                 </section>
-                
+
             </div>
         </div>
     </main>
