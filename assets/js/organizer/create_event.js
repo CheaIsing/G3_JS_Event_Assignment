@@ -18,7 +18,7 @@ function createNewAgenda() {
     let agendaInput = document.createElement('input');
     agendaInput.type = 'text';
     agendaInput.className = "form-control customized-form";
-    agendaInput.id = `agenda${agendaCount}`;
+    agendaInput.id = `agendaTitle${agendaCount}`;
 
 
     // Create a start time input
@@ -57,29 +57,29 @@ function createNewAgenda() {
     dateDiv.className = 'datetime d-flex mb-4';
     dateDiv.appendChild(agendaStDiv);
     dateDiv.appendChild(agendaEtDiv);
-    
+
     agendaDiv.appendChild(agendaInput);
     agendaDiv.appendChild(agendaLabel);
-    
+
     let labelCount = document.createElement('h5');
     labelCount.className = "text-brand fw-bold mb-3 mt-4";
     labelCount.innerText = `+ Agenda ${agendaCount}`;
 
-     // Create a Desc for agenda
-     let agendaDescDiv = document.createElement('div');
-     agendaDescDiv.className = "form-floating agenda mt-3";
- 
-     let agendaDescLabel = document.createElement('label');
-     agendaDescLabel.setAttribute("for", `floatingInput`);
-     agendaDescLabel.textContent = `Agenda Description`;
- 
-     let agendaDescInput = document.createElement('textarea');
-     agendaDescInput.placeholder = '';
-     agendaDescInput.className = "form-control customized-form";
-     agendaDescInput.id = `agendaDesc${agendaCount}`;
- 
-     agendaDescDiv.appendChild(agendaDescInput);
-     agendaDescDiv.appendChild(agendaDescLabel);
+    // Create a Desc for agenda
+    let agendaDescDiv = document.createElement('div');
+    agendaDescDiv.className = "form-floating agenda mt-3";
+
+    let agendaDescLabel = document.createElement('label');
+    agendaDescLabel.setAttribute("for", `floatingInput`);
+    agendaDescLabel.textContent = `Agenda Description`;
+
+    let agendaDescInput = document.createElement('textarea');
+    agendaDescInput.placeholder = '';
+    agendaDescInput.className = "form-control customized-form";
+    agendaDescInput.id = `agendaDesc${agendaCount}`;
+
+    agendaDescDiv.appendChild(agendaDescInput);
+    agendaDescDiv.appendChild(agendaDescLabel);
 
 
     agendaWrapper.appendChild(labelCount);
@@ -114,20 +114,32 @@ function createNewEvent() {
     }
 
     //get text from Qill form
-
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
-    // console.log("Editor Content:", descQuillContent);
-    // let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
-    // console.log("Editor Content:", agendaQuillContent);
-    let description = `<div class="descQill">${descQuillContent}</div>`; 
-    for (let i = 1; i <= agendaCount; i++) {
-        description += `<div class="agenda mb-3 border rounded-2 p-3">
-        <p class="text-secondary pb-2">${document.getElementById(`agendaStarttime${i}`).value} - ${document.getElementById(`agendaEndtime${i}`).value}</p>
-        <h4>${document.getElementById(`agenda${i}`).value}</h4>
-        <p>${document.getElementById(`agendaDesc${i}`).value}</p>
-        </div>`
+    
+    let description = `<div class="descQill">${descQuillContent}</div>`;
+    if (document.getElementById(`agendaStarttime1`).value || document.getElementById(`agenda1`).value) {
+        for (let i = 1; i <= agendaCount; i++) {
+            if ((document.getElementById(`agendaStarttime${i}`).value && document.getElementById(`agendaEndtime${i}`).value) ||
+                document.getElementById(`agenda${i}`).value || document.getElementById(`agendaDesc${i}`).value) {
+                description += `<br>
+                <div class="agenda-card mb-3 border rounded-4 py-3 px-4">
+                                                <div class="agenda-content ps-4">
+                                                    <p class="text-secondary pb-2" id="agenda-time">
+                                                        ${document.getElementById(`agendaStarttime${i}`).value} -
+                                                        ${document.getElementById(`agendaEndtime${i}`).value}</p>
+                                                    <h4 id="agenda-title">${document.getElementById(`agenda${i}`).value}</h4>
+                                                    <p id="agenda-desc" class="mb-0 ps-4">${document.getElementById(`agendaDesc${i}`).value}</p>
+                                                </div>
+                                            </div>`;
+
+            }
+        }
     }
-    document.getElementById('test').innerHTML = description;
+    else {
+        description = `<div class="descQill">${descQuillContent}</div>`;
+    }
+    // console.log(description);
+    // document.getElementById('test').innerHTML = description;
 
     // add ticket form variables
     let ticketQty = document.getElementById('ticketQuantity').value;
@@ -145,39 +157,39 @@ function createNewEvent() {
     eventData.append('ticket_price', ticketPrice);
     eventData.append('event_category_ids', JSON.stringify(categoriesList));
 
-    // eventData.forEach((element, key) => {
-    //     console.log(element, key);
+    eventData.forEach((element, key) => {
+        console.log(element, key);
 
-    // })
+    })
 
-    // fetch(`${apiUrl}/api/events`, {
-    //     method: 'POST',
-    //     headers: {
-    //         "Authorization": `Bearer ${token}`,
-    //         "Accept": "application/json;"
-    //     },
-    //     body: eventData
-    // })
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         const { data } = json;
-    //         let imgFIle = new FormData();
-    //         imgFIle.append("thumbnail", thumbnailFile);
+    fetch(`${apiUrl}/api/events`, {
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/json;"
+        },
+        body: eventData
+    })
+        .then(res => res.json())
+        .then(json => {
+            const { data } = json;
+            let imgFIle = new FormData();
+            imgFIle.append("thumbnail", thumbnailFile);
 
-    //         fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //                 "Accept": "application/json;"
-    //             },
-    //             body: imgFIle
-    //         })
-    //             .then(res => res.json())
-    //             .then(json => {
+            fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Accept": "application/json;"
+                },
+                body: imgFIle
+            })
+                .then(res => res.json())
+                .then(json => {
 
-    //             })
+                })
 
-    //     })
+        })
     // .then(response => {
     //     if (!response.ok) {
     //         // Extract the JSON error message from the response
@@ -211,3 +223,8 @@ fetch(`${apiUrl}/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=
             eventCatSelect.appendChild(opt);
         });
     })
+
+ 
+    // console.log("Editor Content:", descQuillContent);
+    // let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
+    // console.log("Editor Content:", agendaQuillContent);

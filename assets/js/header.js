@@ -142,5 +142,5 @@ fetch(`${apiUrl1}/api/me`, {
 .then(res=>res.json())
 .then(json=>{
   const {data} = json;
-  document.getElementById('userEmail').innerText = data.email;
+  document.getElementById('userEmail').innerText = data.full_name;
 })
