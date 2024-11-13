@@ -424,6 +424,8 @@ dobInput.addEventListener("input", () =>
   isValid = validateField(dobInput, isValidateDOB, "dob-info-err") && isValid;
 
   if (isValid) {
+    document.getElementById('btn-update-info').disabled = true;
+    document.body.style.cursor = 'wait'
     // Submit update request using formData
     // ... your update logic here
     const formData = {
@@ -444,6 +446,8 @@ dobInput.addEventListener("input", () =>
     })
       .then((res) => res.json())
       .then((json) => {
+        document.getElementById('btn-update-info').disabled = false;
+    document.body.style.cursor = 'default'
         showToast(json.message, json.result);
         //   populateUserData(json.data);
         setTimeout(() => {

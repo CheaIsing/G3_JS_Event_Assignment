@@ -48,6 +48,59 @@ fetch(apiUrl + "/api/events/" + id)
     document.getElementById("ev-price1").innerHTML = price;
     // console.log(document.getElementById('proceedButton'));
     ticketPrice = data.ticket_price;
+
+    if (data.ticket_price === 0) {
+      fetch(
+        `${API_URL}/api/profile/requested-tickets?sort_col=created_at&sort_dir=desc`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((json4) => {
+          console.log(json4);
+          for(let ele of json4.data){
+            if(ele.event.id == id){
+              console.log(ele);
+              document.getElementById("btn-purchase").disabled = true;
+            }
+          }
+          
+        });
+
+      document.getElementById("btn-purchase").removeAttribute("data-bs-target");
+      document.getElementById("btn-purchase").removeAttribute("data-bs-toggle");
+      document.getElementById("btn-purchase").innerHTML = "Redeem Ticket";
+      document.getElementById("btn-purchase").onclick = () => {
+        fetch(`${apiUrl}/api/tickets/request-buy`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            event_id: parseInt(id),
+            amount: 1,
+          }),
+        })
+          .then((res) => res.json())
+          .then((json1) => {
+            if (json1.result === true) {
+              showToast("Redeem Ticket Sucessfully", json1.result);
+              document.getElementById("btn-purchase").disabled = true;
+            } else {
+              showToast(json1, json1.result);
+            }
+          })
+          .catch((err) => {
+            showToast(err, false);
+          });
+      };
+    }
+
     document.getElementById("summary-total").innerHTML = `
     <div class="col d-flex flex-column  ">
                             <h6>Amount</h6>
@@ -122,9 +175,11 @@ fetch(apiUrl + "/api/events/" + id)
                       );
                     bootstrapForgotPassModal.hide(); // Close the modal
 
-                    const bsSucessModal = bootstrap.Modal.getInstance(
+                    const bsSucessModal = new bootstrap.Modal(
                       document.getElementById("sucessModalToggle2")
                     );
+                    // console.log(document.getElementById("sucessModalToggle2"));
+                    
                     bsSucessModal.show();
                   }
                 });

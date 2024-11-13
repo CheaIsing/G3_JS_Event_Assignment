@@ -182,6 +182,7 @@
                                                 placeholder="">
                                             <label for="floatingInput">Your post title <span
                                                     class="text-danger">*</span></label>
+                                            <div  id="lblPostTitle"></div>
                                         </div>
 
                                         <div class="category-select d-flex mb-5">
@@ -212,6 +213,7 @@
                                             <input type="number" class="form-control customized-form" id="servicePrice"
                                                 placeholder="">
                                             <label for="floatingInput">$ </label>
+                                            <div id="lblServicePrice"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -226,7 +228,7 @@
                                         <h4 class="fw-bold pb-3">Description</h4>
                                         <h5>Add full description about your business</h5>
                                         <div class="description mt-3 mb-5">
-                                            <div id="editor"></div>
+                                            <div id="editor" class="bg-white"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -244,11 +246,13 @@
                                             <input type="email" class="form-control customized-form" id="email"
                                                 placeholder="">
                                             <label for="floatingInput">Email </label>
+                                            <div id="lblEmail"></div>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input type="number" class="form-control customized-form" id="phone"
                                                 placeholder="">
                                             <label for="floatingInput">Phone Number </label>
+                                            <div id="lblPhone"></div>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control customized-form" id="facebook"
@@ -315,7 +319,8 @@
             </div>
         </div>
     </main>
-    <script type="module" src="../../assets/js/authentication.js"></script>
+    <script src="../../assets/js/ultilities.js"></script>
+    <script src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/form_collapse.js"></script>
     <script src="../../assets/lib/QuilJs/quill.js"></script>
@@ -364,6 +369,7 @@
             document.getElementById('imgIcon').style.display = 'block';
         });
     </script>
+    <script src="../../assets/js/form_validation.js"></script>
 
 </body>
 

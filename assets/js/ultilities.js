@@ -69,6 +69,7 @@ function formatDateStringMonth(dateString) {
 
   return formattedDate.replace(',', ''); // Remove comma if present
 }
+
 function formatDateStringDay(dateString) {
   const date = new Date(dateString); // Convert the string to a Date object
   
@@ -79,4 +80,21 @@ function formatDateStringDay(dateString) {
   const formattedDate = date.toLocaleString('en-US', options).toUpperCase(); // Convert to uppercase
 
   return formattedDate.replace(',', ''); // Remove comma if present
+}
+
+function formatCustomDateWithYear(dateString) {
+  // Parse the initial date string
+  const date = new Date(dateString);
+
+
+  // Format the date to "Fri • Nov 1, 2004"
+  const options = { month: 'short', day: 'numeric', year: 'numeric' };
+  return date.toLocaleDateString('en-US', options).replace(',', ' •');
+}
+
+function formatToHour(dateString) {
+  // Parse the initial date string
+  const date = new Date(dateString);
+  const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+  return date.toLocaleTimeString('en-US', options);
 }

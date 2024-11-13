@@ -1,225 +1,295 @@
+// import { showToast } from "../ultilities.js";
 const apiUrl = "https://mps2.chandalen.dev";
 // const token = localStorage.getItem("authToken");
 
-// function getPendingTicket() {
-//   fetch(`${API_URL}/api/tickets/request-buy`, {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   })
-//     .then((res) => res.json())
-//     .then((json) => {
-//       console.log(json);
+function getMe(searhE = "", searchV = "") {
+  fetch(`${apiUrl}/api/me`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+    getAllEventCard(apiUrl, json.data.id, searhE);
+    });
+}
 
-//     //   if (json.result === true) {
-//     //     const { data } = json;
-//     //     console.log(data);
-
-//     //     let rowsHTML = "";
-
-//     //     data.forEach((ele) => {
-//     //       const { event } = ele;
-//     //       let categories = "";
-
-//     //       if (event.event_categories.length > 0) {
-//     //         for (let value of event.event_categories) {
-//     //           categories += value.name + ", ";
-//     //         }
-
-//     //         categories = categories.substring(0, categories.length - 2);
-//     //       }
-//     //       rowsHTML += `
-//     //              <tr
-//     //                                                     class="border-bottom position-relative">
-//     //                                                     <td class>
-//     //                                                         <a href="javascript:void(0);" data-id="${
-//     //                                                           ele.id
-//     //                                                         }" class="stretch-link view-details">
-//     //                                                         <div
-//     //                                                             class="d-flex align-items-center">
-//     //                                                             <div class="me-3">
-//     //                                                                 <div
-//     //                                                                     class="text-center text-brand fw-bold">
-//     //                                                                     <div>${
-//     //                                                                       event.start_date
-//     //                                                                     }</div>
-//     //                                                                 </div>
-//     //                                                             </div>
-//     //                                                             <img
-//     //                                                                 src="${
-//     //                                                                   event.thumbnail
-//     //                                                                 }"
-//     //                                                                 alt="Event Image"
-//     //                                                                 class="rounded"
-//     //                                                                 width="150">
-//     //                                                             <div class="ms-3">
-//     //                                                                 <h5
-//     //                                                                     class="mb-0">${
-//     //                                                                       event.name
-//     //                                                                     }</h5>
-//     //                                                                 <p
-//     //                                                                     class="text-muted mb-0">${
-//     //                                                                       categories
-//     //                                                                         ? categories
-//     //                                                                         : "No Categories"
-//     //                                                                     }</p>
-//     //                                                                 <p
-//     //                                                                     class="text-muted mb-0 small">${
-//     //                                                                       event.start_date
-//     //                                                                     } - ${
-//     //         event.end_date
-//     //       }</p>
-//     //                                                             </div>
-//     //                                                         </div></a>
-//     //                                                     </td>
-//     //                                                     <td>
-//     //                                                         ${event.created_at}
-//     //                                                     </td>
-//     //                                                     <td>
-//     //                                                         ${ele.status}
-//     //                                                     </td>
-//     //                                                     <td>
-//     //                                                         ${
-//     //                                                           ele.amount
-//     //                                                         } ticket${
-//     //         ele.amount > 1 ? "s" : ""
-//     //       } 
-//     //                                                     </td>
-//     //                                                     <td>
-//     //                                                         ${
-//     //                                                           ele.status != 2
-//     //                                                             ? ""
-//     //                                                             : `<button
-//     //                                                                 class="btn btn-brand" onclick="displayTicket(this)" data-name="${event.name}" data-
-//     //                                                                 data-bs-target="#exampleModalToggle-1"
-//     //                                                                 data-bs-toggle="modal">View
-//     //                                                                 Ticket</button>`
-//     //                                                         }
-    
-                                                                
-                                                            
-//     //                                                     </td>
-//     //                                                 </tr>`;
-//     //     });
-
-//     //     document.getElementById("pending-tbody").innerHTML = rowsHTML;
-//     //     document.querySelectorAll(".view-details").forEach((link) => {
-//     //       link.onclick = () => {
-//     //         let id = link.dataset.id;
-//     //         sessionStorage.setItem('ticket-detail-id', id);
-//     //         location.href = "ticket-details.html";
-            
-//     //       };
-//     //     });
-//     //   }
-//     });
-// }
-
-// getPendingTicket()
-function getMe(searhE='') {
-    fetch(`${apiUrl}/api/me`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-        getAllEventCard(apiUrl, json.data.id, searhE);
-      });
+function getAllEventCard(apiUrl, id, searchStr = "") {
+  let path = `${apiUrl}/api/events?creator=${id}`;
+  if (searchStr !== "") {
+    path += `&search=${searchStr}`;
   }
-  
-  function getAllEventCard(apiUrl, id, searchStr = '') {
-    let path = `${apiUrl}/api/events?creator=${id}`
-    if(searchStr != ''){
-      path += `&search=${searchStr}`;
-    }
-    fetch(`${path}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const { data } = json;
-        console.log(json);
-        let rowsHTML = "";
-  
-        data.forEach((ele) => {
-          fetch(`${apiUrl}/api/events/summary-data/${ele.id}`, {
+
+  fetch(`${path}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      const { data } = json;
+      console.log(data);
+
+      let rowsHTML = "";
+      if (data.length <= 0) {
+        document.getElementById("event-tobody").innerHTML = `
+          <tr><td colspan=5><div class="text-center">
+            <img src="../../assets/img/noFound.png" alt="" height="220px;">
+            <h4 class="text-center text-brand mt-2">No Event to Display...</h4>
+          </div></td></tr>`;
+        return;
+      }
+
+      let filterData = data;
+
+      // Filtering logic
+      document
+        .getElementById("event-filter")
+        .addEventListener("change", (e) => {
+          const currentDate = new Date();
+          console.log(e.target.value);
+
+          switch (e.target.value) {
+            case "all":
+              filterData = data;
+              break;
+            case "upcoming":
+              filterData = data.filter(
+                (ele) =>
+                  new Date(ele.start_date.replace(" ", "T")) > currentDate
+              );
+              break;
+            case "showing": {
+              filterData = data.filter((ele) => {
+                const startDate = new Date(ele.start_date.replace(" ", "T"));
+                const endDate = new Date(ele.end_date.replace(" ", "T"));
+                return currentDate >= startDate && currentDate <= endDate;
+              });
+              break;
+            }
+            case "past":
+              filterData = data.filter(
+                (ele) => new Date(ele.end_date.replace(" ", "T")) < currentDate
+              );
+              break;
+
+            default:
+              filterData = data;
+              break;
+          }
+
+          renderCard(); // Re-render after filtering
+        });
+
+      // Function to render filtered data
+      function renderCard() {
+        rowsHTML = "";
+        // for placeholder card
+        document.getElementById("event-tobody").innerHTML = `
+        <tr>
+                                                <td colspan="5">
+                                                    <div
+                                                        class="card border-0"
+                                                        aria-hidden="true">
+                                                        <div class="row g-0">
+                                                            <div class="col-4">
+                                                                <div
+                                                                    class="bg-secondary-subtle border rounded-1"
+                                                                    style="width: 100%; height: 100%;">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <div
+                                                                    class="card-body py-2">
+                                                                    <h5
+                                                                        class="card-title ">
+                                                                        <span
+                                                                            class="placeholder col-11 "
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </h5>
+                                                                    <p
+                                                                        class="card-text ">
+                                                                        <span
+                                                                            class="placeholder col-10"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                        <span
+                                                                            class="placeholder col-12"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div
+                                                        class="card border-0"
+                                                        aria-hidden="true">
+                                                        <div class="row g-0">
+                                                            <div class="col-4">
+                                                                <div
+                                                                    class="bg-secondary-subtle border rounded-1"
+                                                                    style="width: 100%; height: 100%;">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <div
+                                                                    class="card-body py-2">
+                                                                    <h5
+                                                                        class="card-title ">
+                                                                        <span
+                                                                            class="placeholder col-11 "
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </h5>
+                                                                    <p
+                                                                        class="card-text ">
+                                                                        <span
+                                                                            class="placeholder col-10"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                        <span
+                                                                            class="placeholder col-12"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div
+                                                        class="card border-0"
+                                                        aria-hidden="true">
+                                                        <div class="row g-0">
+                                                            <div class="col-4">
+                                                                <div
+                                                                    class="bg-secondary-subtle border rounded-1"
+                                                                    style="width: 100%; height: 100%;">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <div
+                                                                    class="card-body py-2">
+                                                                    <h5
+                                                                        class="card-title ">
+                                                                        <span
+                                                                            class="placeholder col-11 "
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </h5>
+                                                                    <p
+                                                                        class="card-text ">
+                                                                        <span
+                                                                            class="placeholder col-10"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                        <span
+                                                                            class="placeholder col-12"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>`;
+        if (filterData.length === 0) {
+          document.getElementById("event-tobody").innerHTML = `
+            <tr><td colspan=5><div class="text-center">
+              <img src="../../assets/img/noFound.png" alt="" height="220px;">
+              <h4 class="text-center text-brand mt-2">No Event Found...</h4>
+            </div></td></tr>`;
+          return;
+        }
+
+        filterData.forEach((ele) => {
+          fetch(`${apiUrl}/api/tickets/request-buy?event=${ele.id}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           })
             .then((res) => res.json())
             .then((json2) => {
-              //   console.log(json);
-              //   console.log(json2);
-  
-              let categories = "";
-  
-              if (ele.event_categories.length > 0) {
-                for (let value of ele.event_categories) {
-                  categories += value.name + ", ";
-                }
-  
-                categories = categories.substring(0, categories.length - 2);
+              let status = "";
+
+              const currentDate = new Date();
+              const startDate = new Date(ele.start_date.replace(" ", "T"));
+              const endDate = new Date(ele.end_date.replace(" ", "T"));
+
+              if (startDate > currentDate) {
+                status =  `<span class=" rounded-pill text-primary"><i class="fa-solid fa-hourglass-half me-1"></i>Upcoming</span>`
+              } else if (currentDate >= startDate && currentDate <= endDate) {
+                status =  `<span class=" rounded-pill text-success"><i class="fa-solid fa-hourglass-half me-1"></i>Showing</span>`
+              } else {
+                status =  `<span class=" rounded-pill text-danger"><i class="fa-solid fa-hourglass-half me-1"></i>Past</span>`; 
               }
-  
-              // console.log(json2);
-              
+
               rowsHTML += `<tr class="border-bottom position-relative">
-                                                      <td class>
-                                                          <a href="javascript:void(0)" 
-                                                              class="stretched-link text-decoration-none bg-transparent link-request-details"
-                                                              style="color: inherit;" data-request-detail-id="${ele.id}">
-                                                              <div
-                                                                  class="d-flex align-items-center">
-                                                                  <div class="me-3">
-                                                                      <div
-                                                                          class="text-center text-brand fw-bold">
-                                                                          ${ele.start_date}
-                                                                      </div>
-                                                                  </div>
-                                                                  <img
-                                                                      src="${ele.thumbnail}"
-                                                                      alt="Event Image"
-                                                                      class="rounded"
-                                                                      width="150">
-                                                                  <div class="ms-3">
-                                                                      <h5
-                                                                          class="mb-0">${ele.name}</h5>
-                                                                      <p
-                                                                          class="text-muted mb-0">${categories ? categories : "No Categories"}</p>
-                                                                      <p
-                                                                          class="text-muted mb-0 small">${ele.start_date} - ${ele.end_date}
-                                                                          </p>
-                                                                  </div>
-                                                              </div>
-                                                          </a>
-                                                      </td>
-                                                      <td>
-      
-                                                          ${json2.data.total_ticket} 
-                                                          
-      
-                                                      </td>
-                                                      
-                                                  </tr>`;
-  
+                <td>
+                  <a href="javascript:void(0)" class="stretched-link text-decoration-none bg-transparent link-request-detail"
+                     style="color: inherit;" data-event-detail-id="${ele.id}">
+                    <div class="d-flex align-items-center">
+                      <div class="me-3">
+                        <div class="text-center text-brand fw-bold">${formatDateStringMonth(
+                          ele.start_date
+                        )}</div>
+                        <div class="text-center text-brand fw-bold">${formatDateStringDay(
+                          ele.start_date
+                        )}</div>
+                      </div>
+                      <img src="${
+                        ele.thumbnail
+                      }" alt="Event Image" class="rounded" width="150">
+                      <div class="ms-3">
+                        <h5 class="mb-0">${ele.name}</h5>
+                        <p class="text-muted mb-0">${ele.location}</p>
+                        <p class="text-muted mb-0 small">${formatCustomDateWithYear(
+                          ele.start_date
+                        )} - ${formatCustomDateWithYear(
+                ele.end_date
+              )}, ${formatToHour(ele.start_date)} - ${formatToHour(
+                ele.end_date
+              )}</p>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+                <td>${status}</td>
+                <td>${json2.data.length} request</td>
+                
+              </tr>`;
+
               document.getElementById("event-tobody").innerHTML = rowsHTML;
-  
-              document.querySelectorAll('.link-request-details').forEach(link=>{
-                link.onclick = () =>{
-                  let id = link.dataset.requestDetailId;
+
+              document.querySelectorAll('.link-request-detail').forEach(btn=>{
+                btn.onclick = ()=>{
+                  let id = btn.dataset.eventDetailId;
+
                   sessionStorage.setItem('requestDetailId', id);
-                  location.href = "/pages/organizer/request-ticket-detail.html"
+
+
+                  window.location.href = 'request-ticket-detail.html'
                 }
               })
+
               
             });
         });
-      });
-  }
+      }
 
-  getMe()
+      renderCard(); // Initial render
+    });
+}
+
+document.getElementById("searchEventInput").onkeyup = () => {
+  getMe(document.getElementById("searchEventInput").value);
+};
+
+getMe();

@@ -16,70 +16,33 @@
     </head>
 
     <body>
-        <header class="border" id="header">
-            <div class="container">
+        <header class="border px-1" id="header">
+            <div class="container-fluid px-4">
                 <nav class="d-flex align-items-center justify-content-between">
                     <div class="logo">
                         <a href="homepage.html">
-                            <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                            <img
+                                src="../../assets/img/logo/Prutika_Logo_text(2).png"
+                                alt>
                         </a>
                     </div>
-                    <div class="d-flex align-items-center w-25 position-relative ">
-                        <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
-                        <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
-                            aria-describedby="helpId" placeholder="Search Event " />
-                        <button class="btn-pink text-white"><i
-                                class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
-                        <ul class="search-dropdown position-absolute" id="search-dropdown">
-      
-                        </ul>
-                    </div>
-                    <div class="action-btn d-flex">
-                        <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
-                                href="../../pages/organizer/create-events.html">Create
-                                a
-                                post</a> </button>
-                        <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Browse <i class="fa-solid fa-caret-down text-brand"></i>
-                            <!-- User Icon -->
-                        </a>
-                        <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
-                                class="fa-solid fa-ticket pe-1 text-brand"></i>My
-                            Ticket</a>
-      
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
-                            <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
-                                    events</a></li>
-                            <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
-                                    vendor recruitments</a></li>
-                            <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
-                                    vendor services</a></li>
-      
-                        </ul>
-                    </div>
+
                     <div class="dropdown">
-                        <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
-                            id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#"
+                            class="dropdown-toggle fs-3 text-brand d-flex align-items-center"
+                            role="button"
+                            id="accountDropdown" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <i class="bi bi-person-circle"></i>
                             <!-- User Icon -->
                             <span class="ps-1 fs-6" id="userEmail"></span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                            <li><a class="dropdown-item" href="../organizer/event.html">Manage
-                                    as
-                                    organizer</a></li>
-                            <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
-                                    vendor</a></li>
-                            <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
-                            <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
-                                    Setting</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:void(0);" id="btn-logout">Log
-                                    out</a>
-                            </li>
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="accountDropdown">
+                            <li><a class="dropdown-item"
+                                    href="../homepage.html">Switch to
+                                    Attending</a></li>
+
                         </ul>
                     </div>
                 </nav>
@@ -157,10 +120,14 @@
                                 <div class="d-flex align-items-center my-4">
                                     <div class>
                                         <select class="form-select"
+                                            id="event-filter"
                                             aria-label="Default select example">
-                                            <option value="1">All</option>
-                                            <option value="2">Upcoming</option>
-                                            <option value="3">Past</option>
+                                            <option value="all">All</option>
+                                            <option
+                                                value="upcoming">Upcoming</option>
+                                            <option
+                                                value="showing">Showing</option>
+                                            <option value="past">Past</option>
                                         </select>
                                     </div>
                                     <div class>
@@ -185,6 +152,7 @@
                                         <thead class>
                                             <tr class="border-bottom">
                                                 <th scope="col">Event</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Sold</th>
                                                 <th scope="col">Gross</th>
                                                 <th
@@ -194,103 +162,120 @@
                                         </thead>
                                         <tbody id="event-tobody">
                                             <!-- First Event Row -->
-                                            <tr
-                                                class="border-bottom position-relative">
-                                                <td class>
-                                                    <a href="event-details.html"
-                                                        class="stretched-link text-decoration-none bg-transparent"
-                                                        style="color: inherit;">
-                                                        <div
-                                                            class="d-flex align-items-center">
-                                                            <div class="me-3">
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div
+                                                        class="card border-0"
+                                                        aria-hidden="true">
+                                                        <div class="row g-0">
+                                                            <div class="col-4">
                                                                 <div
-                                                                    class="text-center text-brand fw-bold">
-                                                                    <div>NOV</div>
-                                                                    <div>23</div>
+                                                                    class="bg-secondary-subtle border rounded-1"
+                                                                    style="width: 100%; height: 100%;">
+
                                                                 </div>
                                                             </div>
-                                                            <img
-                                                                src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                                                alt="Event Image"
-                                                                class="rounded"
-                                                                width="150">
-                                                            <div class="ms-3">
-                                                                <h5
-                                                                    class="mb-0">Halowin</h5>
-                                                                <p
-                                                                    class="text-muted mb-0">Online
-                                                                    event</p>
-                                                                <p
-                                                                    class="text-muted mb-0 small">Saturday,
-                                                                    November 23,
-                                                                    2024
-                                                                    at 10:00 AM
-                                                                    EET</p>
+                                                            <div class="col-8">
+                                                                <div
+                                                                    class="card-body py-2">
+                                                                    <h5
+                                                                        class="card-title ">
+                                                                        <span
+                                                                            class="placeholder col-11 "
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </h5>
+                                                                    <p
+                                                                        class="card-text ">
+                                                                        <span
+                                                                            class="placeholder col-10"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                        <span
+                                                                            class="placeholder col-12"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                </td>
-                                                <td>
+                                                    </div>
 
-                                                    <div>0 / 10</div>
-                                                    <div class="progress"
-                                                        style="height: 5px;">
-                                                        <div
-                                                            class="progress-bar"
-                                                            role="progressbar"
-                                                            style="width: 0%;"
-                                                            aria-valuenow="0"
-                                                            aria-valuemin="0"
-                                                            aria-valuemax="100">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div
+                                                        class="card border-0"
+                                                        aria-hidden="true">
+                                                        <div class="row g-0">
+                                                            <div class="col-4">
+                                                                <div
+                                                                    class="bg-secondary-subtle border rounded-1"
+                                                                    style="width: 100%; height: 100%;">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <div
+                                                                    class="card-body py-2">
+                                                                    <h5
+                                                                        class="card-title ">
+                                                                        <span
+                                                                            class="placeholder col-11 "
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </h5>
+                                                                    <p
+                                                                        class="card-text ">
+                                                                        <span
+                                                                            class="placeholder col-10"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                        <span
+                                                                            class="placeholder col-12"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
 
                                                 </td>
-                                                <td>
-                                                    $0.00
-                                                </td>
-                                                <td>
-                                                    10 people
-                                                </td>
-                                                <td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
                                                     <div
-                                                        class="dropstart position-relative z-3">
-                                                        <button
-                                                            class="btn btn-light"
-                                                            type="button"
-                                                            id="dropdownMenu1"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-expanded="false">
-                                                            <i
-                                                                class="bi bi-three-dots"></i>
-                                                        </button>
-                                                        <ul
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="dropdownMenu1">
-                                                            <li><a
-                                                                    class="dropdown-item"
-                                                                    href="#">Promote
-                                                                    to
-                                                                    website</a>
-                                                            </li>
-                                                            <li><a
-                                                                    class="dropdown-item"
-                                                                    href="#">Edit</a></li>
-                                                            <li><a
-                                                                    class="dropdown-item"
-                                                                    href="#">Delete</a></li>
-                                                            <li><a
-                                                                    class="dropdown-item"
-                                                                    href="#">View</a></li>
-                                                            <li><a
-                                                                    class="dropdown-item"
-                                                                    href="#">Copy
-                                                                    Link</a></li>
-                                                        </ul>
+                                                        class="card border-0"
+                                                        aria-hidden="true">
+                                                        <div class="row g-0">
+                                                            <div class="col-4">
+                                                                <div
+                                                                    class="bg-secondary-subtle border rounded-1"
+                                                                    style="width: 100%; height: 100%;">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <div
+                                                                    class="card-body py-2">
+                                                                    <h5
+                                                                        class="card-title ">
+                                                                        <span
+                                                                            class="placeholder col-11 "
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </h5>
+                                                                    <p
+                                                                        class="card-text ">
+                                                                        <span
+                                                                            class="placeholder col-10"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                        <span
+                                                                            class="placeholder col-12"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
+
                                                 </td>
                                             </tr>
-
                                             <!-- Repeat the structure for the second event -->
                                         </tbody>
                                     </table>
@@ -301,23 +286,33 @@
                                 id="vendor-recruitment-tab-pane" role="tabpanel"
                                 aria-labelledby="vendor-recruitment-tab"
                                 tabindex="0">
-                                <div class="row my-4">
-                                    <div class="col-4 col-md-2">
+                                <div class="d-flex align-items-center my-4">
+                                    <div class>
                                         <select class="form-select"
+                                            id="event-filter"
                                             aria-label="Default select example">
-                                            <option value="1">All</option>
-                                            <option value="2">Upcoming</option>
-                                            <option value="3">Past</option>
+                                            <option value="all">All</option>
+                                            <option
+                                                value="upcoming">Upcoming</option>
+                                            <option
+                                                value="showing">Showing</option>
+                                            <option value="past">Past</option>
                                         </select>
                                     </div>
-                                    <div class="col-5 col-md-3">
-                                        <div class="input-group mb-3">
+                                    <div class>
+                                        <div class="input-group ms-3">
                                             <input type="text"
                                                 class="form-control"
                                                 placeholder="Search"
-                                                id="searchVendorInput">
+                                                id="searchEventInput">
+
                                         </div>
                                     </div>
+
+                                    <a href="create-events.html" role="button"
+                                        class="btn btn-brand ms-auto">+ Create
+                                        Event</a>
+
                                 </div>
 
                                 <div class="my-4">
@@ -333,80 +328,120 @@
                                         </thead>
                                         <tbody id="vendor-recruitment-tbody">
                                             <!-- First Event Row -->
-                                            <tr
-                                                class="border-bottom position-relative">
-                                                <td class>
-                                                    <a
-                                                        href="vendor-recruitment-details.html"
-                                                        class="stretched-link text-decoration-none bg-transparent"
-                                                        style="color: inherit;">
-                                                        <div
-                                                            class="d-flex align-items-center">
-                                                            <div class="me-3">
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div
+                                                        class="card border-0"
+                                                        aria-hidden="true">
+                                                        <div class="row g-0">
+                                                            <div class="col-4">
                                                                 <div
-                                                                    class="text-center text-brand fw-bold">
-                                                                    <div>NOV</div>
-                                                                    <div>23</div>
+                                                                    class="bg-secondary-subtle border rounded-1"
+                                                                    style="width: 100%; height: 100%;">
+
                                                                 </div>
                                                             </div>
-                                                            <img
-                                                                src="https://d2j6dbq0eux0bg.cloudfront.net/images/66610504/2636936256.jpg"
-                                                                alt="Event Image"
-                                                                class="rounded"
-                                                                width="150">
-                                                            <div class="ms-3">
-                                                                <h5
-                                                                    class="mb-0">Halowin</h5>
-                                                                <p
-                                                                    class="text-muted mb-0">Online
-                                                                    event</p>
-                                                                <p
-                                                                    class="text-muted mb-0 small">Saturday,
-                                                                    November 23,
-                                                                    2024
-                                                                    at 10:00 AM
-                                                                    EET</p>
+                                                            <div class="col-8">
+                                                                <div
+                                                                    class="card-body py-2">
+                                                                    <h5
+                                                                        class="card-title ">
+                                                                        <span
+                                                                            class="placeholder col-11 "
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </h5>
+                                                                    <p
+                                                                        class="card-text ">
+                                                                        <span
+                                                                            class="placeholder col-10"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                        <span
+                                                                            class="placeholder col-12"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <div>5 people</div>
-                                                </td>
-
-                                                <td>
-                                                    <div
-                                                        class="dropstart position-relative z-3">
-                                                        <button
-                                                            class="btn btn-light"
-                                                            type="button"
-                                                            id="dropdownMenu1"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-expanded="false">
-                                                            <i
-                                                                class="bi bi-three-dots"></i>
-                                                        </button>
-                                                        <ul
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="dropdownMenu1">
-                                                            <li><a
-                                                                    class="dropdown-item"
-                                                                    href="#">Edit</a></li>
-                                                            <li><a
-                                                                    class="dropdown-item"
-                                                                    href="#">Delete</a></li>
-                                                            <li><a
-                                                                    class="dropdown-item"
-                                                                    href="#">View</a></li>
-                                                            <li><a
-                                                                    class="dropdown-item"
-                                                                    href="#">Copy
-                                                                    Link</a></li>
-                                                        </ul>
                                                     </div>
+
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div
+                                                        class="card border-0"
+                                                        aria-hidden="true">
+                                                        <div class="row g-0">
+                                                            <div class="col-4">
+                                                                <div
+                                                                    class="bg-secondary-subtle border rounded-1"
+                                                                    style="width: 100%; height: 100%;">
 
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <div
+                                                                    class="card-body py-2">
+                                                                    <h5
+                                                                        class="card-title ">
+                                                                        <span
+                                                                            class="placeholder col-11 "
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </h5>
+                                                                    <p
+                                                                        class="card-text ">
+                                                                        <span
+                                                                            class="placeholder col-10"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                        <span
+                                                                            class="placeholder col-12"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div
+                                                        class="card border-0"
+                                                        aria-hidden="true">
+                                                        <div class="row g-0">
+                                                            <div class="col-4">
+                                                                <div
+                                                                    class="bg-secondary-subtle border rounded-1"
+                                                                    style="width: 100%; height: 100%;">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <div
+                                                                    class="card-body py-2">
+                                                                    <h5
+                                                                        class="card-title ">
+                                                                        <span
+                                                                            class="placeholder col-11 "
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </h5>
+                                                                    <p
+                                                                        class="card-text ">
+                                                                        <span
+                                                                            class="placeholder col-10"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                        <span
+                                                                            class="placeholder col-12"
+                                                                            style="background-color: #D4D4D4;"></span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
                                             <!-- Repeat the structure for the second event -->
                                         </tbody>
                                     </table>
@@ -544,7 +579,8 @@
         <!-- <script type="module" src="../../assets/js/authentication.js"></script> -->
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 
-        <script type="module" src="../../assets/js/organizer/manage.js"></script>
+        <script type="module"
+            src="../../assets/js/organizer/manage.js"></script>
 
     </body>
 
