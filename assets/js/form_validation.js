@@ -170,5 +170,5 @@ function isValid_vendorBusiness() {
     }
 
 }
-isValid_Event();
+// isValid_Event();
 // #DEE2E6
