@@ -124,37 +124,26 @@ footer .contact-info .social-media a {
 footer .contact-info .social-media a:hover {
     color: #e11594;
 }
-
-.pill1 {
-    background-color: #e1159322;
+.pill{
     padding: 4px;
     font-size: 14px;
     border-radius: 4px;
 }
+.pill1 {
+    background-color: #e1159322;
+}
 .pill2 {
     background-color: #158ce122;
-    padding: 4px;
-    font-size: 14px;
-    border-radius: 4px;
 }
 
 .pill3 {
     background-color: #15e17e22;
-    padding: 4px;
-    font-size: 14px;
-    border-radius: 4px;
 }
 .pill4 {
     background-color: #9de11522;
-    padding: 4px;
-    font-size: 14px;
-    border-radius: 4px;
 }
 .pill5 {
     background-color: #e1341522;
-    padding: 4px;
-    font-size: 14px;
-    border-radius: 4px;
 }
 
 .recruit-card-wrapper {

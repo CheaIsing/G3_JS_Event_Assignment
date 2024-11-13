@@ -248,7 +248,7 @@ function getAllEventCard(apiUrl, id, searchStr = "") {
                       </div>
                       <img src="${
                         ele.thumbnail
-                      }" alt="Event Image" class="rounded" width="150">
+                      }" alt="Event Image" class="rounded object-fit-cover" width="150" height="85">
                       <div class="ms-3">
                         <h5 class="mb-0">${ele.name}</h5>
                         <p class="text-muted mb-0">${ele.location}</p>
@@ -411,7 +411,7 @@ const manageAsOrganizer = {
           link.onclick = () => {
             let id = link.dataset.id;
 
-            saveToStorage("vendorId", id);
+            sessionStorage.set("vendorId", id);
 
             location.href = "vendor-recruitment-details.html";
           };

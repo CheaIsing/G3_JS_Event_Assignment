@@ -1,7 +1,7 @@
 const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem("authToken");
+// const token = localStorage.getItem("authToken");
 
-let id = localStorage.getItem("vendorId");
+let id = sessionStorage.getItem("vendorId");
 console.log(id);
 
 // getEventDetail(apiUrl, id);
@@ -45,7 +45,7 @@ function getVendorRecruitmentDetail(apiUrl, id) {
       const vendorId = data.id;
       console.log(data);
       document.getElementById("vendor-title").innerHTML = name;
-      document.getElementById("vendor-categories").innerHTML = categories;
+      // document.getElementById("vendor-categories").innerHTML = ;
       document.getElementById("start-end-date").innerHTML =
         start_date + " - " + end_date;
       document.getElementById("location").innerHTML = location;
@@ -59,6 +59,10 @@ function getVendorRecruitmentDetail(apiUrl, id) {
       })
         .then((res) => res.json())
         .then((json) => {
+          // if(json.data.length <= 0){
+          //   document.getElementById("vendor-request-tbody").innerHTML = `
+          //   `
+          // }
           let rowsHTML = "";
 
           json.data.forEach((ele) => {

@@ -97,4 +97,76 @@ function formatToHour(dateString) {
   const date = new Date(dateString);
   const options = { hour: 'numeric', minute: '2-digit', hour12: true };
   return date.toLocaleTimeString('en-US', options);
+//add wishlist
+function addWishlist(eventId) {
+  const Url = "https://mps2.chandalen.dev/api/wishlists/";
+  const token = localStorage.getItem("authToken");
+  const formData = new FormData();
+  formData.append('event_id', eventId);
+  const requestOptions = {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`
+      },
+      body: formData
+  };
+  console.log(eventId);
+  // Make the API call
+  // fetch(Url, requestOptions)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //         showToast("Event is added to wishlist", true);
+  //         console.log('Success:', data);
+  //     })
+}
+//check status
+function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
+  // Create Date objects from the input strings  
+  const startDateTime = new Date(startDateTimeStr);
+  const endDateTime = new Date(endDateTimeStr);
+  const now = new Date(); // Current date and time  
+
+  if (now >= startDateTime && now <= endDateTime) {
+      return "Showing";
+  } else if (now < startDateTime) {
+      return "Upcoming";
+  } else {
+      return "Past";
+  }
+}
+//wishlist
+function wish(){
+  const wishButtons = document.querySelectorAll('.add-wish');
+    wishButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const eventId = button.dataset.id;
+            // console.log(eventId);
+            addWishlist(eventId);
+            button.classList.add('clicked');
+            // button.classList.toggle('clicked');
+        });
+    });
+}
+// Function to add an event to the wishlist
+function addWishlist(eventId) {
+  const Url = "https://mps2.chandalen.dev/api/wishlists/";
+  const token = localStorage.getItem("authToken");
+  const formData = new FormData();
+  formData.append('event_id', eventId);
+  const requestOptions = {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`
+      },
+      body: formData
+  };
+  // Make the API call
+  fetch(Url, requestOptions)
+      .then(res => res.json())
+      .then(data => {
+          showToast("Event is added to wishlist", true);
+          console.log('Success:', data);
+      })
 }

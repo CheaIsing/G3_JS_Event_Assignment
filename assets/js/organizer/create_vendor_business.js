@@ -1,5 +1,5 @@
 const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem("authToken");
+// const token = localStorage.getItem("authToken");
 // console.log(token);
 
 function createBusiness() {
@@ -52,14 +52,12 @@ function createBusiness() {
     eventData.append('tiktok', tiktok);
     eventData.append('business_category_ids', JSON.stringify(categoriesList));
 
-    eventData.forEach((element, key) => {
-        console.log(element, key);
+    // eventData.forEach((element, key) => {
+    //     console.log(element, key);
 
-    })
+    // })
 
-    let valid = true;
-    isValid_vendorBusiness();
-    if(valid == true){
+    if(isValid_vendorBusiness() == true){
         fetch(`${apiUrl}/api/businesses`, {
             method: 'POST',
             headers: {
@@ -70,8 +68,7 @@ function createBusiness() {
         })
             .then(res => res.json())
             .then(json => {
-                // alert('Success created');
-    
+                location.href = "vendor-business.html";                
             })
             // .then(response => {
             //     if (!response.ok) {
