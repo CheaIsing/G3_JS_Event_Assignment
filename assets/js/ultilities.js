@@ -43,7 +43,7 @@ function showToast(msg, condition) {
   });
 }
 
-function formatDate (dateStr) {
+function formatDate(dateStr) {
   const date = new Date(dateStr);
 
   const options = {
@@ -60,128 +60,141 @@ function formatDate (dateStr) {
 
 function formatDateStringMonth(dateString) {
   const date = new Date(dateString); // Convert the string to a Date object
-  
+
   // Define options for formatting
-  const options = { month: 'short' };
+  const options = { month: "short" };
 
   // Use toLocaleString to format the date
-  const formattedDate = date.toLocaleString('en-US', options).toUpperCase(); // Convert to uppercase
+  const formattedDate = date.toLocaleString("en-US", options).toUpperCase(); // Convert to uppercase
 
-  return formattedDate.replace(',', ''); // Remove comma if present
+  return formattedDate.replace(",", ""); // Remove comma if present
 }
 
 function formatDateStringDay(dateString) {
   const date = new Date(dateString); // Convert the string to a Date object
-  
+
   // Define options for formatting
-  const options = {  day: '2-digit' };
+  const options = { day: "2-digit" };
 
   // Use toLocaleString to format the date
-  const formattedDate = date.toLocaleString('en-US', options).toUpperCase(); // Convert to uppercase
+  const formattedDate = date.toLocaleString("en-US", options).toUpperCase(); // Convert to uppercase
 
-  return formattedDate.replace(',', ''); // Remove comma if present
+  return formattedDate.replace(",", ""); // Remove comma if present
 }
 
 function formatCustomDateWithYear(dateString) {
   // Parse the initial date string
   const date = new Date(dateString);
 
-
   // Format the date to "Fri • Nov 1, 2004"
-  const options = { month: 'short', day: 'numeric', year: 'numeric' };
-  return date.toLocaleDateString('en-US', options).replace(',', ' •');
+  const options = { month: "short", day: "numeric", year: "numeric" };
+  return date.toLocaleDateString("en-US", options).replace(",", " •");
 }
 
 function formatToHour(dateString) {
   // Parse the initial date string
   const date = new Date(dateString);
-  const options = { hour: 'numeric', minute: '2-digit', hour12: true };
-  return date.toLocaleTimeString('en-US', options);
-//add wishlist
-function addWishlist(eventId) {
-  const Url = "https://mps2.chandalen.dev/api/wishlists/";
-  const token = localStorage.getItem("authToken");
-  const formData = new FormData();
-  formData.append('event_id', eventId);
-  const requestOptions = {
-      method: 'POST',
+  const options = { hour: "numeric", minute: "2-digit", hour12: true };
+  return date.toLocaleTimeString("en-US", options);
+  //add wishlist
+  function addWishlist(eventId) {
+    const Url = "https://mps2.chandalen.dev/api/wishlists/";
+    const token = localStorage.getItem("authToken");
+    const formData = new FormData();
+    formData.append("event_id", eventId);
+    const requestOptions = {
+      method: "POST",
       headers: {
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${token}`
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      body: formData
-  };
-  console.log(eventId);
-  // Make the API call
-  // fetch(Url, requestOptions)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //         showToast("Event is added to wishlist", true);
-  //         console.log('Success:', data);
-  //     })
-}
-//check status
-function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
-  // Create Date objects from the input strings  
-  const startDateTime = new Date(startDateTimeStr);
-  const endDateTime = new Date(endDateTimeStr);
-  const now = new Date(); // Current date and time  
-
-  if (now >= startDateTime && now <= endDateTime) {
-      return "Showing";
-  } else if (now < startDateTime) {
-      return "Upcoming";
-  } else {
-      return "Past";
+      body: formData,
+    };
+    console.log(eventId);
+    // Make the API call
+    // fetch(Url, requestOptions)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         showToast("Event is added to wishlist", true);
+    //         console.log('Success:', data);
+    //     })
   }
-}
-//wishlist
-function wish(){
-  const wishButtons = document.querySelectorAll('.add-wish');
-    wishButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const eventId = button.dataset.id;
-            // console.log(eventId);
-            addWishlist(eventId);
-            button.classList.add('clicked');
-            // button.classList.toggle('clicked');
-        });
-    });
-}
-// Function to add an event to the wishlist
-function addWishlist(eventId) {
-  const Url = "https://mps2.chandalen.dev/api/wishlists/";
-  const token = localStorage.getItem("authToken");
-  const formData = new FormData();
-  formData.append('event_id', eventId);
-  const requestOptions = {
-      method: 'POST',
-      headers: {
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${token}`
-      },
-      body: formData
-  };
-  fetch(Url, {
-    headers: {Authorization: `Bearer ${token}`}
-  }).then(res=>res.json())
-  .then(json=>{
-    for(let ele of json.data){
-      if(ele.id == eventId){
-        showToast("This event is already wished in wishlist.", true)
-        return;
-      }
-      else{
-        // Make the API call
-  fetch(Url, requestOptions)
-  .then(res => res.json())
-  .then(data => {
-      showToast("Event is added to wishlist", json.result);
-      // console.log('Success:', data);
-  })
-      }
+  //check status
+  function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
+    // Create Date objects from the input strings
+    const startDateTime = new Date(startDateTimeStr);
+    const endDateTime = new Date(endDateTimeStr);
+    const now = new Date(); // Current date and time
+
+    if (now >= startDateTime && now <= endDateTime) {
+      return "Showing";
+    } else if (now < startDateTime) {
+      return "Upcoming";
+    } else {
+      return "Past";
     }
-    
-  })
-  
+  }
+  //wishlist
+  function wish() {
+    const wishButtons = document.querySelectorAll(".add-wish");
+    wishButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const eventId = button.dataset.id;
+        // console.log(eventId);
+        addWishlist(eventId);
+        button.classList.add("clicked");
+        // button.classList.toggle('clicked');
+      });
+    });
+  }
+  // Function to add an event to the wishlist
+  function addWishlist(eventId) {
+    const url = "https://mps2.chandalen.dev/api/wishlists/";
+    const token = localStorage.getItem("authToken");
+
+    const formData = new FormData();
+    formData.append("event_id", eventId);
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    };
+
+    // Fetch existing wishlist to check if event is already wished
+    fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        const isWished = json.data.some((ele) => ele.id == eventId);
+
+        if (isWished) {
+          showToast("This event is already in your wishlist.", true);
+          return;
+        }
+
+        // If not wished, proceed to add it to the wishlist
+        fetch(url, requestOptions)
+          .then((res) => res.json())
+          .then((data) => {
+            showToast("Event added to wishlist.", data.success);
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            showToast("Error adding to wishlist.", true);
+            console.error("Error:", error);
+          });
+      })
+      .catch((error) => {
+        showToast("Error fetching wishlist.", true);
+        console.error("Error:", error);
+      });
+  }
 }
