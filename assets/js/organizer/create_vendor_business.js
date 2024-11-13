@@ -1,5 +1,5 @@
 const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem("authToken");
+// const token = localStorage.getItem("authToken");
 console.log(token);
 
 function createBusiness() {
@@ -65,11 +65,17 @@ function createBusiness() {
         },
         body: eventData
     })
-    //     // .then(res => res.json())
-    //     // .then(json => {
-    //     //     alert('Success created');
 
-    //     // })
+        .then(res => res.json())
+        .then(json => {
+            showToast(json.message, json.result)
+            if(json.result === true){
+                setTimeout(()=>{
+                    location.href = "./vendor-business.html"
+                }, 1200)
+            }
+
+        })
         // .then(response => {
         //     if (!response.ok) {
         //         // Extract the JSON error message from the response

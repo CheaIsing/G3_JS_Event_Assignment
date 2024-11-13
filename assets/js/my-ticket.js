@@ -63,15 +63,6 @@ function getAllTicket() {
 
           filterData.forEach((ele) => {
             const { event } = ele;
-            let categories = "";
-
-            if (event.event_categories.length > 0) {
-              for (let value of event.event_categories) {
-                categories += value.name + ", ";
-              }
-
-              categories = categories.substring(0, categories.length - 2);
-            }
 
             let status = "";
             switch (ele.status) {
@@ -126,9 +117,7 @@ function getAllTicket() {
                                                                         }</h5>
                                                                     <p
                                                                         class="text-muted mb-0">${
-                                                                          categories
-                                                                            ? categories
-                                                                            : "No Categories"
+                                                                          event.location
                                                                         }</p>
                                                                     <p
                                                                         class="text-muted mb-0 small">${

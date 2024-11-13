@@ -1,5 +1,5 @@
 const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem('authToken');
+// const token = localStorage.getItem('authToken');
 
 console.log(token);
 
@@ -11,6 +11,15 @@ fetch(`${apiUrl}/api/tickets/request-buy?event=${sessionStorage.getItem('request
 .then(res=>res.json())
 .then(json=>{
     console.log(json.data);
+
+    if(json.data.length <= 0){
+        document.getElementById('request-tbody').innerHTML = `
+        <tr class="border-0"><td class="border-0" colspan=6><div class="text-center">
+            <img src="../../assets/img/noFound.png" alt="..." height="220px;">
+            <h4 class="text-center text-brand mt-2">No Request to Display...</h4>
+          </div></td></tr>`
+        return;
+    }
     
     let rowsHTML = '';
     json.data.forEach((d,i)=>{

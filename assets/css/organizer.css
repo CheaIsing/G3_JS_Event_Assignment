@@ -116,6 +116,6 @@ section.ticket-order .table td {
 
 
 
-tr:hover td{
+tr.border-bottom:hover td{
     background-color: #FAFAFA !important;
 }

@@ -34,8 +34,6 @@ function getEventDetail(apiUrl, id) {
             document.getElementById('not-attending').innerHTML = json2.data.total_ticket - json2.data.total_attendant
 
             console.log();
-            
-            
         })
         
     })
