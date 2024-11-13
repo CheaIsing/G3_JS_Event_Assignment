@@ -126,10 +126,18 @@ function loadEventCards() {
     for (let i = 0; i < incrementCount && currentIndex < allEventData.length; i++) {
 
         const element = allEventData[currentIndex];
+        
+        if(element.thumbnail == 'http://mps2.chandalen.dev/storage/events/no_photo.jpg'){
+            thumbnail = '../assets/img/party/party1.png';
+        }
+        else{
+            thumbnail = element.thumbnail;
+        }
+        
         const newCard = document.createElement('div');
         newCard.className = "card";
         newCard.innerHTML = `       <div class="card-content">
-                                        <img class="card-img-top" src="../assets/img/party/party1.png" alt="Title" />
+                                        <img class="card-img-top" src="${thumbnail}" alt="Title" />
                                         <div class="card-body">
                                             <div class="d-flex event-pill-wrapper"></div>
                                             <h5 class="card-title mt-2 mb-4">${element.name}</h5>
