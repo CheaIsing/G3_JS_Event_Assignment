@@ -411,7 +411,7 @@ const manageAsOrganizer = {
           link.onclick = () => {
             let id = link.dataset.id;
 
-            sessionStorage.setItem("vendorId", id);
+            sessionStorage.set("vendorId", id);
 
             location.href = "vendor-recruitment-details.html";
           };

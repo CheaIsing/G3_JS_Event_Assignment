@@ -1,4 +1,5 @@
 function isValid_Event() {
+    let valid = true;
     let fileUpload = document.getElementById('fileUpload').files[0];
     let postTitle = document.getElementById('postTitle').value;
     let startDate = document.getElementById('startDate').value;
@@ -30,13 +31,33 @@ function isValid_Event() {
 
 
     if (postTitle == '') {
-        lblPostTitle.innerHTML = 'Event title<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblPostTitle.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        postTitle.style.borderColor = 'red';
+        postTitle.style.borderWidth = '2px';
+        postTitle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        postTitle.focus();
+        valid = false;
+    }
+    else{
+        lblPostTitle.innerHTML = '';
+        postTitle.style.borderColor = '#DEE2E6';
+        postTitle.style.borderWidth = '2px';
     }
 
     if (startDate == '') {
         lblStartDate.innerHTML = 'Start Date<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        startDate.style.borderColor = 'red';
+        startDate.style.borderWidth = '2px';
+        startDate.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        startDate.focus();
+        valid = false;
     }
-
+    else{
+        lblStartDate.innerHTML = '';
+        startDate.style.borderColor = '#DEE2E6';
+        startDate.style.borderWidth = '2px';
+    }
+    
     if (startTime == '') {
         lblStartTime.innerHTML = 'Start Date<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
     }
@@ -49,22 +70,6 @@ function isValid_Event() {
         lblEndTime.innerHTML = 'End Time<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
     }
 
-    // if(address1 == ''){
-    //     lblAddress1.innerHTML = 'Address 1<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
-    // }
-
-    // if(city == ''){
-    //     lblCity.innerHTML = 'City<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
-    // }
-
-    // if(province == ''){
-    //     lblProvince.innerHTML = 'Province<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
-    // }
-
-    // if(country == ''){
-    //     lblCountry.innerHTML = 'Country<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
-    // }
-
     if (ticketQuantity == '') {
         lblTicketQuantity.innerHTML = 'Ticket Quantity<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
     }
@@ -72,10 +77,11 @@ function isValid_Event() {
     if (price == '') {
         lblPrice.innerHTML = 'Price<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
     }
-
-}
+    return valid;
+}   
 
 function isValid_vendorBusiness() {
+    let valid = true;
     let fileUpload = document.getElementById('fileUpload');
     let postTitle = document.getElementById('postTitle');
     let servicePrice = document.getElementById("servicePrice");
@@ -168,7 +174,7 @@ function isValid_vendorBusiness() {
         postTitle.style.borderColor = '#DEE2E6';
         postTitle.style.borderWidth = '2px';
     }
-
+    return valid;
 }
 // isValid_Event();
 // #DEE2E6

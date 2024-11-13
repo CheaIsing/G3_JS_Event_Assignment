@@ -127,7 +127,7 @@ function createNewEvent() {
                                                     <p class="text-secondary pb-2" id="agenda-time">
                                                         ${document.getElementById(`agendaStarttime${i}`).value} -
                                                         ${document.getElementById(`agendaEndtime${i}`).value}</p>
-                                                    <h4 id="agenda-title">${document.getElementById(`agenda${i}`).value}</h4>
+                                                    <h4 id="agenda-title">${document.getElementById(`agendaTitle${i}`).value}</h4>
                                                     <p id="agenda-desc" class="mb-0 ps-4">${document.getElementById(`agendaDesc${i}`).value}</p>
                                                 </div>
                                             </div>`;
@@ -144,7 +144,7 @@ function createNewEvent() {
     // add ticket form variables
     let ticketQty = document.getElementById('ticketQuantity').value;
     let ticketPrice = document.getElementById('price').value;
-    let khqrImg = document.getElementById('khqrImg').value;
+    // let khqrImg = document.getElementById('khqrImg').value;
 
     let eventData = new FormData();
     eventData.append('name', eventName);
