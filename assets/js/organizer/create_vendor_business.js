@@ -1,6 +1,6 @@
 const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
-console.log(token);
+const token = localStorage.getItem("authToken");
+// console.log(token);
 
 function createBusiness() {
     // Create Vendor Business form variables
@@ -57,39 +57,37 @@ function createBusiness() {
 
     })
 
-    fetch(`${apiUrl}/api/businesses`, {
-        method: 'POST',
-        headers: {
-            Authorization: `Bearer ${token}`,
-            "Accept": "application/json;",
-        },
-        body: eventData
-    })
-
-        .then(res => res.json())
-        .then(json => {
-            showToast(json.message, json.result)
-            if(json.result === true){
-                setTimeout(()=>{
-                    location.href = "./vendor-business.html"
-                }, 1200)
-            }
-
+    let valid = true;
+    isValid_vendorBusiness();
+    if(valid == true){
+        fetch(`${apiUrl}/api/businesses`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Accept": "application/json;",
+            },
+            body: eventData
         })
-        // .then(response => {
-        //     if (!response.ok) {
-        //         // Extract the JSON error message from the response
-        //         return response.json().then(errorData => {
-        //             console.error("Error message:", errorData.message);
-        //             console.error("Detailed error:", errorData.data);
-
-
-        //             throw new Error(`HTTP error! Status: ${response.status}`);
-        //         });
-        //     }
-        //     return response.json();
-        // })
-        // .catch(error => console.error('Request Failed:', error));
+            .then(res => res.json())
+            .then(json => {
+                // alert('Success created');
+    
+            })
+            // .then(response => {
+            //     if (!response.ok) {
+            //         // Extract the JSON error message from the response
+            //         return response.json().then(errorData => {
+            //             console.error("Error message:", errorData.message);
+            //             console.error("Detailed error:", errorData.data);
+    
+    
+            //             throw new Error(`HTTP error! Status: ${response.status}`);
+            //         });
+            //     }
+            //     return response.json();
+            // })
+            // .catch(error => console.error('Request Failed:', error));
+    }
 
 }
 // Fetch business Categories

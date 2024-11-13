@@ -146,6 +146,7 @@
                                             placeholder="">
                                         <label for="floatingInput">Event title <span
                                                 class="text-danger">*</span></label>
+                                        <div id="lblPostTitle"></div>
                                     </div>
 
                                     <div class="category-select d-flex">
@@ -178,11 +179,13 @@
                                             <input type="date" class="form-control customized-form" id="startDate"
                                                 placeholder="">
                                             <label for="floatingInput">Start Date </label>
+                                            <div id="lblStartDate"></div>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <input type="time" class="form-control customized-form" id="startTime"
                                                 placeholder="">
                                             <label for="floatingInput">Start Time </label>
+                                            <div id="lblStartTime"></div>
                                         </div>
 
                                     </div>
@@ -191,11 +194,13 @@
                                             <input type="date" class="form-control customized-form" id="endDate"
                                                 placeholder="">
                                             <label for="floatingInput">End Date </label>
+                                            <div id="lblEndDate"></div>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <input type="time" class="form-control customized-form" id="endTime"
                                                 placeholder="">
                                             <label for="floatingInput">End Time </label>
+                                            <div id="lblEndTime"></div>
                                         </div>
                                     </div>
                                     <h5>Location*</h5>
@@ -203,22 +208,22 @@
                                         <div class="form-floating mb-3 me-5">
                                             <input type="text" class="form-control customized-form" id="address1"
                                                 placeholder="">
-                                            <label for="floatingInput">Address 1 </label>
+                                            <label for="floatingInput" id="lblAddress1">Address 1 </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <input type="text" class="form-control customized-form" id="address2"
                                                 placeholder="">
-                                            <label for="floatingInput">Address 2 </label>
+                                            <label for="floatingInput" id="lblAddress2">Address 2 </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <input type="text" class="form-control customized-form" id="city"
                                                 placeholder="">
-                                            <label for="floatingInput">City </label>
+                                            <label for="floatingInput" id="lblCity">City </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <input type="text" class="form-control customized-form" id="province"
                                                 placeholder="">
-                                            <label for="floatingInput">State/Province </label>
+                                            <label for="floatingInput" id="lblProvince">State/Province </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <select id="country" name="country" class="form-control customized-form"
@@ -488,7 +493,7 @@
                                                 <option value="Zambia">Zambia</option>
                                                 <option value="Zimbabwe">Zimbabwe</option>
                                             </select>
-                                            <label for="floatingInput">Country</label>
+                                            <label for="floatingInput" id="lblCountry">Country</label>
                                         </div>
                                     </div>
                                 </div>
@@ -504,7 +509,7 @@
                                     <h4 class="fw-bold pb-3">Description</h4>
                                     <h5>Add full description about your event</h5>
                                     <div class="description mt-3 mb-5">
-                                        <div id="editor"></div>
+                                        <div id="editor" class="bg-white"></div>
                                     </div>
                                     <h5>Add full <span class="text-brand fw-bold">agenda</span> of your event</h5>
                                     <div class="description mt-3 mb-5 ">
@@ -512,8 +517,8 @@
                                         <div id="agenda-wrapper">
                                             <h5 class="fw-bold text-brand mb-3 mt-4">+Agenda 1</h5>
                                             <div class="form-floating agenda mb-3">
-                                                <input type="text" class="form-control customized-form" id="agenda1"
-                                                    placeholder="">
+                                                <input type="text" class="form-control customized-form"
+                                                    id="agendaTitle1" placeholder="">
                                                 <label for="floatingInput">Title</label>
                                             </div>
                                             <div class="form-floating agenda mb-3">
@@ -564,15 +569,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="agenda mb-3 border rounded-2 p-3">
-                                <div class="agenda-content ps-2">
-                                    <p class="text-secondary pb-2">
-                                        ${document.getElementById(`agendaStarttime${i}`).value} -
-                                        ${document.getElementById(`agendaEndtime${i}`).value}</p>
-                                    <h4>${document.getElementById(`agenda${i}`).value}</h4>
-                                    <p>${document.getElementById(`agendaDesc${i}`).value}</p>
-                                </div>
-                            </div>
+
                             <div class="sub-form-wrapper p-4 border rounded-4 mt-4 ">
                                 <div class="form-display">
                                     <div class="title">
@@ -589,6 +586,7 @@
                                             placeholder="">
                                         <label for="floatingInput">Ticket Quantity <span
                                                 class="text-danger">*</span></label>
+                                        <div id="lblTicketQuantity"></div>
                                     </div>
 
                                     <h5>Ticket Price*</h5>
@@ -596,6 +594,7 @@
                                         <input type="number" class="form-control customized-form" id="price"
                                             placeholder="">
                                         <label for="floatingInput">$ </label>
+                                        <div id="lblPrice"></div>
                                     </div>
                                     <h5 class="fw-bold mb-3">Payment Method*</h5>
                                     <div class="upload-img-form mb-5">
@@ -604,16 +603,16 @@
                                         <div
                                             class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
                                             <i id="imgIcon" class="fa-regular fa-image fs-1 text-secondary pb-3"></i>
-                                            <label id="imgInputBtn" for="khqrImg" class="btn-outline-pink"><i
+                                            <label id="KhqrImgInputBtn" for="khqrImg" class="btn-outline-pink"><i
                                                     class="fa-solid fa-qrcode fs-5 text-secondary"></i> Upload KHQR
                                                 Image</label>
                                             <input class="d-none" id="khqrImg" type="file"></input>
                                             <div class="d-flex">
-                                                <p id="fileName" class="text-secondary pt-3">No file chosen</p>
-                                                <button id="btnRemoveImgFile" type="button"
+                                                <p id="KhqrFileName" class="text-secondary pt-3">No file chosen</p>
+                                                <button id="btnRemoveKhqrImg" type="button"
                                                     class="ms-1 text-secondary fw-bold">X</button>
                                             </div>
-                                            <img id="imageDisplay" src="" alt="img preview">
+                                            <img id="KhqrImageDisplay" src="" alt="img preview">
 
                                         </div>
                                         <div class="img-format pt-3 w-100">
@@ -634,7 +633,7 @@
                         </form>
                     </div>
                 </section>
-
+                <!-- <div id="test"></div> -->
             </div>
         </div>
     </main>
@@ -644,15 +643,15 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             window.descQuill = new Quill('#editor', { theme: 'snow' });
-            // window.agendaQuill = new Quill('#agendaEditor', { theme: 'snow' });
         });
     </script>
-    <!-- <script src="../../assets/js/authentication.js"></script> -->
+    <script type="module" src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/ultilities.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/image_file_input.js"></script>
     <script src="../../assets/js/organizer/create_event.js"></script>
     <script src="../../assets/js/form_collapse.js"></script>
+    <script src="../../assets/js/form_validation.js"></script>
 
 </body>
 
