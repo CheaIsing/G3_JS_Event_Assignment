@@ -162,11 +162,26 @@ function addWishlist(eventId) {
       },
       body: formData
   };
-  // Make the API call
+  fetch(Url, {
+    headers: {Authorization: `Bearer ${token}`}
+  }).then(res=>res.json())
+  .then(json=>{
+    for(let ele of json.data){
+      if(ele.id == eventId){
+        showToast("This event is already wished in wishlist.", true)
+        return;
+      }
+      else{
+        // Make the API call
   fetch(Url, requestOptions)
-      .then(res => res.json())
-      .then(data => {
-          showToast("Event is added to wishlist", true);
-          console.log('Success:', data);
-      })
+  .then(res => res.json())
+  .then(data => {
+      showToast("Event is added to wishlist", json.result);
+      // console.log('Success:', data);
+  })
+      }
+    }
+    
+  })
+  
 }
