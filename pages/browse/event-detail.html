@@ -307,13 +307,18 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-between">
-                    <h5 class="modal-title" id="paymentModalLabel">Ticket Payment</h5>
+                    <h5 class="modal-title" id="paymentModalLabel">
+                        <a href="../../index.html"><img
+                            src="../../assets/img/Pruttikar_Text_Logo2.png" alt
+                            style="width: 150px;"></a>
+                    </h5>
                     <button type="button" class="btn btn-lg" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="fs-2">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h5>QR Code Payment</h5>
+                    <h5 class="text-center fs-2">SCAN HERE</h5>
+                    <h5 class="text-center"> FOR PAYMENT</h5>
                     <div class="text-center mb-3">
                         <img src="../../assets/img/QR_Ticket-removebg-preview.png" alt="QR Code" class="img-fluid" width="50%">
                     </div>
@@ -338,17 +343,21 @@
                     <div class="row mt-3" id="summary-total">
                         
                     </div>
+                    <div class="upload-transection text-center p-4">
+                        <button type="button" class="btn"><i class="bi bi-cloud-arrow-up fs-2"></i></button>
+                        <p>Upload Transection</p>
+                    </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="uploadImage">Upload Image</label>
                         <input type="file" class="form-control" id="uploadImage" required>
                         <div class="invalid-feedback">Please upload an image before proceeding.</div>
-                    </div>
+                    </div> -->
                     
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="proceedButton">Proceed</button>
+                <div class="ms-auto p-3">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-brand" id="proceedButton">Submit</button>
                 </div>
             </div>
         </div>
