@@ -10,9 +10,8 @@ function showToast(msg, condition) {
 
   // Create the toast element
   const toast = document.createElement("div");
-  toast.className = `toast align-items-center text-white ${
-    condition === true ? "bg-brand" : "bg-danger"
-  } border-0`;
+  toast.className = `toast align-items-center text-white ${condition === true ? "bg-brand" : "bg-danger"
+    } border-0`;
   toast.role = "alert";
   toast.setAttribute("aria-live", "assertive");
   toast.setAttribute("aria-atomic", "true");
@@ -21,10 +20,9 @@ function showToast(msg, condition) {
   toast.innerHTML = `
       <div class="d-flex">
         <div class="toast-body">
-          ${
-            msg ||
-            (condition === "success" ? "Action successful!" : "Action failed!")
-          }
+          ${msg ||
+    (condition === "success" ? "Action successful!" : "Action failed!")
+    }
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
@@ -96,105 +94,95 @@ function formatToHour(dateString) {
   const date = new Date(dateString);
   const options = { hour: "numeric", minute: "2-digit", hour12: true };
   return date.toLocaleTimeString("en-US", options);
-  //add wishlist
-  function addWishlist(eventId) {
-    const Url = "https://mps2.chandalen.dev/api/wishlists/";
-    const token = localStorage.getItem("authToken");
-    const formData = new FormData();
-    formData.append("event_id", eventId);
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    };
-    console.log(eventId);
-    // Make the API call
-    // fetch(Url, requestOptions)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         showToast("Event is added to wishlist", true);
-    //         console.log('Success:', data);
-    //     })
-  }
-  //check status
-  function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
-    // Create Date objects from the input strings
-    const startDateTime = new Date(startDateTimeStr);
-    const endDateTime = new Date(endDateTimeStr);
-    const now = new Date(); // Current date and time
+}
+//check status
+function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
+  // Create Date objects from the input strings
+  const startDateTime = new Date(startDateTimeStr);
+  const endDateTime = new Date(endDateTimeStr);
+  const now = new Date(); // Current date and time
 
-    if (now >= startDateTime && now <= endDateTime) {
-      return "Showing";
-    } else if (now < startDateTime) {
-      return "Upcoming";
-    } else {
-      return "Past";
+  if (now >= startDateTime && now <= endDateTime) {
+    return "Showing";
+  } else if (now < startDateTime) {
+    return "Upcoming";
+  } else {
+    return "Past";
+  }
+}
+//wishlist
+function checkEventInWishlist(eventId) {
+  return fetch(`${apiUrl}/api/wishlists`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`
     }
-  }
-  //wishlist
-  function wish() {
-    const wishButtons = document.querySelectorAll(".add-wish");
-    wishButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const eventId = button.dataset.id;
-        // console.log(eventId);
-        addWishlist(eventId);
-        button.classList.add("clicked");
-        // button.classList.toggle('clicked');
-      });
-    });
-  }
-  // Function to add an event to the wishlist
-  function addWishlist(eventId) {
-    const url = "https://mps2.chandalen.dev/api/wishlists/";
-    const token = localStorage.getItem("authToken");
-
-    const formData = new FormData();
-    formData.append("event_id", eventId);
-
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    };
-
-    // Fetch existing wishlist to check if event is already wished
-    fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const isWished = json.data.some((ele) => ele.id == eventId);
-
-        if (isWished) {
-          showToast("This event is already in your wishlist.", true);
-          return;
-        }
-
-        // If not wished, proceed to add it to the wishlist
-        fetch(url, requestOptions)
-          .then((res) => res.json())
-          .then((data) => {
-            showToast("Event added to wishlist.", data.success);
-            console.log("Success:", data);
+  })
+    .then(response => response.json())
+    .then(json => {
+      let data = json.data;
+      let isAdded = false;
+      data.forEach(element => {
+        if (eventId == element.event.id) {
+          isAdded = true;
+          const wishButtons = document.querySelectorAll(`.add-wish[data-id="${eventId}"]`);
+          wishButtons.forEach(button => {
+            button.classList.add("clicked");
+            button.setAttribute('data-wish', element.id);
           })
-          .catch((error) => {
-            showToast("Error adding to wishlist.", true);
-            console.error("Error:", error);
-          });
-      })
-      .catch((error) => {
-        showToast("Error fetching wishlist.", true);
-        console.error("Error:", error);
+
+        }
       });
-  }
+      return isAdded;
+    });
+}
+function setUpWishBtn() {
+  const wishButtons = document.querySelectorAll(".add-wish");
+  wishButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const eventId = button.dataset.id;
+      checkEventInWishlist(eventId).then(isInWishlist => {
+        if (isInWishlist) {
+          deleteWishItem(button);
+        }
+        else {
+          addWishlist(button);
+        }
+      })
+    });
+  });
+}
+function addWishlist(item) {
+  let eventId = item.dataset.id;
+  const formData = new FormData();
+  formData.append("event_id", eventId);
+  fetch(`${apiUrl}/api/wishlists/`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(json => {
+      item.classList.add('clicked');
+      showToast("Event is added to wishlist successfully!", true);
+    })
+}
+function deleteWishItem(item) {
+  let eventId = item.dataset.wish;
+  fetch(apiUrl + '/api/wishlists/' + eventId, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(res => res.json())
+    .then(json => {
+      item.classList.remove('clicked');
+      showToast("Event is removed from wishlist", true);
+      // showToast(json.message, json.result);
+    })
 }
