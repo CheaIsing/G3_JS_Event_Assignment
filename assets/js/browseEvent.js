@@ -1,9 +1,23 @@
 const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
 let currentPage = 1; // Start on the first page
 const itemsPerPage = 10; // Number of events per page
-let selectedCategories = []; // Store selected category IDs
-
+window.onload = () => {
+  getAllEvent(currentPage);
+};
+getAllCatagory(
+  "/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search"
+);
+function getAllEvent(page = 1) {
+  let url = `${apiUrl}/api/events?page=${page}&per_page=${itemsPerPage}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((json) => {
+      displayEvents(json.data);
+      setupPagination(json.paginate);
+      let resultNum = json.paginate.total;
+      document.getElementById("result-num").innerHTML = resultNum;
+    });
+}
 function displayEvents(events) {
   events.forEach((element) => {
     element.status = checkDateTimeRange(element.start_date, element.end_date);
@@ -15,14 +29,10 @@ function displayEvents(events) {
   });
   let listE = "";
   events.forEach((element) => {
-    let price =
-      element.ticket_price == 0
-        ? "Free"
-        : `$${element.ticket_price.toFixed(2)}`;
+    let price = element.ticket_price == 0 ? "Free" : `$${element.ticket_price}`;
     let catas = "";
     element.event_categories.forEach((cata) => {
       let pill = ((cata.id - 1) % 5) + 1;
-      console.log(pill);
       catas += `<div class="pill pill${pill} me-1">${cata.name}</div>`;
     });
     listE += `<div class="card mb-4">
@@ -30,7 +40,7 @@ function displayEvents(events) {
                                 <div class="col-3 position-relative">
                                     <img src="../../assets/img/test-img/cta-event-search-banner.avif"
                                         class="img-fluid rounded-start " alt="...">
-                                    <div class="i-wish add-wish position-absolute top-0 end-0" onclick='addWishlist(${element.id})' data-id="${element.id}">
+                                    <div class="i-wish add-wish position-absolute top-0 end-0" data-id="${element.id}">
                                         <i class="fa-regular fa-heart"></i>
                                     </div>
                                 </div>
@@ -41,7 +51,7 @@ function displayEvents(events) {
                                         </h3>
                                         <div class="d-flex mb-2">
                                             
-                                            <div class="d-flex event-pill-wrapper align-items-center">${catas}</div>
+                                            <div class="d-flex event-pill-wrapper">${catas}</div>
                                             <div class=" ms-5 border-start border-danger ps-5 m-0 fs-18 text-brand fw-medium">
                                                 <i class="fa-solid fa-tag me-2 fs-18"></i><span
                                                     class="">${price}</span>
@@ -62,9 +72,12 @@ function displayEvents(events) {
                                 </div>
                             </div>
                         </div>`;
+    checkEventInWishlist(element.id);
   });
+
   document.getElementById("list-card").innerHTML = listE;
-  // wish();
+
+  setUpWishBtn();
 }
 function setupPagination(pagination) {
   const paginationContainer = document.getElementById("pagination");
@@ -80,7 +93,6 @@ function setupPagination(pagination) {
     }
   };
   paginationContainer.appendChild(prevPageButton);
-  console.log(prevPageButton);
   // Page number buttons
   const totalPages = pagination.last_page;
   const currentPageNum = pagination.current_page;
@@ -152,222 +164,8 @@ function updateUrlAndFetch(page) {
   window.location.href = `javascript: void(0)`;
   window.scrollTo({ top: 200, behavior: "instant" });
 }
-
 function getEDetail(card) {
   id = card.dataset.id;
   sessionStorage.setItem("itemID", id);
   location.href = "/pages/browse/event-detail.html";
 }
-
-function loadCategories() {
-  fetch(`${apiUrl}/api/event-categories?page=1&per_page=100&sort_col=name&sort_dir=asc`)
-    .then((res) => res.json())
-    .then((json) => {
-      if (json.result) {
-        const categoriesContainer = document.getElementById("categories-container");
-        categoriesContainer.innerHTML = ""; // Clear existing categories
-
-        json.data.forEach((category) => {
-          // Create a checkbox for each category
-          const checkboxWrapper = document.createElement("div");
-          checkboxWrapper.classList.add("form-check");
-
-          checkboxWrapper.innerHTML = `
-            <input class="form-check-input" type="checkbox" data-value="${category.id}" id="category-${category.id}">
-            <label class="form-check-label" for="category-${category.id}">
-              ${category.name}
-            </label>
-          `;
-          categoriesContainer.appendChild(checkboxWrapper);
-        });
-
-        document.querySelectorAll(".form-check-input").forEach((checkbox) => {
-          checkbox.addEventListener("change", () => {
-            const value = checkbox.getAttribute("data-value");
-            if (checkbox.checked) {
-              selectedCategories.push(value); // Add category
-            } else {
-              selectedCategories = selectedCategories.filter((id) => id !== value); // Remove category
-            }
-          });
-        });
-      }
-    })
-    .catch((error) => console.error("Error loading categories:", error));
-}
-
-function filterEventsByCategories() {
-  currentPage = 1; // Reset to first page
-  getAllEvent(currentPage, selectedCategories); // Fetch events based on selected categories
-}
-
-function getAllEvent(page = 1, categories = []) {
-  let url = `${apiUrl}/api/events?page=${page}&per_page=${itemsPerPage}`;
-  document.getElementById("list-card").innerHTML = `
-  <div class="mb-3">
-                                              <div colspan="5">
-                                                  <div
-                                                      class="card border-0"
-                                                      aria-hidden="true">
-                                                      <div class="row g-0">
-                                                          <div class="col-4">
-                                                              <div
-                                                                  class="bg-secondary-subtle border rounded-1"
-                                                                  style="width: 100%; height: 100%;">
-
-                                                              </div>
-                                                          </div>
-                                                          <div class="col-8">
-                                                              <div
-                                                                  class="card-body py-2">
-                                                                  <h5
-                                                                      class="card-title ">
-                                                                      <span
-                                                                          class="placeholder col-11 "
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                  </h5>
-                                                                  <p
-                                                                      class="card-text ">
-                                                                      <span
-                                                                          class="placeholder col-10"
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                      <span
-                                                                          class="placeholder col-12"
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                  </p>
-                                                                  <p
-                                                                      class="card-text ">
-                                                                      <span
-                                                                          class="placeholder col-10"
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                      
-                                                                  </p>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-
-                                              </div>
-                                          </div>
-                                          <div class="mb-3">
-                                              <td colspan="5">
-                                                  <div
-                                                      class="card border-0"
-                                                      aria-hidden="true">
-                                                      <div class="row g-0">
-                                                          <div class="col-4">
-                                                              <div
-                                                                  class="bg-secondary-subtle border rounded-1"
-                                                                  style="width: 100%; height: 100%;">
-
-                                                              </div>
-                                                          </div>
-                                                          <div class="col-8">
-                                                              <div
-                                                                  class="card-body py-2">
-                                                                  <h5
-                                                                      class="card-title ">
-                                                                      <span
-                                                                          class="placeholder col-11 "
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                  </h5>
-                                                                  <p
-                                                                      class="card-text ">
-                                                                      <span
-                                                                          class="placeholder col-10"
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                      <span
-                                                                          class="placeholder col-12"
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                  </p>
-                                                                  <p
-                                                                      class="card-text ">
-                                                                      <span
-                                                                          class="placeholder col-10"
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                      
-                                                                  </p>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-
-                                              </td>
-                                          </div>
-                                          <div class="mb-3">
-                                              <td colspan="5">
-                                                  <div
-                                                      class="card border-0"
-                                                      aria-hidden="true">
-                                                      <div class="row g-0">
-                                                          <div class="col-4">
-                                                              <div
-                                                                  class="bg-secondary-subtle border rounded-1"
-                                                                  style="width: 100%; height: 100%;">
-
-                                                              </div>
-                                                          </div>
-                                                          <div class="col-8">
-                                                              <div
-                                                                  class="card-body py-2">
-                                                                  <h5
-                                                                      class="card-title ">
-                                                                      <span
-                                                                          class="placeholder col-11 "
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                  </h5>
-                                                                  <p
-                                                                      class="card-text ">
-                                                                      <span
-                                                                          class="placeholder col-10"
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                      <span
-                                                                          class="placeholder col-12"
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                  </p>
-                                                                  <p
-                                                                      class="card-text ">
-                                                                      <span
-                                                                          class="placeholder col-10"
-                                                                          style="background-color: #D4D4D4;"></span>
-                                                                      
-                                                                  </p>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-
-                                              </td>
-                                          </div>`;
-
-  if (categories.length) {
-    categories.forEach((category) => {
-      url += `&category=${category}`; // Add selected categories to the URL
-    });
-  }
-
-  fetch(url)
-    .then((res) => res.json())
-    .then((json) => {
-      displayEvents(json.data);
-      setupPagination(json.paginate);
-      document.getElementById("result-num").innerHTML = json.paginate.total;
-    });
-}
-
-document.getElementById("search-events").addEventListener("click", () => {
-  filterEventsByCategories(); // Trigger the search when the button is clicked
-});
-
-document.getElementById("clear-filters").addEventListener("click", () => {
-  selectedCategories = []; // Clear selected categories
-  document.querySelectorAll(".form-check-input").forEach((checkbox) => {
-    checkbox.checked = false; // Uncheck all checkboxes
-  });
-  filterEventsByCategories(); // Trigger the search after clearing
-});
-
-window.onload = () => {
-  getAllEvent(currentPage);
-  loadCategories()
-};

@@ -1018,4 +1018,16 @@ footer .contact-info .social-media a:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
+
   }
+.recruit-card-wrapper .card .recruit-requiremnt-wrapper,
+.recruit-card-wrapper .card .vendor-type-need-wrapper,
+.recruit-card-wrapper .card .detail-title{
+    display: none;
+}
+
+.add-wish:hover,.add-wish.clicked{
+    background-color: var(--c-brand);
+    color: #fff;
+}
+
