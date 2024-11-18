@@ -152,9 +152,9 @@ function loadEventCards() {
                                             </div>
                                         </div>
                                         <div class="card-btn-wrapper">
-                                            <button type="button" class="btn-rounded" onclick="addRecuitWishlist(this)"><i
+                                            <button type="button" class="btn-rounded" onclick="addWishlist(${element.id})"><i
                                                     class="fa-regular fa-heart"></i></button>
-                                            <button type="button" class="btn-rounded" onclick="shareRecruit(this)"><i
+                                            <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id})"><i
                                                     class="fa-solid fa-arrow-up-right-from-square"></i></button>
                                         </div>
                                     </div>`;
@@ -172,6 +172,7 @@ function loadEventCards() {
             colorId++;
 
         })
+        
         currentIndex++;
 
 

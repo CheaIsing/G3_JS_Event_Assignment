@@ -21,21 +21,28 @@
                 <nav class="d-flex align-items-center justify-content-between">
                     <div class="logo">
                         <a href="../homepage.html">
-                            <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                            <img
+                                src="../../assets/img/logo/Prutika_Logo_text(2).png"
+                                alt>
                         </a>
                     </div>
-                    
-                    
+
                     <div class="dropdown">
-                        <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
-                            id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#"
+                            class="dropdown-toggle fs-3 text-brand d-flex align-items-center"
+                            role="button"
+                            id="accountDropdown" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <i class="bi bi-person-circle"></i>
                             <!-- User Icon -->
                             <span class="ps-1 fs-6" id="userEmail"></span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                            <li><a class="dropdown-item" href="../homepage.html">Switch to Attending</a></li>
-                            
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="accountDropdown">
+                            <li><a class="dropdown-item"
+                                    href="../homepage.html">Switch to
+                                    Attending</a></li>
+
                         </ul>
                     </div>
                 </nav>
@@ -92,80 +99,16 @@
                             </button>
                             <h2>Transaction</h2>
                         </div>
-                        <div
-                            class="my-4 d-flex w-100 justify-content-between align-content-center">
-                            <div
-                                class>
-                                <h3>Halowinn</h3>
-                                <div
-                                    class="d-inline-flex align-items-center">
-                                    <i
-                                        class="bi bi-calendar-event me-2"></i>
-                                    <span>Sat, Nov 23, 2024, 10:00
-                                        AM</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row transaction-row gy-3">
-                            <div class="col-12">
-                                <div
-                                    class="mt-4 d-flex w-100 align-items-center justify-content-between">
-                                    <div
-                                        class="d-flex align-content-center">
-                                        <div class="me-3">
-                                            <img
-                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe9Ybgu-3psgpmfvul2z879e4kMQvSbaw9ItYfnM4R-McgtimDw40Nx7nn8qZIflmD_9E&usqp=CAU"
-                                                alt
-                                                class="object-fit-cover rounded-circle"
-                                                width="75" height="75"
-                                                id="requester-avarta">
-                                        </div>
-                                        <div
-                                            class>
-                                            <h5 class="mb-0" id="requester">Jonh
-                                                Doe</h5>
-                                            <div
-                                                class>
-                                                <small id="request-date">Sat,
-                                                    Nov 23,
-                                                    2024,
-                                                    10:00
-                                                    AM</small>
-                                            </div>
-                                            <div><small>
-                                                    <a
-                                                        href="#"
-                                                        class="text-decoration-none"
-                                                        style="color: inherit;"
-                                                        id="request-email">jonhdoe@gmail.com</a>
-                                                </small></div>
 
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <button type="button"
-                                            class="btn btn-brand me-2">Approve</button>
-                                        <!-- Button trigger modal -->
-                                        <button type="button"
-                                            class="btn btn-danger"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                            Disapprove
-                                        </button>
-                                    </div>
+                        <div class="row transaction-row gy-3">
+                            <div class="col-12 d-flex justify-content-center">
+                                <div class="spinner-border text-secondary"
+                                    role="status">
+                                    <span
+                                        class="visually-hidden">Loading...</span>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <p>Ticket Request Quantity : <span id="amount">2
-                                        Tickets</span></p>
-                                <p>Price per tickets: <span
-                                        id="price-unit">$10.00</span></p>
-                                <p>Total: <span id="total">$20.00</span></p>
-                                <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZUxcU22KvvHHOkx0IbCa4mPhl0sWnW5iBkJ4kdBO3Axk4ZM4TmcmN-9w_-D7xdY5ArI4&usqp=CAU"
-                                    class="w-25 border border-2"
-                                    alt="transaction-img" id="transaction-img">
-                            </div>
+
                         </div>
                     </section>
                 </div>
@@ -186,7 +129,8 @@
                     <div class="modal-body" id="modal-disapprove">
                         <div class="mb-3">
                             <label for="validationTextarea"
-                                class="form-label">Enter Reasons for Disapproving</label>
+                                class="form-label">Enter Reasons for
+                                Disapproving</label>
                             <textarea class="form-control"
                                 id="reason-disapprove"
                                 placeholder="Required example textarea"
@@ -209,6 +153,9 @@
         <script src="../../assets/js/ultilities.js"></script>
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
         <script src="../../assets/js/organizer/transaction.js"></script>
+        <script>
+            
+        </script>
     </body>
 
 </html>

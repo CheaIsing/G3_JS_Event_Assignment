@@ -60,12 +60,13 @@ function getOwnedTickets() {
                                                                     .location
                                                                 }</p>
                                                             <p
-                                                                class="text-muted mb-0 small">${formatDate(
-                                                                  ele.event
-                                                                    .start_date
-                                                                )} - ${formatDate(
-          ele.event.end_date
-        )}</p>
+                                                                class="text-muted mb-0 small">${formatCustomDateWithYear(
+                                                                    ele.event.start_date
+                                                                  )} - ${formatCustomDateWithYear(
+                                                                    ele.event.end_date
+                                                        )}, ${formatToHour(ele.event.start_date)} - ${formatToHour(
+                                                            ele.event.end_date
+                                                        )}</p>
                                                         </div>
                                                     </div>
                                                 
@@ -74,7 +75,7 @@ function getOwnedTickets() {
                                                 ${checkedIn}
                                             </td>
                                             <td>
-                                                $${ele.ticket_price}
+                                                $${ele.ticket_price.toFixed(2)}
                                             </td>
                                             <td>
                                                 ${formatDate(ele.expired_at)}
@@ -131,14 +132,7 @@ function displayTicket(button) {
 
   document.querySelector("#exampleModalToggle-1 .ticket-modal").innerHTML = "";
 
-  fetch(`${API_URL}/api/profile/detail/${creatorId}`, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-    },
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      console.log(json);
+      // console.log(json);
       let rowsHTML = `<div class="col-12">
                                     <div class="row g-0">
                                         <div class="col-8">
@@ -178,7 +172,7 @@ function displayTicket(button) {
                                                                 <h6
                                                                     class="text-brand">Price
                                                                     : <span
-                                                                        class>$${price}</span>
+                                                                        class>$${parseFloat(price).toFixed(2)}</span>
                                                                 </h6>
                                                             </div>
                                                             <div class="mt-4">
@@ -199,27 +193,21 @@ function displayTicket(button) {
                                                             class="col-4">
                                                             <h6
                                                                 class="text-brand">Start</h6>
-                                                            <h6>${formatDate(
-                                                              startDate
-                                                            )}</h6>
+                                                            <h6>${formatCustomDateWithYear(startDate)}</h6>
                                                         </div>
                                                         <div
                                                             class="col-4 ">
                                                             <h6
                                                                 class="text-brand">End
                                                             </h6>
-                                                            <h6>${formatDate(
-                                                              endDate
-                                                            )}</h6>
+                                                            <h6>${formatCustomDateWithYear(endDate)}</h6>
                                                         </div>
                                                         <div
                                                             class="col-4">
                                                             <h6
-                                                                class="text-brand">Contact
-                                                                Info</h6>
-                                                            <h6>${
-                                                              json.data.email
-                                                            }
+                                                                class="text-brand">Time: </h6>
+                                                            <h6>
+                                                              ${formatToHour(startDate)} - ${formatToHour(endDate)}
                                                             </h6>
                                                         </div>
                                                     </div>
@@ -255,5 +243,5 @@ function displayTicket(button) {
 
       document.querySelector("#exampleModalToggle-1 .ticket-modal").innerHTML =
         rowsHTML;
-    });
+    
 }
