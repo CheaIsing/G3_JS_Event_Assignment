@@ -135,10 +135,10 @@ function loadEventCards() {
         }
         
         const newCard = document.createElement('div');
-        newCard.className = "card";
-        newCard.innerHTML = `       <div class="card-content" onclick="showEventDetail(${element.id})">
+        newCard.className = "card h-100";
+        newCard.innerHTML = `       <div class="card-content h-100">
                                         <img class="card-img-top" src="${thumbnail}" alt="Title" />
-                                        <div class="card-body">
+                                        <div class="card-body h-100">
                                             <div class="d-flex event-pill-wrapper"></div>
                                             <h5 class="card-title mt-2 mb-4">${element.name}</h5>
                                             <p class="card-text">${element.start_date}</p>
@@ -151,14 +151,14 @@ function loadEventCards() {
                                                 <p>${element.creator.full_name}</p>
                                             </div>
                                         </div>
-                                        <div class="card-btn-wrapper">
-                                            <button type="button" class="btn-rounded" onclick="addWishlist(${element.id})"><i
+                                        <div class="card-btn-wrapper h-100">
+                                            <button type="button" class="btn-rounded add-wish" data-id="${element.id}" onclick="addWishlist(${element.id})"><i
                                                     class="fa-regular fa-heart"></i></button>
                                             <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id})"><i
                                                     class="fa-solid fa-arrow-up-right-from-square"></i></button>
                                         </div>
                                     </div>`;
-
+        checkEventInWishlist(element.id)
         cardContainer.appendChild(newCard);
         let eventPillWrapper = document.querySelectorAll('.event-pill-wrapper')[currentIndex];
 
@@ -179,6 +179,7 @@ function loadEventCards() {
 
     }
 
+    setUpWishBtn()
 
     if (currentIndex >= allEventData.length) {
         document.getElementById('btn-seemore-event').style.display = 'none';

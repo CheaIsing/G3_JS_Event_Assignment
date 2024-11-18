@@ -1025,3 +1025,7 @@ footer .contact-info .social-media a:hover {
     display: none;
 }
 
+.add-wish:hover,.add-wish.clicked{
+    background-color: var(--c-brand);
+    color: #fff;
+}

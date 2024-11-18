@@ -87,56 +87,238 @@
             <div class="container">
                 <p class="d-flex h-100 align-items-center my-auto">
                     <a href="" class="home-link">Home</a>
-                    <i class="fa-solid fa-chevron-right mx-2"></i>
+                    <i class="fa-solid fa-chevron-right mx-2 "></i>
                     <span class="text-brand">Browse Event</span>
                 </p>
             </div>
         </section>
-        <section class="hero mb-5" id="hero">
+        <section class="hero  mb-5 " id="hero">
             <div class="overlay"></div>
             <h2 class="h-100 d-flex justify-content-center align-items-center text-white">Browse Event</h2>
         </section>
-        <section class="browse">
+        <section class="browse" >
             <div class="container">
                 <div class="row">
                     <div class="col-3">
                         <div class="filter">
                             <h6 class="ps-4 py-2 m-0">Filter</h6>
                             <hr>
-                            <h6>Category</h6>
-                            <div class="ps-4 py-2" id="categories-container"></div>
+                            <!-- <hr> -->
+                            <div class="ps-4 py-2" id="catagory">
+                                <h6>Catagory</h6>
+                            </div>
                             <hr>
-                            <div class="my-3 me-4 text-end">
-                                <button type="button" class="btn btn-outline-secondary" id="clear-filters">Clear All</button>
-                                <button type="button" class="btn btn-brand" id="search-events">Search</button>
+                            <div class="ps-4 py-2">
+                                <h6>Pricing</h6>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="">
+                                        Free
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="">
+                                        Paid
+                                    </label>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="ps-4 py-2">
+                                <h6>Type</h6>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="">
+                                        Online
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="">
+                                        Offline-Indoor
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="">
+                                        Offline-Outdoor
+                                    </label>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="px-4 py-2">
+                                <h6>Date</h6>
+                                <div class="mb-3 d-flex align-items-center">
+                                    <label class="form-label w-25" for="">
+                                        From
+                                    </label>
+                                    <input class="form-control" type="date" name="from" value="" id="">
+                                </div>
+                                <div class="mb-3 d-flex align-items-center">
+                                    <label class="form-label w-25" for="">
+                                        To
+                                    </label>
+                                    <input class="form-control" type="date" name="from" value="" id="">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class=" my-3 me-4 text-end">
+                                <button type="button" class="btn btn-outline-secondary">Clear All</button>
+                                <Button type="button" class="btn btn-brand">Search</Button>
                             </div>
                         </div>
                     </div>
                     <div class="col-9">
-                        <div class="search-result w-100">
+                        <div class="search-result w-100" >
                             <h5 class="mt-2 mb-4 show-re">
-                                <span class="text-brand" id="result-num"></span> Results
+                                <span class="text-brand" id="result-num"></span>
+                                Results
                             </h5>
-                            <div class="card-list" id="list-card"></div>
+                            <div class="card-list" id="list-card">
+                                <!-- <div class="card mb-4">
+                                    <div class="row g-0">
+                                        <div class="col-3 position-relative">
+                                            <img src="../../assets/img/test-img/cta-event-search-banner.avif"
+                                                class="img-fluid rounded-start " alt="...">
+                                            <div class="i-wish add-wish position-absolute top-0 end-0" >
+                                                <i class="fa-regular fa-heart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="card-body ps-4 pe-0 py-4">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="d-flex event-pill-wrapper">${catas}</div>
+                                                    <p class="status">Upcomming</p>
+                                                </div>
+
+                                                <h3 class="card-title">
+                                                    <a href="javascript: void(0)" onclick="getEDetail(this)" data-id="${element.id}">hello world</a>
+                                                </h3>
+                                                <div class=" m-0 fs-18 text-brand fw-medium">
+                                                        <i class="fa-solid fa-tag me-2 fs-18"></i><span
+                                                            class="">$100</span>
+                                                </div>
+                                                
+                                                <div class="mb-2 d-flex align-items-center fs-18">
+                                                    <i class="fa-regular fa-calendar text-brand me-2 "></i><small
+                                                        class="text-body-secondary m-0">${element.start_date}</small>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-location-dot me-2 text-brand"></i> <small
+                                                        class="text-body-secondary">${element.location}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 py-4">
+                                        </div>
+                                    </div>
+                                </div>`; -->
+                                <!-- <div class="card mb-4">
+                                    <div class="row g-0">
+                                        <div class="col-3 position-relative">
+                                            <img src="../../assets/img/test-img/cta-event-search-banner.avif"
+                                                class="img-fluid rounded-start " alt="...">
+                                            <div class="i-wish add-wish position-absolute top-0 end-0">
+                                                <i class="fa-regular fa-heart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 ">
+                                            <div class="card-body ps-4 pe-0 py-4">
+                                                <h3 class="card-title">
+                                                    <a href="">Annual Charity Gala Annual Charity Gala Annual Charity Gala</a>
+                                                </h3>
+                                                <div class="d-flex mb-2">
+                                                    <div class="m-0 fs-18 text-brand fw-medium"><i
+                                                            class="fa-regular fa-folder-open me-2 fs-18"></i><span
+                                                            class="">Music</span>
+                                                    </div>
+                                                    <div
+                                                        class=" ms-5 border-start border-danger ps-5 m-0 fs-18 text-brand fw-medium">
+                                                        <i class="fa-solid fa-tag me-2 fs-18"></i><span
+                                                            class="">Free</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-2 d-flex align-items-center fs-18">
+                                                    <i class="fa-regular fa-calendar text-brand me-2 "></i><small
+                                                        class="text-body-secondary m-0">2024-10-30 17:00:00</small>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-location-dot me-2 text-brand"></i> <small
+                                                        class="text-body-secondary">OCIC, Phnom Penh</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 py-4">
+                                            <p class="status">Upcoming</p>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
                             <div id="pagination"></div>
+                            <!-- <button class="btn btn-outline-brand ms-auto">See More</button> -->
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <!-- <section class="recmt-event">
+            <div class="container">
+                <h2 class="mb-4 fw-bold">Recommend For You</h2>
+                <div class="recmt-items">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card position-relative bg-white shadow-light border-0">
+                                <a href="event-detail.html">
+                                    <img src="../../assets/img/test-img/cta-event-search-banner.avif"
+                                        class="card-img-top object-fit-cover " alt="...">
+                                </a>
+                                <button class="i-wish add-wish border-0 position-absolute top-0 end-0">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                                <div class="card-body">
+                                    <div class="d-flex gap-1 mb-1">
+                                        <span class="px-2 py-1 rounded-2 bg-brand-light-50 ">Music</span>
+                                        <span class="px-2 py-1 rounded-2 bg-brand-light-50 ">Technology</span>
+                                    </div>
+                                    <h4 class="card-title">
+                                        <a href="">Annual Charity Gala Annual CharityGalaAnnual Charity Gala</a>
+                                    </h4>
+                                    <div class=" d-flex mb-2">
+                                        <div class="m-0 fs-18 fw-medium">
+                                            <i class="fa-solid fa-tag  text-brand me-2 fs-18"></i><small
+                                                class="text-body-secondary">Free</small>
+                                        </div>
+                                        <div class="ms-4  ps-3 m-0 fs-18 fw-medium">
+                                            <i class="fa-regular fa-hourglass  text-brand me-2 fs-18"></i>
+                                            <small class="text-body-secondary">Upcoming</small>
+
+                                        </div>
+                                    </div>
+                                    <div class="mb-2 card-time d-flex align-items-center fs-18">
+                                        <i class="fa-regular fa-calendar text-brand me-2 "></i><small
+                                            class="text-body-secondary m-0">2024-10-30 17:00:00</small>
+                                    </div>
+                                    <div class="card-time d-flex align-items-center">
+                                        <i class="fa-solid fa-location-dot me-2 text-brand"></i> <small
+                                            class="text-body-secondary">OCIC, Phnom Penh</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
     </main>
-    
     <footer>
         footer
     </footer>
     <script src="../../assets/js/ultilities.js"></script>
-    <script src="../../assets/js/browse.js"></script>
     <script src="../../assets/js/authentication.js"></script>
-    <script src="../../assets/js/header.js"></script>
-
-    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="../../assets/js/header.js"></script> -->
+    <script src="../../assets/js/browse.js"></script>
     <script src="../../assets/js/browseEvent.js"></script>
+    <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
