@@ -1018,6 +1018,7 @@ footer .contact-info .social-media a:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
+
   }
 .recruit-card-wrapper .card .recruit-requiremnt-wrapper,
 .recruit-card-wrapper .card .vendor-type-need-wrapper,
@@ -1029,3 +1030,4 @@ footer .contact-info .social-media a:hover {
     background-color: var(--c-brand);
     color: #fff;
 }
+
