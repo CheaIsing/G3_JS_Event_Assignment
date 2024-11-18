@@ -32,7 +32,7 @@
                     <button class="btn-pink text-white"><i
                             class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
                     <ul class="search-dropdown position-absolute" id="search-dropdown">
-  
+
                     </ul>
                 </div>
                 <div class="action-btn d-flex">
@@ -48,7 +48,7 @@
                     <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
                             class="fa-solid fa-ticket pe-1 text-brand"></i>My
                         Ticket</a>
-  
+
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
                         <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
                                 events</a></li>
@@ -56,7 +56,7 @@
                                 vendor recruitments</a></li>
                         <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
                                 vendor services</a></li>
-  
+
                     </ul>
                 </div>
                 <div class="dropdown">
@@ -92,21 +92,36 @@
                 <nav class="shadow sidebar">
                     <ul>
                         <li>
-                            <a href="vendor-business.html" class="active">
+                            <a href="event.html" class="active">
                                 <i class="fas fa-menorah"></i>
-                                <span class="nav-item">Vendor Business</span>
+                                <span class="nav-item">Event</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="request-ticket.html" c>
+                                <i class="fa-solid fa-ticket"></i>
+                                <span class="nav-item">Request Ticket</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="check-in-ticket.html">
+                                <i class="fa-solid fa-qrcode"></i>
+                                <span class="nav-item">Check-in
+                                    Ticket</span>
                             </a>
                         </li>
                         <li>
                             <a href="group-collaborate.html">
                                 <i class="fa-solid fa-user-group"></i>
-                                <span class="nav-item">Event Group Collaborated</span>
+                                <span class="nav-item">Event Group
+                                    Collaborated</span>
                             </a>
                         </li>
                         <li>
                             <a href="profile.html">
                                 <i class="fa-solid fa-user"></i>
-                                <span class="nav-item">Vendor Profile</span>
+                                <span class="nav-item">Organizer
+                                    Profile</span>
                             </a>
                         </li>
                     </ul>
@@ -154,8 +169,9 @@
                                                 placeholder="">
                                             <label for="floatingInput">Your post title <span
                                                     class="text-danger">*</span></label>
+                                            <div id="lblPostTitle"></div>
                                         </div>
-                                        
+
                                         <div class="category-select d-flex mb-5">
                                             <div class="w-25 me-5">
                                                 <h5>Vendor Categories*</h5>
@@ -183,6 +199,19 @@
                                         <div class="description mt-3 mb-5">
                                             <div id="editor"></div>
                                         </div>
+                                        <h5>Vendor type needed</h5>
+                                        <div class="form-floating mb-5">
+                                            
+                                            <textarea class="form-control customized-form" name="" id="vendorNeed"
+                                                placeholder="" style="height: 170px;"></textarea>
+                                            <label for="vendorNeed">Descript vendor type that you need ...</label>
+                                        </div>
+                                        <h5>Requirement</h5>
+                                        <div class="form-floating mb-5">
+                                            <textarea class="form-control customized-form" name="" id="requirement"
+                                                placeholder="" style="height: 170px;"></textarea>
+                                            <label for="requirement">Descript your requirment ...</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="sub-form-wrapper p-4 border rounded-4 mt-4 ">
@@ -200,24 +229,28 @@
                                                 <input type="date" class="form-control customized-form" id="startDate"
                                                     placeholder="">
                                                 <label for="floatingInput">Start Date </label>
+                                                <div id="lblStartDate"></div>
                                             </div>
                                             <div class="form-floating mb-3 me-5">
                                                 <input type="time" class="form-control customized-form" id="startTime"
                                                     placeholder="">
                                                 <label for="floatingInput">Start Time </label>
+                                                <div id="lblStartTime"></div>
                                             </div>
-    
+
                                         </div>
                                         <div class="datetime d-flex mb-3">
                                             <div class="form-floating mb-3 w-25 me-5">
                                                 <input type="date" class="form-control customized-form" id="endDate"
                                                     placeholder="">
                                                 <label for="floatingInput">End Date </label>
+                                                <div id="lblEndDate"></div>
                                             </div>
                                             <div class="form-floating mb-3 me-5">
                                                 <input type="time" class="form-control customized-form" id="endTime"
                                                     placeholder="">
                                                 <label for="floatingInput">End Time </label>
+                                                <div id="lblEndTime"></div>
                                             </div>
                                         </div>
                                         <h5>Location*</h5>
@@ -272,7 +305,8 @@
                                                     <option value="Bermuda">Bermuda</option>
                                                     <option value="Bhutan">Bhutan</option>
                                                     <option value="Bolivia">Bolivia</option>
-                                                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina
+                                                    </option>
                                                     <option value="Botswana">Botswana</option>
                                                     <option value="Bouvet Island">Bouvet Island</option>
                                                     <option value="Brazil">Brazil</option>
@@ -293,7 +327,8 @@
                                                     <option value="Chile">Chile</option>
                                                     <option value="China">China</option>
                                                     <option value="Christmas Island">Christmas Island</option>
-                                                    <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                                                    <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands
+                                                    </option>
                                                     <option value="Colombia">Colombia</option>
                                                     <option value="Comoros">Comoros</option>
                                                     <option value="Congo">Congo</option>
@@ -317,7 +352,8 @@
                                                     <option value="Eritrea">Eritrea</option>
                                                     <option value="Estonia">Estonia</option>
                                                     <option value="Ethiopia">Ethiopia</option>
-                                                    <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)
+                                                    <option value="Falkland Islands (Malvinas)">Falkland Islands
+                                                        (Malvinas)
                                                     </option>
                                                     <option value="Faroe Islands">Faroe Islands</option>
                                                     <option value="Fiji">Fiji</option>
@@ -325,7 +361,8 @@
                                                     <option value="France">France</option>
                                                     <option value="French Guiana">French Guiana</option>
                                                     <option value="French Polynesia">French Polynesia</option>
-                                                    <option value="French Southern Territories">French Southern Territories
+                                                    <option value="French Southern Territories">French Southern
+                                                        Territories
                                                     </option>
                                                     <option value="Gabon">Gabon</option>
                                                     <option value="Gambia">Gambia</option>
@@ -368,23 +405,27 @@
                                                     <option value="Kazakhstan">Kazakhstan</option>
                                                     <option value="Kenya">Kenya</option>
                                                     <option value="Kiribati">Kiribati</option>
-                                                    <option value="Korea, Democratic People's Republic of">Korea, Democratic
+                                                    <option value="Korea, Democratic People's Republic of">Korea,
+                                                        Democratic
                                                         People's Republic of</option>
                                                     <option value="Korea, Republic of">Korea, Republic of</option>
                                                     <option value="Kuwait">Kuwait</option>
                                                     <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                                    <option value="Lao People's Democratic Republic">Lao People's Democratic
+                                                    <option value="Lao People's Democratic Republic">Lao People's
+                                                        Democratic
                                                         Republic</option>
                                                     <option value="Latvia">Latvia</option>
                                                     <option value="Lebanon">Lebanon</option>
                                                     <option value="Lesotho">Lesotho</option>
                                                     <option value="Liberia">Liberia</option>
-                                                    <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                                                    <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya
+                                                    </option>
                                                     <option value="Liechtenstein">Liechtenstein</option>
                                                     <option value="Lithuania">Lithuania</option>
                                                     <option value="Luxembourg">Luxembourg</option>
                                                     <option value="Macao">Macao</option>
-                                                    <option value="Macedonia, The Former Yugoslav Republic of">Macedonia,
+                                                    <option value="Macedonia, The Former Yugoslav Republic of">
+                                                        Macedonia,
                                                         The Former Yugoslav Republic of</option>
                                                     <option value="Madagascar">Madagascar</option>
                                                     <option value="Malawi">Malawi</option>
@@ -398,7 +439,8 @@
                                                     <option value="Mauritius">Mauritius</option>
                                                     <option value="Mayotte">Mayotte</option>
                                                     <option value="Mexico">Mexico</option>
-                                                    <option value="Micronesia, Federated States of">Micronesia, Federated
+                                                    <option value="Micronesia, Federated States of">Micronesia,
+                                                        Federated
                                                         States of</option>
                                                     <option value="Moldova, Republic of">Moldova, Republic of</option>
                                                     <option value="Monaco">Monaco</option>
@@ -426,7 +468,8 @@
                                                     <option value="Oman">Oman</option>
                                                     <option value="Pakistan">Pakistan</option>
                                                     <option value="Palau">Palau</option>
-                                                    <option value="Palestinian Territory, Occupied">Palestinian Territory,
+                                                    <option value="Palestinian Territory, Occupied">Palestinian
+                                                        Territory,
                                                         Occupied</option>
                                                     <option value="Panama">Panama</option>
                                                     <option value="Papua New Guinea">Papua New Guinea</option>
@@ -447,7 +490,8 @@
                                                     <option value="Saint Lucia">Saint Lucia</option>
                                                     <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon
                                                     </option>
-                                                    <option value="Saint Vincent and The Grenadines">Saint Vincent and The
+                                                    <option value="Saint Vincent and The Grenadines">Saint Vincent and
+                                                        The
                                                         Grenadines</option>
                                                     <option value="Samoa">Samoa</option>
                                                     <option value="San Marino">San Marino</option>
@@ -469,14 +513,16 @@
                                                     <option value="Sri Lanka">Sri Lanka</option>
                                                     <option value="Sudan">Sudan</option>
                                                     <option value="Suriname">Suriname</option>
-                                                    <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                                                    <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen
+                                                    </option>
                                                     <option value="Swaziland">Swaziland</option>
                                                     <option value="Sweden">Sweden</option>
                                                     <option value="Switzerland">Switzerland</option>
                                                     <option value="Syrian Arab Republic">Syrian Arab Republic</option>
                                                     <option value="Taiwan">Taiwan</option>
                                                     <option value="Tajikistan">Tajikistan</option>
-                                                    <option value="Tanzania, United Republic of">Tanzania, United Republic
+                                                    <option value="Tanzania, United Republic of">Tanzania, United
+                                                        Republic
                                                         of</option>
                                                     <option value="Thailand">Thailand</option>
                                                     <option value="Timor-leste">Timor-leste</option>
@@ -495,14 +541,16 @@
                                                     <option value="United Arab Emirates">United Arab Emirates</option>
                                                     <option value="United Kingdom">United Kingdom</option>
                                                     <option value="United States">United States</option>
-                                                    <option value="United States Minor Outlying Islands">United States Minor
+                                                    <option value="United States Minor Outlying Islands">United States
+                                                        Minor
                                                         Outlying Islands</option>
                                                     <option value="Uruguay">Uruguay</option>
                                                     <option value="Uzbekistan">Uzbekistan</option>
                                                     <option value="Vanuatu">Vanuatu</option>
                                                     <option value="Venezuela">Venezuela</option>
                                                     <option value="Viet Nam">Viet Nam</option>
-                                                    <option value="Virgin Islands, British">Virgin Islands, British</option>
+                                                    <option value="Virgin Islands, British">Virgin Islands, British
+                                                    </option>
                                                     <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
                                                     <option value="Wallis and Futuna">Wallis and Futuna</option>
                                                     <option value="Western Sahara">Western Sahara</option>
@@ -530,6 +578,7 @@
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/form_collapse.js"></script>
     <script src="../../assets/lib/QuilJs/quill.js"></script>
+    <script src="../../assets/js/form_validation.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             window.descQuill = new Quill('#editor', { theme: 'snow' });

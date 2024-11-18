@@ -117,7 +117,7 @@ function createNewEvent() {
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
     
     let description = `<div class="descQill">${descQuillContent}</div>`;
-    if (document.getElementById(`agendaStarttime1`).value || document.getElementById(`agenda1`).value) {
+    if (document.getElementById(`agendaStarttime1`).value || document.getElementById(`agendaTitle1`).value) {
         for (let i = 1; i <= agendaCount; i++) {
             if ((document.getElementById(`agendaStarttime${i}`).value && document.getElementById(`agendaEndtime${i}`).value) ||
                 document.getElementById(`agenda${i}`).value || document.getElementById(`agendaDesc${i}`).value) {
@@ -127,7 +127,7 @@ function createNewEvent() {
                                                     <p class="text-secondary pb-2" id="agenda-time">
                                                         ${document.getElementById(`agendaStarttime${i}`).value} -
                                                         ${document.getElementById(`agendaEndtime${i}`).value}</p>
-                                                    <h4 id="agenda-title">${document.getElementById(`agenda${i}`).value}</h4>
+                                                    <h4 id="agenda-title">${document.getElementById(`agendaTitle${i}`).value}</h4>
                                                     <p id="agenda-desc" class="mb-0 ps-4">${document.getElementById(`agendaDesc${i}`).value}</p>
                                                 </div>
                                             </div>`;
@@ -144,7 +144,7 @@ function createNewEvent() {
     // add ticket form variables
     let ticketQty = document.getElementById('ticketQuantity').value;
     let ticketPrice = document.getElementById('price').value;
-    let khqrImg = document.getElementById('khqrImg').value;
+    // let khqrImg = document.getElementById('khqrImg').value;
 
     let eventData = new FormData();
     eventData.append('name', eventName);
@@ -162,34 +162,36 @@ function createNewEvent() {
 
     })
 
-    fetch(`${apiUrl}/api/events`, {
-        method: 'POST',
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "Accept": "application/json;"
-        },
-        body: eventData
-    })
-        .then(res => res.json())
-        .then(json => {
-            const { data } = json;
-            let imgFIle = new FormData();
-            imgFIle.append("thumbnail", thumbnailFile);
-
-            fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Accept": "application/json;"
-                },
-                body: imgFIle
-            })
-                .then(res => res.json())
-                .then(json => {
-
-                })
-
+    if(isValid_Event()){
+        fetch(`${apiUrl}/api/events`, {
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Accept": "application/json;"
+            },
+            body: eventData
         })
+            .then(res => res.json())
+            .then(json => {
+                const { data } = json;
+                let imgFIle = new FormData();
+                imgFIle.append("thumbnail", thumbnailFile);
+    
+                fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Accept": "application/json;"
+                    },
+                    body: imgFIle
+                })
+                    .then(res => res.json())
+                    .then(json => {
+    
+                    })
+    
+            })
+    }
     // .then(response => {
     //     if (!response.ok) {
     //         // Extract the JSON error message from the response

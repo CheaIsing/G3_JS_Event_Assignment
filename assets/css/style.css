@@ -1003,5 +1003,9 @@ footer .contact-info .social-media a:hover {
     margin-bottom: 0px !important;
 }
 
-
+.recruit-card-wrapper .card .recruit-requiremnt-wrapper,
+.recruit-card-wrapper .card .vendor-type-need-wrapper,
+.recruit-card-wrapper .card .detail-title{
+    display: none;
+}
 

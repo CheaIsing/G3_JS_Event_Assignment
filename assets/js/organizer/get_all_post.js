@@ -136,7 +136,7 @@ function loadEventCards() {
         
         const newCard = document.createElement('div');
         newCard.className = "card";
-        newCard.innerHTML = `       <div class="card-content">
+        newCard.innerHTML = `       <div class="card-content" onclick="showEventDetail(${element.id})">
                                         <img class="card-img-top" src="${thumbnail}" alt="Title" />
                                         <div class="card-body">
                                             <div class="d-flex event-pill-wrapper"></div>
@@ -199,7 +199,7 @@ function loadRecruitCards() {
         const element = allRecruitData[currentRecruitIndex];
         const newCard = document.createElement('div');
         newCard.className = "card";
-        newCard.innerHTML = `<div class="card-content px-3">
+        newCard.innerHTML = `<div class="card-content px-3" onclick="showRecruitDetail(${element.id})">
                                     <div class="card-body">
                                         <div class="profile d-flex align-items-center justify-content-between mb-3">
                                             <div class="d-flex align-items-center">
@@ -211,7 +211,7 @@ function loadRecruitCards() {
                                             <div class="d-flex recruit-pill-wrapper"></div>
                                         </div>
                                         <h5 class="card-title mt-2 mb-0 fw-bold">${element.name}</h5>
-                                        <p class="card-text py-3">${element.description} </p>
+                                        <div class="card-text py-3">${element.description}</div>
                                         <div class="duration">
                                             <span class="text-secondary"><i class="bi bi-calendar fs-6 text-brand"></i> Start Date: ${element.start_date} </span><br>
                                             <span class="location"><i class="bi bi-geo-alt fs-6 text-brand"></i>
@@ -220,7 +220,7 @@ function loadRecruitCards() {
 
                                     </div>
                                 </div>`;
-
+        
         cardContainer.appendChild(newCard);
 
         let recruitPillWrapper = document.querySelectorAll('.recruit-pill-wrapper')[currentRecruitIndex];
@@ -263,7 +263,7 @@ function loadVendorCards() {
         const element = allVendorData[currentVendorIndex];
         const newCard = document.createElement('div');
         newCard.className = "card";
-        newCard.innerHTML = `<div class="card-content">
+        newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${element.id})">
                     <div class="card-body d-flex">
                         <div class="thumbnail">
                             <img src="../assets/img/party/party1.png" alt="">
@@ -322,4 +322,19 @@ function loadVendorCards() {
         document.getElementById('btn-seemore-vendor').style.display = 'block';
 
     }
+}
+
+function showEventDetail(id){
+    sessionStorage.setItem('itemID', id);
+    location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
+}
+
+function showRecruitDetail(id){
+    sessionStorage.setItem('itemID', id);
+    location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
+}
+
+function showServiceDetail(id){
+    sessionStorage.setItem('itemID', id);
+    location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
 }
