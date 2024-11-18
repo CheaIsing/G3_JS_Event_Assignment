@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browse event</title>
+    <title>Purchase Tickets</title>
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/browse.css">
-    <link rel="stylesheet" href="../../assets/css/card_style.css">
+    <link rel="stylesheet" href="../../assets/css/lim_style.css">
+    <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
 </head>
-
-<body class="p-browseEvent">
+<body>
     <header class="border" id="header">
         <div class="container">
             <nav class="d-flex align-items-center justify-content-between">
@@ -44,7 +42,6 @@
                     <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
                             class="fa-solid fa-ticket pe-1 text-brand"></i>My
                         Ticket</a>
-  
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
                         <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
                                 events</a></li>
@@ -82,62 +79,89 @@
             </nav>
         </div>
     </header>
-    <main>
-        <section class="mb-0">
-            <div class="container">
-                <p class="d-flex h-100 align-items-center my-auto">
-                    <a href="" class="home-link">Home</a>
-                    <i class="fa-solid fa-chevron-right mx-2"></i>
-                    <span class="text-brand">Browse Event</span>
-                </p>
-            </div>
-        </section>
-        <section class="hero mb-5" id="hero">
-            <div class="overlay"></div>
-            <h2 class="h-100 d-flex justify-content-center align-items-center text-white">Browse Event</h2>
-        </section>
-        <section class="browse">
-            <div class="container">
-                <div class="row">
-                    <div class="col-3">
-                        <div class="filter">
-                            <h6 class="ps-4 py-2 m-0">Filter</h6>
-                            <hr>
-                            <h6>Category</h6>
-                            <div class="ps-4 py-2" id="categories-container"></div>
-                            <hr>
-                            <div class="my-3 me-4 text-end">
-                                <button type="button" class="btn btn-outline-secondary" id="clear-filters">Clear All</button>
-                                <button type="button" class="btn btn-brand" id="search-events">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-9">
-                        <div class="search-result w-100">
-                            <h5 class="mt-2 mb-4 show-re">
-                                <span class="text-brand" id="result-num"></span> Results
-                            </h5>
-                            <div class="card-list" id="list-card"></div>
-                            <div id="pagination"></div>
-                        </div>
+
+<main>
+    <section><div class="container my-5">
+        <h2 class="mb-4">Request Purchase Tickets</h2>
+        <div class="row g-4 payment-row">
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/clients/irving-redesign/Events_Page_Header_2903ed9c-40c1-4f6c-9a69-70bb8415295b.jpg" class="card-img-top object-fit-cover" alt="" height="400px">
+                    <div class="card-body">
+                        <h5 class="card-title">Summer Music Festival 2024</h5>
+                        <p><i class="bi bi-calendar-event"></i> July 15, 2024</p>
+                        <p><i class="bi bi-geo-alt"></i> Central Park, NY</p>
+                        <p><i class="bi bi-ticket"></i> $49.99 per ticket</p>
+                        <p><i class="bi bi-people"></i> 100 tickets available</p>
+                        <p>Join us for an unforgettable day of music and fun!</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
     
-    <footer>
-        footer
-    </footer>
-    <script src="../../assets/js/ultilities.js"></script>
-    <script src="../../assets/js/browse.js"></script>
-    <script src="../../assets/js/authentication.js"></script>
-    <script src="../../assets/js/header.js"></script>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">Order Summary</h5>
+                        <div class="mb-3">
+                            <label for="ticketQuantity" class="form-label">Number of Tickets:</label>
+                            <select class="form-select" id="ticketQuantity">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <p>Subtotal: <span class="float-end">$249.95</span></p>
+                        <p>Dicount Fee: <span class="float-end">$25.00</span></p>
+                        <h5>Total: <span class="float-end fw-bold">$274.95</span></h5>
+                        <hr>
+                        
+                    <div class="mb-3">
+                        <label class="form-label">Payment QR Code</label>
+                        <button class="btn btn-outline-secondary w-100" onclick="toggleQRCode()"><i class="bi bi-qr-code"></i> Show QR Code</button>
+                        <img src="https://via.placeholder.com/150" alt="QR Code" id="qrCodeImage" class="img-fluid mt-3 d-none">
+                    </div>
 
-    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="../../assets/js/header.js"></script> -->
-    <script src="../../assets/js/browseEvent.js"></script>
+                    
+                    <div class="mb-3">
+                        <label for="paymentProof" class="form-label">Upload Payment Proof</label>
+                        <input type="file" class="form-control" id="paymentProof">
+                        <small class="text-muted">Please upload your payment transaction screenshot or PDF</small>
+                    </div>
+                        
+    
+                        
+                        <button class="btn btn-brand w-100" disabled id="submitButton">Submit Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></section>
+</main>
 
+<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/ultilities.js"></script>
+<script src="../../assets/js/authentication.js"></script>
+<script src="../../assets/js/qr-payment.js"></script>
+<script>
+    function toggleQRCode() {
+        const qrCodeImage = document.getElementById('qrCodeImage');
+        qrCodeImage.classList.toggle('d-none');
+    }
+    // Enable submit button only when file is uploaded
+    document.getElementById('paymentProof').addEventListener('change', function () {
+        const submitButton = document.getElementById('submitButton');
+        if (this.files.length > 0) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    });
+</script>
 </body>
-
 </html>

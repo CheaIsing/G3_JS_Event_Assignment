@@ -58,6 +58,26 @@ function formatDate(dateStr) {
   return date.toLocaleString("en-US", options).replace(",", " •");
 }
 
+function formatDateFull(dateString) {
+  const date = new Date(dateString);
+
+  const options = {
+    weekday: "short", // e.g., "Sat"
+    month: "short", // e.g., "Nov"
+    day: "numeric", // e.g., "23"
+    year: "numeric", // e.g., "2024"
+    hour: "numeric", // e.g., "10"
+    minute: "2-digit", // e.g., "00"
+    hour12: true, // AM/PM format
+  };
+
+  // Format the date and time parts
+  const formattedDate =
+    date.toLocaleDateString("en-US", options) 
+
+  return formattedDate;
+}
+
 function formatDateStringMonth(dateString) {
   const date = new Date(dateString); // Convert the string to a Date object
 
@@ -119,34 +139,38 @@ function formatToHour(dateString) {
     //         console.log('Success:', data);
     //     })
   }
-  //check status
-  function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
-    // Create Date objects from the input strings
-    const startDateTime = new Date(startDateTimeStr);
-    const endDateTime = new Date(endDateTimeStr);
-    const now = new Date(); // Current date and time
+  
+  
 
-    if (now >= startDateTime && now <= endDateTime) {
-      return "Showing";
-    } else if (now < startDateTime) {
-      return "Upcoming";
-    } else {
-      return "Past";
-    }
+}
+//check status
+function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
+  // Create Date objects from the input strings
+  const startDateTime = new Date(startDateTimeStr);
+  const endDateTime = new Date(endDateTimeStr);
+  const now = new Date(); // Current date and time
+
+  if (now >= startDateTime && now <= endDateTime) {
+    return "Showing";
+  } else if (now < startDateTime) {
+    return "Upcoming";
+  } else {
+    return "Past";
   }
-  //wishlist
-  function wish() {
-    const wishButtons = document.querySelectorAll(".add-wish");
-    wishButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const eventId = button.dataset.id;
-        // console.log(eventId);
-        addWishlist(eventId);
-        button.classList.add("clicked");
-        // button.classList.toggle('clicked');
-      });
+}
+//wishlist
+function wish() {
+  const wishButtons = document.querySelectorAll(".add-wish");
+  wishButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const eventId = button.dataset.id;
+      // console.log(eventId);
+      addWishlist(eventId);
+      button.classList.add("clicked");
+      // button.classList.toggle('clicked');
     });
-  }
+  });
+}
   // Function to add an event to the wishlist
   function addWishlist(eventId) {
     const url = "https://mps2.chandalen.dev/api/wishlists/";
@@ -173,8 +197,18 @@ function formatToHour(dateString) {
     })
       .then((res) => res.json())
       .then((json) => {
-        const isWished = json.data.some((ele) => ele.id == eventId);
+        let isWished = false
+        
 
+        for(let wished of json.data){
+          console.log(wished.event.id, eventId);
+          
+          if(wished.event.id == eventId){
+            isWished = true
+            break;
+          }
+        }
+        
         if (isWished) {
           showToast("This event is already in your wishlist.", true);
           return;
@@ -184,11 +218,24 @@ function formatToHour(dateString) {
         fetch(url, requestOptions)
           .then((res) => res.json())
           .then((data) => {
-            showToast("Event added to wishlist.", data.success);
-            console.log("Success:", data);
+            if(data.result == true){
+
+              showToast("Event added to wishlist.", data.result);
+            }
+            else{
+              
+              showToast(data.message, data.result);
+              if(data.message == 'You need to login.'){
+                setTimeout(()=>{
+                  location.href = '/pages/authentication/login.html'
+                }, 1600)
+                
+              }
+              
+            }
           })
           .catch((error) => {
-            showToast("Error adding to wishlist.", true);
+            showToast("Error adding to wishlist.", err.result);
             console.error("Error:", error);
           });
       })
@@ -197,4 +244,15 @@ function formatToHour(dateString) {
         console.error("Error:", error);
       });
   }
+function copyEventUrlToClipboard(eventId) {
+  
+  
+  const url = `${window.location.protocol}//${window.location.host}/pages/browse/event-detail.html?e=${(eventId)}`;
+
+  
+  navigator.clipboard
+    .writeText(url)
+    .then(() => {
+      showToast("Event URL copied to clipboard:", true);
+    })
 }

@@ -1,6 +1,6 @@
 // import { showToast } from "../ultilities.js";
 const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
+const token = localStorage.getItem("authToken");
 
 function getMe(searchE = "", searchV = "all") {
   // Show placeholder cards while loading
@@ -143,8 +143,6 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
       function renderCard() {
         rowsHTML = ``;
 
-        
-
         if (filterData.length === 0) {
           document.getElementById("event-tobody").innerHTML = `
             <tr><td colspan=5><div class="text-center">
@@ -155,7 +153,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
         }
 
         filterData.forEach((ele) => {
-          fetch(`${apiUrl}/api/tickets/request-buy?event=${ele.id}`, {
+          fetch(`${apiUrl}/api/events/summary-data/${ele.id}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -177,34 +175,93 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
 
               rowsHTML += `<tr class="border-bottom position-relative">
                 <td>
-                  <a href="javascript:void(0)" class="stretched-link text-decoration-none bg-transparent link-request-detail"
+                  <a href="javascript:void(0)" class="stretched-link text-decoration-none bg-transparent link-event-details"
                      style="color: inherit;" data-event-detail-id="${ele.id}">
                     <div class="d-flex align-items-center">
                       <div class="me-3">
-                        <div class="text-center text-brand fw-bold">${formatDateStringMonth(ele.start_date)}</div>
-                        <div class="text-center text-brand fw-bold">${formatDateStringDay(ele.start_date)}</div>
+                        <div class="text-center text-brand fw-bold">${formatDateStringMonth(
+                          ele.start_date
+                        )}</div>
+                        <div class="text-center text-brand fw-bold">${formatDateStringDay(
+                          ele.start_date
+                        )}</div>
                       </div>
-                      <img src="${ele.thumbnail}" alt="Event Image" class="rounded object-fit-cover" width="150" height="85">
+                      <img src="${
+                        ele.thumbnail
+                      }" alt="Event Image" class="rounded object-fit-cover" width="150" height="85">
                       <div class="ms-3">
                         <h5 class="mb-0">${ele.name}</h5>
                         <p class="text-muted mb-0">${ele.location}</p>
-                        <p class="text-muted mb-0 small">${formatCustomDateWithYear(ele.start_date)} - ${formatCustomDateWithYear(ele.end_date)}, ${formatToHour(ele.start_date)} - ${formatToHour(ele.end_date)}</p>
+                        <p class="text-muted mb-0 small">${formatCustomDateWithYear(
+                          ele.start_date
+                        )} - ${formatCustomDateWithYear(
+                ele.end_date
+              )}, ${formatToHour(ele.start_date)} - ${formatToHour(
+                ele.end_date
+              )}</p>
                       </div>
                     </div>
                   </a>
                 </td>
                 <td>${status}</td>
-                <td>${json2.data.length} request</td>
+                <td>${json2.data.total_ticket} ticket${json2.data.total_ticket > 1 ? 's':''}</td>
+                <td>$${json2.data.total_income.toFixed(2)}</td>
+                <td>${json2.data.total_attendant} people</td>
+                <td>
+                  <div class="dropstart position-relative z-3">
+                    <button class="btn btn-brand" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu1">
+                      <li><a class="dropdown-item edit-event-btn" href="javascript:void(0);" data-event-detail-id="${
+                        ele.id
+                      }">Edit</a></li>
+                      <li><a class="dropdown-item delete-event-btn" href="javascript:void(0);" data-event-detail-id="${
+                        ele.id
+                      }">Delete</a></li>
+                      <li><a class="dropdown-item views-event-detail" data-id="${ele.id}">View</a></li>
+                      <li><a class="dropdown-item" onclick="copyEventUrlToClipboard(${ele.id})">Copy Link</a></li>
+                    </ul>
+                  </div>
+                </td>
               </tr>`;
 
               document.getElementById("event-tobody").innerHTML = rowsHTML;
 
-              document.querySelectorAll('.link-request-detail').forEach(link=>{
-                link.onclick = ()=>{
-                  let id = link.dataset.eventDetailId;
-                  sessionStorage.setItem('requestDetailId', id);
-                  location.href = 'check-in-ticket-detail.html'
-                }
+              // Event detail and actions
+              document
+                .querySelectorAll(".link-event-details")
+                .forEach((link) => {
+                  link.onclick = (e) => {
+                    let eventId = link.dataset.eventDetailId;
+                    sessionStorage.setItem("eventId", eventId);
+                    location.href = "event-details.html";
+                  };
+                });
+
+              document.querySelectorAll(".delete-event-btn").forEach((link) => {
+                link.onclick = (e) => {
+                  let eventId = link.dataset.eventDetailId;
+                  deleteEventPost(eventId);
+                };
+              });
+
+              document.querySelectorAll(".edit-event-btn").forEach((btn) => {
+                btn.onclick = () => {
+                  let id = btn.dataset.eventDetailId;
+                  sessionStorage.setItem("editEventId", id);
+                  location.href = "edit-event.html";
+                };
+              });
+
+              document.querySelectorAll('.views-event-detail').forEach((detail) => {
+                detail.onclick = () => {
+                  let id = detail.dataset.id;
+                  console.log(id);
+                  
+                  sessionStorage.setItem("itemID", id);
+                  location.href = "../browse/event-detail.html";
+                };
               })
             });
         });
@@ -213,6 +270,25 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
       renderCard(); // Initial render
     });
 }
+
+function deleteEventPost(id) {
+    console.log(id);
+  
+    fetch(`${apiUrl}/api/events/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        showToast(json.message, json.result);
+        getMe();
+        console.log(apiUrl, id, token);
+      });
+  }
+
+
 
 // Event listeners for filters
 document.getElementById("searchEventInput").onkeyup = () => {
@@ -228,4 +304,5 @@ document.getElementById("event-filter").addEventListener("change", () => {
 });
 
 // Initial call
+
 getMe();

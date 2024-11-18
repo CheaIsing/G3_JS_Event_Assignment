@@ -1,6 +1,6 @@
 // import { showToast } from "../ultilities.js";
 const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
+const token = localStorage.getItem("authToken");
 
 function getMe(searchE = "", searchV = "all") {
   // Show placeholder cards while loading
@@ -79,12 +79,12 @@ function getMe(searchE = "", searchV = "all") {
   })
     .then((res) => res.json())
     .then((json) => {
-      getAllEventCard(apiUrl, json.data.id, searchE, searchV);
+      getAllRecruitmentCard(apiUrl, json.data.id, searchE, searchV);
     });
 }
 
-function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
-  let path = `${apiUrl}/api/events?creator=${id}`;
+function getAllRecruitmentCard(apiUrl, id, searchE = "", searchV = "all") {
+  let path = `${apiUrl}/api/vendors?creator=${id}`;
   if (searchE !== "") {
     path += `&search=${searchE}`;
   }
@@ -110,7 +110,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
       }
 
       let filterData = data;
-      
+
       // Apply filter based on searchV (the dropdown value)
       const currentDate = new Date();
       switch (searchV) {
@@ -143,8 +143,6 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
       function renderCard() {
         rowsHTML = ``;
 
-        
-
         if (filterData.length === 0) {
           document.getElementById("event-tobody").innerHTML = `
             <tr><td colspan=5><div class="text-center">
@@ -155,63 +153,123 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
         }
 
         filterData.forEach((ele) => {
-          fetch(`${apiUrl}/api/tickets/request-buy?event=${ele.id}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-            .then((res) => res.json())
-            .then((json2) => {
-              let status = "";
+          let status = "";
 
-              const startDate = new Date(ele.start_date.replace(" ", "T"));
-              const endDate = new Date(ele.end_date.replace(" ", "T"));
+          const startDate = new Date(ele.start_date.replace(" ", "T"));
+          const endDate = new Date(ele.end_date.replace(" ", "T"));
 
-              if (startDate > currentDate) {
-                status = `<span class="rounded-pill text-primary"><i class="fa-solid fa-hourglass-half me-1"></i>Upcoming</span>`;
-              } else if (currentDate >= startDate && currentDate <= endDate) {
-                status = `<span class="rounded-pill text-success"><i class="fa-solid fa-hourglass-half me-1"></i>Showing</span>`;
-              } else {
-                status = `<span class="rounded-pill text-danger"><i class="fa-solid fa-hourglass-half me-1"></i>Past</span>`;
-              }
-
-              rowsHTML += `<tr class="border-bottom position-relative">
-                <td>
-                  <a href="javascript:void(0)" class="stretched-link text-decoration-none bg-transparent link-request-detail"
-                     style="color: inherit;" data-event-detail-id="${ele.id}">
-                    <div class="d-flex align-items-center">
-                      <div class="me-3">
-                        <div class="text-center text-brand fw-bold">${formatDateStringMonth(ele.start_date)}</div>
-                        <div class="text-center text-brand fw-bold">${formatDateStringDay(ele.start_date)}</div>
-                      </div>
-                      <img src="${ele.thumbnail}" alt="Event Image" class="rounded object-fit-cover" width="150" height="85">
-                      <div class="ms-3">
-                        <h5 class="mb-0">${ele.name}</h5>
-                        <p class="text-muted mb-0">${ele.location}</p>
-                        <p class="text-muted mb-0 small">${formatCustomDateWithYear(ele.start_date)} - ${formatCustomDateWithYear(ele.end_date)}, ${formatToHour(ele.start_date)} - ${formatToHour(ele.end_date)}</p>
-                      </div>
-                    </div>
-                  </a>
-                </td>
-                <td>${status}</td>
-                <td>${json2.data.length} request</td>
-              </tr>`;
-
-              document.getElementById("event-tobody").innerHTML = rowsHTML;
-
-              document.querySelectorAll('.link-request-detail').forEach(link=>{
-                link.onclick = ()=>{
-                  let id = link.dataset.eventDetailId;
-                  sessionStorage.setItem('requestDetailId', id);
-                  location.href = 'check-in-ticket-detail.html'
-                }
-              })
-            });
+          if (startDate > currentDate) {
+            status = `<span class="rounded-pill text-primary"><i class="fa-solid fa-hourglass-half me-1"></i>Upcoming</span>`;
+          } else if (currentDate >= startDate && currentDate <= endDate) {
+            status = `<span class="rounded-pill text-success"><i class="fa-solid fa-hourglass-half me-1"></i>Showing</span>`;
+          } else {
+            status = `<span class="rounded-pill text-danger"><i class="fa-solid fa-hourglass-half me-1"></i>Past</span>`;
+          }
+          rowsHTML += `<tr class="border-bottom position-relative"">
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                  <div class="text-center text-brand fw-bold">${formatDateStringMonth(
+                                    ele.start_date
+                                  )}</div>
+                        <div class="text-center text-brand fw-bold">${formatDateStringDay(
+                          ele.start_date
+                        )}</div>
+                                </div>
+                                <div class="ms-3">
+                                  <h5 class="mb-0">
+                                    <a href="javascript:void(0)" 
+                                        data-id="${ele.id}"
+                                       class="stretched-link text-decoration-none bg-transparent link-details"
+                                       style="color: inherit;">
+                                       ${ele.name}
+                                    </a>
+                                  </h5>
+                                  <p class="text-muted mb-0">
+                                    ${ele.location}
+                                  </p>
+                                  <p class="text-muted mb-0 small">
+                                  ${formatCustomDateWithYear(
+                                    ele.start_date
+                                  )} - ${formatCustomDateWithYear(
+            ele.end_date
+          )}, ${formatToHour(ele.start_date)} - ${formatToHour(ele.end_date)}
+                                  </p>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              ${status}
+                            </td>
+                            <td>
+                              <div>5 people</div>
+                            </td>
+                            <td>
+                              <div class="dropstart position-relative z-3">
+                                <button class="btn btn-brand" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="bi bi-three-dots"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu1">
+                                  <li><a class="dropdown-item" onclick="editRecruit(${ele.id})">Edit</a></li>
+                                  <li><a class="dropdown-item delete-vendor-recruitment-post" data-vendor-recruitment-id="${
+                                    ele.id
+                                  }" href="javascript:void(0);">Delete</a></li>
+                                  <li><a class="dropdown-item" onclick="viewRecruitDetail(${ele.id})">View</a></li>
+                                </ul>
+                              </div>
+                            </td>
+                          </tr>`;
         });
+
+        document.getElementById("event-tobody").innerHTML = rowsHTML;
+
+        document.querySelectorAll(".link-details").forEach((link) => {
+          link.onclick = () => {
+            let id = link.dataset.id;
+
+            sessionStorage.setItem("vendorId", id);
+
+            location.href = "vendor-recruitment-details.html";
+          };
+        });
+        document
+          .querySelectorAll(".delete-vendor-recruitment-post")
+          .forEach((link) => {
+            link.onclick = () => {
+              let id = link.dataset.vendorRecruitmentId;
+              console.log(id);
+
+              deleteVendorRecruitmentPost(id);
+            };
+          });
       }
 
       renderCard(); // Initial render
     });
+}
+
+function deleteVendorRecruitmentPost(id) {
+  fetch(`${apiUrl}/api/vendors/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      showToast(json.message, json.result);
+      getMe();
+    });
+}
+
+function editRecruit(id){
+  sessionStorage.setItem("editRecruitId", id);
+  location.href = "edit-recruitment.html";
+}
+
+function viewRecruitDetail(id){
+  sessionStorage.setItem("recruitDetailId", id)
+  location.href = '../../pages/browse/recruitment-detail.html'
 }
 
 // Event listeners for filters

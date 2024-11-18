@@ -15,13 +15,25 @@ function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
   }
 }
 
+
 //get info event
-let id = sessionStorage.getItem("itemID");
 let ticketPrice = 0;
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.has("e")
+  ? urlParams.get("e")
+  : sessionStorage.getItem("itemID");
+console.log(id);
+
+document.getElementById("btn-copylink-event").onclick = () => {
+  copyEventUrlToClipboard(id);
+};
+
 fetch(apiUrl + "/api/events/" + id)
   .then((res) => res.json())
   .then((json) => {
     let data = json.data;
+
+    console.log(data);
     let tRemain = data.ticket_opacity - data.ticket_bought;
     let price = data.ticket_price == 0 ? "Free" : `$${data.ticket_price}`;
     let catagory = data.event_categories
@@ -61,13 +73,12 @@ fetch(apiUrl + "/api/events/" + id)
         .then((res) => res.json())
         .then((json4) => {
           console.log(json4);
-          for(let ele of json4.data){
-            if(ele.event.id == id){
+          for (let ele of json4.data) {
+            if (ele.event.id == id) {
               console.log(ele);
               document.getElementById("btn-purchase").disabled = true;
             }
           }
-          
         });
 
       document.getElementById("btn-purchase").removeAttribute("data-bs-target");
@@ -179,7 +190,7 @@ fetch(apiUrl + "/api/events/" + id)
                       document.getElementById("sucessModalToggle2")
                     );
                     // console.log(document.getElementById("sucessModalToggle2"));
-                    
+
                     bsSucessModal.show();
                   }
                 });
@@ -190,6 +201,11 @@ fetch(apiUrl + "/api/events/" + id)
           // console.log(Number(id));
         }
       });
+
+    document.getElementById("btn-purchase").onclick = () => {
+      sessionStorage.setItem("eventPaidId", id);
+      location.href = "qr-payment.html";
+    };
 
     // Remove invalid styling when a file is selected
     fileInput.addEventListener("change", function () {
@@ -302,7 +318,7 @@ function displayRelatedItems() {
     });
 }
 function viewOrgDetail(org) {
-  id = org.dataset.id;
+  let id = org.dataset.id;
   sessionStorage.setItem("orgID", id);
   location.href = "/pages/authentication/view-profile.html";
 }

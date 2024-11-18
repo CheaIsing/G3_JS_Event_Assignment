@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Detail</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/browse.css">
+    <link rel="stylesheet" href="../../assets/css/card_style.css">
+    <link rel="stylesheet" href="../../assets/css/lim_style.css">
+    <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+</head>
+
+<body class="p-eventDetail">
+    <header class="border" id="header">
+        <div class="container">
+            <nav class="d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <a href="../homepage.html">
+                        <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                    </a>
+                </div>
+                <div class="d-flex align-items-center w-25 position-relative ">
+                    <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
+                    <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
+                        aria-describedby="helpId" placeholder="Search Event " />
+                    <button class="btn-pink text-white"><i
+                            class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
+                    <ul class="search-dropdown position-absolute" id="search-dropdown">
+  
+                    </ul>
+                </div>
+                <div class="action-btn d-flex">
+                    <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
+                            href="../../pages/organizer/create-events.html">Create
+                            a
+                            post</a> </button>
+                    <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Browse <i class="fa-solid fa-caret-down text-brand"></i>
+                        <!-- User Icon -->
+                    </a>
+                    <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
+                            class="fa-solid fa-ticket pe-1 text-brand"></i>My
+                        Ticket</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
+                        <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
+                                events</a></li>
+                        <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
+                                vendor recruitments</a></li>
+                        <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
+                                vendor services</a></li>
+  
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
+                        id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                        <!-- User Icon -->
+                        <span class="ps-1 fs-6" id="userEmail"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                        <li><a class="dropdown-item" href="../organizer/event.html">Manage
+                                as
+                                organizer</a></li>
+                        <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
+                                vendor</a></li>
+                        <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
+                        <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
+                                Setting</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="javascript:void(0);" id="btn-logout">Log
+                                out</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero mb-5 ">
+            <div class="container p-4 px-5 text-center">
+               <div class="content text-center" >
+                   <h1 class="display-6 fw-semibold card-title text-white" style="text-shadow: 1px 1px 1px var(--c-brand), -1px -1px 1px var(--c-brand);">Vendor Business Detail</h1>
+                   
+               </div>
+            </div>
+       </section>
+        <section class="brief-detail my-4">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-8 pe-5 ps-0 ">
+                        <div class="content ">
+                            <div class="position-relative rounded-2 overflow-hidden mb-4"  style="background-image: url('https://credohirestorages1.blob.core.windows.net/strapi-credo/assets/1520210697092_778ddcfc7e.jpeg'); width: 100%; height: 300px;">
+                                <div class="bg-dark opacity-75 position-absolute w-100 h-100 text-white text-center d-flex align-items-center justify-content-center px-5"><h3 id="title">Cambodia 10 Star Tranditional Food</h3></div>
+                            </div>
+                            <div class="mb-3 px-3" id="description">
+                                
+                            </div>
+                            <div id="contact-info">   
+                                <h3>Contact Info</h3>
+                                <p id="email">Email: </p>
+                                <p id="phone">Phone: </p>
+                                
+                            </div>
+                            <div id="social-media">
+                                <h3>Social Media</h3>
+                                <a  class="text-body-secondary fs-3 me-2 text-brand" id="fb"><i class="fa-brands fa-facebook"></i></a>
+                                <a  class="text-body-secondary fs-3 me-2 text-brand" id="linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a  class="text-body-secondary fs-3 me-2 text-brand" id="tiktok"><i class="fa-brands fa-tiktok"></i></a>
+                                <a  class="text-body-secondary fs-3 me-2 text-brand" id="telegram"><i class="fa-brands fa-telegram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 m-0 p-0 ">
+                        <div class="content m-0 p-0">
+                            <div class="mb-4 bg-white shadow-light">
+                                <div class="d-flex py-3 px-4  align-items-center justify-content-between">
+                                    <h4 class="m-0">Vendor Business Brief</h4>
+                                </div>
+                                <hr>
+                                <ul class="list-unstyled px-4">
+                                    <li class="d-flex py-3">
+                                        <i class="fa-regular fa-folder-open fs-2 fw-light ps-2 text-brand w-15"></i>
+                                        <div>
+                                            <h6 class="m-0">Category</h6>
+                                            <p class="m-0 text-body-secondary" id="catagory"></p>
+                                        </div>
+                                    </li>         
+                                                               
+                                    <li class="d-flex py-3">
+                                        <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15"></i>
+                                        <div>
+                                            <h6 class="m-0">Location</h6>
+                                            <p class="m-0 text-body-secondary" id="location"></p>
+                                        </div>
+                                    </li> 
+                                </ul>
+                            </div>
+                            <div class=" bg-white shadow-light mb-4 py-3 px-4">
+                                <h4 class="fw-semibold mb-3">Post By</h4>
+                                <div class="d-flex align-items-center mb-3" >
+                                    <img src="../../assets/img/3607424.jpg" class="" id="org-pf" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+                                    <a href="javascript: void(0)"  class=" fs-4 fw-semibold m-0 ms-3" id="org-name" onclick="viewOrgDetail(this)"></a>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="related-section">   
+            <div class="container">
+                <div class="title text-center mb-5">
+                    <h1 class="display-5 mb-3">Related <span class="text-brand fw-semibold">Event</span></h1>
+                    <p >
+                        <i class="fa-solid fa-calendar-days fs-5"></i>
+                    </p>
+                    <span class="text-secondary ">You might also love these events.</span>
+                </div>
+                <div class="row event-card-wrapper" id="related-events">
+                    
+                    
+                </div>        
+                   </div>
+        </section>
+        
+    </main>
+    <footer>
+        footer
+    </footer>
+    
+
+</div>
+
+    <script src="../../assets/js/ultilities.js"></script>
+        <script src="../../assets/js/authentication.js"></script>
+        <script src="../../assets/js/header.js"></script>
+
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/businessdetail.js">   
+    </script>
+        <script>
+                
+        </script>
+</body>
+
+</html>

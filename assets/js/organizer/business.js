@@ -9,7 +9,8 @@ function getMe(searhB = "") {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.data.id);
+      console.log(json);
+
       getAllBusinessCard(apiUrl, json.data.id, searhB);
     });
 }
@@ -23,8 +24,10 @@ function getAllBusinessCard(apiUrl, id, searhB = "") {
     .then((res) => res.json())
     .then((json) => {
       console.log(json.data);
-      if(json.data.length <= 0){
-        document.getElementById("business-tbody").innerHTML = `<tr><td colspan=5><div class="text-center">
+      if (json.data.length <= 0) {
+        document.getElementById(
+          "business-tbody"
+        ).innerHTML = `<tr><td colspan=5><div class="text-center">
             <img src="../../assets/img/noFound.png" alt="" height="220px;">
             <h4 class="text-center text-brand mt-2">No Business to Display...</h4>
           </div></td></tr>`;
@@ -72,31 +75,23 @@ function getAllBusinessCard(apiUrl, id, searhB = "") {
                                                 <ul
                                                     class="dropdown-menu dropdown-menu-end" data-id="${ele.id}"
                                                     aria-labelledby="dropdownMenu1">
-                                                    <li><a href="javascript:void(0);"
+                                                    <li><a onclick="editBusiness(${ele.id})"
                                                             class="dropdown-item"
-                                                            href="#">Edit</a></li>
+                                                            >Edit</a></li>
                                                     <li><a href="javascript:void(0);"
                                                             class="dropdown-item delete-btn"
                                                             href="#">Delete</a></li>
-                                                    <li><a href="javascript:void(0);"
-                                                            class="dropdown-item view-details"
-                                                            href="#">View</a></li>
                                                     <li><a
                                                             class="dropdown-item"
-                                                            href="#">Copy
-                                                            Link</a></li>
+                                                            onclick="viewBusinessDetail(${ele.id})">View</a></li>
+                                                    
                                                 </ul>
                                             </div>
                                         </td>
                                     </tr>`;
 
         document.getElementById("business-tbody").innerHTML = rowsHTML;
-        document.querySelectorAll(".view-details").forEach((btn) => {
-          btn.onclick = () => {
-            let id = btn.closest("[data-id]").dataset.id;
-            console.log(id);
-          };
-        });
+        
 
         document.querySelectorAll(".delete-btn").forEach((btn) => {
           btn.onclick = () => {
@@ -119,5 +114,14 @@ function getAllBusinessCard(apiUrl, id, searhB = "") {
         });
       });
     });
+}
+function viewBusinessDetail(id) {
+  sessionStorage.setItem("businessDetailId", id);
+  location.href = "../../pages/browse/business-detail.html";
+}
+
+function editBusiness(id) {
+  sessionStorage.setItem("editBusinessid", id);
+  location.href = "edit-vendor-business.html";
 }
 getMe();

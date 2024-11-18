@@ -87,20 +87,3 @@ function createBusiness() {
     }
 
 }
-// Fetch business Categories
-fetch(`${apiUrl}/api/business-categories`, {
-    headers: {
-        Authorization: `Bearer ${token}`
-    }
-})
-    .then(res => res.json())
-    .then(json => {
-        const { data } = json;
-        let eventCatSelect = document.getElementById('categorySelect');
-        data.forEach(element => {
-            let opt = document.createElement('option');
-            opt.value = element.id;
-            opt.innerHTML = element.name;
-            eventCatSelect.appendChild(opt);
-        });
-    })

@@ -324,10 +324,6 @@ function getAllEventCard(apiUrl, id, searchStr = "") {
 const manageAsOrganizer = {
   getMe,
   getAllEventCard,
-  saveToStorage: function (str, value) {
-    //   console.log(str, value, "helo");
-    localStorage.setItem(str, value);
-  },
   getAllVendorRecruitment: (url, id) => {
     fetch(`${url}/api/vendors?creator=${id}`)
       .then((res) => res.json())
@@ -348,14 +344,6 @@ const manageAsOrganizer = {
 
         data.forEach((ele) => {
           let categories = "";
-
-          if (ele.categories.length > 0) {
-            for (let value of ele.categories) {
-              categories += value.name + ", ";
-            }
-
-            categories = categories.substring(0, categories.length - 2);
-          }
 
           rowsHTML += `<tr class="border-bottom position-relative"">
                             <td>
@@ -429,23 +417,6 @@ const manageAsOrganizer = {
       });
   },
 };
-
-function deleteEventPost(id) {
-  console.log(id);
-
-  fetch(`${apiUrl}/api/events/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      showToast(json.message, json.result);
-      getMe();
-      console.log(apiUrl, id, token);
-    });
-}
 
 function deleteVendorRecruitmentPost(id) {
   fetch(`${apiUrl}/api/vendors/${id}`, {
