@@ -1019,3 +1019,9 @@ footer .contact-info .social-media a:hover {
     text-overflow: ellipsis;
     white-space: normal;
   }
+.recruit-card-wrapper .card .recruit-requiremnt-wrapper,
+.recruit-card-wrapper .card .vendor-type-need-wrapper,
+.recruit-card-wrapper .card .detail-title{
+    display: none;
+}
+

@@ -116,9 +116,8 @@ function createNewEvent() {
     //get text from Qill form
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
     
-    let description = `<div class="descQill">${descQuillContent}`;
-    if (document.getElementById(`agendaStarttime1`).value || document.getElementById(`agenda1`).value) {
-        description += `<h2 class="text-brand">Agenda</h2>`;
+    let description = `<div class="descQill">${descQuillContent}</div>`;
+    if (document.getElementById(`agendaStarttime1`).value || document.getElementById(`agendaTitle1`).value) {
         for (let i = 1; i <= agendaCount; i++) {
             if ((document.getElementById(`agendaStarttime${i}`).value && document.getElementById(`agendaEndtime${i}`).value) ||
                 document.getElementById(`agenda${i}`).value || document.getElementById(`agendaDesc${i}`).value) {
@@ -163,34 +162,36 @@ function createNewEvent() {
 
     })
 
-    fetch(`${apiUrl}/api/events`, {
-        method: 'POST',
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "Accept": "application/json;"
-        },
-        body: eventData
-    })
-        .then(res => res.json())
-        .then(json => {
-            const { data } = json;
-            let imgFIle = new FormData();
-            imgFIle.append("thumbnail", thumbnailFile);
-
-            fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Accept": "application/json;"
-                },
-                body: imgFIle
-            })
-                .then(res => res.json())
-                .then(json => {
-
-                })
-
+    if(isValid_Event()){
+        fetch(`${apiUrl}/api/events`, {
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Accept": "application/json;"
+            },
+            body: eventData
         })
+            .then(res => res.json())
+            .then(json => {
+                const { data } = json;
+                let imgFIle = new FormData();
+                imgFIle.append("thumbnail", thumbnailFile);
+    
+                fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Accept": "application/json;"
+                    },
+                    body: imgFIle
+                })
+                    .then(res => res.json())
+                    .then(json => {
+    
+                    })
+    
+            })
+    }
     // .then(response => {
     //     if (!response.ok) {
     //         // Extract the JSON error message from the response
