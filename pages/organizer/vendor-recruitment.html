@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
     <link rel="stylesheet" href="../../assets/css/organizer.css">
-    <link rel="stylesheet" href="../../assets/css/lim_style.css">
     <!-- quillJS -->
     <link rel="stylesheet" href="../../assets/lib/QuilJs/quill.snow.css">
 
@@ -149,7 +148,7 @@
                                             <h1 class="fw-bold">Post Title</h1>
                                             <p>Give an attractive brief paragraph about your recruitment.</p>
                                         </div>
-                                        <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
+                                        <img class="icon-img" src="../../assets/img/icon/plus.png" alt="">
                                     </div>
                                     <div class="main-form active">
                                         <h4 class="fw-bold pb-3">Vendor Recruitment Post Overview</h4>
@@ -191,7 +190,7 @@
                                         <div class="title">
                                             <h1 class="fw-bold">Add full description</h1>
                                         </div>
-                                        <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
+                                        <img class="icon-img" src="../../assets/img/icon/plus.png" alt="">
                                     </div>
                                     <div class="main-form">
                                         <h4 class="fw-bold pb-3">Description</h4>
@@ -201,16 +200,13 @@
                                         </div>
                                         <h5>Vendor type needed</h5>
                                         <div class="form-floating mb-5">
-                                            
-                                            <textarea class="form-control customized-form" name="" id="vendorNeed"
-                                                placeholder="" style="height: 170px;"></textarea>
-                                            <label for="vendorNeed">Descript vendor type that you need ...</label>
+                                            <div class="description mt-3 mb-5">
+                                                <div id="vendorTypeEditor"></div>
+                                            </div>
                                         </div>
                                         <h5>Requirement</h5>
-                                        <div class="form-floating mb-5">
-                                            <textarea class="form-control customized-form" name="" id="requirement"
-                                                placeholder="" style="height: 170px;"></textarea>
-                                            <label for="requirement">Descript your requirment ...</label>
+                                        <div class="description mt-3 mb-5">
+                                            <div id="requirementEditor"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +215,7 @@
                                         <div class="title">
                                             <h1 class="fw-bold">Event Date and Location</h1>
                                         </div>
-                                        <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
+                                        <img class="icon-img" src="../../assets/img/icon/plus.png" alt="">
                                     </div>
                                     <div class="main-form">
                                         <h4 class="fw-bold pb-3">Date and Location</h4>
@@ -582,6 +578,8 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             window.descQuill = new Quill('#editor', { theme: 'snow' });
+            window.vendorTypeQuill = new Quill('#vendorTypeEditor', { theme: 'snow' });
+            window.requirementQuill = new Quill('#requirementEditor', { theme: 'snow' });
         });
     </script>
     <script src="../../assets/js/organizer/create_vendor_recruit.js"></script>

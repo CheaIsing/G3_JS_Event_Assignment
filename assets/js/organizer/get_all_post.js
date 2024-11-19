@@ -126,14 +126,14 @@ function loadEventCards() {
     for (let i = 0; i < incrementCount && currentIndex < allEventData.length; i++) {
 
         const element = allEventData[currentIndex];
-        
-        if(element.thumbnail == 'http://mps2.chandalen.dev/storage/events/no_photo.jpg'){
+
+        if (element.thumbnail == 'http://mps2.chandalen.dev/storage/events/no_photo.jpg') {
             thumbnail = '../assets/img/party/party1.png';
         }
-        else{
+        else {
             thumbnail = element.thumbnail;
         }
-        
+
         const newCard = document.createElement('div');
         newCard.className = "card h-100";
         newCard.innerHTML = `       <div class="card-content h-100">
@@ -172,7 +172,7 @@ function loadEventCards() {
             colorId++;
 
         })
-        
+
         currentIndex++;
 
 
@@ -222,7 +222,7 @@ function loadRecruitCards() {
 
                                     </div>
                                 </div>`;
-        
+
         cardContainer.appendChild(newCard);
 
         let recruitPillWrapper = document.querySelectorAll('.recruit-pill-wrapper')[currentRecruitIndex];
@@ -326,17 +326,46 @@ function loadVendorCards() {
     }
 }
 
-function showEventDetail(id){
+function showEventDetail(id) {
     sessionStorage.setItem('itemID', id);
     location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
 }
 
-function showRecruitDetail(id){
+function showRecruitDetail(id) {
     sessionStorage.setItem('itemID', id);
     location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
 }
 
-function showServiceDetail(id){
+function showServiceDetail(id) {
     sessionStorage.setItem('itemID', id);
     location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
+}
+
+
+function goCreatePost(type = '') {
+    if (type == "event") {
+        if (localStorage.getItem('authToken')) {
+
+            location.href = '/pages/organizer/create-events.html';
+        }
+        else {
+            location.href = '/pages/authentication/login.html';
+        }
+    }
+    if (type == "recruit") {
+        if (localStorage.getItem('authToken')) {
+            location.href = '/pages/organizer/vendor-recruitment.html';
+        }
+        else {
+            location.href = '/pages/authentication/login.html';
+        }
+    }
+    if (type == "business") {
+        if (localStorage.getItem('authToken')) {
+            location.href = '/pages/vendor/create_vendor_business.html';
+        }
+        else {
+            location.href = '/pages/authentication/login.html';
+        }
+    }
 }

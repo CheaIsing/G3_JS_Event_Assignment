@@ -30,48 +30,50 @@ function createRecruit() {
     //get text from Qill form
 
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
+    let vendorTypeQuillContent = vendorTypeQuill.root.innerHTML;
+    let recruitmentQuillContent = requirementQuill.root.innerHTML;
     // console.log("Editor Content:", descQuillContent);
 
     let description = '';
     if (vendorNeed == '') {
-        description = `<h5 class="detail-title text-brand fw-bold">Detail</h5> 
+        description = `<h2 class="detail-title text-brand fw-bold">Detail</h2> 
                 <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
                     ${descQuillContent}
                 </div>
-                <div class="recruit-requiremnt-wrapper">
-                    <h5 class="text-brand fw-bold">Requirement</h5>
-                    <p id="recruit-requiremnt">${recruitRequirement}</p>
+                <h2 class="text-brand fw-bold mt-4">Requirement</h2>
+                <div id="recruit-requiremnt" class="recruit-requiremnt-wrapper">
+                    ${recruitmentQuillContent} 
                 </div>`;
     }
     else if (recruitRequirement == '') {
-        description = `<h5 detail-title class="text-brand fw-bold">Detail</h5> 
+        description = `<h2 detail-title class="text-brand fw-bold">Detail</h2> 
                 <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
                     ${descQuillContent}
                 </div>
-                <div class="vendor-type-need-wrapper">
-                    <h5 class="text-brand fw-bold">Vendor Type needed</h5>
-                    <p id="vendor-type-need">${vendorNeed}</p>
+                <h2 class="text-brand fw-bold mt-4">Vendor Type needed</h2>
+                <div id="vendor-type-need" class="vendor-type-need-wrapper">
+                    ${vendorTypeQuillContent} <
                 </div>
                 `;
     }
     else if (vendorNeed == '' && recruitRequirement == '') {
-        description = `<h5 class="detail-title text-brand fw-bold">Detail</h5> 
+        description = `<h2 class="detail-title text-brand fw-bold">Detail</h2> 
                 <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
                     ${descQuillContent}
                 </div>`;
     }
-    else{
-        description = `<h5 class="detail-title text-brand fw-bold">Detail</h5> 
+    else {
+        description = `<h2 class="detail-title text-brand fw-bold">Detail</h2> 
                 <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
                     ${descQuillContent}
                 </div>
-                <div class="recruit-requiremnt-wrapper">
-                    <h5 class="text-brand fw-bold">Requirement</h5>
-                    <p id="recruit-requiremnt">${recruitRequirement}</p>
+                <h2 class="text-brand fw-bold mt-4">Requirement</h2>
+                <div id="recruit-requiremnt" class="recruit-requiremnt-wrapper">
+                    ${recruitmentQuillContent} 
                 </div>
-                <div class="vendor-type-need-wrapper">
-                    <h5 class="text-brand fw-bold">Vendor Type needed</h5>
-                    <p id="vendor-type-need">${vendorNeed}</p>
+                <h2 class="text-brand fw-bold mt-4">Vendor Type needed</h2>
+                <div id="vendor-type-need" class="vendor-type-need-wrapper">
+                    ${vendorTypeQuillContent}
                 </div>
                 `;
     }

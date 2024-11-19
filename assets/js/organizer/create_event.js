@@ -115,7 +115,7 @@ function createNewEvent() {
 
     //get text from Qill form
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
-    
+
     let description = `<div class="descQill">${descQuillContent}</div>`;
     if (document.getElementById(`agendaStarttime1`).value || document.getElementById(`agendaTitle1`).value) {
         for (let i = 1; i <= agendaCount; i++) {
@@ -157,12 +157,12 @@ function createNewEvent() {
     eventData.append('ticket_price', ticketPrice);
     eventData.append('event_category_ids', JSON.stringify(categoriesList));
 
-    eventData.forEach((element, key) => {
-        console.log(element, key);
+    // eventData.forEach((element, key) => {
+    //     console.log(element, key);
 
-    })
+    // })
 
-    if(isValid_Event()){
+    if (isValid_Event()) {
         fetch(`${apiUrl}/api/events`, {
             method: 'POST',
             headers: {
@@ -176,7 +176,7 @@ function createNewEvent() {
                 const { data } = json;
                 let imgFIle = new FormData();
                 imgFIle.append("thumbnail", thumbnailFile);
-    
+
                 fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
                     method: 'POST',
                     headers: {
@@ -187,9 +187,9 @@ function createNewEvent() {
                 })
                     .then(res => res.json())
                     .then(json => {
-    
+
                     })
-    
+
             })
     }
     // .then(response => {
@@ -226,7 +226,7 @@ fetch(`${apiUrl}/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=
         });
     })
 
- 
-    // console.log("Editor Content:", descQuillContent);
-    // let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
-    // console.log("Editor Content:", agendaQuillContent);
+
+// console.log("Editor Content:", descQuillContent);
+// let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
+// console.log("Editor Content:", agendaQuillContent);
