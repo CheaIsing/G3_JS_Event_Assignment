@@ -1,3 +1,4 @@
+let selectedCategories = []
 function setupPagination(pagination) {
   const paginationContainer = document.getElementById("pagination");
   paginationContainer.innerHTML = ""; // Clear previous pagination buttons
@@ -78,7 +79,7 @@ function updateUrlAndFetch(page) {
 }
 
 // Function to fetch businesses data
-function getAllBusinesses(page, selectedCategories = []) {
+function getAllBusinesses(page, selectedCategories = [], searchStr='') {
   document.querySelector(".business-list").innerHTML = `
     <div class="mb-3">
                                                 <div colspan="5">
@@ -265,7 +266,7 @@ function getAllBusinesses(page, selectedCategories = []) {
     ? selectedCategories.map((category) => `&category=${category}`).join("")
     : "";
 
-  fetch(`${API_URL}/api/businesses?page=${page}&per_page=10${categoryQuery}`)
+  fetch(`${API_URL}/api/businesses?page=${page}&per_page=10&search=${searchStr}${categoryQuery}`)
     .then((response) => response.json())
     .then((data) => {
       document.getElementById(
@@ -352,18 +353,29 @@ function fetchCategories() {
         checkbox.classList.add("form-check");
         checkbox.innerHTML = `
           <input class="form-check-input" type="checkbox" value="${category.id}" id="category-${category.id}">
-          <label class="form-check-label" for="category-${category.id}">
-            ${category.name}
-          </label>
+          <label class="form-check-label" for="category-${category.id}">${category.name}</label>
         `;
         categoryContainer.appendChild(checkbox);
+
+        // Add change event listener to update selectedCategories
+        checkbox.querySelector("input").addEventListener("change", (e) => {
+          const categoryId = e.target.value;
+          if (e.target.checked) {
+            // Add to selected categories
+            selectedCategories.push(categoryId);
+          } else {
+            // Remove from selected categories
+            selectedCategories = selectedCategories.filter(
+              (id) => id !== categoryId
+            );
+          }
+        });
       });
     })
     .catch((error) => console.error("Error fetching categories:", error));
 }
 // Handle search with selected categories
 function handleSearch() {
-  const selectedCategories = [];
   document
     .querySelectorAll(".filter .form-check-input:checked")
     .forEach((checkbox) => {
@@ -398,6 +410,12 @@ document
     // Fetch all businesses again with no categories selected
     getAllBusinesses(1, []);
   });
+
+  document.getElementById('search-input').addEventListener('keypress', (e)=>{
+    if(e.code == 'Enter'){
+      getAllBusinesses(1, selectedCategories , e.target.value)
+    }
+  })
 
 // Call to fetch categories on page load
 fetchCategories();

@@ -358,7 +358,18 @@
             document.getElementById('address2').value = vendorData.location.split(',')[1] || '';
             document.getElementById('city').value = vendorData.location.split(',')[2] || ''
             document.getElementById('province').value = vendorData.location.split(',')[3] || '';
-            descQuill.root.innerHTML = vendorData.description;
+           
+            const desc = vendorData.description;
+            // Create a temporary DOM element to parse the HTML string
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlString, 'text/html');
+
+            // Extract the content of each section or return '' if it doesn't exist
+            const detail = doc.querySelector('#recruit-full-desc').innerHTML
+            const requirement = doc.querySelector('#recruit-requiremnt')?.textContent.trim() || '';
+            const vendorType = doc.querySelector('#vendor-type-need')?.textContent.trim() || '';
+            descQuill.root.innerHTML = detail;
+
 
             // Fetch vendor categories and populate category select
             fetch(`${API_URL}/api/vendor-categories`, {

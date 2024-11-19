@@ -11,6 +11,7 @@ fetch(`${API_URL}/api/events/${eventId}`, {
   .then((json) => {
     console.log(json.data, json.data.thumbnail);
     const { data } = json;
+    
     document.querySelector(".payment-row").innerHTML = `
     <div class="col-md-6">
                 <div class="card">
@@ -44,10 +45,10 @@ fetch(`${API_URL}/api/events/${eventId}`, {
                             <label for="ticketQuantity" class="form-label">Number of Tickets:</label>
                             <select class="form-select" id="ticketQuantity">
                                 <option selected value='1'>1</option>
-                                <option value='2'>2</option>
+                                ${data.ticket_price > 0 ? `<option value='2'>2</option>
                                 <option value='3'>3</option>
                                 <option value='4'>4</option>
-                                <option value='5'>5</option>
+                                <option value='5'>5</option>`: ''}
                             </select>
                         </div>
                         <hr>
@@ -59,8 +60,7 @@ fetch(`${API_URL}/api/events/${eventId}`, {
                           data.ticket_price * 1
                         ).toFixed(2)}</span></h5>
                         <hr>
-                        
-                    <div class="mb-3">
+                        ${data.ticket_price > 0 ? `<div class="mb-3">
                         <label class="form-label">Payment QR Code</label>
                         <button class="btn btn-outline-brand w-100" onclick="toggleQRCode()"><i class="bi bi-qr-code"></i> Show QR Code</button>
                         <img src="https://via.placeholder.com/150" alt="QR Code" id="qrCodeImage" class="img-fluid mt-3 d-none">
@@ -71,15 +71,39 @@ fetch(`${API_URL}/api/events/${eventId}`, {
                         <label for="paymentProof" class="form-label">Upload Payment Proof</label>
                         <input type="file" class="form-control" id="paymentProof" accept=".jpeg, .jpg, .pdf">
                         <small class="text-muted">Please upload your payment transaction in .jepg, .jpg or PDF</small>
-                    </div>
+                    </div>`: ''}
+                    
                         
     
                         
-                        <button class="btn btn-brand w-100" disabled id="submitButton">Submit Purchase</button>
+                        <button class="btn btn-brand w-100" ${data.ticket_price > 0 ? 'disabled':''} id="submitButton" data-price="${data.ticket_price}">Submit Purchase</button>
                     </div>
                 </div>
             </div>
     `;
+    
+    if(data.ticket_price == 0){
+      fetch(`${API_URL}/api/profile/requested-tickets?page=1&per_page=10000`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+       .then((res) => res.json())
+       .then(json4 => {
+         console.log(json4);
+        for(let ele of json4.data){
+          if(ele.event.id == eventId){
+            
+            document.getElementById("submitButton").disabled = true
+            document.getElementById("submitButton").innerHTML = "Already Redeemed"
+            return;;
+          }
+        }
+        
+       })
+       
+    }
+
     document.getElementById("ticketQuantity").onchange = (e) => {
       document.getElementById("subTotal").innerHTML = `$${parseInt(
         e.target.value * data.ticket_price
@@ -89,14 +113,17 @@ fetch(`${API_URL}/api/events/${eventId}`, {
       ).toFixed(2)}`;
       // console.log(parseInt(e.target.value * data.ticket_price));
     };
-    document.getElementById("submitButton").onclick = () => {
+    document.getElementById("submitButton").onclick = (e) => {
+      document.getElementById("submitButton").disabled = true;
+      document.body.style.cursor = "wait";
       let amount = parseInt(document.getElementById("ticketQuantity").value);
-      let tranFile = document.getElementById("paymentProof").files[0];
+      let price = parseFloat(e.target.dataset.price);
+      if(price > 0){
+        let tranFile = document.getElementById("paymentProof").files[0];
       const paidFormData = new FormData();
       paidFormData.append("transaction_file", tranFile);
 
-      document.getElementById("submitButton").disabled = true;
-      document.body.style.cursor = "wait";
+      
       fetch(`${API_URL}/api/tickets/request-buy`, {
         method: "POST",
         headers: {
@@ -139,6 +166,33 @@ fetch(`${API_URL}/api/events/${eventId}`, {
               }
             });
         });
+      }
+      else{
+        fetch(`${API_URL}/api/tickets/request-buy`, {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + token,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            event_id: eventId,
+            amount: amount,
+          }),
+        })
+          .then((res) => res.json())
+          .then((json1) => {
+            document.getElementById("submitButton").disabled = false;
+              document.body.style.cursor = "default";
+            if (json1.result === true) {
+              showToast("Redeem Ticket Sucessfully", json1.result);
+              document.getElementById("btn-purchase").disabled = true;
+            } else {
+              showToast(json1, json1.result);
+            }
+          })
+      }
+      
     };
 
     // Enable submit button only when file is uploaded

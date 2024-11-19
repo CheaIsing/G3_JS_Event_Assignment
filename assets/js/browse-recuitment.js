@@ -59,7 +59,7 @@ document.querySelectorAll(".form-check-input").forEach((checkbox) => {
   });
 });
 
-function getAllRecruitments(page) {
+function getAllRecruitments(page, searchStr='') {
   const recruitList = document.querySelector(".card-recruit-list");
   recruitList.innerHTML = `
   <div class="mb-3">
@@ -135,7 +135,7 @@ function getAllRecruitments(page) {
     : "";
 
   fetch(
-    `${API_URL}/api/vendors/?page=${page}&per_page=${itemsPerPage}${categoryFilter}`
+    `${API_URL}/api/vendors/?page=${page}&per_page=${itemsPerPage}${categoryFilter}&search=${searchStr}`
   )
     .then((res) => res.json())
     .then((json) => {
@@ -302,6 +302,13 @@ document.querySelector(".btn-clear-all").addEventListener("click", () => {
   currentPage = 1; // Reset to the first page
   getAllRecruitments(currentPage);
 });
+
+document.getElementById('search-input').addEventListener('keypress', (e)=>{
+  if (e.key === 'Enter') {
+    currentPage = 1; // Reset to the first page
+    getAllRecruitments(currentPage, e.target.value); // Fetch results with search query
+  }
+})
 
 // Event listener for the "Search" button
 document.querySelector("#btn-search-filter").addEventListener("click", () => {
