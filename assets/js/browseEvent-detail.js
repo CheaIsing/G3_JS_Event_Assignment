@@ -1,4 +1,4 @@
-const apiUrl = "https://mps2.chandalen.dev";
+// const apiUrl = "https://mps2.chandalen.dev";
 // const token = localStorage.getItem("authToken");
 function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
   // Create Date objects from the input strings
@@ -77,6 +77,7 @@ fetch(apiUrl + "/api/events/" + id)
             if (ele.event.id == id) {
               console.log(ele);
               document.getElementById("btn-purchase").disabled = true;
+              document.getElementById("btn-purchase").innerHTML = "Redeemed Ticket";
             }
           }
         });

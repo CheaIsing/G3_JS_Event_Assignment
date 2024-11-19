@@ -32,6 +32,9 @@ function loadEventCards() {
     const newCard = document.createElement("div");
     newCard.className = "card";
     newCard.innerHTML = `       <div class="card-content h-100">
+                                        <div onclick="showEventDetail(${
+                                          element.id
+                                        })">
                                         <img class="card-img-top" src="${
                                           element.thumbnail
                                         }" alt="Title" />
@@ -51,14 +54,15 @@ function loadEventCards() {
                                             }</p>
                                             
                                         </div>
-                                        <div class="card-btn-wrapper">
-                                            <button type="button" class="btn-rounded" onclick="addWishlist(${element.id})"><i
+                                        </div>
+                                        <div class="card-btn-wrapper h-100 w-100">
+                                            <button type="button" class="btn-rounded add-wish" data-id="${element.id}" onclick="addWishlist(${element.id})"><i
                                                     class="fa-regular fa-heart"></i></button>
                                             <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id})"><i
                                                     class="fa-solid fa-arrow-up-right-from-square"></i></button>
                                         </div>
                                     </div>`;
-
+    checkEventInWishlist(element.id);
     cardContainer.appendChild(newCard);
     let eventPillWrapper = document.querySelectorAll(".event-pill-wrapper")[
       currentIndex
@@ -73,7 +77,9 @@ function loadEventCards() {
       eventPillWrapper.appendChild(spanTag);
       colorId++;
     });
+    
   });
+  setUpWishBtn();
 }
 
 function loadRecruitCards() {
@@ -127,64 +133,73 @@ function loadRecruitCards() {
 }
 
 function loadVendorCards() {
-  const cardContainer = document.querySelector('.vendor-card-wrapper');
+  const cardContainer = document.querySelector(".vendor-card-wrapper");
   document.querySelector(".vendor-card-wrapper").innerHTML = ``;
 
   if (allVendorData.length <= 0) {
     return (document.querySelector(
-      '.vendor-card-wrapper'
+      ".vendor-card-wrapper"
     ).innerHTML = `<div class="text-center w-100">
               <img src="../../assets/img/noFound.png" alt="..." height="220px;">
               <h4 class="text-center text-brand mt-2">No Vendor Business to Display...</h4>
             </div>`);
   }
 
-  allVendorData.forEach(element=>{
-    const newCard = document.createElement('div');
-      newCard.className = "card";
-      newCard.innerHTML = `<div class="card-content">
+  allVendorData.forEach((element, currentVendorIndex) => {
+    const newCard = document.createElement("div");
+    newCard.className = "card";
+    newCard.innerHTML = `<div class="card-content">
                   <div class="card-body d-flex">
                       <div class="thumbnail">
-                          <img src="../assets/img/party/party1.png" alt="">
+                          <img src="${
+                            element.thumbnail
+                              ? element.thumbnail
+                              : "../../assets/img/party/party1.png"
+                          }" alt="...">
                       </div>
                       <div class="detail">
-                          <h5 class="card-title mb-0 fw-bold">${element.name}</h5>
+                          <h5 class="card-title mb-0 fw-bold">${
+                            element.name
+                          }</h5>
 
                           <p class="card-text py-3">${element.description}</p>
 
-                          <p class="location"><i class="bi bi-geo-alt fs-5"></i> ${element.location}</p>
+                          <p class="location"><i class="bi bi-geo-alt fs-5"></i> ${
+                            element.location
+                          }</p>
                           <div class="d-flex vendor-pill-wrapper"></div>
                           <div class="contact">
-                              <span class="text-secondary">Phone: ${element.phone} </span><br>
-                              <span class="text-secondary">Email: ${element.email}</span>
+                              <span class="text-secondary">Phone: ${
+                                element.phone
+                              } </span><br>
+                              <span class="text-secondary">Email: ${
+                                element.email
+                              }</span>
                           </div>
                       </div>
 
                   </div>
               </div>`;
 
-      cardContainer.appendChild(newCard);
+    cardContainer.appendChild(newCard);
 
-      let vendorPillWrapper = document.querySelectorAll('.vendor-pill-wrapper')[currentVendorIndex];
+    let vendorPillWrapper = document.querySelectorAll(".vendor-pill-wrapper")[
+      currentVendorIndex
+    ];
 
-      //Create event category pills
-      let colorId = 1;
-      element.categories.slice(0, 3).forEach(categoryElement => {
-          let spanTag = document.createElement('span');
-          spanTag.className = `pill${colorId} me-1`;
-          spanTag.innerHTML = categoryElement.name;
-          vendorPillWrapper.appendChild(spanTag);
-          colorId++;
-
-      })
-  })
-
-      
-
-  
+    //Create event category pills
+    let colorId = 1;
+    element.categories.slice(0, 3).forEach((categoryElement) => {
+      let spanTag = document.createElement("span");
+      spanTag.className = `pill${colorId} me-1`;
+      spanTag.innerHTML = categoryElement.name;
+      vendorPillWrapper.appendChild(spanTag);
+      colorId++;
+    });
+  });
 }
 
-fetch(`${API_URL}/api/profile/detail/${29}`, {
+fetch(`${API_URL}/api/profile/detail/${orgId}`, {
   headers: {
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
@@ -215,6 +230,7 @@ fetch(`${API_URL}/api/profile/detail/${29}`, {
     allEventData = events;
     allRecruitData = vendor_recruitments;
     allVendorData = businesses;
+    console.log(allVendorData);
 
     const currentDate = new Date();
     document.querySelector("#events-filter").onchange = (e) => {
@@ -277,67 +293,9 @@ fetch(`${API_URL}/api/profile/detail/${29}`, {
 
     loadEventCards();
     loadRecruitCards();
-
-    // console.log(vendor_recruitments);
-
-    // let vendorHTML = "";
-    // if (vendor_recruitments.length > 0) {
-    //   vendor_recruitments.forEach((ele) => {
-    //     vendorHTML = `
-    //         <div class="col-4" data-id="${ele.id}">
-    //                                             <div class="card position-relative">
-    //                                                 <div class="card-body">
-    //                                                     <h5 class="card-title">
-    //                                                         <a href>${ele.name}</a>
-    //                                                     </h5>
-    //                                                     <p class="mb-0 "><i
-    //                                                             class="fa-regular fa-calendar text-brand me-2"></i><span
-    //                                                             class="c-loca">${ele.start_date} - ${ele.end_date} </span></p>
-    //                                                     <p class="card-text"><i
-    //                                                             class="fa-solid fa-location-dot me-2 text-brand"></i>
-    //                                                         <small
-    //                                                             class="text-body-secondary">${ele.location}</small></p>
-    //                                                 </div>
-    //                                             </div>
-    //                                         </div>`;
-    //   });
-    // } else {
-    //   vendorHTML = `<div class="text-center w-100">
-    //           <img src="../../assets/img/noFound.png" alt="..." height="220px;">
-    //           <h4 class="text-center text-brand mt-2">No Vendor Recruitment to Display...</h4>
-    //         </div>`;
-    // }
-
-    // document.querySelector("#vendor-upcoming .row").innerHTML = vendorHTML;
-
-    // let businessHTML = "";
-
-    // if (businesses.length > 0) {
-    //   businesses.forEach((ele) => {
-    //     businessHTML = `
-    //         <div class="col-4" data-id="${ele.id}">
-    //                                             <div class="card position-relative">
-    //                                                 <div class="card-body">
-    //                                                     <h5 class="card-title">
-    //                                                         <a href>${ele.name}</a>
-    //                                                     </h5>
-    //                                                     <p class="mb-0 "><i
-    //                                                             class="fa-regular fa-calendar text-brand me-2"></i><span
-    //                                                             class="c-loca">${ele.start_date} - ${ele.end_date} </span></p>
-    //                                                     <p class="card-text"><i
-    //                                                             class="fa-solid fa-location-dot me-2 text-brand"></i>
-    //                                                         <small
-    //                                                             class="text-body-secondary">${ele.location}</small></p>
-    //                                                 </div>
-    //                                             </div>
-    //                                         </div>`;
-    //   });
-    // } else {
-    //   businessHTML = `<div class="text-center w-100">
-    //           <img src="../../assets/img/noFound.png" alt="..." height="220px;">
-    //           <h4 class="text-center text-brand mt-2">No Vendor Business to Display...</h4>
-    //         </div>`;
-    // }
-
-    // document.querySelector("#business-upcoming .row").innerHTML = businessHTML;
+    loadVendorCards();
   });
+function showEventDetail(id) {
+  sessionStorage.setItem("itemID", id);
+  location.href = "http://127.0.0.1:5503/pages/browse/event-detail.html";
+}

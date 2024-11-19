@@ -5,6 +5,14 @@ const token = localStorage.getItem("authToken");
 
 let agendaCount = 1;
 let agendaWrapper = document.getElementById('agenda-wrapper');
+document.getElementById('price').onchange = (e)=>{
+    if(e.target.value == 0){
+        document.getElementById('payment-container').display = 'none';
+    }
+    else{
+        document.getElementById('payment-container').display = 'block';
+    }
+}
 function createNewAgenda() {
     agendaCount++;
     let agendaDiv = document.createElement('div');
@@ -144,7 +152,7 @@ function createNewEvent() {
     // add ticket form variables
     let ticketQty = document.getElementById('ticketQuantity').value;
     let ticketPrice = document.getElementById('price').value;
-    // let khqrImg = document.getElementById('khqrImg').value;
+    let khqrImg = document.getElementById('khqrImg').files[0];
 
     let eventData = new FormData();
     eventData.append('name', eventName);
@@ -187,7 +195,10 @@ function createNewEvent() {
                 })
                     .then(res => res.json())
                     .then(json => {
-    
+                        showToast(json.message, json.result)
+                        setTimeout(()=>{
+                            location.href = 'event.html'
+                        }, 1500)
                     })
     
             })
