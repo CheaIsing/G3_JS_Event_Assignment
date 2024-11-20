@@ -3,7 +3,7 @@
 
 function getAllTicket() {
   fetch(
-    `${API_URL}/api/profile/requested-tickets?sort_col=created_at&sort_dir=desc`,
+    `${API_URL}/api/profile/requested-tickets?sort_col=created_at&sort_dir=desc&page=1&per_page=10000`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -18,12 +18,12 @@ function getAllTicket() {
         const { data } = json;
         console.log(data);
 
-        if(data.length <= 0){
-          document.getElementById("ticket-tbody").innerHTML = '<tr><td colspan="5"><h3 class="text-center w-100 mt-5">No Requested Tickets to Display...</h3></td></tr>';
+        if (data.length <= 0) {
+          document.getElementById("ticket-tbody").innerHTML =
+            '<tr><td colspan="5"><h3 class="text-center w-100 mt-5">No Requested Tickets to Display...</h3></td></tr>';
           return;
         }
 
-        
         let filterData = data;
 
         document
@@ -161,6 +161,7 @@ function getAllTicket() {
           document.querySelectorAll(".view-details").forEach((link) => {
             link.onclick = () => {
               let id = link.dataset.id;
+              console.log(id);
 
               getTransaction(id);
             };
@@ -174,7 +175,7 @@ function getAllTicket() {
 function getTransaction(id) {
   // console.log(id);
 
-  fetch(`${API_URL}/api/profile/requested-tickets`, {
+  fetch(`${API_URL}/api/profile/requested-tickets?page=1&per_page=10000`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -184,7 +185,7 @@ function getTransaction(id) {
       const { data } = json;
       console.log(data);
 
-      let ticketDetail;
+      let ticketDetail = {};
 
       for (let ele of data) {
         if (ele.id == id) {
@@ -212,11 +213,6 @@ function getTransaction(id) {
 
       console.log(ticketDetail);
 
-      document.getElementById('event-detail-desc').innerHTML = `
-      <h4>${ticketDetail.event.name}</h4>
-                                    <div class="mb-2">${ticketDetail.event.location}</div>
-                                    <div class="mb-2">${formatDate(ticketDetail.event.start_date)} - ${formatDate(ticketDetail.event.end_date)}`
-
       document.getElementById("amount").innerHTML = ticketDetail.amount;
       document.getElementById("status").innerHTML = status;
       document.getElementById("transaction-file").src =
@@ -224,15 +220,15 @@ function getTransaction(id) {
           ? ticketDetail.transaction_file
           : "../../assets/img/no-image.png";
 
-      document.getElementById("price").innerHTML = "$"+
-        ticketDetail.event.ticket_price;
-      document.getElementById("total").innerHTML ="$"+
-        ticketDetail.event.ticket_price * ticketDetail.amount;
+      document.getElementById("price").innerHTML =
+        "$" + ticketDetail.event.ticket_price;
+      document.getElementById("total").innerHTML =
+        "$" + ticketDetail.event.ticket_price * ticketDetail.amount;
 
-        if(ticketDetail.rejected_reason != null){
-          document.getElementById('rejected-reason-col').innerHTML = `
-          <div class="mb-4"><h4>Reject Reason</h4> <span id="reason-reject">${ticketDetail.reject_reason}</span></div> `
-        }
+      if (ticketDetail.rejected_reason != null) {
+        document.getElementById("rejected-reason-col").innerHTML = `
+          <div class="mb-4"><h4>Reject Reason</h4> <span id="reason-reject">${ticketDetail.reject_reason}</span></div> `;
+      }
 
       // `<div class="mb-3">Reject Reason: <span id="reason-reject"></span></div>`;
     });

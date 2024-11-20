@@ -1,3 +1,4 @@
+
 function showToast(msg, condition) {
   let toastContainer = document.querySelector(".toast-container");
   if (!toastContainer) {
@@ -143,7 +144,7 @@ function copyEventUrlToClipboard(eventId) {
 }
 //wishlist
 function checkEventInWishlist(eventId) {
-  return fetch(`${apiUrl}/api/wishlists`, {
+  return fetch(`${API_URL}/api/wishlists`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`

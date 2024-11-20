@@ -106,74 +106,53 @@
                             <!-- <hr> -->
                             <div class="ps-4 py-2" id="catagory">
                                 <h6>Catagory</h6>
+                                <div id="categories-container"></div>
                             </div>
                             <hr>
+                            
                             <div class="ps-4 py-2">
-                                <h6>Pricing</h6>
+                                <h6>Upcoming Event Within</h6>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <input class="form-check-input" type="radio" name="comingFilter" value="7" id="">
                                     <label class="form-check-label" for="">
-                                        Free
+                                        1 week
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <input class="form-check-input" type="radio" name="comingFilter" value="14" id="">
                                     <label class="form-check-label" for="">
-                                        Paid
+                                        2 week
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="comingFilter" value="30" id="">
+                                    <label class="form-check-label" for="">
+                                        1 month
                                     </label>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="ps-4 py-2">
-                                <h6>Type</h6>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Online
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Offline-Indoor
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Offline-Outdoor
-                                    </label>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="px-4 py-2">
-                                <h6>Date</h6>
-                                <div class="mb-3 d-flex align-items-center">
-                                    <label class="form-label w-25" for="">
-                                        From
-                                    </label>
-                                    <input class="form-control" type="date" name="from" value="" id="">
-                                </div>
-                                <div class="mb-3 d-flex align-items-center">
-                                    <label class="form-label w-25" for="">
-                                        To
-                                    </label>
-                                    <input class="form-control" type="date" name="from" value="" id="">
-                                </div>
-                            </div>
+                            
                             <hr>
                             <div class=" my-3 me-4 text-end">
-                                <button type="button" class="btn btn-outline-secondary">Clear All</button>
-                                <Button type="button" class="btn btn-brand">Search</Button>
+                                <button type="button" class="btn btn-outline-secondary" id="clear-filters">Clear All</button>
+                                <Button type="button" class="btn btn-brand" id="search-events">Search</Button>
                             </div>
                         </div>
                     </div>
                     <div class="col-9">
                         <div class="search-result w-100" >
-                            <h5 class="mt-2 mb-4 show-re">
-                                <span class="text-brand" id="result-num"></span>
-                                Results
-                            </h5>
+                            <div class="d-flex align-items-center justify-content-between mt-2 mb-4">
+                                <h5 class=" show-re mb-0">
+                                    <span class="text-brand" id="result-num"></span>
+                                    Results
+                                </h5>
+                                <div class="d-flex align-items-center" style="width: 380px;">
+                                    <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute ms-3"></i>
+                                    <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="search-input"
+                                        aria-describedby="helpId" placeholder="Search Event " />
+                                    
+                                </div>
+                            </div>
                             <div class="card-list" id="list-card">
                                 <!-- <div class="card mb-4">
                                     <div class="row g-0">

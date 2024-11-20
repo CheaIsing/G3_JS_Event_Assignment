@@ -1,4 +1,5 @@
 const API_URL = "https://mps2.chandalen.dev";
+const apiUrl = "https://mps2.chandalen.dev";
 const token = localStorage.getItem("authToken");
 
 document.addEventListener("DOMContentLoaded", () => {

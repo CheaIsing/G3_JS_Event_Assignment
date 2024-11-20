@@ -1,4 +1,4 @@
-const apiUrl = "https://mps2.chandalen.dev";
+// const apiUrl = "https://mps2.chandalen.dev";
 const token2 = localStorage.getItem("authToken");
 
 let id = localStorage.getItem("vendorId");
@@ -33,8 +33,6 @@ let currentRecruitIndex = 0; // Track the index of Recruitment the cards being d
 let currentVendorIndex = 0; // Track the index of the Vendor cards being displayed
 
 const incrementCount = 8;
-
-
 
 
 getAllEventCard();
@@ -137,7 +135,8 @@ function loadEventCards() {
         const newCard = document.createElement('div');
         newCard.className = "card h-100";
         newCard.innerHTML = `       <div class="card-content h-100">
-                                        <img class="card-img-top" src="${thumbnail}" alt="Title" />
+                                        <div onclick="showEventDetail(${element.id})">
+                                            <img class="card-img-top" src="${thumbnail}" alt="Title" />
                                         <div class="card-body h-100">
                                             <div class="d-flex event-pill-wrapper"></div>
                                             <h5 class="card-title mt-2 mb-4">${element.name}</h5>
@@ -151,7 +150,8 @@ function loadEventCards() {
                                                 <p>${element.creator.full_name}</p>
                                             </div>
                                         </div>
-                                        <div class="card-btn-wrapper h-100">
+                                        </div>
+                                        <div class="card-btn-wrapper h-100 w-100">
                                             <button type="button" class="btn-rounded add-wish" data-id="${element.id}" onclick="addWishlist(${element.id})"><i
                                                     class="fa-regular fa-heart"></i></button>
                                             <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id})"><i
