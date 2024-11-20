@@ -3,65 +3,7 @@ let currentPage = 1; // Start on the first page
 const itemsPerPage = 10; // Number of events per page
 let selectedCategories = []; // Store selected category IDs
 let selectedComingFilter = null;
-window.onload = () => {
-  getAllEvent(currentPage);
-  loadCategories();
-};
-function loadCategories() {
-  fetch(
-    `${apiUrl}/api/event-categories?page=1&per_page=100&sort_col=name&sort_dir=asc`
-  )
-    .then((res) => res.json())
-    .then((json) => {
-      if (json.result) {
-        const categoriesContainer = document.getElementById(
-          "categories-container"
-        );
-        categoriesContainer.innerHTML = ""; // Clear existing categories
 
-        json.data.forEach((category) => {
-          // Create a checkbox for each category
-          const checkboxWrapper = document.createElement("div");
-          checkboxWrapper.classList.add("form-check");
-
-          checkboxWrapper.innerHTML = `
-            <input class="form-check-input" type="checkbox" data-value="${category.id}" id="category-${category.id}">
-            <label class="form-check-label" for="category-${category.id}">
-              ${category.name}
-            </label>
-          `;
-          categoriesContainer.appendChild(checkboxWrapper);
-        });
-
-        document
-          .querySelectorAll("#categories-container .form-check-input")
-          .forEach((checkbox) => {
-            checkbox.addEventListener("change", () => {
-              const value = checkbox.getAttribute("data-value");
-              if (checkbox.checked) {
-                selectedCategories.push(value); // Add category
-              } else {
-                selectedCategories = selectedCategories.filter(
-                  (id) => id !== value
-                ); // Remove category
-              }
-            });
-          });
-
-        document
-          .querySelectorAll(".form-check-input[name='comingFilter']")
-          .forEach((checkbox) => {
-            checkbox.addEventListener("change", () => {
-              const value = checkbox.value;
-              if (checkbox.checked) {
-                selectedComingFilter = value; // Add category
-              }
-            });
-          });
-      }
-    })
-    .catch((error) => console.error("Error loading categories:", error));
-}
 function getAllEvent(page = 1, categories = [], searchStr = "") {
   let url = `${apiUrl}/api/events?page=${page}&per_page=${itemsPerPage}&search=${searchStr}`;
 
@@ -214,13 +156,80 @@ function getAllEvent(page = 1, categories = [], searchStr = "") {
   fetch(url)
     .then((res) => res.json())
     .then((json) => {
+      
       displayEvents(json.data);
       setupPagination(json.paginate);
       let resultNum = json.paginate.total;
       document.getElementById("result-num").innerHTML = resultNum;
     });
 }
+window.onload = () => {
+  getAllEvent(currentPage);
+  loadCategories();
+};
+function loadCategories() {
+  fetch(
+    `${apiUrl}/api/event-categories?page=1&per_page=100&sort_col=name&sort_dir=asc`
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      if (json.result) {
+        const categoriesContainer = document.getElementById(
+          "categories-container"
+        );
+        categoriesContainer.innerHTML = ""; // Clear existing categories
+
+        json.data.forEach((category) => {
+          // Create a checkbox for each category
+          const checkboxWrapper = document.createElement("div");
+          checkboxWrapper.classList.add("form-check");
+
+          checkboxWrapper.innerHTML = `
+            <input class="form-check-input" type="checkbox" data-value="${category.id}" id="category-${category.id}">
+            <label class="form-check-label" for="category-${category.id}">
+              ${category.name}
+            </label>
+          `;
+          categoriesContainer.appendChild(checkboxWrapper);
+        });
+
+        document
+          .querySelectorAll("#categories-container .form-check-input")
+          .forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+              const value = checkbox.getAttribute("data-value");
+              if (checkbox.checked) {
+                selectedCategories.push(value); // Add category
+              } else {
+                selectedCategories = selectedCategories.filter(
+                  (id) => id !== value
+                ); // Remove category
+              }
+            });
+          });
+
+        document
+          .querySelectorAll(".form-check-input[name='comingFilter']")
+          .forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+              const value = checkbox.value;
+              if (checkbox.checked) {
+                selectedComingFilter = value; // Add category
+              }
+            });
+          });
+      }
+    })
+    .catch((error) => console.error("Error loading categories:", error));
+}
 function displayEvents(events) {
+  if(events.length == 0){
+
+    return document.getElementById("list-card").innerHTML = `<div class="text-center w-100 my-4">
+              <img src="../../assets/img/noFound.png" alt="..." height="220px;">
+              <h4 class="text-center text-brand mt-2">No Event to Display...</h4>
+            </div>`
+  }
   events.forEach((element) => {
     element.status = checkDateTimeRange(element.start_date, element.end_date);
   });
@@ -231,7 +240,7 @@ function displayEvents(events) {
   });
   let listE = "";
   events.forEach((element) => {
-    let price = element.ticket_price == 0 ? "Free" : `$${element.ticket_price}`;
+    let price = element.ticket_price == 0 ? "Free" : `$${element.ticket_price.toFixed(2)}`;
     let catas = "";
     element.event_categories.forEach((cata) => {
       let pill = ((cata.id - 1) % 5) + 1;
@@ -240,7 +249,7 @@ function displayEvents(events) {
     listE += `<div class="card mb-4">
                             <div class="row g-0">
                                 <div class="col-3 position-relative">
-                                    <img src="../../assets/img/test-img/cta-event-search-banner.avif"
+                                    <img src="${element.thumbnail}"
                                         class="img-fluid rounded-start " alt="...">
                                     <div class="i-wish add-wish position-absolute top-0 end-0" data-id="${element.id}">
                                         <i class="fa-regular fa-heart"></i>
@@ -261,7 +270,7 @@ function displayEvents(events) {
                                         </div>
                                         <div class="mb-2 d-flex align-items-center fs-18">
                                             <i class="fa-regular fa-calendar text-brand me-2 "></i><small
-                                                class="text-body-secondary m-0">${element.start_date}</small>
+                                                class="text-body-secondary m-0">${moment(element.start_date).format('ddd, MMM D • h:mm A')}</small>
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <i class="fa-solid fa-location-dot me-2 text-brand"></i> <small
@@ -364,7 +373,7 @@ function setupPagination(pagination) {
 function updateUrlAndFetch(page) {
   getAllEvent(page);
   window.location.href = `javascript: void(0)`;
-  window.scrollTo({ top: 200, behavior: "instant" });
+  window.scrollTo({ top: 220, behavior: "instant" });
 }
 function filterEventsByCategories() {
   currentPage = 1; // Reset to first page
@@ -381,8 +390,10 @@ document.getElementById("search-input").addEventListener("keypress", (e) => {
     getAllEvent(currentPage, selectedCategories, e.target.value);
   }
 });
+
 document.getElementById("search-events").addEventListener("click", () => {
   filterEventsByCategories(); // Trigger the search when the button is clicked
+  window.scrollTo({ top: 0, behavior: "instant" });
 });
 
 document.getElementById("clear-filters").addEventListener("click", () => {
@@ -393,4 +404,5 @@ document.getElementById("clear-filters").addEventListener("click", () => {
     checkbox.checked = false; // Uncheck all checkboxes
   });
   filterEventsByCategories(); // Trigger the search after clearing
+  window.scrollTo({ top: 0, behavior: "instant" });
 });

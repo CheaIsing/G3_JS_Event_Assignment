@@ -1,8 +1,3 @@
-const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem('authToken');
-
-console.log(token);
-
 
 
 fetch(`${apiUrl}/api/tickets/request-buy?event=${sessionStorage.getItem('requestDetailId')}`, {
@@ -43,8 +38,12 @@ fetch(`${apiUrl}/api/tickets/request-buy?event=${sessionStorage.getItem('request
                                     <td colspan="1">${i+1}</td>
                                     <td colspan="1">${d.requester.full_name}</td>
                                     <td colspan="1">${d.amount} ticket${d.amount > 1 ? 's':''}</td>
-                                    <td colspan="1">$${d.event.ticket_price * d.amount}</td>
-                                    <td colspan="1">${d.created_at}</td>
+                                    <td colspan="1">$${parseFloat(d.event.ticket_price) > 0 ?(d.event.ticket_price * d.amount).toFixed(2) : "Free"}</td>
+                                    <td colspan="1">${moment(
+                                        d.created_at
+                                      ).format(
+                                        'llll'
+                                      )}</td>
                                     <td colspan="1">${status}</td>
                                     <td style="width: 340px;">
                                         <div><button type="button" data-transaction-id="${d.id}" class="btn btn-brand views-transaction">View Transaction</button></div>

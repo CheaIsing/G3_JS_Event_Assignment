@@ -113,11 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
             transaction.amount > 1 ? "s" : ""
           }</span></p>
                                     <p>Price per tickets: <span id="price-unit">$${
-                                      transaction.event.ticket_price
+                                      (transaction.event.ticket_price).toFixed(2)
                                     }</span></p>
                                     <p>Total: <span id="total">$${
-                                      transaction.event.ticket_price *
-                                      transaction.amount
+                                      (transaction.event.ticket_price *
+                                        transaction.amount).toFixed(2)
                                     }</span></p>
                                     <p id="label-Reject" class="w-25 ${transaction.reject_reason != null ? '' : 'd-none'} ${transaction.status != 3 ? 'd-none':'d-block'}">Reject Reason: ${transaction.reject_reason != null ? transaction.reject_reason : ''} </p>
                                     <h5>Transaction File:</h5>
@@ -165,6 +165,11 @@ function approveRequest(id) {
     .then((res) => res.json())
     .then((json) => {
       showToast(json.message, json.result);
+      if(json.result){
+        setTimeout(() => {
+          history.back();
+        }, 1400);
+      }
     });
 }
 
@@ -182,7 +187,6 @@ function disapproveRequest(id, reason) {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json);
 
       showToast(json.message, json.result);
       // Close the modal after sending the request
@@ -190,5 +194,10 @@ function disapproveRequest(id, reason) {
         document.getElementById("exampleModal")
       );
       disapproveModal.hide();
+      if(json.result){
+        setTimeout(() => {
+          history.back();
+        }, 1400);
+      }
     });
 }

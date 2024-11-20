@@ -131,14 +131,12 @@
                 <span class="text-brand">Event Detail</span>
             </p>
         </div>
-        <section class="hero mb-5 ">
+        <section class="hero mb-5 " id="hero-img">
             <div class="container p-4 px-5 text-center bg-white">
                 <div class="content text-center">
                     <p class="text-brand-dark p-0 fs-18" id="ev-date"></p>
                     <h1 class="display-6 fw-bold card-title" id="ev-title"></h1>
-                    <p class="px-4 text-secondary mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                        delectus beatae rem harum doloremque eius quis quia dolorem recusandae optio, pariatur iure
-                        alias voluptatibus eaque quibusdam, illo, laborum deleniti? Nesciunt?</p>
+                    <p class="px-4 text-secondary mt-3">Join Us an Unforgetable Event day</p>
                 </div>
             </div>
         </section>
@@ -148,7 +146,7 @@
                     <div class="col-8 pe-5 ps-0 ">
                         <div class="content">
                             <div class="mb-3" style="height: 400px;">
-                                <img id="ev-img" src="../../assets/img/test-img/cta-event-search-banner.avif" alt=""
+                                <img id="ev-img"  alt=""
                                     class="object-fit-cover w-100 h-100">
                             </div>
                             <div class="mb-3 p-3" id="ev-description"></div>
@@ -183,6 +181,13 @@
                                         </div>
                                     </li>
                                     <li class="d-flex py-3">
+                                        <i class="fa-regular fa-calendar-xmark fs-2 fw-light ps-2 text-brand w-15"></i>
+                                        <div>
+                                            <h6 class="m-0">Time</h6>
+                                            <p class="m-0 text-body-secondary" id="ev-time"></p>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex py-3">
                                         <i class="fa-regular fa-circle-check fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Status</h6>
@@ -191,22 +196,15 @@
                                     </li>
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15"></i>
-                                        <div>
+                                        <div class="">
                                             <h6 class="m-0">Location</h6>
                                             <p class="m-0 text-body-secondary" id="ev-location"></p>
                                         </div>
-                                    </li>
-                                    <!-- <li class="d-flex py-3">
-                                        <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15"></i>
-                                        <div>
-                                            <h6 class="m-0">Type</h6>
-                                            <p class="m-0 text-body-secondary">Indoor</p>
-                                        </div>
-                                    </li>                                 -->
+                                    </li>                          
                                     <li class="d-flex py-3">
                                         <i class="fa-regular fa-folder-open fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
-                                            <h6 class="m-0">Catagory</h6>
+                                            <h6 class="m-0">Category</h6>
                                             <p class="m-0 text-body-secondary" id="ev-catagory"></p>
                                         </div>
                                     </li>
@@ -235,23 +233,20 @@
                             </div>
                             <div class=" bg-white shadow-light mb-4 py-3 px-4">
                                 <h4 class="fw-semibold mb-3">Organized By</h4>
-                                <div class="d-flex align-items-center">
-                                    <img src="../../assets/img/3607424.jpg" id="ev-org-pf" alt=""
-                                        style="width: 60px; height: 60px; border-radius: 50%;">
-                                    <a href="javascript: void(0)" class=" fs-4 fw-semibold m-0 ms-3" id="ev-org-name"
-                                        onclick="viewOrgDetail(this)"></a>
+                                <div class="d-flex align-items-center" >
+                                    <img src="" id="ev-org-pf" alt="Image" style="width: 60px; height: 60px; border-radius: 50%;">
+                                    <a href="javascript: void(0)"  class=" fs-4 fw-semibold m-0 ms-3" id="ev-org-name" onclick="viewOrgDetail(this)"></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mb-3 py-4 px-4 bg-brand-20 shadow-light">
-                            <div class="bg-white p-3 ">
-                                <div class="mb-3 d-flex justify-content-between align-items-center">
-                                    <h3 class="m-0">Price</h3>
-                                    <p class="m-0"><span class="fs-5 fw-semibold text-brand" id="ev-price1">10$</span> /
-                                        Ticket</p>
+                            <div class="mb-3 py-4 px-4 bg-brand-20 shadow-light" >
+                                <div class="bg-white p-3 ">
+                                    <div class="mb-3 d-flex justify-content-between align-items-center">
+                                        <h3 class="m-0">Price</h3>
+                                        <p class="m-0"><span class="fs-5 fw-semibold text-brand" id="ev-price1">$</span> / Ticket</p>
+                                    </div>
+                                    <button class="w-100 btn btn-brand" id="btn-purchase">Purchase</button>
                                 </div>
-                                <button class="w-100 btn btn-brand" id="btn-purchase" data-bs-target="#paymentModal"
-                                    data-bs-toggle="modal">Purchase</button>
                             </div>
                         </div>
                     </div>
@@ -278,80 +273,7 @@
     </main>
     <footer></footer>
 
-    <!-- Modal -->
-    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-between">
-                    <h5 class="modal-title" id="paymentModalLabel">Ticket Payment</h5>
-                    <button type="button" class="btn btn-lg" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="fs-2">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>QR Code Payment</h5>
-                    <div class="text-center mb-3">
-                        <img src="../../assets/img/QR_Ticket-removebg-preview.png" alt="QR Code" class="img-fluid"
-                            width="50%">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ticketCount">Tickets</label>
-                        <div class="quantity-field d-flex">
-                            <button class="value-button decrease-button btn btn-outline-brand"
-                                onclick="decreaseValue(this)" title="Azalt">-</button>
-                            <div
-                                class="number w-100 text-center border d-flex align-items-center justify-content-center rounded-3 mx-2">
-                                1</div>
-                            <button class="value-button increase-button btn btn-outline-brand"
-                                onclick="increaseValue(this, 5)" title="Arrtır">+
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3" id="summary-total">
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="uploadImage">Upload Image</label>
-                        <input type="file" class="form-control" id="uploadImage" required>
-                        <div class="invalid-feedback">Please upload an image before proceeding.</div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="proceedButton">Proceed</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="sucessModalToggle2" aria-hidden="true" aria-labelledby="sucessModalToggleLabel"
-        tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-4">
-                        <div class="card-body text-center">
-                            <img src="../../assets/img/checked.png" class="rounded-circle mb-3" alt="">
-                            <h2 class="mt-4">Request Ticket Payment was process
-                                sucessufully</h2>
-                            <p class="mt-5 mb-5">A Payment has been made for the
-                                ticket of 2 Ticket <br>
-                                Wait for the approving from the Event Organizer.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    <script src="../../assets/lib/momentjs/moment.min.js"></script>
 
     <script src="../../assets/js/ultilities.js"></script>
     <script src="../../assets/js/authentication.js"></script>
