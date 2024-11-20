@@ -34,7 +34,7 @@
 //                             <!-- User Icon -->
 //                         </a>
 //                         <a href="ticket/myticket.html"
-                            
+
 //                             class="btn-outline-pink ms-3 d-flex align-items-center"><i
 //                                 class="fa-solid fa-ticket pe-1 text-brand"></i>My
 //                             Ticket</a>
@@ -101,47 +101,73 @@ function scrollFunction() {
   }
 }
 
-  
-  let searchClicked = document.getElementById('searchEvent');
-  
-  searchClicked.addEventListener('focus', ()=>{
+
+let searchClicked = document.getElementById('searchEvent');
+
+searchClicked.addEventListener('focus', () => {
+  let searchEventbyName = document.getElementById('searchEvent').value;
+  if (searchEventbyName == '') {
+    document.querySelector('.search-dropdown').style.display = 'none';
+  }
+  else {
     document.querySelector('.search-dropdown').style.display = 'block';
     document.querySelector('.overlay').style.display = 'block';
-  })
+  }
+})
 
-  searchClicked.addEventListener("blur", ()=>{
-    document.querySelector('.overlay').style.display = 'none';
+searchClicked.addEventListener("blur", () => {
+  document.querySelector('.overlay').style.display = 'none';
+  // document.querySelector('.search-dropdown').style.display = 'none';
+})
+
+document.getElementById('searchEvent').addEventListener('keyup', function () {
+  let searchEventbyName = document.getElementById('searchEvent').value;
+  document.getElementById('search-dropdown').style.display = 'block';
+  if (searchEventbyName == '') {
     document.querySelector('.search-dropdown').style.display = 'none';
+  }
+  fetch(`${apiUrl1}/api/events?page=1&per_page=50&search=${searchEventbyName}`, {
+    headers: {
+      Authorization: `Bearer ${token1}`
+    }
   })
-  
-  document.getElementById('searchEvent').addEventListener('keyup', function(){
-    let searchEventbyName = document.getElementById('searchEvent').value;
-    fetch(`${apiUrl1}/api/events?page=1&per_page=50&search=${searchEventbyName}`,{
-        headers: {
-            Authorization: `Bearer ${token1}`
-        }
-    })
-    .then(res=>res.json())
-    .then(json=>{
-        const {data} = json;
-        let searchList = "";
-        data.slice(0, 5).forEach(element=>{
-            searchList += `<li class="search-dropdown-item">
-                            <i class="fa-solid fa-magnifying-glass text-brand fs-6 pe-2"></i>
-                            <span>${element.name}</span>
-                        </li>`;
+    .then(res => res.json())
+    .then(json => {
+      const { data } = json;
+      let searchList = "";
+      if (data.length == 0) {
+        searchList = `<li class="search-dropdown-item">
+                              <i class="fa-solid fa-magnifying-glass text-brand fs-6 pe-2"></i>
+                              <span>No result</span>
+                          </li>`;
+      }
+      else {
+        data.slice(0, 5).forEach(element => {
+          searchList += `<li class="search-dropdown-item" onclick="showEventDetail(${element.id})">
+                                <i class="fa-solid fa-magnifying-glass text-brand fs-6 pe-2"></i>
+                                <span>${element.name}</span>
+                            </li>`;
         })
-        document.getElementById('search-dropdown').innerHTML = searchList;
+      }
+      document.getElementById('search-dropdown').innerHTML = searchList;
     })
 })
 
+function showEventDetail(id) {
+  console.log("z.ljfnv.ksfj");
+
+  sessionStorage.setItem('itemID', id);
+  location.href = '/pages/browse/event-detail.html';
+}
+
+
 fetch(`${apiUrl1}/api/me`, {
-  headers:{
+  headers: {
     Authorization: `Bearer ${token1}`
   }
 })
-.then(res=>res.json())
-.then(json=>{
-  const {data} = json;
-  document.getElementById('userEmail').innerText = data.full_name;
-})
+  .then(res => res.json())
+  .then(json => {
+    const { data } = json;
+    document.getElementById('userEmail').innerText = data.full_name;
+  })

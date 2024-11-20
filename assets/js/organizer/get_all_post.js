@@ -363,16 +363,45 @@ function loadVendorCards() {
 }
 
 function showEventDetail(id) {
-  sessionStorage.setItem("itemID", id);
-  location.href = "http://127.0.0.1:5503/pages/browse/event-detail.html";
+    sessionStorage.setItem('itemID', id);
+    location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
 }
 
 function showRecruitDetail(id) {
-  sessionStorage.setItem("itemID", id);
-  location.href = "http://127.0.0.1:5503/pages/browse/event-detail.html";
+    sessionStorage.setItem('itemID', id);
+    location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
 }
 
 function showServiceDetail(id) {
-  sessionStorage.setItem("itemID", id);
-  location.href = "http://127.0.0.1:5503/pages/browse/event-detail.html";
+    sessionStorage.setItem('itemID', id);
+    location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
+}
+
+
+function goCreatePost(type = '') {
+    if (type == "event") {
+        if (localStorage.getItem('authToken')) {
+
+            location.href = '/pages/organizer/create-events.html';
+        }
+        else {
+            location.href = '/pages/authentication/login.html';
+        }
+    }
+    if (type == "recruit") {
+        if (localStorage.getItem('authToken')) {
+            location.href = '/pages/organizer/vendor-recruitment.html';
+        }
+        else {
+            location.href = '/pages/authentication/login.html';
+        }
+    }
+    if (type == "business") {
+        if (localStorage.getItem('authToken')) {
+            location.href = '/pages/vendor/create_vendor_business.html';
+        }
+        else {
+            location.href = '/pages/authentication/login.html';
+        }
+    }
 }

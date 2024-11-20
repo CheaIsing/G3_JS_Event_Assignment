@@ -115,22 +115,15 @@ function createNewEvent() {
     }
   }
 
-  //get text from Qill form
-  let descQuillContent = descQuill.root.innerHTML; // or use quill.getText() for plain text
+    //get text from Qill form
+    let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
 
-  let description = `<div class="descQill">${descQuillContent}</div>`;
-  if (
-    document.getElementById(`agendaStarttime1`).value ||
-    document.getElementById(`agendaTitle1`).value
-  ) {
-    for (let i = 1; i <= agendaCount; i++) {
-      if (
-        (document.getElementById(`agendaStarttime${i}`).value &&
-          document.getElementById(`agendaEndtime${i}`).value) ||
-        document.getElementById(`agenda${i}`).value ||
-        document.getElementById(`agendaDesc${i}`).value
-      ) {
-        description += `<br>
+    let description = `<div class="descQill">${descQuillContent}</div>`;
+    if (document.getElementById(`agendaStarttime1`).value || document.getElementById(`agendaTitle1`).value) {
+        for (let i = 1; i <= agendaCount; i++) {
+            if ((document.getElementById(`agendaStarttime${i}`).value && document.getElementById(`agendaEndtime${i}`).value) ||
+                document.getElementById(`agenda${i}`).value || document.getElementById(`agendaDesc${i}`).value) {
+                description += `<br>
                 <div class="agenda-card mb-3 border rounded-4 py-3 px-4">
                                                 <div class="agenda-content ps-4">
                                                     <p class="text-secondary pb-2" id="agenda-time">
@@ -183,48 +176,47 @@ function createNewEvent() {
     eventData.append("qr_img", qr_img); // add this line if you want to upload KHQR image with the event
   }
 
-  eventData.forEach((element, key) => {
-    console.log(element, key);
-  });
+    // eventData.forEach((element, key) => {
+    //     console.log(element, key);
 
-  if (isValid_Event()) {
-    fetch(`${apiUrl}/api/events`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: "application/json;",
-      },
-      body: eventData,
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const { data } = json;
-        let imgFIle = new FormData();
-        imgFIle.append("thumbnail", thumbnailFile);
+    // })
 
-        fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: "application/json;",
-          },
-          body: imgFIle,
+    if (isValid_Event()) {
+        fetch(`${apiUrl}/api/events`, {
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Accept": "application/json;"
+            },
+            body: eventData
         })
-          .then((res) => res.json())
-          .then((json) => {
-            showToast(json.message, json.result);
-            setTimeout(() => {
-              location.href = "event.html";
-            }, 1500);
-          });
-      });
-  }
-  // .then(response => {
-  //     if (!response.ok) {
-  //         // Extract the JSON error message from the response
-  //         return response.json().then(errorData => {
-  //             console.error("Error message:", errorData.message);
-  //             console.error("Detailed error:", errorData.data);
+            .then(res => res.json())
+            .then(json => {
+                const { data } = json;
+                let imgFIle = new FormData();
+                imgFIle.append("thumbnail", thumbnailFile);
+
+                fetch(`${apiUrl}/api/events/thumbnail/${data.id}`, {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Accept": "application/json;"
+                    },
+                    body: imgFIle
+                })
+                    .then(res => res.json())
+                    .then(json => {
+
+                    })
+
+            })
+    }
+    // .then(response => {
+    //     if (!response.ok) {
+    //         // Extract the JSON error message from the response
+    //         return response.json().then(errorData => {
+    //             console.error("Error message:", errorData.message);
+    //             console.error("Detailed error:", errorData.data);
 
   //             throw new Error(`HTTP error! Status: ${response.status}`);
   //         });
@@ -254,6 +246,7 @@ fetch(
       eventCatSelect.appendChild(opt);
     });
   });
+
 
 // console.log("Editor Content:", descQuillContent);
 // let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
