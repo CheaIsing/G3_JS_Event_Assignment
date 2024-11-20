@@ -187,6 +187,7 @@ header .btn-pink {
     border: 0 !important;
 }
 
+
 header .btn-pink .fa-magnifying-glass {
     color: white !important;
     padding: 0 !important;
@@ -320,7 +321,7 @@ section.ticket-order .table td {
     outline: 2px solid var(--c-brand) !important;
     border-radius: 5px;
     cursor: pointer;
-    background-color: transparent ;
+    background-color: transparent;
     transition: 0.3s;
 }
 
@@ -654,6 +655,7 @@ footer .contact-info .social-media a {
 footer .contact-info .social-media a:hover {
     color: #e11594;
 }
+
 .pill1 {
     background-color: #e1159322;
     padding: 4px 7px !important;
@@ -1083,4 +1085,13 @@ footer .contact-info .social-media a:hover {
 
 .modal {
     background-color: #5a324b60 !important;
+}
+
+.form-select{
+
+    border-color: var(--c-brand) !important;
+}
+
+.form-select:focus {
+    box-shadow: none !important;
 }
