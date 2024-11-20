@@ -1,5 +1,5 @@
 
-function createRecruit() {
+function createRecruit(btn) {
     // Create event form variables
     let eventName = document.getElementById('postTitle').value;
     let startDate = document.getElementById('startDate').value;
@@ -89,6 +89,8 @@ function createRecruit() {
     })
 
     if (isValid_Recruit() == true) {
+        btn.disabled = true;
+        document.body.style.cursor = 'wait'
         fetch(`${apiUrl}/api/vendors`, {
             method: 'POST',
             headers: {
@@ -99,6 +101,8 @@ function createRecruit() {
         })
             .then(res => res.json())
             .then(json => {
+                btn.disabled = false;
+        document.body.style.cursor = 'default'
                 showToast(json.message, json.result)
                 if (json.result === true) {
                     setTimeout(() => {

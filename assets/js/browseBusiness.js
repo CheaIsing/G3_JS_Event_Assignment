@@ -1,4 +1,4 @@
-let selectedCategories = []
+let selectedCategories = [];
 function setupPagination(pagination) {
   const paginationContainer = document.getElementById("pagination");
   paginationContainer.innerHTML = ""; // Clear previous pagination buttons
@@ -79,7 +79,7 @@ function updateUrlAndFetch(page) {
 }
 
 // Function to fetch businesses data
-function getAllBusinesses(page, selectedCategories = [], searchStr='') {
+function getAllBusinesses(page, selectedCategories = [], searchStr = "") {
   document.querySelector(".business-list").innerHTML = `
     <div class="mb-3">
                                                 <div colspan="5">
@@ -266,12 +266,14 @@ function getAllBusinesses(page, selectedCategories = [], searchStr='') {
     ? selectedCategories.map((category) => `&category=${category}`).join("")
     : "";
 
-  fetch(`${API_URL}/api/businesses?page=${page}&per_page=10&search=${searchStr}${categoryQuery}`)
+  fetch(
+    `${API_URL}/api/businesses?page=${page}&per_page=10&search=${searchStr}${categoryQuery}`
+  )
     .then((response) => response.json())
     .then((data) => {
       document.getElementById(
         "vendor-result"
-      ).innerText = `${data.data.length} Results`;
+      ).innerText = `${data.data.length}`;
       renderBusinesses(data.data); // Function to render businesses
       setupPagination(data.paginate); // Pass pagination object
     })
@@ -283,29 +285,30 @@ function renderBusinesses(businesses) {
   const businessList = document.querySelector(".business-list");
   businessList.innerHTML = ""; // Clear previous businesses
 
-  if(businesses.length == 0){
-
-    return businessList.innerHTML = `<div class="text-center w-100 my-4">
+  if (businesses.length == 0) {
+    return (businessList.innerHTML = `<div class="text-center w-100 my-4">
               <img src="../../assets/img/noFound.png" alt="..." height="220px;">
               <h4 class="text-center text-brand mt-2">No Business to Display...</h4>
-            </div>`
+            </div>`);
   }
 
   businesses.forEach((business) => {
     // Create a new card for each business
+    let thumbnail =
+    business.thumbnail && !business.thumbnail.includes("no_photo")
+      ? business.thumbnail
+      : "../../assets/img/party/party1.png";
     const newCard = document.createElement("div");
     newCard.className = "card recruitmentCard";
     newCard.innerHTML = `
         <div class="card-content" onclick="viewBusinessDetail(${business.id})">
           <div class="card-body d-flex">
             <div class="thumbnail">
-              <img src="../../assets/img/party/party1.png" class="img-fluid object-fit-cover" alt="Thumbnail">
+              <img src="${thumbnail}" class="object-fit-cover" width="250" height="270" alt="Thumbnail">
             </div>
             <div class="detail">
               <h5 class="card-title mb-0 fw-bold">${business.name}</h5>
-              <p class="card-text py-3">${
-                business.description || "No description available"
-              }</p>
+              <div class=" card-desc1">${business.description}</div>
               <p class="location"><i class="bi bi-geo-alt fs-5"></i> ${
                 business.location || "Unknown location"
               }</p>
@@ -419,11 +422,11 @@ document
     getAllBusinesses(1, []);
   });
 
-  document.getElementById('search-input').addEventListener('keypress', (e)=>{
-    if(e.code == 'Enter'){
-      getAllBusinesses(1, selectedCategories , e.target.value)
-    }
-  })
+document.getElementById("search-input").addEventListener("keypress", (e) => {
+  if (e.code == "Enter") {
+    getAllBusinesses(1, selectedCategories, e.target.value);
+  }
+});
 
 // Call to fetch categories on page load
 fetchCategories();

@@ -1,6 +1,8 @@
 function createBusiness() {
   // Create Vendor Business form variables
-  let thumbnailFile = document.getElementById('fileUpload').files[0];
+  let thumbnailFile = document.getElementById("fileUpload").files[0];
+  console.log(thumbnailFile);
+  
   // let descPhoto = document.getElementById('photoUpload').files[0];
   // let servicePrice = document.getElementById('servicePrice').value;
   let businessName = document.getElementById("postTitle").value;
@@ -62,8 +64,9 @@ function createBusiness() {
     })
       .then((res) => res.json())
       .then((json) => {
+        
         showToast(json.message, json.result);
-        if(json.result){
+        if (json.result) {
           setTimeout(() => {
             location.href = "vendor-business.html";
           }, 1500);
@@ -84,6 +87,7 @@ function createBusiness() {
     // .catch(error => console.error('Request Failed:', error));
   }
 }
+
 fetch(
   `${apiUrl}/api/business-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search`,
   {

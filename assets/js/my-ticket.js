@@ -269,16 +269,18 @@ function getAllTicket() {
                                                                           event.location
                                                                         }</p>
                                                                     <p
-                                                                        class="text-muted mb-0 small">${
-                                                                          event.start_date
-                                                                        } - ${
-              event.end_date
-            }</p>
+                                                                        class="text-muted mb-0 small">${formatCustomDateWithYear(
+                          event.start_date
+                        )} - ${formatCustomDateWithYear(
+                event.end_date
+              )}, ${formatToHour(event.start_date)} - ${formatToHour(
+                event.end_date
+              )}</p>
                                                                 </div>
                                                             </div></a>
                                                         </td>
                                                         <td>
-                                                            ${event.created_at}
+                                                            ${moment(event.created_at).format('MMM D, YYYY • h:mm A')}
                                                         </td>
                                                         <td>
                                                             ${status}
@@ -290,10 +292,8 @@ function getAllTicket() {
               ele.amount > 1 ? "s" : ""
             } 
                                                         </td>
-                                                        <td>$${
-                                                          ele.amount *
-                                                          ele.event.ticket_price
-                                                        }</td>
+                                                        <td>${parseFloat(ele.ticket_price) > 0 ?  (ele.amount *
+                                                          ele.event.ticket_price).toFixed(2) : "Free"}</td>
                                                         <td>
                                                             ${`<button 
                                                                     class="btn btn-brand position-relative z-3 view-details" data-id="${ele.id}" data-bs-target="#exampleModalToggle-1"

@@ -105,8 +105,8 @@
     color: var(--c-brand) !important;
 }
 
-section.ticket-order .table td,
-section.ticket-order .table td {
+.ticket-order .table td,
+.ticket-order .table td {
     padding-block: 1rem !important;
 }
 

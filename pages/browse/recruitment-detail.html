@@ -72,10 +72,7 @@
                         <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
                         <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
                                 Setting</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:void(0);" id="btn-logout">Log
+                        <li><a class="dropdown-item border-top" href="javascript:void(0);" id="btn-logout">Log
                                 out</a>
                         </li>
                     </ul>
@@ -103,15 +100,15 @@
                                 style="background-image: url('https://credohirestorages1.blob.core.windows.net/strapi-credo/assets/1520210697092_778ddcfc7e.jpeg'); width: 100%; height: 300px;">
                                 <div
                                     class="bg-dark opacity-75 position-absolute w-100 h-100 text-white text-center d-flex align-items-center justify-content-center px-5">
-                                    <h3 id="recruit-name">Need Photographer, Food Seller, Band for YIGF Event</h3>
+                                    <h3 id="recruit-name"></h3>
                                 </div>
                             </div>
                             <div class="mb-3 px-3" id="ev-description">
 
                             </div>
-                            <div class="text-center w-100 d-inline-block fs-6">Interesting to join us? <label
-                                    role="button" class="text-brand text-decoration-underline " for="btn-apply"
-                                    onclick="()=>document.getElementById('btn-apply-now').click()">Apply Now</label>
+                            <div class="text-center w-100 d-inline-block fs-6">Interesting to join us? <button
+                                    type="button" class="text-brand text-decoration-underline btn-apply-now bg-transparent"
+                                    onclick="()=>document.getElementById('btn-apply-now').click()">Apply Now</button>
                             </div>
                         </div>
                     </div>
@@ -172,8 +169,8 @@
                                         onclick="viewOrgDetail(this)">Name</a>
 
                                 </div>
-                                <input class="btn btn-brand w-100" id="btn-apply-now" type="button"
-                                    value="Apply Recruitment Now">
+                                <button type="button" class="btn btn-brand w-100 btn-apply-now" 
+                                    >Apply Recruitment Now</button>
                             </div>
 
                         </div>

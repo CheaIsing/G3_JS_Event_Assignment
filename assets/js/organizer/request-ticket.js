@@ -176,7 +176,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
               rowsHTML += `<tr class="border-bottom position-relative">
                 <td>
                   <a href="javascript:void(0)" class="stretched-link text-decoration-none bg-transparent link-request-detail"
-                     style="color: inherit;" data-event-detail-id="${ele.id}">
+                     style="color: inherit;" data-event-detail-id="${ele.id}" data-event-name="${ele.name}" data-event-date="${ele.start_date}">
                     <div class="d-flex align-items-center">
                       <div class="me-3">
                         <div class="text-center text-brand fw-bold">${formatDateStringMonth(ele.start_date)}</div>
@@ -201,6 +201,8 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                 link.onclick = ()=>{
                   let id = link.dataset.eventDetailId;
                   sessionStorage.setItem('requestDetailId', id);
+                  sessionStorage.setItem('eventName', link.dataset.eventName);
+                  sessionStorage.setItem('eventdate', link.dataset.eventDate);
                   location.href = 'request-ticket-detail.html'
                 }
               })
