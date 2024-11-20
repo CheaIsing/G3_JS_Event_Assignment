@@ -390,6 +390,7 @@ document.getElementById("search-input").addEventListener("keypress", (e) => {
     getAllEvent(currentPage, selectedCategories, e.target.value);
   }
 });
+
 document.getElementById("search-events").addEventListener("click", () => {
   filterEventsByCategories(); // Trigger the search when the button is clicked
 });

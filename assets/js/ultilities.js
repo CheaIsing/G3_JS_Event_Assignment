@@ -1,4 +1,3 @@
-
 function showToast(msg, condition) {
   let toastContainer = document.querySelector(".toast-container");
   if (!toastContainer) {
@@ -8,7 +7,6 @@ function showToast(msg, condition) {
     toastContainer.style.zIndex = "1100";
     document.body.appendChild(toastContainer);
   }
-
   // Create the toast element
   const toast = document.createElement("div");
   toast.className = `toast align-items-center text-white ${condition === true ? "bg-brand" : "bg-danger"
