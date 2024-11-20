@@ -124,7 +124,7 @@ function createNewEvent() {
     //get text from Qill form
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
 
-    let description = `<div class="descQill">${descQuillContent}</div>`;
+    let description = `<h1 class="text-brand fw-bold">Agenda</h1><div class="descQill">${descQuillContent}</div>`;
     if (document.getElementById(`agendaStarttime1`).value || document.getElementById(`agendaTitle1`).value) {
         for (let i = 1; i <= agendaCount; i++) {
             if ((document.getElementById(`agendaStarttime${i}`).value && document.getElementById(`agendaEndtime${i}`).value) ||
