@@ -4,9 +4,6 @@ const itemsPerPage = 10; // Number of events per page
 let selectedCategories = []; // Store selected category IDs
 let selectedComingFilter = null;
 window.onload = () => {
-  // getAllCatagory(
-  //   "/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search"
-  // );
   getAllEvent(currentPage);
   loadCategories();
 };
