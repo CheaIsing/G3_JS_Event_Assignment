@@ -87,6 +87,12 @@ hr{
 }
 .search-result .card-list .card{
     width: 100%;
+    border: 3px solid #40324710;
+}
+.search-result .card-list .card:hover{
+    box-shadow: 0px 0px 8px #e1159340;
+    border-color: white;
+
 }
 .card-title{
     width: 100%;
@@ -144,10 +150,6 @@ hr{
     background-color: var(--c-brand);
     color: #fff;
 }
-/* .add-wish:checked{
-    background-color: var(--c-brand);
-    color: #fff;
-} */
 .card-title a{
     text-decoration: none;
     color: #000;
