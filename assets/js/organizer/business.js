@@ -103,6 +103,8 @@ function getAllBusinessCard(apiUrl, id, searhB = "") {
       }
       let rowsHTML = "";
       json.data.forEach((ele) => {
+        // console.log(json.data);
+        
         let thumbnail =
           ele.thumbnail && !ele.thumbnail.includes("no_photo")
             ? ele.thumbnail
@@ -125,8 +127,8 @@ function getAllBusinessCard(apiUrl, id, searhB = "") {
 
                                                         <p
                                                             class="text-muted mb-0">${ele.location}</p>
-                                                        <p
-                                                            class="text-muted mb-0">${ele.description}</p>
+                                                        <div
+                                                            class="text-muted mb-0 card-desc1">${ele.description}</div>
                                                         
                                                     </div>
                                                 </div>

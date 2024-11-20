@@ -130,7 +130,7 @@ function loadEventCards() {
 
     if (
       element.thumbnail ==
-      "http://mps2.chandalen.dev/storage/events/no_photo.jpg"
+      "http://mps2.chandalen.dev/storage/events/no_photo.jpg" || element.thumbnail == null
     ) {
       thumbnail = "../assets/img/party/party1.png";
     } else {
@@ -316,12 +316,12 @@ function loadVendorCards() {
     newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${element.id})">
                     <div class="card-body d-flex">
                         <div class="thumbnail">
-                            <img src="${thumbnail}" alt="...">
+                            <img src="${thumbnail}" alt="..." width='250' height='270'>
                         </div>
                         <div class="detail">
                             <h5 class="card-title mb-0 fw-bold">${element.name}</h5>
 
-                            <p class="card-text py-3">${element.description}</p>
+                            <div class="card-text card-desc1">${element.description}</div>
 
                             <p class="location"><i class="bi bi-geo-alt fs-6"></i> ${element.location}</p>
                             <div class="d-flex vendor-pill-wrapper"></div>

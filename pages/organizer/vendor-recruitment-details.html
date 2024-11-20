@@ -85,8 +85,20 @@
                                             class="fa-solid fa-angle-left fs-2"></i>
                                     </button>
                                     <h2>Vendor Recruitment</h2>
+                                    
                                 </div>
                                 <div
+                                        class="w-100 mt-4 justify-content-center" style="display: flex;"
+                                        id="loading">
+                                        <div
+                                            class="spinner-border text-secondary"
+                                            role="status">
+                                            <span
+                                                class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                <div id="content" style="display: none;">
+                                    <div
                                     class="my-4 d-flex w-100 justify-content-between align-content-center">
                                     <div
                                         class>
@@ -99,103 +111,30 @@
                                                     class="bi bi-calendar-event me-2"></i>
                                                 <span id="start-end-date"></span>
                                             </div>
-                                            <div
-                                                class="d-inline-flex align-items-center">
-                                                <i
-                                                    class="bi bi-map me-2"></i>
-                                                <span id="location"></span>
-                                            </div>
+                                            
                                         </div>
                                     </div>
-                                    <div class="dropstart">
-                                        <button class="btn btn-light btn-lg"
-                                            type="button" id="dropdownMenu1"
-                                            data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-                                            <i class="bi bi-three-dots"></i>
-                                        </button>
-                                        <ul
-                                            class="dropdown-menu dropdown-menu-end"
-                                            aria-labelledby="dropdownMenu1">
-                                            <li><a class="dropdown-item"
-                                                    href="#">Edit</a></li>
-                                            <li><a class="dropdown-item"
-                                                    href="#">Delete</a></li>
-                                            <li><a class="dropdown-item"
-                                                    href="#">View
-                                                    Detail</a></li>
-                                        </ul>
-                                    </div>
+                                    
                                 </div>
-
-                            </div>
-                        </section>
-                        <section>
-                            <div class="container-fluid my-4">
-                                <div class="row justify-content-between g-5">
-                                    <div class="col-12 col-md-6">
-                                        <div class="card border-0 px-1">
-                                            <h5
-                                                class="card-title mb-3">Share</h5>
-                                            <div class="mb-3">
-                                                <label for="eventLink"
-                                                    class="form-label mb-3">Event
-                                                    link
-                                                    <i
-                                                        class="fas fa-info-circle"></i></label>
-                                                <div
-                                                    class="input-group mb-2">
-                                                    <input type="text"
-                                                        class="form-control"
-                                                        id="eventLink"
-                                                        value="https://www.eventlink.com/e/chrismas-tickets-104673..."
-                                                        readonly>
-                                                    <button
-                                                        class="btn btn-outline-primary"
-                                                        type="button"
-                                                        onclick="copyLink()">Copy
-                                                        link</button>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex gap-3">
-                                                <a href="#" class="text-dark"><i
-                                                        class="fab fa-facebook fs-3"></i></a>
-                                                <a href="#" class="text-dark"><i
-                                                        class="fab fa-facebook-messenger fs-3"></i></a>
-                                                <a href="#" class="text-dark"><i
-                                                        class="fab fa-twitter fs-3"></i></a>
-                                                <a href="#" class="text-dark"><i
-                                                        class="fas fa-envelope fs-3"></i></a>
-                                                <a href="#" class="text-dark"><i
-                                                        class="fab fa-linkedin fs-3"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </section>
-                        <section class="ticket-order">
-                            <div class="container-fluid my-5">
                                 <h5 class="mb-4">Vendor Request</h5>
                                 <table
-                                    class="table table-borderless align-middle table-hover">
+                                    class="table table-borderless align-middle table-hover ticket-order">
                                     <thead class>
                                         <tr class="border-bottom">
                                             <th scope="col">#</th>
+                                            <th scope="col">Profile</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Email</th>
                                             <th
-                                                scope="col">Role Apply</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col"></th>
+                                                scope="col">Email</th>
+                                            <th scope="col">Applied At</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id="vendor-request-tbody">
                                         <!-- First Event Row -->
                                         <tr
                                             class="">
-                                            <td colspan="5" >
+                                            <td colspan="6" >
                                                 <div class="d-flex justify-content-center mt-3">
                                                     <div
                                                     class="spinner-border text-secondary"
@@ -212,20 +151,18 @@
                                         <!-- Repeat the structure for the second event -->
                                     </tbody>
                                 </table>
+                                </div>
+
                             </div>
                         </section>
+                        
                     </div>
                 </div>
             </div>
         </main>
+        <script src="../../assets/lib/momentjs/moment.min.js"></script>
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
         <script>
-            function copyLink() {
-            var copyText = document.getElementById("eventLink");
-            copyText.select();
-            document.execCommand("copy");
-            alert("Link copied to clipboard");
-        }
         </script>
         <script src="../../assets/js/ultilities.js"></script>
         <script src="../../assets/js/authentication.js"></script>

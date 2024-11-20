@@ -1,5 +1,4 @@
-// const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
+
 
 let id = sessionStorage.getItem("eventId");
 
@@ -13,7 +12,6 @@ function getEventDetail(apiUrl, id) {
   })
     .then((res) => res.json())
     .then((json) => {
-      // console.log(json);
 
       fetch(`${apiUrl}/api/events/summary-data/${json.data.id}`, {
         headers: {
@@ -43,6 +41,10 @@ function getEventDetail(apiUrl, id) {
           document.getElementById(
             "eventLink"
           ).value = `${window.location.protocol}//${window.location.host}/pages/browse/event-detail.html?e=${json.data.id}`;
+
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('content').style.display = 'block';
+          
         });
     });
 }

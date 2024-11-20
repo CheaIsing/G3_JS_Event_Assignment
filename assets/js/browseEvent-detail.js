@@ -15,6 +15,7 @@ fetch(apiUrl + "/api/events/" + id)
   .then((res) => res.json())
   .then((json) => {
     let data = json.data;
+    
 
     let thumbnail =
       data.thumbnail && !data.thumbnail.includes("no_photo")
@@ -60,6 +61,10 @@ fetch(apiUrl + "/api/events/" + id)
     document.getElementById("ev-price1").innerHTML = price;
     evCatagoryId = data.event_categories[0].id;
     ticketPrice = data.ticket_price;
+    if(parseInt(data.ticket_opacity) == 0){
+      document.getElementById("btn-purchase").disabled = true;
+      document.getElementById("btn-purchase").innerHTML = "Sold Out";
+    }
     displayRelatedItems(evCatagoryId);
     if (data.ticket_price === 0) {
       fetch(

@@ -20,21 +20,28 @@
                 <nav class="d-flex align-items-center justify-content-between">
                     <div class="logo">
                         <a href="../homepage.html">
-                            <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt="'">
+                            <img
+                                src="../../assets/img/logo/Prutika_Logo_text(2).png"
+                                alt="'">
                         </a>
                     </div>
-                    
-                    
+
                     <div class="dropdown">
-                        <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
-                            id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#"
+                            class="dropdown-toggle fs-3 text-brand d-flex align-items-center"
+                            role="button"
+                            id="accountDropdown" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <i class="bi bi-person-circle"></i>
                             <!-- User Icon -->
                             <span class="ps-1 fs-6" id="userEmail"></span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                            <li><a class="dropdown-item" href="../../homepage.html">Switch to Attending</a></li>
-                            
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="accountDropdown">
+                            <li><a class="dropdown-item"
+                                    href="../../homepage.html">Switch to
+                                    Attending</a></li>
+
                         </ul>
                     </div>
                 </nav>
@@ -79,175 +86,205 @@
                                     </button>
                                     <h2>Summary</h2>
                                 </div>
-                                <div
-                                    class="my-4 d-flex w-100 justify-content-between align-content-center">
+                                <div>
                                     <div
-                                        class>
-                                        <h3 id="event-name"></h3>
+                                        class="w-100 mt-4 justify-content-center" style="display: flex;"
+                                        id="loading">
                                         <div
-                                            class="d-inline-flex align-items-center">
-                                            <i
-                                                class="bi bi-calendar-event me-2"></i>
-                                            <span id="event-date"></span>
+                                            class="spinner-border text-secondary"
+                                            role="status">
+                                            <span
+                                                class="visually-hidden">Loading...</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row my-4">
-                                    <!-- Earnings (Monthly) Card Example -->
-                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div id="content" style="display: none;">
                                         <div
-                                            class="card border-left-primary shadow h-100 py-2">
-                                            <div class="card-body">
+                                            class="my-4 d-flex w-100 justify-content-between align-content-center">
+                                            <div
+                                                class>
+                                                <h3 id="event-name"></h3>
                                                 <div
-                                                    class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div id=""
-                                                            class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                            Tickets Sold
-                                                        </div>
-                                                        <div id="total-ticket"
-                                                            class="h5 mb-0 font-weight-bold text-gray-800">
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i
-                                                            class="fas fa-calendar fa-2x text-gray-300"></i>
-                                                    </div>
+                                                    class="d-inline-flex align-items-center">
+                                                    <i
+                                                        class="bi bi-calendar-event me-2"></i>
+                                                    <span
+                                                        id="event-date"></span>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- Earnings (Annual) Card Example -->
-                                    <div class="col-xl-3 col-md-6 mb-4">
-                                        <div
-                                            class="card border-left-success shadow h-100 py-2">
-                                            <div class="card-body">
+                                        <div class="row my-4">
+                                            <!-- Earnings (Monthly) Card Example -->
+                                            <div class="col-xl-3 col-md-6 mb-4">
                                                 <div
-                                                    class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div
-                                                            class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                            Tickets Earnings
-                                                        </div>
-                                                        <div id="total-income"
-                                                            class="h5 mb-0 font-weight-bold text-gray-800">
-                                                           
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i
-                                                            class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Tasks Card Example -->
-                                    <div class="col-xl-3 col-md-6 mb-4">
-                                        <div
-                                            class="card border-left-info shadow h-100 py-2">
-                                            <div class="card-body">
-                                                <div
-                                                    class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div
-                                                            class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                            Participated
-                                                        </div>
+                                                    class="card border-left-primary shadow h-100 py-2">
+                                                    <div class="card-body">
                                                         <div
                                                             class="row no-gutters align-items-center">
                                                             <div
-                                                                class="col-auto">
-                                                                <div id="total-attendant"
-                                                                    class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                                    
+                                                                class="col mr-2">
+                                                                <div id
+                                                                    class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                    Tickets Sold
+                                                                </div>
+                                                                <div
+                                                                    id="total-ticket"
+                                                                    class="h5 mb-0 font-weight-bold text-gray-800">
+
                                                                 </div>
                                                             </div>
-                                                            
+                                                            <div
+                                                                class="col-auto">
+                                                                <i
+                                                                    class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-auto">
-                                                        <i
-                                                            class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <!-- Pending Requests Card Example -->
-                                    <div class="col-xl-3 col-md-6 mb-4">
-                                        <div
-                                            class="card border-left-warning shadow h-100 py-2">
-                                            <div class="card-body">
+
+                                            <!-- Earnings (Annual) Card Example -->
+                                            <div class="col-xl-3 col-md-6 mb-4">
                                                 <div
-                                                    class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
+                                                    class="card border-left-success shadow h-100 py-2">
+                                                    <div class="card-body">
                                                         <div
-                                                            class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                            Not Yet
-                                                            Participate</div>
-                                                        <div id="not-attending"
-                                                            class="h5 mb-0 font-weight-bold text-gray-800">
+                                                            class="row no-gutters align-items-center">
+                                                            <div
+                                                                class="col mr-2">
+                                                                <div
+                                                                    class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                                    Tickets
+                                                                    Earnings
+                                                                </div>
+                                                                <div
+                                                                    id="total-income"
+                                                                    class="h5 mb-0 font-weight-bold text-gray-800">
+
+                                                                </div>
                                                             </div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i
-                                                            class="fas fa-comments fa-2x text-gray-300"></i>
+                                                            <div
+                                                                class="col-auto">
+                                                                <i
+                                                                    class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <section>
-                            <div class="container-fluid my-4">
-                                <div class="row justify-content-between g-5">
-                                    <div class="col-12 col-md-6">
-                                        <div class="card border-0 px-1">
-                                            <h5
-                                                class="card-title mb-3">Share</h5>
-                                            <div class="mb-3">
-                                                <label for="eventLink"
-                                                    class="form-label mb-3">Event
-                                                    link
-                                                    <i
-                                                        class="fas fa-info-circle"></i></label>
+
+                                            <!-- Tasks Card Example -->
+                                            <div class="col-xl-3 col-md-6 mb-4">
                                                 <div
-                                                    class="input-group mb-2">
-                                                    <input type="text"
-                                                        class="form-control"
-                                                        id="eventLink"
-                                                        value=""
-                                                        readonly>
-                                                    <button
-                                                        class="btn btn-outline-primary"
-                                                        type="button"
-                                                        id="btn-copylink">Copy
-                                                        link</button>
+                                                    class="card border-left-info shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div
+                                                            class="row no-gutters align-items-center">
+                                                            <div
+                                                                class="col mr-2">
+                                                                <div
+                                                                    class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                                    Participated
+                                                                </div>
+                                                                <div
+                                                                    class="row no-gutters align-items-center">
+                                                                    <div
+                                                                        class="col-auto">
+                                                                        <div
+                                                                            id="total-attendant"
+                                                                            class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="col-auto">
+                                                                <i
+                                                                    class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex gap-3">
-                                                <a href="javascript:void(0);" class="text-dark"><i
-                                                        class="fab fa-facebook fs-3"></i></a>
-                                                <a href="javascript:void(0);" class="text-dark"><i
-                                                        class="fab fa-facebook-messenger fs-3"></i></a>
-                                                <a href="javascript:void(0);" class="text-dark"><i
-                                                        class="fab fa-twitter fs-3"></i></a>
-                                                <a href="javascript:void(0);" class="text-dark"><i
-                                                        class="fas fa-envelope fs-3"></i></a>
-                                                <a href="javascript:void(0);" class="text-dark"><i
-                                                        class="fab fa-linkedin fs-3"></i></a>
+                                            <!-- Pending Requests Card Example -->
+                                            <div class="col-xl-3 col-md-6 mb-4">
+                                                <div
+                                                    class="card border-left-warning shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div
+                                                            class="row no-gutters align-items-center">
+                                                            <div
+                                                                class="col mr-2">
+                                                                <div
+                                                                    class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                                    Not Yet
+                                                                    Participate</div>
+                                                                <div
+                                                                    id="not-attending"
+                                                                    class="h5 mb-0 font-weight-bold text-gray-800">
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="col-auto">
+                                                                <i
+                                                                    class="fas fa-comments fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="card border-0 px-1">
+                                                    <h5
+                                                        class="card-title mb-3">Share</h5>
+                                                    <div class="mb-3">
+                                                        <label for="eventLink"
+                                                            class="form-label mb-3">Event
+                                                            link
+                                                            <i
+                                                                class="fas fa-info-circle"></i></label>
+                                                        <div
+                                                            class="input-group mb-2">
+                                                            <input type="text"
+                                                                class="form-control"
+                                                                id="eventLink"
+                                                                value
+                                                                readonly>
+                                                            <button
+                                                                class="btn btn-outline-primary"
+                                                                type="button"
+                                                                id="btn-copylink">Copy
+                                                                link</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex gap-3">
+                                                        <a href="javascript:void(0);"
+                                                            class="text-dark"><i
+                                                                class="fab fa-facebook fs-3"></i></a>
+                                                        <a href="javascript:void(0);"
+                                                            class="text-dark"><i
+                                                                class="fab fa-facebook-messenger fs-3"></i></a>
+                                                        <a href="javascript:void(0);"
+                                                            class="text-dark"><i
+                                                                class="fab fa-twitter fs-3"></i></a>
+                                                        <a href="javascript:void(0);"
+                                                            class="text-dark"><i
+                                                                class="fas fa-envelope fs-3"></i></a>
+                                                        <a href="javascript:void(0);"
+                                                            class="text-dark"><i
+                                                                class="fab fa-linkedin fs-3"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
+                        
                         <!-- <section class="ticket-order">
                             <div class="container-fluid my-5">
                                 <h5 class="mb-4">Sales by Ticket Type</h5>

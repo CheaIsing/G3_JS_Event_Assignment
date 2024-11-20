@@ -11,7 +11,7 @@ function getAllEvent(page = 1, categories = [], searchStr = "") {
   <div class="mb-3">
                                               <div colspan="5">
                                                   <div
-                                                      class="card border-0"
+                                                      class="card border-0 h-100"
                                                       aria-hidden="true">
                                                       <div class="row g-0">
                                                           <div class="col-4">
@@ -56,7 +56,7 @@ function getAllEvent(page = 1, categories = [], searchStr = "") {
                                           <div class="mb-3">
                                               <td colspan="5">
                                                   <div
-                                                      class="card border-0"
+                                                      class="card border-0 h-100"
                                                       aria-hidden="true">
                                                       <div class="row g-0">
                                                           <div class="col-4">
@@ -101,7 +101,7 @@ function getAllEvent(page = 1, categories = [], searchStr = "") {
                                           <div class="mb-3">
                                               <td colspan="5">
                                                   <div
-                                                      class="card border-0"
+                                                      class="card border-0 h-100"
                                                       aria-hidden="true">
                                                       <div class="row g-0">
                                                           <div class="col-4">
@@ -251,7 +251,7 @@ function displayEvents(events) {
       let pill = ((cata.id - 1) % 5) + 1;
       catas += `<div class="pill pill${pill} me-1">${cata.name}</div>`;
     });
-    listE += `<div class="card mb-4">
+    listE += `<div class="card mb-4 cursor-pointer" onclick="getEDetail(this)" data-id="${element.id}">
                             <div class="row g-0">
                                 <div class="col-3 position-relative">
                                     <img src="${thumbnail}"
