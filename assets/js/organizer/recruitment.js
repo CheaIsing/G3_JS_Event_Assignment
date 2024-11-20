@@ -97,14 +97,13 @@ function getAllRecruitmentCard(apiUrl, id, searchE = "", searchV = "all") {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
-      console.log(data);
 
       let rowsHTML = "";
       if (data.length <= 0) {
         document.getElementById("event-tobody").innerHTML = `
           <tr><td colspan=5><div class="text-center">
             <img src="../../assets/img/noFound.png" alt="" height="220px;">
-            <h4 class="text-center text-brand mt-2">No Event to Display...</h4>
+            <h4 class="text-center text-brand mt-2">No Vendor Recruitment to Display...</h4>
           </div></td></tr>`;
         return;
       }

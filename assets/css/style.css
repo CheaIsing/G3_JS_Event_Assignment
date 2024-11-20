@@ -154,9 +154,10 @@ header .search-bar {
 
 header .btn-outline-pink {
     padding: 7px 15px;
-    outline: 1px solid var(--c-brand);
+    outline: 1px solid var(--c-brand) !important;
     background-color: #ff16925a;
     background: transparent;
+    border: 0 !important;
 }
 
 header .btn-pink{
@@ -167,6 +168,7 @@ header .btn-pink{
     position: absolute;
     right: 1px;
     top: 1px;
+    border: 0 !important;
 } 
 header .btn-pink .fa-magnifying-glass{
     color: white !important;
@@ -298,7 +300,8 @@ section.ticket-order .table td {
     outline: 2px solid var(--c-brand);
     border-radius: 5px;
     cursor: pointer;
-    /* transition: 0.3s; */
+    background-color: transparent ;
+    transition: 0.3s;
 }
 
 .btn-outline-pink:hover {

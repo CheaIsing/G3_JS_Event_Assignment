@@ -92,7 +92,7 @@
                             </button>
                         </div>
                         <form action="" class="px-5">
-                            <h2>Create an Event</h2>
+                            <h2>Update an Event</h2>
                             <div class="sub-form-wrapper active p-4 border rounded-4 mt-4 ">
                                 <div class="form-display active upload-cover ">
                                     <h1 class="fw-bold">Upload an image as your thumbnail</h1>
@@ -542,7 +542,7 @@
                                         <button type="button" class="btn-outline-pink" onclick="createNewAgenda()"><i
                                                 class="fa-solid fa-plus"></i> Add a new agenda</button>
                                     </div>
-                                    <div class="upload-img-form">
+                                    <div class="upload-img-form d-none">
                                         <h4 class="fw-bold pb-3">Add your image</h4>
                                         <div
                                             class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
@@ -592,12 +592,12 @@
                                     <h5>Ticket Price*</h5>
                                     <div class="form-floating mb-5">
                                         <input type="number" class="form-control customized-form" id="price"
-                                            placeholder="">
+                                            placeholder="" min="0">
                                         <label for="floatingInput">$ </label>
                                         <div id="lblPrice"></div>
                                     </div>
                                     <h5 class="fw-bold mb-3">Payment Method*</h5>
-                                    <div class="upload-img-form mb-5">
+                                    <div class="upload-img-form mb-5" id="qr-img-container">
                                         <h5>Add your KHQR image*</h5>
 
                                         <div
@@ -606,7 +606,7 @@
                                             <label id="khqrPhotoInputBtn" for="khqrPhotoUpload" class="btn-outline-pink"><i
                                                     class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                                 Image</label>
-                                            <input class="d-none" id="khqrPhotoUpload" type="file"></input>
+                                            <input class="d-none" id="khqrPhotoUpload" accept=".jpg, .jpeg, .png" type="file"></input>
                                             <div class="d-flex">
                                                 <p id="KhqrPhotoName" class="text-secondary pt-3">No file chosen</p>
                                                 <button id="btnRemoveKhqrImg" type="button"

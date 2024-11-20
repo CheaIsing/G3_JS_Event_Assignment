@@ -111,7 +111,7 @@
                                         <label id="imgInputBtn" for="fileUpload" class="btn-outline-pink"><i
                                                 class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                             Image</label>
-                                        <input class="d-none" id="fileUpload" type="file"></input>
+                                        <input class="d-none" id="fileUpload" accept=".jpg, .jpeg, .png" type="file"></input>
                                         <div class="d-flex">
                                             <p id="fileName" class="text-secondary pt-3">No file chosen</p>
                                             <button id="btnRemoveImgFile" type="button"
@@ -542,7 +542,7 @@
                                         <button type="button" class="btn-outline-pink" onclick="createNewAgenda()"><i
                                                 class="fa-solid fa-plus"></i> Add a new agenda</button>
                                     </div>
-                                    <div class="upload-img-form">
+                                    <div class="upload-img-form d-none">
                                         <h4 class="fw-bold pb-3">Add your image</h4>
                                         <div
                                             class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
@@ -647,8 +647,8 @@
             window.descQuill = new Quill('#editor', { theme: 'snow' });
         });
     </script>
-    <script type="module" src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/ultilities.js"></script>
+    <script src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/image_file_input.js"></script>
     <script src="../../assets/js/organizer/create_event.js"></script>
