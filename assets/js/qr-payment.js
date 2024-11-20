@@ -1,4 +1,3 @@
-console.log(sessionStorage.getItem("eventPaidId"));
 
 let eventId = sessionStorage.getItem("eventPaidId");
 
@@ -9,7 +8,6 @@ fetch(`${API_URL}/api/events/${eventId}`, {
 })
   .then((res) => res.json())
   .then((json) => {
-    console.log(json.data, json.data.thumbnail);
     const { data } = json;
     
     document.querySelector(".payment-row").innerHTML = `
@@ -17,19 +15,21 @@ fetch(`${API_URL}/api/events/${eventId}`, {
                 <div class="card" onclick="showEventDetail(${data.id})">
                     <img src="${
                       data.thumbnail.includes("no_photo")
-                        ? "../../assets/img/no-image.png"
+                        ? "../../assets/img/party/party1.png"
                         : data.thumbnail
                     }" class="card-img-top object-fit-cover" alt="event image" height="380px">
                     <div class="card-body">
                         <h5 class="card-title">${data.name}</h5>
-                        <p><i class="bi bi-calendar-event"></i> ${formatCustomDateWithYear(
+                        <p><i class="bi bi-calendar-event text-brand"></i> ${moment(
                           data.start_date
+                        ).format(
+                          "ddd, D MMMM • h:mm A"
                         )}</p>
-                        <p><i class="bi bi-geo-alt"></i> ${data.location}</p>
-                        <p><i class="bi bi-ticket"></i> $${data.ticket_price.toFixed(
+                        <p><i class="bi bi-geo-alt text-brand"></i> ${data.location}</p>
+                        <p><i class="bi bi-ticket text-brand"></i> $${data.ticket_price.toFixed(
                           2
                         )} per ticket</p>
-                        <p><i class="bi bi-people"></i> ${
+                        <p><i class="bi bi-people text-brand"></i> ${
                           data.ticket_opacity - data.ticket_bought
                         } tickets available</p>
                         <p>Join us for an unforgettable day of ${data.name}!</p>
@@ -90,7 +90,6 @@ fetch(`${API_URL}/api/events/${eventId}`, {
       })
        .then((res) => res.json())
        .then(json4 => {
-         console.log(json4);
         for(let ele of json4.data){
           if(ele.event.id == eventId){
             
@@ -149,7 +148,6 @@ fetch(`${API_URL}/api/events/${eventId}`, {
           })
             .then((res) => res.json())
             .then((json2) => {
-              console.log(json2);
               document.getElementById("submitButton").disabled = false;
               document.body.style.cursor = "default";
 

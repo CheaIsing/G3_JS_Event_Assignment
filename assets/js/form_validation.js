@@ -181,13 +181,11 @@ function isValid_vendorBusiness() {
     let valid = true;
     let fileUpload = document.getElementById('fileUpload');
     let postTitle = document.getElementById('postTitle');
-    let servicePrice = document.getElementById("servicePrice");
     let email = document.getElementById('email');
     let phone = document.getElementById('phone');
     // let categorySelect = document.getElementById('categorySelect');
 
     let lblPostTitle = document.getElementById('lblPostTitle');
-    let lblServicePrice = document.getElementById('lblServicePrice');
     let lblEmail = document.getElementById('lblEmail');
     let lblPhone = document.getElementById('lblPhone');
 
@@ -234,28 +232,6 @@ function isValid_vendorBusiness() {
         lblEmail.innerHTML = '';
         email.style.borderColor = '#DEE2E6';
         email.style.borderWidth = '2px';
-    }
-
-    if (servicePrice.value == '') {
-        lblServicePrice.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
-        servicePrice.style.borderColor = 'red';
-        servicePrice.style.borderWidth = '2px';
-        servicePrice.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        servicePrice.focus();
-        valid = false;
-    } else if (servicePrice.value != '' && isNaN(Number(servicePrice.value))) {
-        lblServicePrice.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* Input number only. <i class="fa-regular fa-circle-xmark"></i></span>';
-        servicePrice.style.borderColor = 'red';
-        servicePrice.style.borderWidth = '2px';
-        servicePrice.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        servicePrice.focus();
-        console.log(typeof (40));
-        valid = false;
-    }
-    else {
-        lblServicePrice.innerHTML = '';
-        servicePrice.style.borderColor = '#DEE2E6';
-        servicePrice.style.borderWidth = '2px';
     }
 
     if (postTitle.value == '') {

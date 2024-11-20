@@ -1,5 +1,4 @@
-// const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
+
 //get info event
 let ticketPrice = 0;
 let evCatagoryId;
@@ -7,7 +6,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.has("e")
   ? urlParams.get("e")
   : sessionStorage.getItem("itemID");
-console.log(id);
 
 document.getElementById("btn-copylink-event").onclick = () => {
   copyEventUrlToClipboard(id);
@@ -17,16 +15,37 @@ fetch(apiUrl + "/api/events/" + id)
   .then((res) => res.json())
   .then((json) => {
     let data = json.data;
+
+    let thumbnail =
+      data.thumbnail && !data.thumbnail.includes("no_photo")
+        ? data.thumbnail
+        : "../../assets/img/party/party1.png";
     let tRemain = data.ticket_opacity - data.ticket_bought;
-    let price = data.ticket_price == 0 ? "Free" : `$${data.ticket_price}`;
-    let catagory = data.event_categories.map((cata) => cata.name).join(",&nbsp; ");
+    let price =
+      data.ticket_price == 0 ? "Free" : `$${data.ticket_price.toFixed(2)}`;
+    let catagory = data.event_categories
+      .map((cata) => cata.name)
+      .join(",&nbsp; ");
     let status = checkDateTimeRange(data.start_date, data.end_date);
-    document.getElementById("ev-date").innerHTML = data.start_date.split(" ")[0];
+    document.getElementById("ev-date").innerHTML = moment(
+      data.start_date
+    ).format('"ddd, D MMMM, YYYY"');
+    document.getElementById("ev-img").src = thumbnail;
+    document.getElementById(
+      "hero-img"
+    ).style.backgroundImage = `url(${thumbnail})`;
     document.getElementById("ev-title").innerHTML = data.name;
     document.getElementById("ev-description").innerHTML = data.description;
-    document.getElementById("ev-startDate").innerHTML = moment(data.start_date).format('ddd, D MMMM, YYYY');
-    document.getElementById("ev-endDate").innerHTML = moment(data.end_date).format('ddd, D MMMM, YYYY');
-    document.getElementById('ev-time').innerHTML = moment(data.start_date).format('LT') + ' - ' + moment(data.end_date).format('LT')
+    document.getElementById("ev-startDate").innerHTML = moment(
+      data.start_date
+    ).format("ddd, D MMMM, YYYY");
+    document.getElementById("ev-endDate").innerHTML = moment(
+      data.end_date
+    ).format("ddd, D MMMM, YYYY");
+    document.getElementById("ev-time").innerHTML =
+      moment(data.start_date).format("LT") +
+      " - " +
+      moment(data.end_date).format("LT");
     document.getElementById("ev-status").innerHTML = status;
     document.getElementById("ev-location").innerHTML = data.location;
     document.getElementById("ev-catagory").innerHTML = catagory;
@@ -35,11 +54,11 @@ fetch(apiUrl + "/api/events/" + id)
     document.getElementById("ev-ticket-remain").innerHTML = tRemain;
     document.getElementById("ev-org-pf").src = data.creator.avatar;
     document.getElementById("ev-org-name").innerHTML = data.creator.full_name;
-    document.getElementById("ev-org-name").setAttribute("data-id", data.creator.id);
+    document
+      .getElementById("ev-org-name")
+      .setAttribute("data-id", data.creator.id);
     document.getElementById("ev-price1").innerHTML = price;
     evCatagoryId = data.event_categories[0].id;
-    console.log(evCatagoryId);
-    // console.log(document.getElementById('proceedButton'));
     ticketPrice = data.ticket_price;
     displayRelatedItems(evCatagoryId);
     if (data.ticket_price === 0) {
@@ -53,12 +72,12 @@ fetch(apiUrl + "/api/events/" + id)
       )
         .then((res) => res.json())
         .then((json4) => {
-          console.log(json4);
           for (let ele of json4.data) {
             if (ele.event.id == id) {
               console.log(ele);
               document.getElementById("btn-purchase").disabled = true;
-              document.getElementById("btn-purchase").innerHTML = "Redeemed Ticket";
+              document.getElementById("btn-purchase").innerHTML =
+                "Redeemed Ticket";
             }
           }
         });
@@ -94,149 +113,12 @@ fetch(apiUrl + "/api/events/" + id)
       };
     }
 
-    document.getElementById("summary-total").innerHTML = `
-    <div class="col d-flex flex-column  ">
-                            <h6>Amount</h6>
-                            <p id="ticketAmount" class="
-                            ps-4 ms-1" >1</p>
-                        </div>
-                        <div class="col d-flex flex-column align-items-center justify-content-center">
-                            <h6>Price</h6>
-                            <p id="price">$${data.ticket_price.toFixed(2)}</p>
-                        </div>
-                        <div class="col d-flex flex-column align-items-center justify-content-center">
-                            <h6>Total</h6>
-                            <p id="totalPrice">$${data.ticket_price.toFixed(
-      2
-    )}</p>
-                        </div>`;
-
-    document
-      .getElementById("proceedButton")
-      .addEventListener("click", function () {
-        // Check if a file is selected
-        if (fileInput.files.length === 0) {
-          // Add invalid class to show error message
-          fileInput.classList.add("is-invalid");
-        } else {
-          // Remove any previous invalid class if a file is selected
-
-          fileInput.classList.remove("is-invalid");
-          fileInput.classList.add("is-valid");
-
-          // Proceed with any necessary actions, like submitting the form or moving to the next step
-          alert("Proceeding with the file upload...");
-          const formData = new FormData();
-          formData.append("transaction_file", fileInput.files[0]);
-          document.getElementById("proceedButton").disabled = true;
-
-          fetch(`${apiUrl}/api/tickets/request-buy`, {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${token}`,
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              event_id: parseInt(id),
-              amount: parseInt(
-                document.getElementById("ticketAmount").innerText
-              ),
-            }),
-          })
-            .then((res) => res.json())
-            .then((json) => {
-              console.log(json);
-              document.getElementById("proceedButton").disabled = false;
-              sessionStorage.setItem("transaction_file_id", json.data.id);
-              fetch(`${apiUrl}/api/tickets/transaction-file/${json.data.id}`, {
-                method: "POST",
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                  Accept: "application/json",
-                  // "Content-Type": "application/json",
-                },
-                body: formData,
-              })
-                .then((res) => res.json())
-                .then((json2) => {
-                  console.log(json2);
-                  if (json2.result == true) {
-                    const bootstrapForgotPassModal =
-                      bootstrap.Modal.getInstance(
-                        document.getElementById("paymentModal")
-                      );
-                    bootstrapForgotPassModal.hide(); // Close the modal
-
-                    const bsSucessModal = new bootstrap.Modal(
-                      document.getElementById("sucessModalToggle2")
-                    );
-                    // console.log(document.getElementById("sucessModalToggle2"));
-
-                    bsSucessModal.show();
-                  }
-                });
-            });
-          // console.log(
-          //   Number(document.getElementById("ticketAmount").innerText)
-          // );
-          // console.log(Number(id));
-        }
-      });
-
     document.getElementById("btn-purchase").onclick = () => {
       sessionStorage.setItem("eventPaidId", id);
       location.href = "qr-payment.html";
     };
-
-    // Remove invalid styling when a file is selected
-    fileInput.addEventListener("change", function () {
-      if (fileInput.files.length > 0) {
-        fileInput.classList.remove("is-invalid");
-        fileInput.classList.add("is-valid");
-      } else {
-        fileInput.classList.remove("is-valid");
-        fileInput.classList.add("is-invalid");
-      }
-    });
   });
-// Fixed price per ticket
-const fileInput = document.getElementById("uploadImage");
 
-function updateTotalPrice() {
-  const count = parseInt(document.querySelector(".number").innerText);
-  console.log(count);
-
-  const totalPrice = count * ticketPrice;
-  console.log(totalPrice);
-
-  document.getElementById("totalPrice").innerText = `$${totalPrice.toFixed(2)}`;
-  document.getElementById("ticketAmount").innerText = count; // Update displayed ticket amount
-}
-
-function increaseValue(button, maxCount) {
-  const countElement = button.previousElementSibling;
-  let count = parseInt(countElement.innerText);
-  if (count < maxCount) {
-    count++;
-    countElement.innerText = count;
-    updateTotalPrice();
-  }
-}
-
-function decreaseValue(button) {
-  const countElement = button.nextElementSibling;
-  let count = parseInt(countElement.innerText);
-  if (count == 0) {
-    count = 1;
-    return;
-  }
-  if (count > 1) {
-    count--;
-    countElement.innerText = count;
-    updateTotalPrice();
-  }
-}
 function displayRelatedItems(evCatagoryId) {
   let url = apiUrl + `/api/events?category=${evCatagoryId}&page=1&per_page=10`;
   fetch(url)
@@ -257,32 +139,50 @@ function displayRelatedItems(evCatagoryId) {
       let listE = "";
       data.forEach((element) => {
         let price =
-          element.ticket_price == 0 ? "Free" : `$${element.ticket_price}`;
+          element.ticket_price == 0
+            ? "Free"
+            : `$${element.ticket_price.toFixed(2)} per ticket`;
         let catas = "";
         element.event_categories.forEach((cata) => {
           catas += `<div class="pill${cata.id} me-1">${cata.name}</div>`;
         });
+        let thumbnail =
+          element.thumbnail && !element.thumbnail.includes("no_photo")
+            ? element.thumbnail
+            : "../../assets/img/party/party1.png";
         listE += `
                         <div class="card swiper-slide mx-1 ">
                             <div class="card-content">
-                                <img class="card-img-top" src="../../assets/img/party/party1.png" alt="Title" />
+                                <img class="card-img-top" src="${thumbnail}" alt="Title" />
                                 <div class="card-body">
                                     <div class="d-flex event-pill-wrapper">${catas}</div>
-                                    <h5 class="card-title mt-2 mb-0">${element.name}</h5>
-                                    <p class="card-text"><i class="bi bi-calendar-week text-brand"></i> Start-Date: ${element.start_date}</p>
-                                    <p class="text-secondary"><i class="bi bi-geo-alt text-brand"></i> ${element.location}</p>
-                                    <p><i class="bi bi-ticket-perforated text-brand"></i> Ticket price: ${price}</p>
-                                    <div class="profile d-flex align-items-center">
+                                    <h5 class="card-title mt-2 mb-0">${
+                                      element.name
+                                    }</h5>
+                                    <p class="card-text">${moment(
+                                      element.start_date
+                                    ).format("ddd, D MMMM • h:mm A")}</p>
+                                    <p class="text-secondary"> ${
+                                      element.location
+                                    }</p>
+                                    <p>${price}</p>
+                                    <div class="profile d-flex align-items-center mt-2">
                                         <div class="pf-img me-2">
-                                            <img src="${element.creator.avatar}" alt="">
+                                            <img src="${
+                                              element.creator.avatar
+                                            }" alt="">
                                         </div>
                                         <p>${element.creator.full_name}</p>
                                     </div>
                                 </div>
                                 <div class="card-btn-wrapper">
-                                    <button type="button" class="btn-rounded border-0 add-wish" onclick="addRecuitWishlist(this)"><i
+                                    <button type="button" class="btn-rounded border-0 add-wish" onclick="addWishlist(${
+                                      element.id
+                                    })"><i
                                             class="fa-regular fa-heart"></i></button>
-                                    <button type="button" class="btn-rounded border-0" onclick="shareRecruit(this)"><i
+                                    <button type="button" class="btn-rounded border-0" onclick="copyEventUrlToClipboard(${
+                                      element.id
+                                    })"><i
                                             class="fa-solid fa-arrow-up-right-from-square"></i></button>
                                 </div>
                             </div>
@@ -292,7 +192,6 @@ function displayRelatedItems(evCatagoryId) {
       });
       document.getElementById("related-events").innerHTML = listE;
       setUpWishBtn();
-
     });
 }
 function viewOrgDetail(org) {

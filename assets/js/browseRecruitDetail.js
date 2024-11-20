@@ -4,8 +4,12 @@ fetch(`${API_URL}/api/vendors/${recruitId}`)
   .then((json) => {
     console.log(json);
     document.getElementById('recruit-name').innerHTML = json.data.name
-    document.getElementById("ev-startDate").innerHTML = json.data.start_date
-    document.getElementById("ev-endDate").innerHTML = json.data.end_date
+    document.getElementById("ev-startDate").innerHTML = moment(
+      json.data.start_date
+    ).format("ddd, D MMMM, YYYY");
+    document.getElementById("ev-endDate").innerHTML =  moment(
+      json.data.end_date
+    ).format("ddd, D MMMM, YYYY");
     document.getElementById("ev-catagory").innerHTML = json.data.categories.map(category => category.name).join(", ");
     document.getElementById("ev-location").innerHTML = json.data.location
     document.getElementById("ev-org-pf").src = json.data.creator.avatar
