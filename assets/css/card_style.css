@@ -305,3 +305,11 @@ footer .contact-info .social-media a:hover {
 .vendor-card-wrapper .card-content .duration span{
     font-size: 14px;
 }
+
+/* styling for payment ticket  */
+.upload-transection{
+    width: 100%;
+   height: 150px;
+   border: 2px dotted #e115936c ;
+
+}
