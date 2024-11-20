@@ -15,9 +15,7 @@ body {
     --c-brand: #ff1694;
     --c-brand-light: #ff1692ac;
     --c-brand-dark: #e11594;
-    --c-light-gray: #F8F7FA;
     --text-gray: #403247;
-
 }
 
 .bg-brand-light-50 {
@@ -655,7 +653,6 @@ footer .contact-info .social-media a {
 footer .contact-info .social-media a:hover {
     color: #e11594;
 }
-
 .pill1 {
     background-color: #e1159322;
     padding: 4px 7px !important;
