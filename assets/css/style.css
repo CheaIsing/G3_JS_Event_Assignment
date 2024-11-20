@@ -184,6 +184,7 @@ header .btn-pink {
     position: absolute;
     right: 1px;
     top: 1px;
+    border: 0 !important;
 }
 
 header .btn-pink .fa-magnifying-glass {
