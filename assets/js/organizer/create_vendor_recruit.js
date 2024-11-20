@@ -25,13 +25,58 @@ function createRecruit() {
         }
     }
 
+    let recruitRequirement = document.getElementById('requirement').value;
+    let vendorNeed = document.getElementById('vendorNeed').value;
     //get text from Qill form
 
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
+    let vendorTypeQuillContent = vendorTypeQuill.root.innerHTML;
+    let recruitmentQuillContent = requirementQuill.root.innerHTML;
     // console.log("Editor Content:", descQuillContent);
-    
 
-    let description = `${descQuillContent}`;
+    let description = '';
+    if (vendorNeed == '') {
+        description = `<h2 class="detail-title text-brand fw-bold">Detail</h2> 
+                <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
+                    ${descQuillContent}
+                </div>
+                <h2 class="text-brand fw-bold mt-4">Requirement</h2>
+                <div id="recruit-requiremnt" class="recruit-requiremnt-wrapper">
+                    ${recruitmentQuillContent} 
+                </div>`;
+    }
+    else if (recruitRequirement == '') {
+        description = `<h2 detail-title class="text-brand fw-bold">Detail</h2> 
+                <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
+                    ${descQuillContent}
+                </div>
+                <h2 class="text-brand fw-bold mt-4">Vendor Type needed</h2>
+                <div id="vendor-type-need" class="vendor-type-need-wrapper">
+                    ${vendorTypeQuillContent} <
+                </div>
+                `;
+    }
+    else if (vendorNeed == '' && recruitRequirement == '') {
+        description = `<h2 class="detail-title text-brand fw-bold">Detail</h2> 
+                <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
+                    ${descQuillContent}
+                </div>`;
+    }
+    else {
+        description = `<h2 class="detail-title text-brand fw-bold">Detail</h2> 
+                <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
+                    ${descQuillContent}
+                </div>
+                <h2 class="text-brand fw-bold mt-4">Requirement</h2>
+                <div id="recruit-requiremnt" class="recruit-requiremnt-wrapper">
+                    ${recruitmentQuillContent} 
+                </div>
+                <h2 class="text-brand fw-bold mt-4">Vendor Type needed</h2>
+                <div id="vendor-type-need" class="vendor-type-need-wrapper">
+                    ${vendorTypeQuillContent}
+                </div>
+                `;
+    }
 
 
     let eventData = new FormData();
@@ -48,34 +93,35 @@ function createRecruit() {
 
     })
 
-    fetch(`${apiUrl}/api/vendors`, {
-        method: 'POST',
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "Accept": "application/json;"
-        },
-        body: eventData
-    })
-        .then(res => res.json())
-        .then(json => {
-            alert('Success created');
-
+    if (isValid_Recruit() == true) {
+        fetch(`${apiUrl}/api/vendors`, {
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Accept": "application/json;"
+            },
+            body: eventData
         })
-    // .then(response => {
-    //     if (!response.ok) {
-    //         // Extract the JSON error message from the response
-    //         return response.json().then(errorData => {
-    //             console.error("Error message:", errorData.message);
-    //             console.error("Detailed error:", errorData.data);
+            .then(res => res.json())
+            .then(json => {
+                alert('Success created');
+
+            })
+        // .then(response => {
+        //     if (!response.ok) {
+        //         // Extract the JSON error message from the response
+        //         return response.json().then(errorData => {
+        //             console.error("Error message:", errorData.message);
+        //             console.error("Detailed error:", errorData.data);
 
 
-    //             throw new Error(`HTTP error! Status: ${response.status}`);
-    //         });
-    //     }
-    //     return response.json();
-    // })
-    // .catch(error => console.error('Request Failed:', error));
-
+        //             throw new Error(`HTTP error! Status: ${response.status}`);
+        //         });
+        //     }
+        //     return response.json();
+        // })
+        // .catch(error => console.error('Request Failed:', error));
+    }
 }
 
 // Fetch vendor Categories

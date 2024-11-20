@@ -16,71 +16,34 @@
     </head>
 
     <body>
-        
-        <header class="border" id="header">
-            <div class="container">
+
+        <header class="border px-1" id="header">
+            <div class="container-fluid px-4">
                 <nav class="d-flex align-items-center justify-content-between">
                     <div class="logo">
-                        <a href="homepage.html">
-                            <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                        <a href="../homepage.html">
+                            <img
+                                src="../../assets/img/logo/Prutika_Logo_text(2).png"
+                                alt>
                         </a>
                     </div>
-                    <div class="d-flex align-items-center w-25 position-relative ">
-                        <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
-                        <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
-                            aria-describedby="helpId" placeholder="Search Event " />
-                        <button class="btn-pink text-white"><i
-                                class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
-                        <ul class="search-dropdown position-absolute" id="search-dropdown">
-      
-                        </ul>
-                    </div>
-                    <div class="action-btn d-flex">
-                        <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
-                                href="../../pages/organizer/create-events.html">Create
-                                a
-                                post</a> </button>
-                        <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Browse <i class="fa-solid fa-caret-down text-brand"></i>
-                            <!-- User Icon -->
-                        </a>
-                        <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
-                                class="fa-solid fa-ticket pe-1 text-brand"></i>My
-                            Ticket</a>
-      
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
-                            <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
-                                    events</a></li>
-                            <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
-                                    vendor recruitments</a></li>
-                            <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
-                                    vendor services</a></li>
-      
-                        </ul>
-                    </div>
+
                     <div class="dropdown">
-                        <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
-                            id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#"
+                            class="dropdown-toggle fs-3 text-brand d-flex align-items-center"
+                            role="button"
+                            id="accountDropdown" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <i class="bi bi-person-circle"></i>
                             <!-- User Icon -->
                             <span class="ps-1 fs-6" id="userEmail"></span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                            <li><a class="dropdown-item" href="../organizer/event.html">Manage
-                                    as
-                                    organizer</a></li>
-                            <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
-                                    vendor</a></li>
-                            <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
-                            <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
-                                    Setting</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:void(0);" id="btn-logout">Log
-                                    out</a>
-                            </li>
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="accountDropdown">
+                            <li><a class="dropdown-item"
+                                    href="../homepage.html">Switch to
+                                    Attending</a></li>
+
                         </ul>
                     </div>
                 </nav>
@@ -153,31 +116,25 @@
                                 class="btn btn-brand"
                                 data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
-                                <small><i class="fa-solid fa-plus me-1"></i></small> Add Check-in
+                                <small><i
+                                        class="fa-solid fa-plus me-1"></i></small>
+                                Add Check-in
                             </button>
                         </div>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Ticket Id</th>
+                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Price</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
+                                    <th>Status</th>
+                                    <th>Check-in At</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td>$20.00</td>
-                                    <td>2023-10-01</td>
-                                    <td><button type="button"
-                                            class="btn btn-danger rounded-circle"><i class="fa-regular fa-trash-can"></i></button></td>
-                                </tr>
+                            <tbody id="tbody">
+                                
                             </tbody>
                         </table>
-
                     </section>
                 </div>
             </div>
@@ -194,28 +151,30 @@
                             data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="">
+                        <div class>
                             <label for="exampleInputEmail1"
                                 class="form-label">Input Ticket Id:</label>
                             <input type="text" class="form-control"
                                 id="check-in-input"
                                 aria-describedby="emailHelp">
                         </div>
-                        
+
                     </div>
                     <div class="modal-footer border-0 pt-0">
-                        
+
                         <button type="button"
-                            class="btn btn-brand w-100" id="btn-checked-in">Send</button>
+                            class="btn btn-brand w-100"
+                            id="btn-checked-in">Send</button>
                     </div>
                 </div>
             </div>
         </div>
-        
+
+        <script src="../../assets/js/ultilities.js"></script>
+        <script src="../../assets/js/authentication.js"></script>
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
         <!-- <script type="module" src="../../assets/js/authentication.js"></script> -->
-         <script src="../../assets/js/ultilities.js"></script>
-        <script type="module" src="../../assets/js/organizer/check-in-detail.js"></script>
+        <script src="../../assets/js/organizer/check-in-detail.js"></script>
     </body>
 
 </html>

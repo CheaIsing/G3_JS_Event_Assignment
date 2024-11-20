@@ -12,6 +12,9 @@
         <link rel="stylesheet"
             href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
         <link rel="stylesheet" href="../../assets/css/organizer.css">
+        <link rel="stylesheet" href="../../assets/css/card_style.css">
+        <link rel="stylesheet" href="../../assets/css/lim_style.css">
+
         <!-- <link rel="stylesheet" href="assets/css/browse.css"> -->
         <style>
         .tab-pane .nav-link.active{
@@ -59,64 +62,91 @@
             <div class="container">
                 <nav class="d-flex align-items-center justify-content-between">
                     <div class="logo">
-                        <a href="homepage.html">
-                            <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                        <a href="../homepage.html">
+                            <img
+                                src="../../assets/img/logo/Prutika_Logo_text(2).png"
+                                alt>
                         </a>
                     </div>
-                    <div class="d-flex align-items-center w-25 position-relative ">
-                        <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
-                        <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
-                            aria-describedby="helpId" placeholder="Search Event " />
+                    <div
+                        class="d-flex align-items-center w-25 position-relative ">
+                        <i
+                            class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
+                        <input type="text"
+                            class="form-control search-bar ps-5 w-100 " name
+                            id="searchEvent"
+                            aria-describedby="helpId"
+                            placeholder="Search Event " />
                         <button class="btn-pink text-white"><i
                                 class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
-                        <ul class="search-dropdown position-absolute" id="search-dropdown">
-      
+                        <ul class="search-dropdown position-absolute"
+                            id="search-dropdown">
+
                         </ul>
                     </div>
                     <div class="action-btn d-flex">
-                        <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
+                        <button class="btn-outline-pink ms-3"><i
+                                class="fa-solid fa-plus text-brand"></i> <a
                                 href="../../pages/organizer/create-events.html">Create
                                 a
                                 post</a> </button>
-                        <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
+                        <a href="#" class=" btn-outline-pink ms-3" role="button"
+                            id="browseDropdown"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Browse <i class="fa-solid fa-caret-down text-brand"></i>
+                            Browse <i
+                                class="fa-solid fa-caret-down text-brand"></i>
                             <!-- User Icon -->
                         </a>
-                        <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
+                        <a href="../ticket/myticket.html"
+                            class="btn-outline-pink ms-3 d-flex align-items-center"><i
                                 class="fa-solid fa-ticket pe-1 text-brand"></i>My
                             Ticket</a>
-      
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
-                            <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
+
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="browseDropdown">
+                            <li><a class="dropdown-item"
+                                    href="../browse/browse-event.html">Browse
                                     events</a></li>
-                            <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
+                            <li><a class="dropdown-item"
+                                    href="../browse/browse-recruitment.html">Browse
                                     vendor recruitments</a></li>
-                            <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
+                            <li><a class="dropdown-item"
+                                    href="../browse/browse-vendor.html">Browse
                                     vendor services</a></li>
-      
+
                         </ul>
                     </div>
                     <div class="dropdown">
-                        <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
-                            id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#"
+                            class="dropdown-toggle fs-3 text-brand d-flex align-items-center"
+                            role="button"
+                            id="accountDropdown" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <i class="bi bi-person-circle"></i>
                             <!-- User Icon -->
                             <span class="ps-1 fs-6" id="userEmail"></span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                            <li><a class="dropdown-item" href="../organizer/event.html">Manage
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="accountDropdown">
+                            <li><a class="dropdown-item"
+                                    href="../organizer/event.html">Manage
                                     as
                                     organizer</a></li>
-                            <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
+                            <li><a class="dropdown-item"
+                                    href="../vendor/vendor-business.html">Manage
+                                    as
                                     vendor</a></li>
-                            <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
-                            <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
+                            <li><a class="dropdown-item"
+                                    href="../browse/wishlist.html">Wishlist</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../authentication/accountsetting.html">Account
                                     Setting</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="javascript:void(0);" id="btn-logout">Log
+                            <li><a class="dropdown-item"
+                                    href="javascript:void(0);"
+                                    id="btn-logout">Log
                                     out</a>
                             </li>
                         </ul>
@@ -138,17 +168,20 @@
                                 class="fs-3" id="event-sum">2</div> <small>Total
                                 Events</small></div>
                         <div class="mt-2 d-flex flex-column"><div
-                                class="fs-3" id="vendor-sum">0</div> <small>Total Vendor
+                                class="fs-3" id="vendor-sum">0</div>
+                            <small>Total Vendor
                                 Recruitments</small></div>
                         <div class="mt-2 d-flex flex-column"><div
-                                class="fs-3" id="business-sum">3</div> <small>Total
+                                class="fs-3" id="business-sum">3</div>
+                            <small>Total
                                 Business</small></div>
 
                     </div>
                 </div>
                 <div
                     class="card-footer bg-transparent d-flex justify-content-between p-2 px-3 mt-3">
-                    <div>Email: <span id="email">cheaising@gmail.com</span> </div>
+                    <div>Email: <span id="email">cheaising@gmail.com</span>
+                    </div>
                     <div>Phone: <span id="tel">070304926</span> </div>
                 </div>
             </div>
@@ -181,176 +214,46 @@
                     <!-- Event Tab -->
                     <div class="tab-pane fade show active" id="event"
                         role="tabpanel">
-                        <ul class="nav nav-pills mb-3" id="event-sub-tabs"
-                            role="tablist">
-                            <li class="nav-item me-3" role="presentation">
-                                <button class="nav-link active"
-                                    id="event-upcoming-tab"
-                                    data-bs-toggle="pill"
-                                    data-bs-target="#event-upcoming"
-                                    type="button" role="tab">Upcoming</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="event-past-tab"
-                                    data-bs-toggle="pill"
-                                    data-bs-target="#event-past" type="button"
-                                    role="tab">Past</button>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
+                        <select name class="form-select" id="events-filter" style="width: 136px;">
+                            <option value="all" selected>All</option>
+                            <option value="upcoming">Upcoming</option>
+                            <option value="showing">Showing</option>
+                            <option value="past">Past</option>
+                        </select>
+                        <div class="mt-4 pt-1">
                             <!-- Upcoming Events -->
-                            <div class="tab-pane fade show active"
-                                id="event-upcoming" role="tabpanel">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="card position-relative">
-                                                <a href>
-                                                    <img
-                                                        src="../../assets/img/test-img/cta-event-search-banner.avif"
-                                                        class="card-img-top object-fit-cover "
-                                                        alt="..." height="210">
-                                                </a>
-                                                <button
-                                                    class="i-wish border-0 position-absolute top-0 end-0">
-                                                    <i
-                                                        class="fa-regular fa-heart"></i>
-                                                </button>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">
-                                                        <a href>Annual Charity
-                                                            Gala Annual
-                                                            CharityGalaAnnual
-                                                            Charity Gala</a>
-                                                    </h5>
-                                                    <p class="mb-0 "><i
-                                                            class="fa-regular fa-calendar text-brand me-2"></i><span
-                                                            class="c-loca">November
-                                                            15, 2024 </span></p>
-                                                    <p class="mb-0 "><i
-                                                            class="fa-regular fa-clock text-brand me-2"></i><span>6:00
-                                                            PM-10:00
-                                                            PM</span></p>
-                                                    <p class="card-text"><i
-                                                            class="fa-solid fa-location-dot me-2 text-brand"></i>
-                                                        <small
-                                                            class="text-body-secondary">OCIC,
-                                                            Phnom
-                                                            Penh</small></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                            <div class="row event-card-wrapper">
                                 
                             </div>
-                            <!-- Past Events -->
-                            <div class="tab-pane fade" id="event-past"
-                                role="tabpanel">
-                                <!-- Past Event Card -->
-                                <div class="row g-4">
-                                    <div class="col-4">
-                                        <div class="card position-relative">
-                                            <a href>
-                                                <img
-                                                    src="../../assets/img/test-img/cta-event-search-banner.avif"
-                                                    class="card-img-top object-fit-cover "
-                                                    alt="..." height="210">
-                                            </a>
-                                            <button
-                                                class="i-wish border-0 position-absolute top-0 end-0">
-                                                <i
-                                                    class="fa-regular fa-heart"></i>
-                                            </button>
-                                            <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <a href>Annual Charity
-                                                        Gala Annual
-                                                        CharityGalaAnnual
-                                                        Charity Gala</a>
-                                                </h5>
-                                                <p class="mb-0 "><i
-                                                        class="fa-regular fa-calendar text-brand me-2"></i><span
-                                                        class="c-loca">November
-                                                        15, 2024 </span></p>
-                                                <p class="mb-0 "><i
-                                                        class="fa-regular fa-clock text-brand me-2"></i><span>6:00
-                                                        PM-10:00
-                                                        PM</span></p>
-                                                <p class="card-text"><i
-                                                        class="fa-solid fa-location-dot me-2 text-brand"></i>
-                                                    <small
-                                                        class="text-body-secondary">OCIC,
-                                                        Phnom
-                                                        Penh</small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                            
                         </div>
                     </div>
 
                     <!-- Vendor Recruitment Tab -->
                     <div class="tab-pane fade" id="vendor" role="tabpanel">
-                        <ul class="nav nav-pills mb-3" id="vendor-sub-tabs"
-                            role="tablist">
-                            <li class="nav-item me-3" role="presentation">
-                                <button class="nav-link active"
-                                    id="vendor-upcoming-tab"
-                                    data-bs-toggle="pill"
-                                    data-bs-target="#vendor-upcoming"
-                                    type="button" role="tab">Upcoming</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="vendor-past-tab"
-                                    data-bs-toggle="pill"
-                                    data-bs-target="#vendor-past" type="button"
-                                    role="tab">Past</button>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <!-- Upcoming Vendor Recruitments -->
-                            <div class="tab-pane fade show active"
-                                id="vendor-upcoming" role="tabpanel">
-                                <!-- Upcoming Vendor Recruitment Card -->
-                                 <div class="row g-4"></div>
+                        <select name id="vendors-filter" class="form-select" style="width: 136px;">
+                            <option value="all" selected>All</option>
+                            <option value="upcoming">Upcoming</option>
+                            <option value="showing">Showing</option>
+                            <option value="past">Past</option>
+                        </select>
+                        
+                        <div class="tab-content mt-4 pt-1">
+                                <div class="row recruit-card-wrapper">
+
+                                </div>
                             </div>
-                            <!-- Past Vendor Recruitments -->
-                            <div class="tab-pane fade" id="vendor-past"
-                                role="tabpanel">
-                                <!-- Past Vendor Recruitment Card -->
-                            </div>
+                            
                         </div>
                     </div>
 
                     <!-- Business Tab -->
                     <div class="tab-pane fade" id="business" role="tabpanel">
-                        <ul class="nav nav-pills mb-3" id="business-sub-tabs"
-                            role="tablist">
-                            <li class="nav-item me-3" role="presentation">
-                                <button class="nav-link active"
-                                    id="business-upcoming-tab"
-                                    data-bs-toggle="pill"
-                                    data-bs-target="#business-upcoming"
-                                    type="button" role="tab">Upcoming</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="business-past-tab"
-                                    data-bs-toggle="pill"
-                                    data-bs-target="#business-past"
-                                    type="button" role="tab">Past</button>
-                            </li>
-                        </ul>
+                        
                         <div class="tab-content">
-                            <!-- Upcoming Business Events -->
-                            <div class="tab-pane fade show active"
-                                id="business-upcoming" role="tabpanel">
-                                <!-- Upcoming Business Event Card -->
-                                 <div class="row g-4"></div>
-                            </div>
-                            <!-- Past Business Events -->
-                            <div class="tab-pane fade" id="business-past"
-                                role="tabpanel">
-                                <!-- Past Business Event Card -->
+                                <div class="row vendor-card-wrapper"></div>
                             </div>
                         </div>
                     </div>
@@ -363,7 +266,7 @@
         <script src="../../assets/js/ultilities.js"></script>
         <script src="../../assets/js/authentication.js"></script>
         <script src="../../assets/js/header.js"></script>
-        <script src="assets/js/view-profile.js"></script>
+        <script src="../../assets/js/view-profile.js"></script>
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     </body>
 

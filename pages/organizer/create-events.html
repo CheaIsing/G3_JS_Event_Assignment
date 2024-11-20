@@ -8,56 +8,24 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css" />
-    <link rel="stylesheet" href="../../assets/css/lim_style.css" />
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- quillJs -->
     <link rel="stylesheet" href="../../assets/lib/QuilJs/quill.snow.css">
-
+    <link rel="stylesheet" href="../../assets/css/organizer.css">
+    <link rel="stylesheet" href="../../assets/plugin/tomJs/tom-select.css">
 </head>
 
 <body>
-    <header class="border" id="header">
-        <div class="container">
+    <header class="border px-1" id="header">
+        <div class="container-fluid px-4">
             <nav class="d-flex align-items-center justify-content-between">
                 <div class="logo">
                     <a href="homepage.html">
                         <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
                     </a>
                 </div>
-                <div class="d-flex align-items-center w-25 position-relative ">
-                    <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
-                    <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
-                        aria-describedby="helpId" placeholder="Search Event " />
-                    <button class="btn-pink text-white"><i
-                            class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
-                    <ul class="search-dropdown position-absolute" id="search-dropdown">
-  
-                    </ul>
-                </div>
-                <div class="action-btn d-flex">
-                    <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
-                            href="../../pages/organizer/create-events.html">Create
-                            a
-                            post</a> </button>
-                    <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Browse <i class="fa-solid fa-caret-down text-brand"></i>
-                        <!-- User Icon -->
-                    </a>
-                    <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
-                            class="fa-solid fa-ticket pe-1 text-brand"></i>My
-                        Ticket</a>
-  
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
-                        <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
-                                events</a></li>
-                        <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
-                                vendor recruitments</a></li>
-                        <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
-                                vendor services</a></li>
-  
-                    </ul>
-                </div>
+
+
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
                         id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,20 +34,8 @@
                         <span class="ps-1 fs-6" id="userEmail"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                        <li><a class="dropdown-item" href="../organizer/event.html">Manage
-                                as
-                                organizer</a></li>
-                        <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
-                                vendor</a></li>
-                        <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
-                        <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
-                                Setting</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:void(0);" id="btn-logout">Log
-                                out</a>
-                        </li>
+                        <li><a class="dropdown-item" href="../homepage.html">Switch to Attending</a></li>
+
                     </ul>
                 </div>
             </nav>
@@ -96,7 +52,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="request-ticket.html">
+                        <a href="request-ticket.html" c>
                             <i class="fa-solid fa-ticket"></i>
                             <span class="nav-item">Request Ticket</span>
                         </a>
@@ -109,15 +65,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="group-collaborate.html">
                             <i class="fa-solid fa-user-group"></i>
                             <span class="nav-item">Event Group
                                 Collaborated</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fa-solid fa-user-group"></i>
+                        <a href="profile.html">
+                            <i class="fa-solid fa-user"></i>
                             <span class="nav-item">Organizer
                                 Profile</span>
                         </a>
@@ -140,22 +96,22 @@
                             <div class="sub-form-wrapper active p-4 border rounded-4 mt-4 ">
                                 <div class="form-display active upload-cover ">
                                     <h1 class="fw-bold">Upload an image as your thumbnail</h1>
-                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
+                                    <img class="icon-img" src="../../assets/img/icon/plus.png" alt="">
                                 </div>
                                 <div class="main-form active upload-img-form">
                                     <h4 class="fw-bold pb-3">Add your image</h4>
                                     <div class="d-flex align-items-center mb-3">
-                                        <img class="tip-icon" src="../../assets/lim_img/icon/bulb.png" alt="">
+                                        <img class="tip-icon" src="../../assets/img/icon/bulb.png" alt="">
                                         <p class="p-0 m-0"><span class="fw-bold">Tip:</span> Use photo that attracts
                                             viewers.</p>
                                     </div>
-                                    <div
-                                        class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
+                                    <div class="upload-section d-flex align-items-center justify-content-center p-5 flex-column"
+                                        id="thumbnail-upload-section">
                                         <i id="imgIcon" class="fa-regular fa-image fs-1 text-secondary pb-3"></i>
                                         <label id="imgInputBtn" for="fileUpload" class="btn-outline-pink"><i
                                                 class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                             Image</label>
-                                        <input class="d-none" id="fileUpload" type="file"></input>
+                                        <input class="d-none" id="fileUpload" accept=".jpg, .jpeg, .png" type="file"></input>
                                         <div class="d-flex">
                                             <p id="fileName" class="text-secondary pt-3">No file chosen</p>
                                             <button id="btnRemoveImgFile" type="button"
@@ -180,7 +136,7 @@
                                         <h1 class="fw-bold">Event Title</h1>
                                         <p>Give an attractive brief paragraph about your event.</p>
                                     </div>
-                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
+                                    <img class="icon-img" src="../../assets/img/icon/plus.png" alt="">
                                 </div>
                                 <div class="main-form">
                                     <h4 class="fw-bold pb-3">Event Overview</h4>
@@ -190,15 +146,15 @@
                                             placeholder="">
                                         <label for="floatingInput">Event title <span
                                                 class="text-danger">*</span></label>
+                                        <div id="lblPostTitle"></div>
                                     </div>
 
                                     <div class="category-select d-flex">
                                         <div class="w-25 me-5">
-                                            <h5>Event Categories*</h5>
-                                            <select class="form-select customized-form"
-                                                aria-label="Default select example" multiple id="categorySelect">
-                                                <!-- <option selected>Select a category</option>
-                                                <option value="1">One</option>
+                                            <h5>Event Categories*</h5> <select class="customized-form"
+                                                aria-label="Default select example" multiple name="state[]"
+                                                id="categorySelect" placeholder="Select categories">
+                                                <!-- <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option> -->
                                             </select>
@@ -212,7 +168,7 @@
                                     <div class="title">
                                         <h1 class="fw-bold">Date and Location</h1>
                                     </div>
-                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
+                                    <img class="icon-img" src="../../assets/img/icon/plus.png" alt="">
                                 </div>
                                 <div class="main-form">
                                     <h4 class="fw-bold pb-3">Date and Location</h4>
@@ -222,11 +178,13 @@
                                             <input type="date" class="form-control customized-form" id="startDate"
                                                 placeholder="">
                                             <label for="floatingInput">Start Date </label>
+                                            <div id="lblStartDate"></div>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <input type="time" class="form-control customized-form" id="startTime"
                                                 placeholder="">
                                             <label for="floatingInput">Start Time </label>
+                                            <div id="lblStartTime"></div>
                                         </div>
 
                                     </div>
@@ -235,11 +193,13 @@
                                             <input type="date" class="form-control customized-form" id="endDate"
                                                 placeholder="">
                                             <label for="floatingInput">End Date </label>
+                                            <div id="lblEndDate"></div>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <input type="time" class="form-control customized-form" id="endTime"
                                                 placeholder="">
                                             <label for="floatingInput">End Time </label>
+                                            <div id="lblEndTime"></div>
                                         </div>
                                     </div>
                                     <h5>Location*</h5>
@@ -247,22 +207,22 @@
                                         <div class="form-floating mb-3 me-5">
                                             <input type="text" class="form-control customized-form" id="address1"
                                                 placeholder="">
-                                            <label for="floatingInput">Address 1 </label>
+                                            <label for="floatingInput" id="lblAddress1">Address 1 </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <input type="text" class="form-control customized-form" id="address2"
                                                 placeholder="">
-                                            <label for="floatingInput">Address 2 </label>
+                                            <label for="floatingInput" id="lblAddress2">Address 2 </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <input type="text" class="form-control customized-form" id="city"
                                                 placeholder="">
-                                            <label for="floatingInput">City </label>
+                                            <label for="floatingInput" id="lblCity">City </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <input type="text" class="form-control customized-form" id="province"
                                                 placeholder="">
-                                            <label for="floatingInput">State/Province </label>
+                                            <label for="floatingInput" id="lblProvince">State/Province </label>
                                         </div>
                                         <div class="form-floating mb-3 me-5">
                                             <select id="country" name="country" class="form-control customized-form"
@@ -532,7 +492,7 @@
                                                 <option value="Zambia">Zambia</option>
                                                 <option value="Zimbabwe">Zimbabwe</option>
                                             </select>
-                                            <label for="floatingInput">Country</label>
+                                            <label for="floatingInput" id="lblCountry">Country</label>
                                         </div>
                                     </div>
                                 </div>
@@ -542,13 +502,13 @@
                                     <div class="title">
                                         <h1 class="fw-bold">Add full description</h1>
                                     </div>
-                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
+                                    <img class="icon-img" src="../../assets/img/icon/plus.png" alt="">
                                 </div>
                                 <div class="main-form">
                                     <h4 class="fw-bold pb-3">Description</h4>
                                     <h5>Add full description about your event</h5>
                                     <div class="description mt-3 mb-5">
-                                        <div id="editor"></div>
+                                        <div id="editor" class="bg-white"></div>
                                     </div>
                                     <h5>Add full <span class="text-brand fw-bold">agenda</span> of your event</h5>
                                     <div class="description mt-3 mb-5 ">
@@ -556,8 +516,8 @@
                                         <div id="agenda-wrapper">
                                             <h5 class="fw-bold text-brand mb-3 mt-4">+Agenda 1</h5>
                                             <div class="form-floating agenda mb-3">
-                                                <input type="text" class="form-control customized-form" id="agenda1"
-                                                    placeholder="">
+                                                <input type="text" class="form-control customized-form"
+                                                    id="agendaTitle1" placeholder="">
                                                 <label for="floatingInput">Title</label>
                                             </div>
                                             <div class="form-floating agenda mb-3">
@@ -581,7 +541,7 @@
                                         <button type="button" class="btn-outline-pink" onclick="createNewAgenda()"><i
                                                 class="fa-solid fa-plus"></i> Add a new agenda</button>
                                     </div>
-                                    <div class="upload-img-form">
+                                    <div class="upload-img-form d-none">
                                         <h4 class="fw-bold pb-3">Add your image</h4>
                                         <div
                                             class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
@@ -608,21 +568,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="agenda mb-3 border rounded-2 p-3">
-                                <div class="agenda-content ps-2">
-                                    <p class="text-secondary pb-2">
-                                        ${document.getElementById(`agendaStarttime${i}`).value} -
-                                        ${document.getElementById(`agendaEndtime${i}`).value}</p>
-                                    <h4>${document.getElementById(`agenda${i}`).value}</h4>
-                                    <p>${document.getElementById(`agendaDesc${i}`).value}</p>
-                                </div>
-                            </div>
+
                             <div class="sub-form-wrapper p-4 border rounded-4 mt-4 ">
                                 <div class="form-display">
                                     <div class="title">
                                         <h1 class="fw-bold">Add Ticket</h1>
                                     </div>
-                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
+                                    <img class="icon-img" src="../../assets/img/icon/plus.png" alt="">
                                 </div>
                                 <div class="main-form">
                                     <h4 class="fw-bold pb-3">Set up your event E-tickets</h4>
@@ -633,6 +585,7 @@
                                             placeholder="">
                                         <label for="floatingInput">Ticket Quantity <span
                                                 class="text-danger">*</span></label>
+                                        <div id="lblTicketQuantity"></div>
                                     </div>
 
                                     <h5>Ticket Price*</h5>
@@ -640,24 +593,28 @@
                                         <input type="number" class="form-control customized-form" id="price"
                                             placeholder="">
                                         <label for="floatingInput">$ </label>
+                                        <div id="lblPrice"></div>
                                     </div>
-                                    <h5 class="fw-bold mb-3">Payment Method*</h5>
+                                    <div id="payment-container">
+                                        <h5 class="fw-bold mb-3">Payment Method*</h5>
                                     <div class="upload-img-form mb-5">
                                         <h5>Add your KHQR image*</h5>
 
-                                        <div
-                                            class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
-                                            <i id="imgIcon" class="fa-regular fa-image fs-1 text-secondary pb-3"></i>
-                                            <label id="imgInputBtn" for="khqrImg" class="btn-outline-pink"><i
-                                                    class="fa-solid fa-qrcode fs-5 text-secondary"></i> Upload KHQR
+                                        <div class="upload-section d-flex align-items-center justify-content-center p-5 flex-column"
+                                            id="khqr-upload-section">
+                                            <i id="khqrPhotoIcon"
+                                                class="fa-regular fa-image fs-1 text-secondary pb-3"></i>
+                                            <label id="khqrPhotoInputBtn" for="khqrPhotoUpload"
+                                                class="btn-outline-pink"><i
+                                                    class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                                 Image</label>
-                                            <input class="d-none" id="khqrImg" type="file"></input>
+                                            <input class="d-none" id="khqrPhotoUpload" type="file"></input>
                                             <div class="d-flex">
-                                                <p id="fileName" class="text-secondary pt-3">No file chosen</p>
-                                                <button id="btnRemoveImgFile" type="button"
-                                                    class="ms-1 text-secondary fw-bold">X</button>
+                                                <p id="KhqrPhotoName" class="text-secondary pt-3">No file chosen</p>
+                                                <button id="btnRemoveKhqrImg" type="button"
+                                                    class="ms-1 text-secondary fw-bold bg-transparent">X</button>
                                             </div>
-                                            <img id="imageDisplay" src="" alt="img preview">
+                                            <img id="KhqrPhotoDisplay" src="" alt="img preview">
 
                                         </div>
                                         <div class="img-format pt-3 w-100">
@@ -667,6 +624,7 @@
                                                 <li>Supported image files: .JPEG, .PNG</li>
                                             </ul>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
 
@@ -678,25 +636,31 @@
                         </form>
                     </div>
                 </section>
-
+                <!-- <div id="test"></div> -->
             </div>
         </div>
     </main>
     <!-- quillJS -->
     <script src="../../assets/lib/QuilJs/quill.js"></script>
 
+    <script src="../../assets/js/authentication.js"></script>
+    <script src="../../assets/js/ultilities.js"></script>
+    <script src="../../assets/js/authentication.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/image_file_input.js"></script>
+    <script src="../../assets/js/form_collapse.js"></script>
+    <script src="../../assets/js/form_validation.js"></script>
+    <script src="../../assets/js/organizer/create_event.js"></script>
+    <script src="../../assets/plugin/tomJs/tom-select.complete.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             window.descQuill = new Quill('#editor', { theme: 'snow' });
-            // window.agendaQuill = new Quill('#agendaEditor', { theme: 'snow' });
+        });
+
+        new TomSelect("#categorySelect", {
+            maxItems: 3
         });
     </script>
-    <!-- <script src="../../assets/js/authentication.js"></script> -->
-    <script src="../../assets/js/ultilities.js"></script>
-    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/image_file_input.js"></script>
-    <script src="../../assets/js/organizer/create_event.js"></script>
-    <script src="../../assets/js/form_collapse.js"></script>
 
 </body>
 

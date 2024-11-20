@@ -53,23 +53,34 @@
                 </div>
 
                 <div class="form-floating mb-3 d-grid position-relative">
-                  <input type="password" class="form-control" id="password" placeholder="Password" required>
+                  <input type="password" class="form-control" id="password"
+                    placeholder="Password" required>
                   <label for="password">Password*</label>
-                  <i class="bi bi-eye-slash-fill text-brand position-absolute bg-white px-1" id="togglePassword" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
-                  <div class="invalid-feedback" id="password-error" style="display: none;">
-                    Password must be at least 8 characters, include one uppercase letter, one lowercase letter, and one number.
+                  <i
+                    class="bi bi-eye-slash-fill text-brand position-absolute bg-white px-1"
+                    id="togglePassword"
+                    style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                  <div class="invalid-feedback" id="password-error"
+                    style="display: none;">
+                    Password must be at least 8 characters, include one
+                    uppercase letter, one lowercase letter, and one number.
                   </div>
                 </div>
-                
+
                 <div class="form-floating mb-3 d-grid position-relative">
-                  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                  <input type="password" class="form-control"
+                    id="confirmPassword" placeholder="Confirm Password"
+                    required>
                   <label for="confirmPassword">Confirm Password*</label>
-                  <i class="bi bi-eye-slash-fill text-brand position-absolute bg-white ps-1 pe-1" id="toggleConfirmPassword" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
-                  <div class="invalid-feedback" id="confirm-password-error" style="display: none;">
+                  <i
+                    class="bi bi-eye-slash-fill text-brand position-absolute bg-white ps-1 pe-1"
+                    id="toggleConfirmPassword"
+                    style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                  <div class="invalid-feedback" id="confirm-password-error"
+                    style="display: none;">
                     Passwords do not match.
                   </div>
                 </div>
-                
 
                 <div class="d-grid d-flex mb-3">
                   <div class="line"></div>
@@ -110,6 +121,7 @@
     </main>
 
     <footer></footer>
+    <script src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/ultilities.js"></script>
 
@@ -203,6 +215,8 @@
         }
   
         if (formIsValid) {
+          signUpBtn.disabled = true;
+          document.body.style.cursor = 'wait';
           fetch('https://mps2.chandalen.dev/api/register', {
             method: "POST",
             headers: {
@@ -218,11 +232,14 @@
           })
           .then(res => res.json())
           .then(json => {
+            signUpBtn.disabled = false;
+            document.body.style.cursor = 'default';
             console.log(json);
             showToast(typeof json.data.email != 'string' ? json.data.email[0] : json.message, json.result);
-            if(json.result == true){
+            if(json.result === true){
+              localStorage.setItem('authToken', json.data.token)
               setTimeout(()=>{
-                location.href = "./login.html"; 
+                location.href = "../homepage.html"; 
               }, 1500);
             }
           })
@@ -261,7 +278,7 @@
         }
       });
     </script>
-    
+
     <script src="../../assets/js/authentication.js"></script>
 
   </body>

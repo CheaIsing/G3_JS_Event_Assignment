@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Tickets</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/lim_style.css">
+    <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+</head>
+<body>
+    <header class="border" id="header">
+        <div class="container">
+            <nav class="d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <a href="../homepage.html">
+                        <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt="''">
+                    </a>
+                </div>
+                <div class="d-flex align-items-center w-25 position-relative ">
+                    <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
+                    <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
+                        aria-describedby="helpId" placeholder="Search Event " />
+                    <button class="btn-pink text-white"><i
+                            class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
+                    <ul class="search-dropdown position-absolute" id="search-dropdown">
+  
+                    </ul>
+                </div>
+                <div class="action-btn d-flex">
+                    <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
+                            href="../../pages/organizer/create-events.html">Create
+                            a
+                            post</a> </button>
+                    <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Browse <i class="fa-solid fa-caret-down text-brand"></i>
+                        <!-- User Icon -->
+                    </a>
+                    <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
+                            class="fa-solid fa-ticket pe-1 text-brand"></i>My
+                        Ticket</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
+                        <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
+                                events</a></li>
+                        <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
+                                vendor recruitments</a></li>
+                        <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
+                                vendor services</a></li>
+  
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
+                        id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                        <!-- User Icon -->
+                        <span class="ps-1 fs-6" id="userEmail"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                        <li><a class="dropdown-item" href="../organizer/event.html">Manage
+                                as
+                                organizer</a></li>
+                        <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
+                                vendor</a></li>
+                        <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
+                        <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
+                                Setting</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="javascript:void(0);" id="btn-logout">Log
+                                out</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+<main>
+    <section><div class="container my-5">
+        <h2 class="mb-4">Request Purchase Tickets</h2>
+        <div class="row g-4 payment-row">
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/clients/irving-redesign/Events_Page_Header_2903ed9c-40c1-4f6c-9a69-70bb8415295b.jpg" class="card-img-top object-fit-cover" alt="" height="400px">
+                    <div class="card-body">
+                        <h5 class="card-title">Summer Music Festival 2024</h5>
+                        <p><i class="bi bi-calendar-event"></i> July 15, 2024</p>
+                        <p><i class="bi bi-geo-alt"></i> Central Park, NY</p>
+                        <p><i class="bi bi-ticket"></i> $49.99 per ticket</p>
+                        <p><i class="bi bi-people"></i> 100 tickets available</p>
+                        <p>Join us for an unforgettable day of music and fun!</p>
+                    </div>
+                </div>
+            </div>
+    
+            
+            <div class="col-md-6">
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">Order Summary</h5>
+                        <div class="mb-3">
+                            <label for="ticketQuantity" class="form-label">Number of Tickets:</label>
+                            <select class="form-select" id="ticketQuantity">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <p>Subtotal: <span class="float-end">$249.95</span></p>
+                        <p>Dicount Fee: <span class="float-end">$25.00</span></p>
+                        <h5>Total: <span class="float-end fw-bold">$274.95</span></h5>
+                        <hr>
+                        
+                    <div class="mb-3">
+                        <label class="form-label">Payment QR Code</label>
+                        <button class="btn btn-outline-secondary w-100" onclick="toggleQRCode()"><i class="bi bi-qr-code"></i> Show QR Code</button>
+                        <img src="https://via.placeholder.com/150" alt="QR Code" id="qrCodeImage" class="img-fluid mt-3 d-none">
+                    </div>
+
+                    
+                    <div class="mb-3">
+                        <label for="paymentProof" class="form-label">Upload Payment Proof</label>
+                        <input type="file" class="form-control" id="paymentProof">
+                        <small class="text-muted">Please upload your payment transaction screenshot or PDF</small>
+                    </div>
+                        
+    
+                        
+                        <button class="btn btn-brand w-100" disabled id="submitButton">Submit Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></section>
+</main>
+
+<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/ultilities.js"></script>
+<script src="../../assets/js/authentication.js"></script>
+<script src="../../assets/js/qr-payment.js"></script>
+<script>
+    function toggleQRCode() {
+        const qrCodeImage = document.getElementById('qrCodeImage');
+        qrCodeImage.classList.toggle('d-none');
+    }
+    // Enable submit button only when file is uploaded
+    document.getElementById('paymentProof').addEventListener('change', function () {
+        const submitButton = document.getElementById('submitButton');
+        if (this.files.length > 0) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    });
+</script>
+</body>
+</html>

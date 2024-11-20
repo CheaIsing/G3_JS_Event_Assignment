@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,46 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/browse.css">
     <link rel="stylesheet" href="../../assets/css/card_style.css">
+    <link rel="stylesheet" href="../../assets/css/lim_style.css">
     <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        html,
+        body {
+          position: relative;
+          height: 100%;
+        }
+    
+        body {
+          background: #eee;
+          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          color: #000;
+          margin: 0;
+          padding: 0;
+        }
+    
+        .swiper {
+          width: 100%;
+          height: 100%;
+        }
+    
+        .swiper-slide {
+          /* text-align: center;
+          font-size: 18px;
+          background: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center; */
+        }
+    
+        .swiper-slide img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      </style>
 </head>
 
 <body class="p-eventDetail">
@@ -17,7 +57,7 @@
         <div class="container">
             <nav class="d-flex align-items-center justify-content-between">
                 <div class="logo">
-                    <a href="homepage.html">
+                    <a href="../homepage.html">
                         <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
                     </a>
                 </div>
@@ -28,7 +68,7 @@
                     <button class="btn-pink text-white"><i
                             class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
                     <ul class="search-dropdown position-absolute" id="search-dropdown">
-  
+
                     </ul>
                 </div>
                 <div class="action-btn d-flex">
@@ -44,7 +84,6 @@
                     <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
                             class="fa-solid fa-ticket pe-1 text-brand"></i>My
                         Ticket</a>
-  
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
                         <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
                                 events</a></li>
@@ -52,7 +91,7 @@
                                 vendor recruitments</a></li>
                         <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
                                 vendor services</a></li>
-  
+
                     </ul>
                 </div>
                 <div class="dropdown">
@@ -93,13 +132,13 @@
             </p>
         </div>
         <section class="hero mb-5 ">
-             <div class="container p-4 px-5 text-center bg-white">
-                <div class="content text-center" >
+            <div class="container p-4 px-5 text-center bg-white">
+                <div class="content text-center">
                     <p class="text-brand-dark p-0 fs-18" id="ev-date"></p>
                     <h1 class="display-6 fw-bold card-title" id="ev-title"></h1>
-                    <p class="px-4 text-secondary mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus beatae rem harum doloremque eius quis quia dolorem recusandae optio, pariatur iure alias voluptatibus eaque quibusdam, illo, laborum deleniti? Nesciunt?</p>
+                    <p class="px-4 text-secondary mt-3">Join Us an Unforgetable Event day</p>
                 </div>
-             </div>
+            </div>
         </section>
         <section class="brief-detail">
             <div class="container">
@@ -107,7 +146,8 @@
                     <div class="col-8 pe-5 ps-0 ">
                         <div class="content">
                             <div class="mb-3" style="height: 400px;">
-                                <img id="ev-img" src="../../assets/img/test-img/cta-event-search-banner.avif" alt="" class="object-fit-cover w-100 h-100">
+                                <img id="ev-img" src="../../assets/img/test-img/cta-event-search-banner.avif" alt=""
+                                    class="object-fit-cover w-100 h-100">
                             </div>
                             <div class="mb-3 p-3" id="ev-description"></div>
                         </div>
@@ -118,8 +158,10 @@
                                 <div class="d-flex py-3 px-4  align-items-center justify-content-between">
                                     <h4 class="m-0">Event Detail</h4>
                                     <div>
-                                        <button class="btn btn-outline-brand add-wish"><i class="fa-regular fa-heart"></i></button>
-                                        <button class="btn btn-brand ms-2"><i class="fa-solid fa-share"></i></button>
+                                        <button class="btn btn-outline-brand add-wish"><i
+                                                class="fa-regular fa-heart"></i></button>
+                                        <button class="btn btn-brand ms-2" id="btn-copylink-event"><i
+                                                class="fa-solid fa-share"></i></button>
                                     </div>
                                 </div>
                                 <hr>
@@ -130,7 +172,7 @@
                                             <h6 class="m-0">Start Date</h6>
                                             <p class="m-0 text-body-secondary" id="ev-startDate"></p>
                                         </div>
-                                    </li>                                
+                                    </li>
                                     <li class="d-flex py-3">
                                         <i class="fa-regular fa-calendar-xmark fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
@@ -139,60 +181,60 @@
                                         </div>
                                     </li>
                                     <li class="d-flex py-3">
+                                        <i class="fa-regular fa-calendar-xmark fs-2 fw-light ps-2 text-brand w-15"></i>
+                                        <div>
+                                            <h6 class="m-0">Time</h6>
+                                            <p class="m-0 text-body-secondary" id="ev-time"></p>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex py-3">
                                         <i class="fa-regular fa-circle-check fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Status</h6>
                                             <p class="m-0 text-body-secondary" id="ev-status"></p>
                                         </div>
-                                    </li>                                
+                                    </li>
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15"></i>
-                                        <div>
+                                        <div class="">
                                             <h6 class="m-0">Location</h6>
                                             <p class="m-0 text-body-secondary" id="ev-location"></p>
                                         </div>
-                                    </li>                                
-                                    <!-- <li class="d-flex py-3">
-                                        <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15"></i>
-                                        <div>
-                                            <h6 class="m-0">Type</h6>
-                                            <p class="m-0 text-body-secondary">Indoor</p>
-                                        </div>
-                                    </li>                                 -->
+                                    </li>                          
                                     <li class="d-flex py-3">
                                         <i class="fa-regular fa-folder-open fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
-                                            <h6 class="m-0">Catagory</h6>
+                                            <h6 class="m-0">Category</h6>
                                             <p class="m-0 text-body-secondary" id="ev-catagory"></p>
                                         </div>
-                                    </li>                                
+                                    </li>
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-tag fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Price</h6>
                                             <p class="m-0 text-body-secondary" id="ev-price"></p>
                                         </div>
-                                    </li>                              
+                                    </li>
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-ticket fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Ticket Opacity</h6>
                                             <p class="m-0 text-body-secondary" id="ev-ticket-op"></p>
                                         </div>
-                                    </li>                              
+                                    </li>
                                     <li class="d-flex py-3">
                                         <i class="fa-solid fa-ticket fs-2 ps-2 text-brand w-15"></i>
                                         <div>
                                             <h6 class="m-0">Remaining Tickets</h6>
                                             <p class="m-0 text-body-secondary" id="ev-ticket-remain"></p>
                                         </div>
-                                    </li>                              
+                                    </li>
                                 </ul>
                             </div>
                             <div class=" bg-white shadow-light mb-4 py-3 px-4">
                                 <h4 class="fw-semibold mb-3">Organized By</h4>
                                 <div class="d-flex align-items-center" >
-                                    <img src="../../assets/img/3607424.jpg" id="ev-org-pf" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+                                    <img src="" id="ev-org-pf" alt="Image" style="width: 60px; height: 60px; border-radius: 50%;">
                                     <a href="javascript: void(0)"  class=" fs-4 fw-semibold m-0 ms-3" id="ev-org-name" onclick="viewOrgDetail(this)"></a>
                                     </div>
                                 </div>
@@ -201,30 +243,33 @@
                                 <div class="bg-white p-3 ">
                                     <div class="mb-3 d-flex justify-content-between align-items-center">
                                         <h3 class="m-0">Price</h3>
-                                        <p class="m-0"><span class="fs-5 fw-semibold text-brand" id="ev-price1">10$</span> / Ticket</p>
+                                        <p class="m-0"><span class="fs-5 fw-semibold text-brand" id="ev-price1">$</span> / Ticket</p>
                                     </div>
-                                    <button class="w-100 btn btn-brand" data-bs-target="#paymentModal"
-                                    data-bs-toggle="modal">Purchase</button>
+                                    <button class="w-100 btn btn-brand" id="btn-purchase">Purchase</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </div>
         </section>
         <section class="related-section">
             <div class="container">
                 <div class="title text-center mb-5">
                     <h1 class="display-5 mb-3">Related <span class="text-brand fw-semibold">Event</span></h1>
-                    <p >
+                    <p>
                         <i class="fa-solid fa-calendar-days fs-5"></i>
                     </p>
                     <span class="text-secondary ">You might also love these events.</span>
                 </div>
-                <div class="row event-card-wrapper" id="related-events">
-                    
-                    
-                </div>        
+                <!-- <div class="row event-card-wrapper" id="related-events"></div> -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper row flex-nowrap event-card-wrapper " id="related-events">
+                      
+                    </div>
+                    <!-- <div class="swiper-pagination"></div> -->
+                  </div>
                 <!-- <div class="row">
                     <div class="col-4">
                         <div class="card shadow border-0 position-relative">
@@ -295,111 +340,38 @@
                 </div> -->
             </div>
         </section>
-        
+
     </main>
-    <footer>
-        footer
-    </footer>
+    <footer></footer>
 
-    <!-- Modal -->
-    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-between">
-                    <h5 class="modal-title" id="paymentModalLabel">
-                        <a href="../../index.html"><img
-                            src="../../assets/img/Pruttikar_Text_Logo2.png" alt
-                            style="width: 150px;"></a>
-                    </h5>
-                    <button type="button" class="btn btn-lg" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="fs-2">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5 class="text-center fs-2">SCAN HERE</h5>
-                    <h5 class="text-center"> FOR PAYMENT</h5>
-                    <div class="text-center mb-3">
-                        <img src="../../assets/img/QR_Ticket-removebg-preview.png" alt="QR Code" class="img-fluid" width="50%">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ticketCount">Tickets</label>
-                        <div class="quantity-field d-flex" >
-                            <button 
-                              class="value-button decrease-button btn btn-outline-brand" 
-                              onclick="decreaseValue(this)" 
-                              title="Azalt">-</button>
-                              <div class="number w-100 text-center border d-flex align-items-center justify-content-center rounded-3 mx-2">1</div>
-                            <button 
-                              class="value-button increase-button btn btn-outline-brand" 
-                              onclick="increaseValue(this, 5)"
-                              title="Arrtır"
-                            >+
-                            </button>
-                          </div>
-                    </div>
-
-                    <div class="row mt-3" id="summary-total">
-                        
-                    </div>
-                    <div class="upload-transection text-center p-4">
-                        <button type="button" class="btn"><i class="bi bi-cloud-arrow-up fs-2"></i></button>
-                        <p>Upload Transection</p>
-                    </div>
-
-                    <!-- <div class="form-group">
-                        <label for="uploadImage">Upload Image</label>
-                        <input type="file" class="form-control" id="uploadImage" required>
-                        <div class="invalid-feedback">Please upload an image before proceeding.</div>
-                    </div> -->
-                    
-                </div>
-                <div class="ms-auto p-3">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-brand" id="proceedButton">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="sucessModalToggle2" aria-hidden="true"
-        aria-labelledby="sucessModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-4">
-                        <div class="card-body text-center">
-                            <img src="../../assets/img/checked.png" class="rounded-circle mb-3"
-                                alt="">
-                            <h2 class="mt-4">Request Ticket Payment was process
-                                sucessufully</h2>
-                            <p class="mt-5 mb-5">A Payment has been made for the
-                                ticket of 2 Ticket <br>
-                                Wait for the approving from the Event Organizer.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-</div>
+    <script src="../../assets/lib/momentjs/moment.min.js"></script>
 
     <script src="../../assets/js/ultilities.js"></script>
-        <script src="../../assets/js/authentication.js"></script>
-        <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/authentication.js"></script>
+    <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/footer.js"></script>
 
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/browseEvent-detail.js">   
+    <script src="../../assets/js/browseEvent-detail.js">
     </script>
-        <script>
-                
-        </script>
-    
+
+    <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3.7,
+    //   centeredSlides: false,
+      spaceBetween:0,
+      grabCursor: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+
     <!-- <script>
         // Script to handle ticket count increment and decrement
         document.getElementById('decrement').addEventListener('click', function () {

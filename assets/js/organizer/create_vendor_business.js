@@ -1,6 +1,6 @@
 const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem("authToken");
-console.log(token);
+// const token = localStorage.getItem("authToken");
+// console.log(token);
 
 function createBusiness() {
     // Create Vendor Business form variables
@@ -52,54 +52,38 @@ function createBusiness() {
     eventData.append('tiktok', tiktok);
     eventData.append('business_category_ids', JSON.stringify(categoriesList));
 
-    eventData.forEach((element, key) => {
-        console.log(element, key);
+    // eventData.forEach((element, key) => {
+    //     console.log(element, key);
 
-    })
+    // })
 
-    fetch(`${apiUrl}/api/businesses`, {
-        method: 'POST',
-        headers: {
-            Authorization: `Bearer ${token}`,
-            "Accept": "application/json;",
-        },
-        body: eventData
-    })
-    //     // .then(res => res.json())
-    //     // .then(json => {
-    //     //     alert('Success created');
-
-    //     // })
-        // .then(response => {
-        //     if (!response.ok) {
-        //         // Extract the JSON error message from the response
-        //         return response.json().then(errorData => {
-        //             console.error("Error message:", errorData.message);
-        //             console.error("Detailed error:", errorData.data);
-
-
-        //             throw new Error(`HTTP error! Status: ${response.status}`);
-        //         });
-        //     }
-        //     return response.json();
-        // })
-        // .catch(error => console.error('Request Failed:', error));
+    if(isValid_vendorBusiness() == true){
+        fetch(`${apiUrl}/api/businesses`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Accept": "application/json;",
+            },
+            body: eventData
+        })
+            .then(res => res.json())
+            .then(json => {
+                location.href = "vendor-business.html";                
+            })
+            // .then(response => {
+            //     if (!response.ok) {
+            //         // Extract the JSON error message from the response
+            //         return response.json().then(errorData => {
+            //             console.error("Error message:", errorData.message);
+            //             console.error("Detailed error:", errorData.data);
+    
+    
+            //             throw new Error(`HTTP error! Status: ${response.status}`);
+            //         });
+            //     }
+            //     return response.json();
+            // })
+            // .catch(error => console.error('Request Failed:', error));
+    }
 
 }
-// Fetch business Categories
-fetch(`${apiUrl}/api/business-categories`, {
-    headers: {
-        Authorization: `Bearer ${token}`
-    }
-})
-    .then(res => res.json())
-    .then(json => {
-        const { data } = json;
-        let eventCatSelect = document.getElementById('categorySelect');
-        data.forEach(element => {
-            let opt = document.createElement('option');
-            opt.value = element.id;
-            opt.innerHTML = element.name;
-            eventCatSelect.appendChild(opt);
-        });
-    })

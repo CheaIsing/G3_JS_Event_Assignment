@@ -15,48 +15,16 @@
     </head>
 
     <body>
-        <header class="border" id="header">
-            <div class="container">
+        <header class="border px-1" id="header">
+            <div class="container-fluid px-4">
                 <nav class="d-flex align-items-center justify-content-between">
                     <div class="logo">
-                        <a href="homepage.html">
+                        <a href="../homepage.html">
                             <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
                         </a>
                     </div>
-                    <div class="d-flex align-items-center w-25 position-relative ">
-                        <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
-                        <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
-                            aria-describedby="helpId" placeholder="Search Event " />
-                        <button class="btn-pink text-white"><i
-                                class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
-                        <ul class="search-dropdown position-absolute" id="search-dropdown">
-      
-                        </ul>
-                    </div>
-                    <div class="action-btn d-flex">
-                        <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
-                                href="../../pages/organizer/create-events.html">Create
-                                a
-                                post</a> </button>
-                        <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Browse <i class="fa-solid fa-caret-down text-brand"></i>
-                            <!-- User Icon -->
-                        </a>
-                        <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
-                                class="fa-solid fa-ticket pe-1 text-brand"></i>My
-                            Ticket</a>
-      
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
-                            <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
-                                    events</a></li>
-                            <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
-                                    vendor recruitments</a></li>
-                            <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
-                                    vendor services</a></li>
-      
-                        </ul>
-                    </div>
+                    
+                    
                     <div class="dropdown">
                         <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
                             id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,20 +33,8 @@
                             <span class="ps-1 fs-6" id="userEmail"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                            <li><a class="dropdown-item" href="../organizer/event.html">Manage
-                                    as
-                                    organizer</a></li>
-                            <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
-                                    vendor</a></li>
-                            <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
-                            <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
-                                    Setting</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:void(0);" id="btn-logout">Log
-                                    out</a>
-                            </li>
+                            <li><a class="dropdown-item" href="../homepage.html">Switch to Attending</a></li>
+                            
                         </ul>
                     </div>
                 </nav>
@@ -146,28 +102,8 @@
                                             class="d-inline-flex align-items-center">
                                             <i
                                                 class="bi bi-calendar-event me-2"></i>
-                                            <span id="event-date">Sat, Nov 23, 2024, 10:00
-                                                AM</span>
+                                            <span id="event-date"></span>
                                         </div>
-                                    </div>
-                                    <div class="dropstart">
-                                        <button class="btn btn-light btn-lg"
-                                            type="button" id="dropdownMenu1"
-                                            data-bs-toggle="dropdown"
-                                            aria-expanded="false">
-                                            <i class="bi bi-three-dots"></i>
-                                        </button>
-                                        <ul
-                                            class="dropdown-menu dropdown-menu-end"
-                                            aria-labelledby="dropdownMenu1">
-                                            <li><a class="dropdown-item"
-                                                    href="#">Edit</a></li>
-                                            <li><a class="dropdown-item"
-                                                    href="#">Delete</a></li>
-                                            <li><a class="dropdown-item"
-                                                    href="#">View
-                                                    Detail</a></li>
-                                        </ul>
                                     </div>
                                 </div>
                                 <div class="row my-4">
@@ -241,21 +177,10 @@
                                                                 class="col-auto">
                                                                 <div id="total-attendant"
                                                                     class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                                    40 people
+                                                                    
                                                                 </div>
                                                             </div>
-                                                            <div class="col">
-                                                                <div
-                                                                    class="progress progress-sm mr-2">
-                                                                    <div
-                                                                        class="progress-bar bg-info"
-                                                                        role="progressbar"
-                                                                        style="width: 50%"
-                                                                        aria-valuenow="50"
-                                                                        aria-valuemin="0"
-                                                                        aria-valuemax="100"></div>
-                                                                </div>
-                                                            </div>
+                                                            
                                                         </div>
                                                     </div>
                                                     <div class="col-auto">
@@ -280,7 +205,7 @@
                                                             Participate</div>
                                                         <div id="not-attending"
                                                             class="h5 mb-0 font-weight-bold text-gray-800">
-                                                            18 people</div>
+                                                            </div>
                                                     </div>
                                                     <div class="col-auto">
                                                         <i
@@ -311,72 +236,33 @@
                                                     <input type="text"
                                                         class="form-control"
                                                         id="eventLink"
-                                                        value="https://www.eventlink.com/e/chrismas-tickets-104673..."
+                                                        value=""
                                                         readonly>
                                                     <button
                                                         class="btn btn-outline-primary"
                                                         type="button"
-                                                        onclick="copyLink()">Copy
+                                                        id="btn-copylink">Copy
                                                         link</button>
                                                 </div>
                                             </div>
                                             <div class="d-flex gap-3">
-                                                <a href="#" class="text-dark"><i
+                                                <a href="javascript:void(0);" class="text-dark"><i
                                                         class="fab fa-facebook fs-3"></i></a>
-                                                <a href="#" class="text-dark"><i
+                                                <a href="javascript:void(0);" class="text-dark"><i
                                                         class="fab fa-facebook-messenger fs-3"></i></a>
-                                                <a href="#" class="text-dark"><i
+                                                <a href="javascript:void(0);" class="text-dark"><i
                                                         class="fab fa-twitter fs-3"></i></a>
-                                                <a href="#" class="text-dark"><i
+                                                <a href="javascript:void(0);" class="text-dark"><i
                                                         class="fas fa-envelope fs-3"></i></a>
-                                                <a href="#" class="text-dark"><i
+                                                <a href="javascript:void(0);" class="text-dark"><i
                                                         class="fab fa-linkedin fs-3"></i></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
-                                        <h5 class="mb-3">Publish settings</h5>
-                                        <p class="mb-3">Is your event public or
-                                            private?</p>
-
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input"
-                                                type="radio"
-                                                name="publishOptions"
-                                                id="publicOption" checked>
-                                            <label class="form-check-label"
-                                                for="publicOption">
-                                                <strong>Public</strong>
-                                                <br>
-                                                <small class="text-muted">Shared
-                                                    on Website and search
-                                                    engines</small>
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check">
-                                            <input class="form-check-input"
-                                                type="radio"
-                                                name="publishOptions"
-                                                id="privateOption">
-                                            <label class="form-check-label"
-                                                for="privateOption">
-                                                <strong>Private</strong>
-                                                <br>
-                                                <small class="text-muted">Shared
-                                                    only with a select
-                                                    audience</small>
-                                            </label>
-                                        </div>
-
-                                        <button class="btn btn-brand my-3"
-                                            type="button">Publish Now</button>
-
-                                    </div>
                                 </div>
                             </div>
                         </section>
-                        <section class="ticket-order">
+                        <!-- <section class="ticket-order">
                             <div class="container-fluid my-5">
                                 <h5 class="mb-4">Sales by Ticket Type</h5>
                                 <table class="table align-middle">
@@ -418,11 +304,12 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </section>
+                        </section> -->
                     </div>
                 </div>
             </div>
         </main>
+        <script src="../../assets/js/ultilities.js"></script>
         <script src="../../assets/js/authentication.js"></script>
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
         <script src="../../assets/js/organizer/event-detail.js">

@@ -7,10 +7,9 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/lib/bootstrap-icon/bootstrap-icons.css">
     <link rel="stylesheet" href="../assets/css/organizer.css">
-    <link rel="stylesheet" href="../assets/css/lim_style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
@@ -24,8 +23,8 @@
                 </div>
                 <div class="d-flex align-items-center w-25 position-relative ">
                     <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
-                    <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
-                        aria-describedby="helpId" placeholder="Search Event " />
+                    <input type="text" class="form-control search-bar ps-5 w-100 " id="searchEvent"
+                        placeholder="Search Event " />
                     <button class="btn-pink text-white"><i
                             class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
                     <ul class="search-dropdown position-absolute" id="search-dropdown">
@@ -33,10 +32,10 @@
                     </ul>
                 </div>
                 <div class="action-btn d-flex">
-                    <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
-                            href="../pages/organizer/create-events.html">Create
-                            a
-                            post</a> </button>
+                    <button class="btn-outline-pink ms-3" data-bs-toggle="modal" data-bs-target="#createPostModal"><i
+                            class="fa-solid fa-plus text-brand"></i> Create
+                        a
+                        post</button>
                     <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Browse <i class="fa-solid fa-caret-down text-brand"></i>
@@ -61,7 +60,7 @@
                         id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                         <!-- User Icon -->
-                        <span class="ps-1 fs-6" id="userEmail"></span>
+                        <span class="ps-1" id="userEmail"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
                         <li><a class="dropdown-item" href="./organizer/event.html">Manage
@@ -69,7 +68,7 @@
                                 organizer</a></li>
                         <li><a class="dropdown-item" href="./vendor/vendor-business.html">Manage as
                                 vendor</a></li>
-                        <li><a class="dropdown-item" href="./wishlist.html">Wishlist</a></li>
+                        <li><a class="dropdown-item" href="./browse/wishlist.html">Wishlist</a></li>
                         <li><a class="dropdown-item" href="./authentication/accountsetting.html">Account
                                 Setting</a></li>
                         <li>
@@ -83,6 +82,66 @@
             </nav>
         </div>
     </header>
+    <!-- Modal -->
+    <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border border-0">
+                    <h1 class="modal-title fs-5" id="createPostModalLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center">What do you want to create ?</h5>
+                    <div class="row p-3">
+                        <div class="col-4">
+                            <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                                onclick="goCreatePost('event')">
+                                <div class="icon">
+                                    <i class="fs-4 text-brand fa-regular fa-calendar-days"></i>
+                                </div>
+                                <h6 class="fw-bold">
+                                    Create an event
+                                </h6>
+                                <span class="post-choice-detail text-center text-secondary">
+                                    Create an event which will be publiced on website for free.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                                onclick="goCreatePost('recruit')">
+                                <div class="icon">
+                                    <i class="fs-4 text-brand fa-solid fa-magnifying-glass-dollar"></i>
+                                </div>
+                                <h6 class="fw-bold">
+                                    Create a recuitment
+                                </h6>
+                                <span class="post-choice-detail text-center text-secondary">
+                                    Post what you need and recuit vendors for your events organising.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                                onclick="goCreatePost('business')">
+                                <a href=""></a>
+                                <div class="icon">
+                                    <i class="fs-4 text-brand fa-solid fa-shop"></i>
+                                </div>
+                                <h6 class="fw-bold">
+                                    Create a business post
+                                </h6>
+                                <span class="post-choice-detail text-center text-secondary">
+                                    Promote yourself and your businesses as an event service provider
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <main id="main">
         <div class="overlay"></div>
@@ -195,7 +254,7 @@
                             </div>
                             <div class="btn-see-more-wrapper d-flex justify-content-center">
                                 <button class="btn-outline-pink py-2 mb-3" onclick="showMoreEvent()"
-                                    id="btn-seemore-event">see more</button>
+                                    id="btn-seemore-event">See Mores</button>
                                 <div class="spinner-border text-brand" id="eventPageSpinner" role="status"></div>
                             </div>
                         </div>
@@ -237,8 +296,7 @@
                             </div>
                             <div class="btn-see-more-wrapper d-flex justify-content-center">
                                 <button class="btn-outline-pink py-2 mb-3" onclick="showMoreRecruit()"
-                                    id="btn-seemore-recruit">see
-                                    more</button>
+                                    id="btn-seemore-recruit">See Mores</button>
                                 <div class="spinner-border text-brand" id="recruitPageSpinner" role="status"></div>
                             </div>
 
@@ -281,8 +339,8 @@
                             </div>
                             <div class="btn-see-more-wrapper d-flex justify-content-center">
                                 <button class="btn-outline-pink py-2 mb-3" onclick="showMoreVendor()"
-                                    id="btn-seemore-vendor">see
-                                    more</button>
+                                    id="btn-seemore-vendor">See
+                                    Mores</button>
                                 <div class="spinner-border text-brand" role="status" id="vendorPageSpinner"></div>
                             </div>
                         </div>
@@ -291,64 +349,57 @@
             </div>
         </section>
 
-        </main>
-        <footer>
-            <div class="container">
-                <div class="row py-5">
-                    <div class="col-4">
-                        <a href="homepage.html">
-                            <img src="" alt="">
-                            <img
-                                src="../assets/lim_img/logo/Prutika_Logo_text(2).png"
-                                alt class="logo">
-                        </a>
-                        <div class="information pe-5">
-                            <p>Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Reprehenderit nam blanditiis
-                                iusto
-                                quos, commodi voluptate sequi! Ad laborum rem,
-                                quam soluta aperiam accusamus rerum numquam
-                                veniam, blanditiis hic, omnis facilis.</p>
-                        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-4">
+                    <a href="homepage.html">
+                        <img src="" alt="">
+                        <img src="../assets/img/logo/Prutika_Logo_text(2).png" alt class="logo">
+                    </a>
+                    <div class="information pe-5">
+                        <p>"Your seamless platform for event management, where creativity meets efficiency. We simplify planning, coordinate every detail, and bring your vision to life for unforgettable experiences that inspire.”</p>
                     </div>
-                    <div
-                        class="col-4 contact-info d-flex flex-column justify-content-end align-items-start ps-5">
-                        <p>Tel: +855-12-123-456</p>
-                        <p><a href="mailto:goole.gmail.com">Email:
-                                pruttikaKH@gmail.com</a></p>
-                        <div class="social-media">
-                            <a href><i class="fa-brands fa-facebook"></i></a>
-                            <a href><i
-                                    class="fa-brands fa-square-x-twitter"></i></a>
-                            <a href><i class="fa-brands fa-telegram"></i></a>
-                            <a href><i class="fa-brands fa-instagram"></i></a>
-                        </div>
+                </div>
+                <div class="col-4 contact-info d-flex flex-column justify-content-end align-items-start ps-5">
+                    <p>Tel: +855-12-123-456</p>
+                    <p><a href="mailto:goole.gmail.com">Email:
+                            pruttikaKH@gmail.com</a></p>
+                    <div class="social-media">
+                        <a href><i class="fa-brands fa-facebook"></i></a>
+                        <a href><i class="fa-brands fa-square-x-twitter"></i></a>
+                        <a href><i class="fa-brands fa-telegram"></i></a>
+                        <a href><i class="fa-brands fa-instagram"></i></a>
                     </div>
-                    <div class="col-4 quick-link pt-3">
-                        <h4 class="py-4 text-brand">Quick Links</h4>
-                        <div class="d-flex">
-                            <div class="d-flex flex-column w-50 pe-5">
-                                <a href>Contact us</a>
-                                <a href>Events</a>
-                                <a href>About us</a>
-                            </div>
-                            <div class="d-flex flex-column w-50 pe-5">
-                                <a href>Our Policy</a>
-                                <a href>Our Team</a>
-                                <a href>FAQs</a>
-                            </div>
+                </div>
+                <div class="col-4 quick-link pt-3">
+                    <h4 class="py-4 text-brand">Quick Links</h4>
+                    <div class="d-flex">
+                        <div class="d-flex flex-column w-50 pe-5">
+                            <a href>Contact us</a>
+                            <a href>Events</a>
+                            <a href>About us</a>
+                        </div>
+                        <div class="d-flex flex-column w-50 pe-5">
+                            <a href>Our Policy</a>
+                            <a href>Our Team</a>
+                            <a href>FAQs</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-    </body>
-    <script src="../assets/js/ultilities.js"></script>
-    <script src="../assets/js/authentication.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/header.js"></script>
-    <script src="../assets/js/organizer/get_all_post.js"></script>
-    <script>
+        </div>
+    </footer>
+</body>
+<script src="../assets/lib/momentjs/moment.min.js"></script>
+<script src="../assets/js/ultilities.js"></script>
+<script src="../assets/js/authentication.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/header.js"></script>
+<!-- <script src="../assets/js/footer.js"></script> -->
+<script src="../assets/js/organizer/get_all_post.js"></script>
+<script>
 
 </script>
 

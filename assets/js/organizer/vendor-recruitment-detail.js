@@ -1,7 +1,7 @@
 const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem("authToken");
+// const token = localStorage.getItem("authToken");
 
-let id = localStorage.getItem("vendorId");
+let id = sessionStorage.getItem("vendorId");
 console.log(id);
 
 // getEventDetail(apiUrl, id);
@@ -45,9 +45,14 @@ function getVendorRecruitmentDetail(apiUrl, id) {
       const vendorId = data.id;
       console.log(data);
       document.getElementById("vendor-title").innerHTML = name;
-      document.getElementById("vendor-categories").innerHTML = categories;
-      document.getElementById("start-end-date").innerHTML =
-        start_date + " - " + end_date;
+      document.getElementById(
+        "start-end-date"
+      ).innerHTML = `${formatCustomDateWithYear(
+        start_date
+      )} - ${formatCustomDateWithYear(end_date)}, ${formatToHour(
+        start_date
+      )} - ${formatToHour(end_date)}`;
+
       document.getElementById("location").innerHTML = location;
 
       fetch(`${apiUrl}/api/vendors/candidates/${vendorId}`, {
@@ -59,6 +64,15 @@ function getVendorRecruitmentDetail(apiUrl, id) {
       })
         .then((res) => res.json())
         .then((json) => {
+          if(json.data.length <= 0){
+            document.getElementById("vendor-request-tbody").innerHTML = `
+            <tr><td colspan=5><div class="text-center">
+              <img src="../../assets/img/noFound.png" alt="" height="220px;">
+              <h4 class="text-center text-brand mt-2">No Vendor Request to Display...</h4>
+            </div></td></tr>
+            `
+            return;
+          }
           let rowsHTML = "";
 
           json.data.forEach((ele) => {

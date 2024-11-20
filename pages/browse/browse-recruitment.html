@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/browse.css">
+    <link rel="stylesheet" href="../../assets/css/card_style.css">
+    <link rel="stylesheet" href="../../assets/css/lim_style.css">
+    <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
 </head>
 
 <body class="p-browseEvent">
@@ -16,7 +19,7 @@
         <div class="container">
             <nav class="d-flex align-items-center justify-content-between">
                 <div class="logo">
-                    <a href="homepage.html">
+                    <a href="../homepage.html">
                         <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
                     </a>
                 </div>
@@ -27,7 +30,7 @@
                     <button class="btn-pink text-white"><i
                             class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
                     <ul class="search-dropdown position-absolute" id="search-dropdown">
-  
+
                     </ul>
                 </div>
                 <div class="action-btn d-flex">
@@ -43,7 +46,7 @@
                     <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
                             class="fa-solid fa-ticket pe-1 text-brand"></i>My
                         Ticket</a>
-  
+
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
                         <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
                                 events</a></li>
@@ -51,7 +54,7 @@
                                 vendor recruitments</a></li>
                         <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
                                 vendor services</a></li>
-  
+
                     </ul>
                 </div>
                 <div class="dropdown">
@@ -84,7 +87,7 @@
     <main>
         <div class="container">
             <p class="d-flex h-100 align-items-center my-auto">
-                <a href="" class="home-link">Home</a>
+                <a href="../homepage.html" class="home-link">Home</a>
                 <i class="fa-solid fa-chevron-right mx-2 "></i>
                 <span class="text-brand">Browse Vendor Recruitment</span>
             </p>
@@ -98,135 +101,58 @@
                 <div class="row position-relative">
                     <div class="col-3 position-sticky top-0">
                         <div class="filter">
-                            <h6 class="ps-4 py-2 m-0">Filter</h6>
+                            <h4 class="p-2">Filter</h4>
                             <hr>
-                            <hr>
-                            <hr>
-                            <div class="ps-4 py-2">
-                                <h6>Vendor Categories Needed</h6>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Photography
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Decorations
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Sound/AV
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Catering
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Others
-                                    </label>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="ps-4 py-2">
-                                <h6>Type</h6>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Online
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Offline-Indoor
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="">
-                                    <label class="form-check-label" for="">
-                                        Offline-Outdoor
-                                    </label>
-                                </div>
-                            </div>
+                            <h6 class="ps-3 pt-2">Categories</h6>
+                            <div class="ps-3 py-2" id="categories-container"></div>
                             <hr>
                             <div class="px-4 py-2">
                                 <h6>Date</h6>
                                 <div class="mb-3 d-flex align-items-center">
-                                    <label class="form-label w-25" for="">
+                                    <label class="form-label w-25 mb-0 me-1" for="">
                                         From
                                     </label>
                                     <input class="form-control" type="date" name="from" value="" id="">
                                 </div>
                                 <div class="mb-3 d-flex align-items-center">
-                                    <label class="form-label w-25" for="">
+                                    <label class="form-label w-25 mb-0 me-4 " for="">
                                         To
                                     </label>
                                     <input class="form-control" type="date" name="from" value="" id="">
                                 </div>
                             </div>
-                            <hr>
+                            <hr> 
                             <div class=" my-3 me-4 text-end">
-                                <button type="button" class="btn btn-outline-secondary">Clear All</button>
-                                <Button type="button" class="btn btn-brand">Search</Button>
+                                <button type="button" class="btn btn-outline-secondary btn-clear-all">Clear All</button>
+                                <Button type="button" class="btn btn-brand" id="btn-search-filter">Search</Button>
                             </div>
                         </div>
                     </div>
                     <div class="col-9">
                         <div class="search-result w-100">
-                            <h5 class="mt-2 mb-4">
-                                <span class="text-brand">9</span>
-                                Results
-                            </h5>
-                            <div class="card-list">
-                                <div class="card mb-4">
-                                    <div class="row g-0">
-                                        <!-- <div class="col-md-3 position-relative">
-                                            <img src="../../assets/img/test-img/cta-event-search-banner.avif"
-                                                class="img-fluid rounded-start " alt="...">
-                                            <div class="i-wish position-absolute top-0 end-0">
-                                                <i class="fa-regular fa-heart"></i>
-                                            </div>
-                                        </div> -->
-                                        <div class="col-12">
-                                            <div class="card-body py-4">
-                                                <h4 class="card-title">
-                                                    <a href="">Annual Charity Gala Annual Charity
-                                                        Gala
-                                                        Annual Charity Gala</a>
-                                                </h4>
-                                                <p class="card-text mb-0">
-                                                    <i class="fa-solid fa-user-group text-brand w-20 "></i><span class="fs-18">Photography</span>
-                                                </p>
-                                                <div class="card-loca">
-                                                    <i class="fa-regular fa-calendar text-brand w-20"></i><span
-                                                        class="c-loca">November 15, 2024 </span>
-                                                    <i class="fa-regular fa-clock text-brand ms-3 me-2"></i>6:00
-                                                    PM-10:00 PM
-                                                </div>
-                                                <p class="card-text"><i
-                                                        class="fa-solid fa-location-dot text-brand w-20"></i><small
-                                                        class="text-body-secondary">OCIC, Phnom Penh</small></p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="d-flex align-items-center justify-content-between mt-2 mb-4">
+                                <h5 class=" show-re mb-0">
+                                    <span class="text-brand" id="result-card"></span>
+                                    Results
+                                </h5>
+                                <div class="d-flex align-items-center " style="width: 380px;">
+                                    <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute ms-3"></i>
+                                    <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="search-input"
+                                        aria-describedby="helpId" placeholder="Search Recruitment... " />
+                                    
                                 </div>
                             </div>
-                            <button class="btn btn-outline-brand ms-auto">See More</button>
+                            <div class="card-recruit-list">
+                             
+                            </div>
+                            <div id="pagination"></div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="recmt-event">
+        <!-- <section class="recmt-event">
             <div class="container">
                 <h2 class="mb-4 fw-bold">Recommend For You</h2>
                 <div class="recmt-items">
@@ -244,11 +170,13 @@
                                     <h5 class="card-title fs-4">
                                         <a href="">Annual Charity Gala Annual CharityGalaAnnual Charity Gala</a>
                                     </h5>
-                                    <p class="mb-1 "><i class="fa-solid fa-user-group text-brand w-20 "></i><span class="">PhotoGraphy</span></p>
+                                    <p class="mb-1 "><i class="fa-solid fa-user-group text-brand w-20 "></i><span
+                                            class="">PhotoGraphy</span></p>
                                     <p class="mb-1 "><i class="fa-regular fa-calendar text-brand  w-20 fs-5"></i><span
-                                            class="c-loca">November 15, 2024 </span> 
-                                    
-                                    <p class="card-text"><i class="fa-solid fa-location-dot fs-5 w-20 text-brand"></i><small
+                                            class="c-loca">November 15, 2024 </span>
+
+                                    <p class="card-text"><i
+                                            class="fa-solid fa-location-dot fs-5 w-20 text-brand"></i><small
                                             class="text-body-secondary">OCIC, Phnom Penh</small></p>
                                 </div>
                             </div>
@@ -256,29 +184,18 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main>
-    <footer>
-        footer
-    </footer>
+    <footer></footer>
+
+    <script src="../../assets/lib/momentjs/moment.min.js"></script>
 
     <script src="../../assets/js/ultilities.js"></script>
-        <script src="../../assets/js/authentication.js"></script>
-        <script src="../../assets/js/header.js"></script>
-
-
+    <script src="../../assets/js/authentication.js"></script>
+    <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/footer.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const wishButtons = document.querySelectorAll('.i-wish'); // Select all buttons with the class i-wish
-
-            wishButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    button.classList.toggle('clicked'); // Toggle the clicked class for each button
-                });
-            });
-        });
-    </script>
+    <script src="../../assets/js/browse-recuitment.js"></script>
 </body>
 
 </html>
