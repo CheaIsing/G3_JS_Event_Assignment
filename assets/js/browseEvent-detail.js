@@ -33,9 +33,8 @@ fetch(apiUrl + "/api/events/" + id)
   .then((json) => {
     let data = json.data;
 
-    console.log(data);
     let tRemain = data.ticket_opacity - data.ticket_bought;
-    let price = data.ticket_price == 0 ? "Free" : `$${data.ticket_price}`;
+    let price = data.ticket_price == 0 ? "Free" : `$${data.ticket_price.toFixed(2)}`;
     let catagory = data.event_categories
       .map((cata) => cata.name)
       .join(",&nbsp; ");
@@ -44,8 +43,9 @@ fetch(apiUrl + "/api/events/" + id)
       data.start_date.split(" ")[0];
     document.getElementById("ev-title").innerHTML = data.name;
     document.getElementById("ev-description").innerHTML = data.description;
-    document.getElementById("ev-startDate").innerHTML = data.start_date;
-    document.getElementById("ev-endDate").innerHTML = data.end_date;
+    document.getElementById("ev-startDate").innerHTML = moment(data.start_date).format('ddd, D MMMM, YYYY');
+    document.getElementById("ev-endDate").innerHTML = moment(data.end_date).format('ddd, D MMMM, YYYY');
+    document.getElementById('ev-time').innerHTML = moment(data.start_date).format('LT') + ' - ' + moment(data.end_date).format('LT')
     document.getElementById("ev-status").innerHTML = status;
     document.getElementById("ev-location").innerHTML = data.location;
     document.getElementById("ev-catagory").innerHTML = catagory;

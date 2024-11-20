@@ -4,9 +4,6 @@ const itemsPerPage = 10; // Number of events per page
 let selectedCategories = []; // Store selected category IDs
 let selectedComingFilter = null;
 window.onload = () => {
-  // getAllCatagory(
-  //   "/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search"
-  // );
   getAllEvent(currentPage);
   loadCategories();
 };
@@ -217,6 +214,7 @@ function getAllEvent(page = 1, categories = [], searchStr = "") {
   fetch(url)
     .then((res) => res.json())
     .then((json) => {
+      
       displayEvents(json.data);
       setupPagination(json.paginate);
       let resultNum = json.paginate.total;
@@ -224,6 +222,13 @@ function getAllEvent(page = 1, categories = [], searchStr = "") {
     });
 }
 function displayEvents(events) {
+  if(events.length == 0){
+
+    return document.getElementById("list-card").innerHTML = `<div class="text-center w-100 my-4">
+              <img src="../../assets/img/noFound.png" alt="..." height="220px;">
+              <h4 class="text-center text-brand mt-2">No Event to Display...</h4>
+            </div>`
+  }
   events.forEach((element) => {
     element.status = checkDateTimeRange(element.start_date, element.end_date);
   });
@@ -234,7 +239,7 @@ function displayEvents(events) {
   });
   let listE = "";
   events.forEach((element) => {
-    let price = element.ticket_price == 0 ? "Free" : `$${element.ticket_price}`;
+    let price = element.ticket_price == 0 ? "Free" : `$${element.ticket_price.toFixed(2)}`;
     let catas = "";
     element.event_categories.forEach((cata) => {
       let pill = ((cata.id - 1) % 5) + 1;
@@ -264,7 +269,7 @@ function displayEvents(events) {
                                         </div>
                                         <div class="mb-2 d-flex align-items-center fs-18">
                                             <i class="fa-regular fa-calendar text-brand me-2 "></i><small
-                                                class="text-body-secondary m-0">${element.start_date}</small>
+                                                class="text-body-secondary m-0">${moment(element.start_date).format('ddd, MMM D • h:mm A')}</small>
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <i class="fa-solid fa-location-dot me-2 text-brand"></i> <small

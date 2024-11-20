@@ -1,6 +1,4 @@
-// import { showToast } from "../ultilities.js";
-const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
+
 
 function getMe(searchE = "", searchV = "all") {
   // Show placeholder cards while loading
@@ -155,7 +153,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
         }
 
         filterData.forEach((ele) => {
-          fetch(`${apiUrl}/api/tickets/request-buy?event=${ele.id}`, {
+          fetch(`${apiUrl}/api/tickets?page=1&per_page=10000&event=${ele.id}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -163,6 +161,12 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
             .then((res) => res.json())
             .then((json2) => {
               let status = "";
+
+              let dataCheckin = json2.data.filter(element=>element.event.id == ele.id)
+              let dataCheckedIn = dataCheckin.filter(element=>element.status == 2)
+
+              let checkedInCount = dataCheckedIn.length
+              
 
               const startDate = new Date(ele.start_date.replace(" ", "T"));
               const endDate = new Date(ele.end_date.replace(" ", "T"));
@@ -177,7 +181,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
 
               rowsHTML += `<tr class="border-bottom position-relative">
                 <td>
-                  <a href="javascript:void(0)" class="stretched-link text-decoration-none bg-transparent link-request-detail"
+                  <a class="stretched-link text-decoration-none bg-transparent link-request-detail"
                      style="color: inherit;" data-event-detail-id="${ele.id}">
                     <div class="d-flex align-items-center">
                       <div class="me-3">
@@ -194,7 +198,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                   </a>
                 </td>
                 <td>${status}</td>
-                <td>${json2.data.length} request</td>
+                <td>${checkedInCount} / ${dataCheckin.length}</td>
               </tr>`;
 
               document.getElementById("event-tobody").innerHTML = rowsHTML;
@@ -202,7 +206,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
               document.querySelectorAll('.link-request-detail').forEach(link=>{
                 link.onclick = ()=>{
                   let id = link.dataset.eventDetailId;
-                  sessionStorage.setItem('requestDetailId', id);
+                  sessionStorage.setItem('checkinDetailId', id);
                   location.href = 'check-in-ticket-detail.html'
                 }
               })

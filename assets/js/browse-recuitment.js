@@ -139,6 +139,7 @@ function getAllRecruitments(page, searchStr='') {
   )
     .then((res) => res.json())
     .then((json) => {
+      document.getElementById("result-card").innerHTML = json.paginate.total;
       if (json.data.length === 0) {
         recruitList.innerHTML = `
           <div><div colspan=5><div class="text-center">
@@ -147,8 +148,6 @@ function getAllRecruitments(page, searchStr='') {
           </div></div></div>`;
         return;
       }
-      console.log(json);
-      document.getElementById("result-card").innerHTML = json.paginate.total;
 
       recruitList.innerHTML = '';
       json.data.forEach((element, index) => {
@@ -174,9 +173,7 @@ function getAllRecruitments(page, searchStr='') {
               <div class="card-text py-3 card-description">${element.description}</div>
               <div class="duration">
                 <span class="text-secondary">
-                  <i class="bi bi-calendar fs-6 text-brand"></i> ${formatCustomDateWithYear(
-                    element.start_date
-                  )}
+                  <i class="bi bi-calendar fs-6 text-brand"></i> ${moment(element.start_date).format('ddd, D MMMM, YYYY')}
                 </span><br>
                 <span class="location">
                   <i class="bi bi-geo-alt fs-6 text-brand"></i> ${

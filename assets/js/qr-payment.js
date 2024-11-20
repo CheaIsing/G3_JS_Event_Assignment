@@ -14,7 +14,7 @@ fetch(`${API_URL}/api/events/${eventId}`, {
     
     document.querySelector(".payment-row").innerHTML = `
     <div class="col-md-6">
-                <div class="card">
+                <div class="card" onclick="showEventDetail(${data.id})">
                     <img src="${
                       data.thumbnail.includes("no_photo")
                         ? "../../assets/img/no-image.png"
@@ -63,7 +63,7 @@ fetch(`${API_URL}/api/events/${eventId}`, {
                         ${data.ticket_price > 0 ? `<div class="mb-3">
                         <label class="form-label">Payment QR Code</label>
                         <button class="btn btn-outline-brand w-100" onclick="toggleQRCode()"><i class="bi bi-qr-code"></i> Show QR Code</button>
-                        <img src="https://via.placeholder.com/150" alt="QR Code" id="qrCodeImage" class="img-fluid mt-3 d-none">
+                        <img src="${data.qr_img}" width="200" alt="QR Code" id="qrCodeImage" class="img-fluid mt-3 d-none">
                     </div>
 
                     
@@ -187,6 +187,9 @@ fetch(`${API_URL}/api/events/${eventId}`, {
             if (json1.result === true) {
               showToast("Redeem Ticket Sucessfully", json1.result);
               document.getElementById("btn-purchase").disabled = true;
+              setTimeout(() => {
+                history.back();
+              }, 1500);
             } else {
               showToast(json1, json1.result);
             }
