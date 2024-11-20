@@ -316,7 +316,7 @@ function loadVendorCards() {
     newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${element.id})">
                     <div class="card-body d-flex">
                         <div class="thumbnail">
-                            <img src="${thumbnail}" alt="">
+                            <img src="${thumbnail}" alt="...">
                         </div>
                         <div class="detail">
                             <h5 class="card-title mb-0 fw-bold">${element.name}</h5>
@@ -371,17 +371,17 @@ function loadVendorCards() {
 
 function showEventDetail(id) {
   sessionStorage.setItem("itemID", id);
-  location.href = "http://127.0.0.1:5503/pages/browse/event-detail.html";
+  location.href = "/pages/browse/event-detail.html";
 }
 
 function showRecruitDetail(id) {
-  sessionStorage.setItem("itemID", id);
-  location.href = "http://127.0.0.1:5503/pages/browse/event-detail.html";
+  sessionStorage.setItem("recruitDetailId", id);
+  location.href = "/pages/browse/recruitment-detail.html";
 }
 
 function showServiceDetail(id) {
-  sessionStorage.setItem("itemID", id);
-  location.href = "http://127.0.0.1:5503/pages/browse/event-detail.html";
+  sessionStorage.setItem("businessDetailId", id);
+  location.href = "/pages/browse/business-detail.html";
 }
 
 function goCreatePost(type = "") {

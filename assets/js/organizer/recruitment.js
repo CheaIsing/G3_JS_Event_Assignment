@@ -1,6 +1,4 @@
-// import { showToast } from "../ultilities.js";
-const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem("authToken");
+
 
 function getMe(searchE = "", searchV = "all") {
   // Show placeholder cards while loading
@@ -164,63 +162,71 @@ function getAllRecruitmentCard(apiUrl, id, searchE = "", searchV = "all") {
           } else {
             status = `<span class="rounded-pill text-danger"><i class="fa-solid fa-hourglass-half me-1"></i>Past</span>`;
           }
-          rowsHTML += `<tr class="border-bottom position-relative"">
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <div class="me-3">
-                                  <div class="text-center text-brand fw-bold">${formatDateStringMonth(
-                                    ele.start_date
-                                  )}</div>
-                        <div class="text-center text-brand fw-bold">${formatDateStringDay(
-                          ele.start_date
-                        )}</div>
-                                </div>
-                                <div class="ms-3">
-                                  <h5 class="mb-0">
-                                    <a href="javascript:void(0)" 
-                                        data-id="${ele.id}"
-                                       class="stretched-link text-decoration-none bg-transparent link-details"
-                                       style="color: inherit;">
-                                       ${ele.name}
-                                    </a>
-                                  </h5>
-                                  <p class="text-muted mb-0">
-                                    ${ele.location}
-                                  </p>
-                                  <p class="text-muted mb-0 small">
-                                  ${formatCustomDateWithYear(
-                                    ele.start_date
-                                  )} - ${formatCustomDateWithYear(
-            ele.end_date
-          )}, ${formatToHour(ele.start_date)} - ${formatToHour(ele.end_date)}
-                                  </p>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              ${status}
-                            </td>
-                            <td>
-                              <div>5 people</div>
-                            </td>
-                            <td>
-                              <div class="dropstart position-relative z-3">
-                                <button class="btn btn-brand" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
-                                  <i class="bi bi-three-dots"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu1">
-                                  <li><a class="dropdown-item" onclick="editRecruit(${ele.id})">Edit</a></li>
-                                  <li><a class="dropdown-item delete-vendor-recruitment-post" data-vendor-recruitment-id="${
-                                    ele.id
-                                  }" href="javascript:void(0);">Delete</a></li>
-                                  <li><a class="dropdown-item" onclick="viewRecruitDetail(${ele.id})">View</a></li>
-                                </ul>
-                              </div>
-                            </td>
-                          </tr>`;
-        });
 
-        document.getElementById("event-tobody").innerHTML = rowsHTML;
+          fetch(`${apiUrl}/api/vendors/candidates/${ele.id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(response => response.json())
+          .then(json => {
+            const { data } = json;
+            const candidateCount = data.length;
+            rowsHTML += `<tr class="border-bottom position-relative"">
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="me-3">
+                                    <div class="text-center text-brand fw-bold">${formatDateStringMonth(
+                                      ele.start_date
+                                    )}</div>
+                          <div class="text-center text-brand fw-bold">${formatDateStringDay(
+                            ele.start_date
+                          )}</div>
+                                  </div>
+                                  <div class="ms-3">
+                                    <h5 class="mb-0">
+                                      <a href="javascript:void(0)" 
+                                          data-id="${ele.id}"
+                                         class="stretched-link text-decoration-none bg-transparent link-details"
+                                         style="color: inherit;">
+                                         ${ele.name}
+                                      </a>
+                                    </h5>
+                                    <p class="text-muted mb-0">
+                                      ${ele.location}
+                                    </p>
+                                    <p class="text-muted mb-0 small">
+                                    ${formatCustomDateWithYear(
+                                      ele.start_date
+                                    )} - ${formatCustomDateWithYear(
+              ele.end_date
+            )}, ${formatToHour(ele.start_date)} - ${formatToHour(ele.end_date)}
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                ${status}
+                              </td>
+                              <td>
+                                <div>${candidateCount} apply</div>
+                              </td>
+                              <td>
+                                <div class="dropstart position-relative z-3">
+                                  <button class="btn btn-brand" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots"></i>
+                                  </button>
+                                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu1">
+                                    <li><a class="dropdown-item" onclick="editRecruit(${ele.id})">Edit</a></li>
+                                    <li><a class="dropdown-item delete-vendor-recruitment-post" data-vendor-recruitment-id="${
+                                      ele.id
+                                    }" href="javascript:void(0);">Delete</a></li>
+                                    <li><a class="dropdown-item" onclick="viewRecruitDetail(${ele.id})">View</a></li>
+                                  </ul>
+                                </div>
+                              </td>
+                            </tr>`;
+                            document.getElementById("event-tobody").innerHTML = rowsHTML;
 
         document.querySelectorAll(".link-details").forEach((link) => {
           link.onclick = () => {
@@ -241,6 +247,11 @@ function getAllRecruitmentCard(apiUrl, id, searchE = "", searchV = "all") {
               deleteVendorRecruitmentPost(id);
             };
           });
+          })
+
+        });
+
+        
       }
 
       renderCard(); // Initial render

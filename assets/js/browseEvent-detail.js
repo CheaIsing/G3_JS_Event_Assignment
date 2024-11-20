@@ -18,15 +18,25 @@ fetch(apiUrl + "/api/events/" + id)
   .then((json) => {
     let data = json.data;
     let tRemain = data.ticket_opacity - data.ticket_bought;
-    let price = data.ticket_price == 0 ? "Free" : `$${data.ticket_price}`;
-    let catagory = data.event_categories.map((cata) => cata.name).join(",&nbsp; ");
+    let price = data.ticket_price == 0 ? "Free" : `$${data.ticket_price.toFixed(2)}`;
+    let catagory = data.event_categories
+      .map((cata) => cata.name)
+      .join(",&nbsp; ");
     let status = checkDateTimeRange(data.start_date, data.end_date);
-    document.getElementById("ev-date").innerHTML = data.start_date.split(" ")[0];
+    document.getElementById("ev-date").innerHTML =
+      data.start_date.split(" ")[0];
     document.getElementById("ev-title").innerHTML = data.name;
     document.getElementById("ev-description").innerHTML = data.description;
-    document.getElementById("ev-startDate").innerHTML = moment(data.start_date).format('ddd, D MMMM, YYYY');
-    document.getElementById("ev-endDate").innerHTML = moment(data.end_date).format('ddd, D MMMM, YYYY');
-    document.getElementById('ev-time').innerHTML = moment(data.start_date).format('LT') + ' - ' + moment(data.end_date).format('LT')
+    document.getElementById("ev-startDate").innerHTML = moment(
+      data.start_date
+    ).format("ddd, D MMMM, YYYY");
+    document.getElementById("ev-endDate").innerHTML = moment(
+      data.end_date
+    ).format("ddd, D MMMM, YYYY");
+    document.getElementById("ev-time").innerHTML =
+      moment(data.start_date).format("LT") +
+      " - " +
+      moment(data.end_date).format("LT");
     document.getElementById("ev-status").innerHTML = status;
     document.getElementById("ev-location").innerHTML = data.location;
     document.getElementById("ev-catagory").innerHTML = catagory;
@@ -35,11 +45,11 @@ fetch(apiUrl + "/api/events/" + id)
     document.getElementById("ev-ticket-remain").innerHTML = tRemain;
     document.getElementById("ev-org-pf").src = data.creator.avatar;
     document.getElementById("ev-org-name").innerHTML = data.creator.full_name;
-    document.getElementById("ev-org-name").setAttribute("data-id", data.creator.id);
+    document
+      .getElementById("ev-org-name")
+      .setAttribute("data-id", data.creator.id);
     document.getElementById("ev-price1").innerHTML = price;
     evCatagoryId = data.event_categories[0].id;
-    console.log(evCatagoryId);
-    // console.log(document.getElementById('proceedButton'));
     ticketPrice = data.ticket_price;
     displayRelatedItems(evCatagoryId);
     if (data.ticket_price === 0) {
@@ -53,12 +63,12 @@ fetch(apiUrl + "/api/events/" + id)
       )
         .then((res) => res.json())
         .then((json4) => {
-          console.log(json4);
           for (let ele of json4.data) {
             if (ele.event.id == id) {
               console.log(ele);
               document.getElementById("btn-purchase").disabled = true;
-              document.getElementById("btn-purchase").innerHTML = "Redeemed Ticket";
+              document.getElementById("btn-purchase").innerHTML =
+                "Redeemed Ticket";
             }
           }
         });
@@ -107,8 +117,8 @@ fetch(apiUrl + "/api/events/" + id)
                         <div class="col d-flex flex-column align-items-center justify-content-center">
                             <h6>Total</h6>
                             <p id="totalPrice">$${data.ticket_price.toFixed(
-      2
-    )}</p>
+                              2
+                            )}</p>
                         </div>`;
 
     document
@@ -257,7 +267,9 @@ function displayRelatedItems(evCatagoryId) {
       let listE = "";
       data.forEach((element) => {
         let price =
-          element.ticket_price == 0 ? "Free" : `$${element.ticket_price}`;
+          element.ticket_price == 0
+            ? "Free"
+            : `$${element.ticket_price.toFixed(2)}`;
         let catas = "";
         element.event_categories.forEach((cata) => {
           catas += `<div class="pill${cata.id} me-1">${cata.name}</div>`;
@@ -292,7 +304,6 @@ function displayRelatedItems(evCatagoryId) {
       });
       document.getElementById("related-events").innerHTML = listE;
       setUpWishBtn();
-
     });
 }
 function viewOrgDetail(org) {

@@ -49,8 +49,8 @@ function loadEventCards() {
                                             <p class="text-secondary">${
                                               element.location
                                             }</p>
-                                            <p>Ticket price: $${
-                                              element.ticket_price
+                                            <p>${
+                                              parseFloat(element.ticket_price) > 0 ? '$'+element.ticket_price.toFixed(2)+' per ticket' : "Free"
                                             }</p>
                                             
                                         </div>
@@ -297,5 +297,5 @@ fetch(`${API_URL}/api/profile/detail/${orgId}`, {
   });
 function showEventDetail(id) {
   sessionStorage.setItem("itemID", id);
-  location.href = "http://127.0.0.1:5503/pages/browse/event-detail.html";
+  location.href = "/pages/browse/event-detail.html";
 }
