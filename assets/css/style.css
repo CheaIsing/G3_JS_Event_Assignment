@@ -1074,7 +1074,7 @@ footer .contact-info .social-media a:hover {
 
 .card-description {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     /* Limit the text to 3 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;

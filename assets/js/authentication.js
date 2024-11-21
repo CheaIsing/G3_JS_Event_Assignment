@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
       location.pathname.includes("login.html") ||
       location.pathname.includes("Signup.html")
     ) {
-
       location.href = "/pages/homepage.html";
     }
   } else {
@@ -19,64 +18,24 @@ document.addEventListener("DOMContentLoaded", () => {
       location.href = "/index.html";
     }
 
-    document.getElementById("header").innerHTML = `<div class="container">
-                <nav class="d-flex align-items-center justify-content-between">
-                    <div class="logo">
-                        <a href="homepage.html">
-                            <img
-                                src="../../assets/lim_img/logo/Prutika_Logo_text(2).png"
-                                alt>
-                        </a>
-                    </div>
-                    <div
-                        class="d-flex align-items-center w-25 position-relative ">
-                        <i
-                            class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
-                        <input type="text"
-                            class="form-control search-bar ps-5 w-100 " name id
-                            aria-describedby="helpId"
-                            placeholder="Search Event " />
-                        <button class="btn-pink text-white"><i
-                                class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
-                    </div>
-                    <div class="action-btn d-flex">
-                        <button onclick="loginLink()" class="btn-outline-pink ms-3"><i
-                                class="fa-solid fa-plus text-brand"></i> Create
-                            a
-                            post</button>
-                        <a href="javascript:void(0);" class=" btn-outline-pink ms-3" role="button"
-                            id="browseDropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Browse <i
-                                class="fa-solid fa-caret-down text-brand"></i>
-                            <!-- User Icon -->
-                        </a>
-                        <a href="../../pages/authentication/login.html"
-                            class="btn-outline-pink ms-3 d-flex align-items-center"><i
-                                class="fa-solid fa-ticket pe-1 text-brand"></i>My
-                            Ticket</a>
+    if (!location.pathname.includes("index.html")) {
+      document.querySelector(
+        "#header .logo"
+      ).innerHTML = `<a href="/pages/homepage.html">
+                              <img
+                                  src="../../assets/lim_img/logo/Prutika_Logo_text(2).png"
+                                  alt>
+                          </a>`;
 
-                        <ul class="dropdown-menu dropdown-menu-end"
-                            aria-labelledby="browseDropdown">
-                            <li><a class="dropdown-item" href="../../pages/browse/browse-event.html">Browse Events</a></li>
-                            <li><a class="dropdown-item" href="../../pages/browse/browse-recruitment.html">Browse Vendor Recruitments</a></li>
-                            <li><a class="dropdown-item"
-                                    href="../../pages/browse/browse-vendor.html">Browse Business</a></li>
-                            
-                            
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="../../pages/authentication/login.html"
-                            class="btn btn-brand me-2">Log In</a>
-                        <a href="../../pages/authentication/Signup.html"
-                            class="btn btn-outline-brand text-dark">Register</a>
-                    </div>
-                </nav>
-            </div>`;
+      document.querySelector(
+        "#header nav div:last-child"
+      ).innerHTML = `<a href="../../pages/authentication/login.html"
+                              class="btn btn-brand me-2">Log In</a>
+                          <a href="../../pages/authentication/Signup.html"
+                              class="btn btn-outline-brand text-dark">Register</a>`;
+    }
   }
 });
-
 
 if (document.getElementById("btn-logout")) {
   document.getElementById("btn-logout").addEventListener("click", () => {
@@ -85,7 +44,6 @@ if (document.getElementById("btn-logout")) {
 }
 
 function logout() {
-
   fetch(`${API_URL}/api/logout`, {
     method: "DELETE",
     headers: {
@@ -108,7 +66,6 @@ function logout() {
 function loginLink() {
   location.href = "/pages/authentication/login.html";
 }
-
 
 if (document.getElementById("profileForm")) {
   document
@@ -175,4 +132,3 @@ if (document.getElementById("profileForm")) {
       }
     });
 }
-

@@ -9,8 +9,9 @@ function showToast(msg, condition) {
   }
   // Create the toast element
   const toast = document.createElement("div");
-  toast.className = `toast align-items-center text-white ${condition === true ? "bg-brand" : "bg-danger"
-    } border-0`;
+  toast.className = `toast align-items-center text-white ${
+    condition === true ? "bg-brand" : "bg-danger"
+  } border-0`;
   toast.role = "alert";
   toast.setAttribute("aria-live", "assertive");
   toast.setAttribute("aria-atomic", "true");
@@ -19,9 +20,10 @@ function showToast(msg, condition) {
   toast.innerHTML = `
       <div class="d-flex">
         <div class="toast-body">
-          ${msg ||
-    (condition === "success" ? "Action successful!" : "Action failed!")
-    }
+          ${
+            msg ||
+            (condition === "success" ? "Action successful!" : "Action failed!")
+          }
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
@@ -69,8 +71,7 @@ function formatDateFull(dateString) {
   };
 
   // Format the date and time parts
-  const formattedDate =
-    date.toLocaleDateString("en-US", options) 
+  const formattedDate = date.toLocaleDateString("en-US", options);
 
   return formattedDate;
 }
@@ -127,93 +128,114 @@ function checkDateTimeRange(startDateTimeStr, endDateTimeStr) {
     return "Upcoming";
   } else {
     return "Past";
-  }}
+  }
+}
 function copyEventUrlToClipboard(eventId) {
-  
-  
-  const url = `${window.location.protocol}//${window.location.host}/pages/browse/event-detail.html?e=${(eventId)}`;
+  const url = `${window.location.protocol}//${window.location.host}/pages/browse/event-detail.html?e=${eventId}`;
 
-  
-  navigator.clipboard
-    .writeText(url)
-    .then(() => {
-      showToast("Event URL copied to clipboard:", true);
-    })
+  navigator.clipboard.writeText(url).then(() => {
+    showToast("Event URL copied to clipboard:", true);
+  });
 }
 //wishlist
 function checkEventInWishlist(eventId) {
+  if (!localStorage.getItem("authToken")) {
+    return;
+  }
   return fetch(`${API_URL}/api/wishlists`, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'Authorization': `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   })
-    .then(response => response.json())
-    .then(json => {
+    .then((response) => response.json())
+    .then((json) => {
       let data = json.data;
       let isAdded = false;
-      data.forEach(element => {
+      data.forEach((element) => {
         if (eventId == element.event.id) {
           isAdded = true;
-          const wishButtons = document.querySelectorAll(`.add-wish[data-id="${eventId}"]`);
-          wishButtons.forEach(button => {
+          const wishButtons = document.querySelectorAll(
+            `.add-wish[data-id="${eventId}"]`
+          );
+          wishButtons.forEach((button) => {
             button.classList.add("clicked");
-            button.setAttribute('data-wish', element.id);
-          })
-
+            button.setAttribute("data-wish", element.id);
+          });
         }
       });
       return isAdded;
     });
 }
 function setUpWishBtn() {
+  if (!localStorage.getItem("authToken")) {
+    return;
+  }
   const wishButtons = document.querySelectorAll(".add-wish");
   wishButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const eventId = button.dataset.id;
-      checkEventInWishlist(eventId).then(isInWishlist => {
+      checkEventInWishlist(eventId).then((isInWishlist) => {
         if (isInWishlist) {
           deleteWishItem(button);
-        }
-        else {
+        } else {
           addWishlist(button);
         }
-      })
-      
+      });
     });
   });
 }
 function addWishlist(item) {
+  document.body.style.cursor = "wait";
+  document.querySelectorAll(".add-wish").forEach((btn) => {
+    btn.disabled = true;
+  });
+  if (!localStorage.getItem("authToken")) {
+    return (location.href = "/pages/authentication/login.html");
+  }
+
   let eventId = item.dataset.id;
   const formData = new FormData();
   formData.append("event_id", eventId);
   fetch(`${apiUrl}/api/wishlists/`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Authorization': `Bearer ${token}`
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: formData,
   })
-    .then(response => response.json())
-    .then(json => {
-      item.classList.add('clicked');
+    .then((response) => response.json())
+    .then((json) => {
+      document.body.style.cursor = "default";
+      document
+        .querySelectorAll(".add-wish")
+        .forEach((btn) => (btn.disabled = false));
+      item.classList.add("clicked");
       showToast("Event is added to wishlist successfully!", true);
-    })
+    });
 }
 function deleteWishItem(item) {
+  document.body.style.cursor = "wait";
+  document
+    .querySelectorAll(".add-wish")
+    .forEach((btn) => (btn.disabled = true));
   let eventId = item.dataset.wish;
-  fetch(apiUrl + '/api/wishlists/' + eventId, {
+  fetch(apiUrl + "/api/wishlists/" + eventId, {
     method: "DELETE",
     headers: {
       Accept: "application/json",
       Authorization: `Bearer ${token}`,
     },
   })
-    .then(res => res.json())
-    .then(json => {
-      item.classList.remove('clicked');
-      showToast("Event is removed from wishlist", true);
+    .then((res) => res.json())
+    .then((json) => {
+      document.body.style.cursor = "default";
+      document
+        .querySelectorAll(".add-wish")
+        .forEach((btn) => (btn.disabled = false));
+      item.classList.remove("clicked");
+      showToast("Event is removed from wishlist!", true);
       // showToast(json.message, json.result);
-    })
+    });
 }

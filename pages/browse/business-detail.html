@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="../../assets/css/card_style.css">
     <link rel="stylesheet" href="../../assets/css/lim_style.css">
     <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+    <style>
+        .sticky{
+    position: sticky;
+    top: 80px;
+}
+    </style>
 </head>
 
 <body class="p-eventDetail">
@@ -25,8 +31,8 @@
                 </div>
                 <div class="d-flex align-items-center w-25 position-relative ">
                     <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
-                    <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
-                        aria-describedby="helpId" placeholder="Search Event " />
+                    <input type="text" class="form-control search-bar ps-5 w-100 " id="searchEvent"
+                        placeholder="Search Event " />
                     <button class="btn-pink text-white"><i
                             class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
                     <ul class="search-dropdown position-absolute" id="search-dropdown">
@@ -34,10 +40,10 @@
                     </ul>
                 </div>
                 <div class="action-btn d-flex">
-                    <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
-                            href="../../pages/organizer/create-events.html">Create
-                            a
-                            post</a> </button>
+                    <button class="btn-outline-pink ms-3" data-bs-toggle="modal" data-bs-target="#createPostModal"><i
+                            class="fa-solid fa-plus text-brand"></i> Create
+                        a
+                        post</button>
                     <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Browse <i class="fa-solid fa-caret-down text-brand"></i>
@@ -46,6 +52,7 @@
                     <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
                             class="fa-solid fa-ticket pe-1 text-brand"></i>My
                         Ticket</a>
+
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
                         <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
                                 events</a></li>
@@ -61,7 +68,7 @@
                         id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                         <!-- User Icon -->
-                        <span class="ps-1 fs-6" id="userEmail"></span>
+                        <span class="ps-1" id="userEmail"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
                         <li><a class="dropdown-item" href="../organizer/event.html">Manage
@@ -81,17 +88,86 @@
             </nav>
         </div>
     </header>
+    <!-- Modal -->
+    <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border border-0">
+                    <h1 class="modal-title fs-5" id="createPostModalLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center">What do you want to create ?</h5>
+                    <div class="row p-3">
+                        <div class="col-4">
+                            <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                                onclick="goCreatePost('event')">
+                                <div class="icon">
+                                    <i class="fs-4 text-brand fa-regular fa-calendar-days"></i>
+                                </div>
+                                <h6 class="fw-bold">
+                                    Create an event
+                                </h6>
+                                <span class="post-choice-detail text-center text-secondary">
+                                    Create an event which will be publiced on website for free.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                                onclick="goCreatePost('recruit')">
+                                <div class="icon">
+                                    <i class="fs-4 text-brand fa-solid fa-magnifying-glass-dollar"></i>
+                                </div>
+                                <h6 class="fw-bold">
+                                    Create a recuitment
+                                </h6>
+                                <span class="post-choice-detail text-center text-secondary">
+                                    Post what you need and recuit vendors for your events organising.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                                onclick="goCreatePost('business')">
+                                <a href=""></a>
+                                <div class="icon">
+                                    <i class="fs-4 text-brand fa-solid fa-shop"></i>
+                                </div>
+                                <h6 class="fw-bold">
+                                    Create a business post
+                                </h6>
+                                <span class="post-choice-detail text-center text-secondary">
+                                    Promote yourself and your businesses as an event service provider
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <main>
-        <section class="hero mb-5 ">
+        <div class="container bg-white" >
+            <p class="d-flex h-100 align-items-center my-auto">
+                <a href="../homepage.html" class="home-link">Home</a>
+                <i class="fa-solid fa-chevron-right mx-2 "></i>
+                <a href="browse-vendor.html" class="home-link">Browse Business</a>
+                <i class="fa-solid fa-chevron-right mx-2 "></i>
+                <span class="text-brand">Business Detail</span>
+            </p>
+        </div>
+        <!-- <section class="hero mb-5 ">
             <div class="container p-4 px-5 text-center">
                 <div class="content text-center">
                     <h1 class="display-6 fw-semibold card-title text-white"
-                        style="text-shadow: 1px 1px 1px var(--c-brand), -1px -1px 1px var(--c-brand);">Vendor Business
+                        >Vendor Business
                         Detail</h1>
 
                 </div>
             </div>
-        </section>
+        </section> -->
         <section class="brief-detail my-4">
             <div class="container">
                 <div class="row ">
@@ -99,6 +175,23 @@
                         <div class="content ">
                                 <img id="business-img" src="" class="object-fit-cover w-100 mb-3" height="380" alt="img">
                             <h3 id="title"  class="mb-3 px-3"></h3>
+                            <div class="mb-4 d-flex row px-3">
+                                    <div class="col-6 d-flex py-3">
+                                        <i class="fa-regular fa-folder-open fs-2 fw-light ps-2 text-brand w-15 d-flex p-3"></i>
+                                        <div class="py-2">
+                                            <h5 class="m-0">Category</h5>
+                                            <p class="m-0 text-body-secondary" id="catagory"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 d-flex py-3">
+                                        <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15"></i>
+                                        <div>
+                                            <h6 class="m-0">Location</h6>
+                                            <p class="m-0 text-body-secondary" id="location"></p>
+                                        </div>
+                                    </div>
+                            </div>
                             <div class="mb-3 px-3" id="description">
 
                             </div>
@@ -108,27 +201,17 @@
                                 <p id="phone">Phone: </p>
 
                             </div>
-                            <div class="mb-3 px-3" id="social-media">
-                                <h3>Social Media</h3>
-                                <a class="text-body-secondary fs-3 me-2 text-brand" id="fb"><i
-                                        class="fa-brands fa-facebook"></i></a>
-                                <a class="text-body-secondary fs-3 me-2 text-brand" id="linkedin"><i
-                                        class="fa-brands fa-linkedin-in"></i></a>
-                                <a class="text-body-secondary fs-3 me-2 text-brand" id="tiktok"><i
-                                        class="fa-brands fa-tiktok"></i></a>
-                                <a class="text-body-secondary fs-3 me-2 text-brand" id="telegram"><i
-                                        class="fa-brands fa-telegram"></i></a>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="col-4 m-0 p-0 ">
-                        <div class="content m-0 p-0">
-                            <div class="mb-4 bg-white shadow-light">
+                        <div class="content m-0 p-0 sticky">
+                            <!-- <div class="mb-4 bg-white shadow-light">
                                 <div class="d-flex py-3 px-4  align-items-center justify-content-between">
                                     <h4 class="m-0">Vendor Business Brief</h4>
                                 </div>
                                 <hr>
-                                <ul class="list-unstyled px-4">
+                                <ul class="list-unstyled px-4 d-flex">
                                     <li class="d-flex py-3">
                                         <i class="fa-regular fa-folder-open fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
@@ -145,7 +228,7 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                             <div class=" bg-white shadow-light mb-4 py-3 px-4">
                                 <h4 class="fw-semibold mb-3">Post By</h4>
                                 <div class="d-flex align-items-center mb-3">
@@ -156,24 +239,20 @@
 
                                 </div>
                             </div>
+                            <div class="mb-3 px-3" id="social-media">
+                                <h3>Social Media</h3>
+                                <a class="text-body-secondary fs-3 me-2 text-brand" id="fb"><i
+                                        class="fa-brands fa-facebook"></i></a>
+                                <a class="text-body-secondary fs-3 me-2 text-brand" id="linkedin"><i
+                                        class="fa-brands fa-linkedin-in"></i></a>
+                                <a class="text-body-secondary fs-3 me-2 text-brand" id="tiktok"><i
+                                        class="fa-brands fa-tiktok"></i></a>
+                                <a class="text-body-secondary fs-3 me-2 text-brand" id="telegram"><i
+                                        class="fa-brands fa-telegram"></i></a>
+                            </div>
 
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <section class="related-section">
-            <div class="container">
-                <div class="title text-center mb-5">
-                    <h1 class="display-5 mb-3">Related <span class="text-brand fw-semibold">Event</span></h1>
-                    <p>
-                        <i class="fa-solid fa-calendar-days fs-5"></i>
-                    </p>
-                    <span class="text-secondary ">You might also love these events.</span>
-                </div>
-                <div class="row event-card-wrapper" id="related-events">
-
-
                 </div>
             </div>
         </section>

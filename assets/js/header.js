@@ -4,30 +4,26 @@ const token1 = localStorage.getItem("authToken");
 // window.onscroll = function () {
 //   scrollFunction();
 // };
+window.onscroll = function () {
+  scrollFunction();
+};
 
-// function scrollFunction() {
-//   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-//     document.getElementById("header").style.boxShadow = "1px 1px 8px #e1159325";
-//   } else {
-//     document.getElementById("header").style.boxShadow = "none";
-//   }
-// }
 
-const header = document.getElementById('header');
-const toggleClass = "is-sticky";
 
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll > 150) {
-    header.classList.add(toggleClass);
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("header").style.boxShadow = "1px 1px 8px #e1159325";
   } else {
     header.classList.remove(toggleClass);
   }
 });
 
 let searchClicked = document.getElementById("searchEvent");
+console.log(searchClicked);
+
 
 searchClicked.addEventListener("focus", () => {
+  console.log(true);
   let searchEventbyName = document.getElementById("searchEvent").value;
   if (searchEventbyName == "") {
     document.querySelector(".search-dropdown").style.display = "none";
@@ -44,12 +40,14 @@ searchClicked.addEventListener("blur", () => {
 
 document.getElementById("searchEvent").addEventListener("keyup", function () {
   let searchEventbyName = document.getElementById("searchEvent").value;
+  console.log(searchEventbyName);
+
   document.getElementById("search-dropdown").style.display = "block";
   if (searchEventbyName == "") {
     document.querySelector(".search-dropdown").style.display = "none";
   }
   fetch(
-    `${apiUrl1}/api/events?page=1&per_page=50&search=${searchEventbyName}`,
+    `${apiUrl1}/api/events?page=1&per_page=10000&search=${searchEventbyName}`,
     {
       headers: {
         Authorization: `Bearer ${token1}`,
@@ -59,6 +57,8 @@ document.getElementById("searchEvent").addEventListener("keyup", function () {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
+      console.log(data);
+
       let searchList = "";
       if (data.length == 0) {
         searchList = `<li class="search-dropdown-item">
@@ -74,6 +74,7 @@ document.getElementById("searchEvent").addEventListener("keyup", function () {
         });
       }
       document.getElementById("search-dropdown").innerHTML = searchList;
+
     });
 });
 
@@ -84,16 +85,23 @@ function showEventDetail(id) {
   location.href = "/pages/browse/event-detail.html";
 }
 
-fetch(`${apiUrl1}/api/me`, {
-  headers: {
-    Authorization: `Bearer ${token1}`,
-  },
-})
-  .then((res) => res.json())
-  .then((json) => {
-    const { data } = json;
-    document.getElementById("userEmail").innerText = data.full_name;
-  });
+function setUserEmail() {
+  if (localStorage.getItem("authToken")) {
+    fetch(`${apiUrl1}/api/me`, {
+      headers: {
+        Authorization: `Bearer ${token1}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        const { data } = json;
+        document.getElementById("userEmail").innerText = data.full_name;
+      });
+  }
+}
+
+// Call the function to set the user email
+setUserEmail();
 
 function goCreatePost(type = "") {
   if (type == "event") {

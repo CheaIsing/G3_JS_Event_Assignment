@@ -12,7 +12,6 @@
         <link rel="stylesheet"
             href="assets/lib/bootstrap-icon/bootstrap-icons.css">
         <link rel="stylesheet" href="assets/css/organizer.css">
-        <link rel="stylesheet" href="assets/css/lim_style.css">
     </head>
 
     <body>
@@ -20,7 +19,7 @@
             <div class="container">
                 <nav class="d-flex align-items-center justify-content-between">
                     <div class="logo">
-                        <a href="homepage.html">
+                        <a href="#">
                             <img
                                 src="assets/lim_img/logo/Prutika_Logo_text(2).png"
                                 alt>
@@ -31,18 +30,23 @@
                         <i
                             class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
                         <input type="text"
-                            class="form-control search-bar ps-5 w-100 " name id
-                            aria-describedby="helpId"
+                            class="form-control search-bar ps-5 w-100 "
+                            id="searchEvent"
                             placeholder="Search Event " />
                         <button class="btn-pink text-white"><i
                                 class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
+                        <ul class="search-dropdown position-absolute"
+                            id="search-dropdown">
+                        </ul>
                     </div>
                     <div class="action-btn d-flex">
-                        <button onclick="loginLink()" class="btn-outline-pink ms-3"><i
+                        <button onclick="loginLink()"
+                            class="btn-outline-pink ms-3"><i
                                 class="fa-solid fa-plus text-brand"></i> Create
                             a
                             post</button>
-                        <a href="javascript:void(0);" class=" btn-outline-pink ms-3" role="button"
+                        <a href="javascript:void(0);"
+                            class=" btn-outline-pink ms-3" role="button"
                             id="browseDropdown"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Browse <i
@@ -56,18 +60,22 @@
 
                         <ul class="dropdown-menu dropdown-menu-end"
                             aria-labelledby="browseDropdown">
-                            <li><a class="dropdown-item" href="pages/browse/browse-event.html">Browse Events</a></li>
-                            <li><a class="dropdown-item" href="pages/browse/browse-recruitment.html">Browse Vendor Recruitments</a></li>
                             <li><a class="dropdown-item"
-                                    href="pages/browse/browse-vendor.html">Browse Business</a></li>
-                            
-                            
+                                    href="pages/browse/browse-event.html">Browse
+                                    Events</a></li>
+                            <li><a class="dropdown-item"
+                                    href="pages/browse/browse-recruitment.html">Browse
+                                    Vendor Recruitments</a></li>
+                            <li><a class="dropdown-item"
+                                    href="pages/browse/browse-vendor.html">Browse
+                                    Business</a></li>
+
                         </ul>
                     </div>
                     <div>
                         <a href="./pages/authentication/login.html"
                             class="btn btn-brand me-2">Log In</a>
-                        <a href="Signup.html"
+                        <a href="./pages/authentication/Signup.html"
                             class="btn btn-outline-brand text-dark">Register</a>
                     </div>
                 </nav>
@@ -181,7 +189,7 @@
                                         Penh</span>, <span>Cambodia</span>
                                 </p>
                                 <div
-                                    class="event-card-wrapper d-flex flex-wrap mt-5"
+                                    class="event-card-wrapper row g-4 mt-5"
                                     id="event-card-wrapper">
                                     <!-- <div class="card">
                                     <div class="card-content">
@@ -212,7 +220,8 @@
                                     class="btn-see-more-wrapper d-flex justify-content-center">
                                     <button class="btn-outline-pink py-2 mb-3"
                                         onclick="showMoreEvent()"
-                                        id="btn-seemore-event">See Mores</button>
+                                        id="btn-seemore-event">See
+                                        Mores</button>
                                     <div class="spinner-border text-brand"
                                         id="eventPageSpinner"
                                         role="status"></div>
@@ -336,7 +345,11 @@
                                 alt class="logo">
                         </a>
                         <div class="information pe-5">
-                            <p>"Your seamless platform for event management, where creativity meets efficiency. We simplify planning, coordinate every detail, and bring your vision to life for unforgettable experiences that inspire.”</p>
+                            <p>"Your seamless platform for event management,
+                                where creativity meets efficiency. We simplify
+                                planning, coordinate every detail, and bring
+                                your vision to life for unforgettable
+                                experiences that inspire.”</p>
                         </div>
                     </div>
                     <div
@@ -373,10 +386,10 @@
         </footer>
     </body>
     <script src="assets/lib/momentjs/moment.min.js"></script>
-    <script src="assets/js/ultilities.js"></script>
     <script src="assets/js/authentication.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/ultilities.js"></script>
     <script src="assets/js/header.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/organizer/get_all_post.js"></script>
     <script>
         function loginLink() {
