@@ -376,3 +376,4 @@ function showServiceDetail(id) {
   sessionStorage.setItem("businessDetailId", id);
   location.href = "/pages/browse/business-detail.html";
 }
+
