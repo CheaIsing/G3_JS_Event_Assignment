@@ -563,7 +563,6 @@ function updatePassword() {
       });
   }
 }
-
 function deleteAccount() {
   dPassword.addEventListener("input", () => {
     validateField(dPassword, validatePassword, "dPassErr", moveEye);

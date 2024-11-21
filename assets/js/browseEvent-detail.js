@@ -91,6 +91,10 @@ fetch(apiUrl + "/api/events/" + id)
       document.getElementById("btn-purchase").removeAttribute("data-bs-toggle");
       document.getElementById("btn-purchase").innerHTML = "Redeem Ticket";
       document.getElementById("btn-purchase").onclick = () => {
+        if(!localStorage.getItem("authToken")){
+          location.href = "/pages/authentication/login.html"
+          return;
+        }
         fetch(`${apiUrl}/api/tickets/request-buy`, {
           method: "POST",
           headers: {

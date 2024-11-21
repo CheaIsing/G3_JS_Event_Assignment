@@ -193,6 +193,18 @@ header .btn-pink .fa-magnifying-glass {
     padding: 0 !important;
 }
 
+header .dropdown-menu.show {
+    top: 10% !important;
+}
+
+header .dropdown-menu.show .dropdown-item {
+    padding: 8px 15px !important;
+}
+
+header .dropdown-menu.show .dropdown-item:hover {
+    background-color: #e1159325 !important;
+}
+
 /* Lim code */
 
 .btn-pink {
