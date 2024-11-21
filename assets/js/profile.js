@@ -145,6 +145,7 @@ function uploadProfileImage(event) {
     const formData = new FormData();
     formData.append("avatar", file);
     document.body.style.cursor = "wait";
+    document.querySelector(".lblPfp").innerHTML = "Updating...";
 
     fetch(`${API_URL}/api/profile/avatar`, {
       method: "POST",
@@ -153,6 +154,7 @@ function uploadProfileImage(event) {
     })
       .then((response) => response.json())
       .then((data) => {
+        document.querySelector(".lblPfp").innerHTML = "Update Profile";
         if (data.result === true) {
           document.body.style.cursor = "default";
           document.getElementById("profile-pic").src = reader.result;
@@ -398,19 +400,18 @@ function validateField(field, validationFunction, errorMessageId, callback) {
 function updateinfo(event) {
   event.preventDefault();
   // Attach event listeners to input fields for validation on change
-emailInput.addEventListener("input", () =>
-  validateField(emailInput, isValidEmail, "email-info-err")
-);
-fullnameInput.addEventListener("input", () =>
-  validateField(fullnameInput, isValidFullName, "fullname-info-err")
-);
-phoneInput.addEventListener("input", () =>
-  validateField(phoneInput, isValidPhoneNumber, "phone-info-err")
-);
-dobInput.addEventListener("input", () =>
-  validateField(dobInput, isValidateDOB, "dob-info-err")
-);
-
+  emailInput.addEventListener("input", () =>
+    validateField(emailInput, isValidEmail, "email-info-err")
+  );
+  fullnameInput.addEventListener("input", () =>
+    validateField(fullnameInput, isValidFullName, "fullname-info-err")
+  );
+  phoneInput.addEventListener("input", () =>
+    validateField(phoneInput, isValidPhoneNumber, "phone-info-err")
+  );
+  dobInput.addEventListener("input", () =>
+    validateField(dobInput, isValidateDOB, "dob-info-err")
+  );
 
   let isValid = true;
 
@@ -424,8 +425,8 @@ dobInput.addEventListener("input", () =>
   isValid = validateField(dobInput, isValidateDOB, "dob-info-err") && isValid;
 
   if (isValid) {
-    document.getElementById('btn-update-info').disabled = true;
-    document.body.style.cursor = 'wait'
+    document.getElementById("btn-update-info").disabled = true;
+    document.body.style.cursor = "wait";
     // Submit update request using formData
     // ... your update logic here
     const formData = {
@@ -446,8 +447,8 @@ dobInput.addEventListener("input", () =>
     })
       .then((res) => res.json())
       .then((json) => {
-        document.getElementById('btn-update-info').disabled = false;
-    document.body.style.cursor = 'default'
+        document.getElementById("btn-update-info").disabled = false;
+        document.body.style.cursor = "default";
         showToast(json.message, json.result);
         //   populateUserData(json.data);
         setTimeout(() => {
@@ -456,9 +457,6 @@ dobInput.addEventListener("input", () =>
       });
   }
 }
-
-
-
 
 function validatePassword(password) {
   const passwordRegex =
@@ -548,14 +546,13 @@ function updatePassword() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        
+
         document.body.style.cursor = "default";
         showToast(data.message, data.result);
         document.getElementById("btn-change-pass").disabled = false;
         if (data.result) {
           // document.getElementById("btn-change-pass").disabled = false;
 
-          
           setTimeout(() => {
             location.reload();
           }, 1500);

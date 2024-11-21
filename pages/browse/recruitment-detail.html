@@ -25,8 +25,8 @@
                 </div>
                 <div class="d-flex align-items-center w-25 position-relative ">
                     <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
-                    <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
-                        aria-describedby="helpId" placeholder="Search Event " />
+                    <input type="text" class="form-control search-bar ps-5 w-100 " id="searchEvent"
+                        placeholder="Search Event " />
                     <button class="btn-pink text-white"><i
                             class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
                     <ul class="search-dropdown position-absolute" id="search-dropdown">
@@ -34,10 +34,10 @@
                     </ul>
                 </div>
                 <div class="action-btn d-flex">
-                    <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
-                            href="../../pages/organizer/create-events.html">Create
-                            a
-                            post</a> </button>
+                    <button class="btn-outline-pink ms-3" data-bs-toggle="modal" data-bs-target="#createPostModal"><i
+                            class="fa-solid fa-plus text-brand"></i> Create
+                        a
+                        post</button>
                     <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Browse <i class="fa-solid fa-caret-down text-brand"></i>
@@ -46,6 +46,7 @@
                     <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
                             class="fa-solid fa-ticket pe-1 text-brand"></i>My
                         Ticket</a>
+
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
                         <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
                                 events</a></li>
@@ -61,7 +62,7 @@
                         id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                         <!-- User Icon -->
-                        <span class="ps-1 fs-6" id="userEmail"></span>
+                        <span class="ps-1" id="userEmail"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
                         <li><a class="dropdown-item" href="../organizer/event.html">Manage
@@ -72,6 +73,7 @@
                         <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
                         <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
                                 Setting</a></li>
+
                         <li><a class="dropdown-item border-top" href="javascript:void(0);" id="btn-logout">Log
                                 out</a>
                         </li>
@@ -80,12 +82,72 @@
             </nav>
         </div>
     </header>
+    <!-- Modal -->
+    <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border border-0">
+                    <h1 class="modal-title fs-5" id="createPostModalLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center">What do you want to create ?</h5>
+                    <div class="row p-3">
+                        <div class="col-4">
+                            <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                                onclick="goCreatePost('event')">
+                                <div class="icon">
+                                    <i class="fs-4 text-brand fa-regular fa-calendar-days"></i>
+                                </div>
+                                <h6 class="fw-bold">
+                                    Create an event
+                                </h6>
+                                <span class="post-choice-detail text-center text-secondary">
+                                    Create an event which will be publiced on website for free.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                                onclick="goCreatePost('recruit')">
+                                <div class="icon">
+                                    <i class="fs-4 text-brand fa-solid fa-magnifying-glass-dollar"></i>
+                                </div>
+                                <h6 class="fw-bold">
+                                    Create a recuitment
+                                </h6>
+                                <span class="post-choice-detail text-center text-secondary">
+                                    Post what you need and recuit vendors for your events organising.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                                onclick="goCreatePost('business')">
+                                <a href=""></a>
+                                <div class="icon">
+                                    <i class="fs-4 text-brand fa-solid fa-shop"></i>
+                                </div>
+                                <h6 class="fw-bold">
+                                    Create a business post
+                                </h6>
+                                <span class="post-choice-detail text-center text-secondary">
+                                    Promote yourself and your businesses as an event service provider
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <main>
         <section class="hero mb-5 ">
             <div class="container p-4 px-5 text-center">
                 <div class="content text-center">
                     <h1 class="display-6 fw-semibold card-title text-white"
-                        style="text-shadow: 1px 1px 1px var(--c-brand), -1px -1px 1px var(--c-brand);" id="ev-title">
+                        id="ev-title">
                         Vendor Recruitment Detail</h1>
 
                 </div>
@@ -178,21 +240,7 @@
                 </div>
             </div>
         </section>
-        <section class="related-section">
-            <div class="container">
-                <div class="title text-center mb-5">
-                    <h1 class="display-5 mb-3">Related <span class="text-brand fw-semibold">Event</span></h1>
-                    <p>
-                        <i class="fa-solid fa-calendar-days fs-5"></i>
-                    </p>
-                    <span class="text-secondary ">You might also love these events.</span>
-                </div>
-                <div class="row event-card-wrapper" id="related-events">
-
-
-                </div>
-            </div>
-        </section>
+        
 
     </main>
     <footer></footer>

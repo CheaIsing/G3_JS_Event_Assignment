@@ -729,7 +729,7 @@ footer .contact-info .social-media a:hover {
 
 .card-text {
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -752,7 +752,6 @@ footer .contact-info .social-media a:hover {
     border-radius: 10px;
     /* outline: 2px solid var(--c-brand) !important; */
     box-shadow: 0px 0px 9px #e115934a;
-
     border-color: white;
 }
 
@@ -883,7 +882,7 @@ footer .contact-info .social-media a:hover {
 
 .vendor-card-wrapper .card .card-content .thumbnail img {
     width: 250px;
-    height: 100%;
+    /* height: 100%; */
     object-fit: cover;
 }
 
@@ -1049,7 +1048,7 @@ footer .contact-info .social-media a:hover {
 
 .card-description {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     /* Limit the text to 3 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
