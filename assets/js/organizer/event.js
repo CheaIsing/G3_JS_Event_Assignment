@@ -15,12 +15,12 @@ function getMe(searchE = "", searchV = "all") {
           <div class="col-8">
             <div class="card-body py-2">
               <h5 class="card-title">
-                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
               </h5>
-              <p class="card-text">
-                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
-                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
-              </p>
+              
+              <span class="placeholder col-12 mb-1" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11 mb-1" style="background-color: #D4D4D4;"></span>
+              
             </div>
           </div>
         </div>
@@ -37,12 +37,12 @@ function getMe(searchE = "", searchV = "all") {
           <div class="col-8">
             <div class="card-body py-2">
               <h5 class="card-title">
-                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
               </h5>
-              <p class="card-text">
-                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
-                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
-              </p>
+              
+              <span class="placeholder col-12 mb-1" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11 mb-1" style="background-color: #D4D4D4;"></span>
+              
             </div>
           </div>
         </div>
@@ -59,18 +59,19 @@ function getMe(searchE = "", searchV = "all") {
           <div class="col-8">
             <div class="card-body py-2">
               <h5 class="card-title">
-                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
               </h5>
-              <p class="card-text">
-                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
-                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
-              </p>
+              
+              <span class="placeholder col-12 mb-1" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11 mb-1" style="background-color: #D4D4D4;"></span>
+              
             </div>
           </div>
         </div>
       </div>
     </td>
   </tr>
+  
   `;
   fetch(`${apiUrl}/api/me`, {
     headers: {
@@ -110,7 +111,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
       }
 
       let filterData = data;
-      
+
       // Apply filter based on searchV (the dropdown value)
       const currentDate = new Date();
       switch (searchV) {
@@ -166,7 +167,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
               const endDate = new Date(ele.end_date.replace(" ", "T"));
 
               if (startDate > currentDate) {
-                status = `<span class="rounded-pill text-primary"><i class="fa-solid fa-hourglass-half me-1"></i>Upcoming</span>`;
+                status = `<span class="rounded-pill text-brand"><i class="fa-solid fa-hourglass-half me-1"></i>Upcoming</span>`;
               } else if (currentDate >= startDate && currentDate <= endDate) {
                 status = `<span class="rounded-pill text-success"><i class="fa-solid fa-hourglass-half me-1"></i>Showing</span>`;
               } else {
@@ -204,7 +205,9 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                   </a>
                 </td>
                 <td>${status}</td>
-                <td>${json2.data.total_ticket} ticket${json2.data.total_ticket > 1 ? 's':''}</td>
+                <td>${json2.data.total_ticket} ticket${
+                json2.data.total_ticket > 1 ? "s" : ""
+              }</td>
                 <td>$${json2.data.total_income.toFixed(2)}</td>
                 <td>${json2.data.total_attendant} people</td>
                 <td>
@@ -219,8 +222,12 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                       <li><a class="dropdown-item delete-event-btn" href="javascript:void(0);" data-event-detail-id="${
                         ele.id
                       }">Delete</a></li>
-                      <li><a class="dropdown-item views-event-detail" data-id="${ele.id}">View</a></li>
-                      <li><a class="dropdown-item" onclick="copyEventUrlToClipboard(${ele.id})">Copy Link</a></li>
+                      <li><a class="dropdown-item views-event-detail" data-id="${
+                        ele.id
+                      }">View</a></li>
+                      <li><a class="dropdown-item" onclick="copyEventUrlToClipboard(${
+                        ele.id
+                      })">Copy Link</a></li>
                     </ul>
                   </div>
                 </td>
@@ -254,15 +261,17 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                 };
               });
 
-              document.querySelectorAll('.views-event-detail').forEach((detail) => {
-                detail.onclick = () => {
-                  let id = detail.dataset.id;
-                  console.log(id);
-                  
-                  sessionStorage.setItem("itemID", id);
-                  location.href = "../browse/event-detail.html";
-                };
-              })
+              document
+                .querySelectorAll(".views-event-detail")
+                .forEach((detail) => {
+                  detail.onclick = () => {
+                    let id = detail.dataset.id;
+                    console.log(id);
+
+                    sessionStorage.setItem("itemID", id);
+                    location.href = "../browse/event-detail.html";
+                  };
+                });
             });
         });
       }
@@ -272,23 +281,21 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
 }
 
 function deleteEventPost(id) {
-    console.log(id);
-  
-    fetch(`${apiUrl}/api/events/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        showToast(json.message, json.result);
-        getMe();
-        console.log(apiUrl, id, token);
-      });
-  }
+  console.log(id);
 
-
+  fetch(`${apiUrl}/api/events/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      showToast(json.message, json.result);
+      getMe();
+      console.log(apiUrl, id, token);
+    });
+}
 
 // Event listeners for filters
 document.getElementById("searchEventInput").onkeyup = () => {

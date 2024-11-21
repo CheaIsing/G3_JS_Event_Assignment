@@ -21,7 +21,7 @@
                 <nav class="d-flex align-items-center justify-content-between">
                     <div class="logo">
                         <a href="../homepage.html">
-                            <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                            <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt="img">
                         </a>
                     </div>
                     
@@ -74,28 +74,39 @@
                             <h2>Check-in Ticket</h2>
                         </div>
 
-                        <div class="d-flex align-items-center my-4">
-                            <div class>
-                                <select class="form-select"
-                                    id="event-filter"
-                                    aria-label="Default select example">
-                                    <option value="all">All</option>
-                                    <option
-                                        value="upcoming">Upcoming</option>
-                                    <option
-                                        value="showing">Showing</option>
-                                    <option value="past">Past</option>
-                                </select>
-                            </div>
-                            <div class>
-                                <div class="input-group ms-3">
-                                    <input type="text"
-                                        class="form-control"
-                                        placeholder="Search"
-                                        id="searchEventInput">
-
+                        <div class="d-flex align-items-center my-4 justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <div class>
+                                    <select class="form-select"
+                                        id="event-filter"
+                                        aria-label="Default select example">
+                                        <option value="all">All</option>
+                                        <option
+                                            value="upcoming">Upcoming</option>
+                                        <option
+                                            value="showing">Showing</option>
+                                        <option value="past">Past</option>
+                                    </select>
+                                </div>
+                                <div class>
+                                    <div class="input-group ms-3">
+                                        <input type="text"
+                                            class="form-control"
+                                            placeholder="Search"
+                                            id="searchEventInput">
+    
+                                    </div>
                                 </div>
                             </div>
+                                 <!-- Button trigger modal -->
+                             <button type="button"
+                             class="btn btn-brand"
+                             data-bs-toggle="modal"
+                             data-bs-target="#exampleModal">
+                             <small><i
+                                     class="fa-solid fa-plus me-1"></i></small>
+                             Add Check-in
+                         </button>
 
                         </div>
                             
@@ -236,6 +247,36 @@
                 </div>
             </div>
         </main>
+         <!-- Modal -->
+         <div class="modal fade" id="exampleModal" tabindex="-1"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h1 class="modal-title fs-5"
+                         id="exampleModalLabel">Check-in Ticket</h1>
+                     <button type="button" class="btn-close"
+                         data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <div class="modal-body">
+                     <div class>
+                         <label for="exampleInputEmail1"
+                             class="form-label">Input Ticket Id:</label>
+                         <input type="text" class="form-control"
+                             id="check-in-input"
+                             aria-describedby="emailHelp">
+                     </div>
+
+                 </div>
+                 <div class="modal-footer border-0 pt-0">
+
+                     <button type="button"
+                         class="btn btn-brand w-100"
+                         id="btn-checked-in">Send</button>
+                 </div>
+             </div>
+         </div>
+     </div>
         <script src="../../assets/js/ultilities.js"></script>
         <script src="../../assets/js/authentication.js"></script>
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>

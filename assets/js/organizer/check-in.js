@@ -13,12 +13,12 @@ function getMe(searchE = "", searchV = "all") {
           <div class="col-8">
             <div class="card-body py-2">
               <h5 class="card-title">
-                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
               </h5>
-              <p class="card-text">
-                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
-                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
-              </p>
+              
+              <span class="placeholder col-12 mb-1" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11 mb-1" style="background-color: #D4D4D4;"></span>
+              
             </div>
           </div>
         </div>
@@ -35,12 +35,12 @@ function getMe(searchE = "", searchV = "all") {
           <div class="col-8">
             <div class="card-body py-2">
               <h5 class="card-title">
-                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
               </h5>
-              <p class="card-text">
-                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
-                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
-              </p>
+              
+              <span class="placeholder col-12 mb-1" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11 mb-1" style="background-color: #D4D4D4;"></span>
+              
             </div>
           </div>
         </div>
@@ -57,18 +57,19 @@ function getMe(searchE = "", searchV = "all") {
           <div class="col-8">
             <div class="card-body py-2">
               <h5 class="card-title">
-                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
               </h5>
-              <p class="card-text">
-                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
-                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
-              </p>
+              
+              <span class="placeholder col-12 mb-1" style="background-color: #D4D4D4;"></span>
+              <span class="placeholder col-11 mb-1" style="background-color: #D4D4D4;"></span>
+              
             </div>
           </div>
         </div>
       </div>
     </td>
   </tr>
+  
   `;
   fetch(`${apiUrl}/api/me`, {
     headers: {
@@ -172,7 +173,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
               const endDate = new Date(ele.end_date.replace(" ", "T"));
 
               if (startDate > currentDate) {
-                status = `<span class="rounded-pill text-primary"><i class="fa-solid fa-hourglass-half me-1"></i>Upcoming</span>`;
+                status = `<span class="rounded-pill text-brand"><i class="fa-solid fa-hourglass-half me-1"></i>Upcoming</span>`;
               } else if (currentDate >= startDate && currentDate <= endDate) {
                 status = `<span class="rounded-pill text-success"><i class="fa-solid fa-hourglass-half me-1"></i>Showing</span>`;
               } else {
@@ -232,6 +233,41 @@ document.getElementById("event-filter").addEventListener("change", () => {
   const searchV = document.getElementById("event-filter").value;
   getMe(searchE, searchV);
 });
+
+document.getElementById("btn-checked-in").onclick = (e) => {
+  let ticketToken = document.getElementById("check-in-input").value;
+
+  if (!ticketToken) return;
+
+  // console.log(sessionStorage.getItem('checkinDetailId'));
+
+  e.target.disabled = true
+  document.body.style.cursor = 'wait'
+
+  fetch(`${apiUrl}/api/events/check-in`, {
+    method: "PUT",
+    headers: {
+      // Authorization: `Bearer ${token}`,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      ticket_token: ticketToken,
+    }),
+  })
+    .then((res) => res.json())
+    .then((json) => {
+        e.target.disabled = false
+  document.body.style.cursor = 'default'
+      showToast(json.message, json.result);
+      if (json.result == true) {
+        bootstrap.Modal.getInstance(
+          document.getElementById("exampleModal")
+        ).hide();
+        location.reload(true)
+      }
+    });
+};
 
 // Initial call
 getMe();
