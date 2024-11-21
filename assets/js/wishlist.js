@@ -1,4 +1,3 @@
-
 getAllWish();
 function getAllWish() {
     fetch(apiUrl + '/api/wishlists', {

@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="../../assets/css/card_style.css">
     <link rel="stylesheet" href="../../assets/css/lim_style.css">
     <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+    <style>
+        .sticky{
+    position: sticky;
+    top: 80px;
+}
+    </style>
 </head>
 
 <body class="p-eventDetail">
@@ -143,7 +149,16 @@
         </div>
     </div>
     <main>
-        <section class="hero mb-5 ">
+        <div class="container bg-white" >
+            <p class="d-flex h-100 align-items-center my-auto">
+                <a href="../homepage.html" class="home-link">Home</a>
+                <i class="fa-solid fa-chevron-right mx-2 "></i>
+                <a href="browse-vendor.html" class="home-link">Browse Business</a>
+                <i class="fa-solid fa-chevron-right mx-2 "></i>
+                <span class="text-brand">Business Detail</span>
+            </p>
+        </div>
+        <!-- <section class="hero mb-5 ">
             <div class="container p-4 px-5 text-center">
                 <div class="content text-center">
                     <h1 class="display-6 fw-semibold card-title text-white"
@@ -152,7 +167,7 @@
 
                 </div>
             </div>
-        </section>
+        </section> -->
         <section class="brief-detail my-4">
             <div class="container">
                 <div class="row ">
@@ -160,6 +175,23 @@
                         <div class="content ">
                                 <img id="business-img" src="" class="object-fit-cover w-100 mb-3" height="380" alt="img">
                             <h3 id="title"  class="mb-3 px-3"></h3>
+                            <div class="mb-4 d-flex row px-3">
+                                    <div class="col-6 d-flex py-3">
+                                        <i class="fa-regular fa-folder-open fs-2 fw-light ps-2 text-brand w-15 border-brand d-flex p-3"></i>
+                                        <div class="py-2">
+                                            <h5 class="m-0">Category</h5>
+                                            <p class="m-0 text-body-secondary" id="catagory"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 d-flex py-3">
+                                        <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15"></i>
+                                        <div>
+                                            <h6 class="m-0">Location</h6>
+                                            <p class="m-0 text-body-secondary" id="location"></p>
+                                        </div>
+                                    </div>
+                            </div>
                             <div class="mb-3 px-3" id="description">
 
                             </div>
@@ -169,27 +201,17 @@
                                 <p id="phone">Phone: </p>
 
                             </div>
-                            <div class="mb-3 px-3" id="social-media">
-                                <h3>Social Media</h3>
-                                <a class="text-body-secondary fs-3 me-2 text-brand" id="fb"><i
-                                        class="fa-brands fa-facebook"></i></a>
-                                <a class="text-body-secondary fs-3 me-2 text-brand" id="linkedin"><i
-                                        class="fa-brands fa-linkedin-in"></i></a>
-                                <a class="text-body-secondary fs-3 me-2 text-brand" id="tiktok"><i
-                                        class="fa-brands fa-tiktok"></i></a>
-                                <a class="text-body-secondary fs-3 me-2 text-brand" id="telegram"><i
-                                        class="fa-brands fa-telegram"></i></a>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="col-4 m-0 p-0 ">
-                        <div class="content m-0 p-0">
-                            <div class="mb-4 bg-white shadow-light">
+                        <div class="content m-0 p-0 sticky">
+                            <!-- <div class="mb-4 bg-white shadow-light">
                                 <div class="d-flex py-3 px-4  align-items-center justify-content-between">
                                     <h4 class="m-0">Vendor Business Brief</h4>
                                 </div>
                                 <hr>
-                                <ul class="list-unstyled px-4">
+                                <ul class="list-unstyled px-4 d-flex">
                                     <li class="d-flex py-3">
                                         <i class="fa-regular fa-folder-open fs-2 fw-light ps-2 text-brand w-15"></i>
                                         <div>
@@ -206,7 +228,7 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                             <div class=" bg-white shadow-light mb-4 py-3 px-4">
                                 <h4 class="fw-semibold mb-3">Post By</h4>
                                 <div class="d-flex align-items-center mb-3">
@@ -216,6 +238,17 @@
                                         onclick="viewOrgDetail(this)"></a>
 
                                 </div>
+                            </div>
+                            <div class="mb-3 px-3" id="social-media">
+                                <h3>Social Media</h3>
+                                <a class="text-body-secondary fs-3 me-2 text-brand" id="fb"><i
+                                        class="fa-brands fa-facebook"></i></a>
+                                <a class="text-body-secondary fs-3 me-2 text-brand" id="linkedin"><i
+                                        class="fa-brands fa-linkedin-in"></i></a>
+                                <a class="text-body-secondary fs-3 me-2 text-brand" id="tiktok"><i
+                                        class="fa-brands fa-tiktok"></i></a>
+                                <a class="text-body-secondary fs-3 me-2 text-brand" id="telegram"><i
+                                        class="fa-brands fa-telegram"></i></a>
                             </div>
 
                         </div>
