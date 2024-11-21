@@ -167,26 +167,24 @@ function displayRelatedItems(evCatagoryId,detailId) {
             ? element.thumbnail
             : "../../assets/img/party/party1.png";
             listE+=`<div class="col-md-4  d-flex  swiper-slide"> 
-                    <div class="card shadow-sm rounded w-100"> 
-                      <div onclick="showEventDetail(${element.id})">
-                        <img src="${thumbnail}" alt="Event Image" class="card-img-top rounded-top">
-                      <div class="card-body w-100">
+                    <div class="card shadow-sm rounded w-100" > 
+                      <img src="${thumbnail}" alt="Event Image" class="card-img-top rounded-top">
+                      <div class="card-body w-100" onclick="showEventDetail(${element.id})">
                         <div class="d-flex mb-2 event-pill-wrapper">
                         ${catas}
                         </div>
                         <h5 class="card-title">${element.name}</h5>
-                        <p class="text-muted mb-1"><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
+                        <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
                                                         element.start_date
                                                       ).format("ddd, D MMMM • h:mm A")}</p>
-                        <p class="text-muted text-loca"><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
+                        <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
                                                         element.location
                                                       }</p>
                         <h6 class="text-brand">${price}</h6>
                       </div>
                       <div class="card-footer d-flex align-items-center">
-                        <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 36px; height: 36px;">
+                        <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 40px; height: 40px;">
                         <span>${element.creator.full_name}</span>
-                      </div>
                       </div>
                       <div class="card-btn-wrapper">
                                     <button type="button" class="btn-rounded border-0 add-wish" data-id="${element.id}" ><i
@@ -198,6 +196,38 @@ function displayRelatedItems(evCatagoryId,detailId) {
                                 </div>
                     </div>
                   </div>`;
+            // listE+=`<div class="col-md-4  d-flex  swiper-slide"> 
+            //         <div class="card d-flex shadow-sm rounded w-100"> 
+            //           <div onclick="showEventDetail(${element.id})">
+            //             <img src="${thumbnail}" alt="Event Image" class="card-img-top rounded-top">
+            //           <div class="card-body w-100">
+            //             <div class="d-flex mb-2 event-pill-wrapper">
+            //             ${catas}
+            //             </div>
+            //             <h5 class="card-title">${element.name}</h5>
+            //             <p class="text-muted mb-1"><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
+            //                                             element.start_date
+            //                                           ).format("ddd, D MMMM • h:mm A")}</p>
+            //             <p class="text-muted text-loca"><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
+            //                                             element.location
+            //                                           }</p>
+            //             <h6 class="text-brand">${price}</h6>
+            //           </div>
+            //           <div class="card-footer d-flex align-items-center">
+            //             <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 36px; height: 36px;">
+            //             <span>${element.creator.full_name}</span>
+            //           </div>
+            //           </div>
+            //           <div class="card-btn-wrapper">
+            //                         <button type="button" class="btn-rounded border-0 add-wish" data-id="${element.id}" ><i
+            //                                 class="fa-regular fa-heart"></i></button>
+            //                         <button type="button" class="btn-rounded border-0" onclick="copyEventUrlToClipboard(${
+            //                           element.id
+            //                         })"><i
+            //                                 class="fa-solid fa-arrow-up-right-from-square"></i></button>
+            //                     </div>
+            //         </div>
+            //       </div>`;
         // listE += `
         //                 <div class="card swiper-slide mx-1 ">
         //                     <div class="card-content">
