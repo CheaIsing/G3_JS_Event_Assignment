@@ -15,9 +15,7 @@ body {
     --c-brand: #ff1694;
     --c-brand-light: #ff1692ac;
     --c-brand-dark: #e11594;
-    --c-light-gray: #F8F7FA;
     --text-gray: #403247;
-
 }
 
 .bg-brand-light-50 {
@@ -175,6 +173,7 @@ header .btn-outline-pink {
     outline: 2px solid var(--c-brand);
     background-color: #ff16925a;
     background: transparent;
+    border: 0 !important;
 }
 
 header .btn-pink {
@@ -185,11 +184,24 @@ header .btn-pink {
     position: absolute;
     right: 1px;
     top: 1px;
+    border: 0 !important;
 }
 
 header .btn-pink .fa-magnifying-glass {
     color: white !important;
     padding: 0 !important;
+}
+
+header .dropdown-menu.show {
+    top: 10% !important;
+}
+
+header .dropdown-menu.show .dropdown-item {
+    padding: 8px 15px !important;
+}
+
+header .dropdown-menu.show .dropdown-item:hover {
+    background-color: #e1159325 !important;
 }
 
 /* Lim code */
@@ -320,7 +332,8 @@ section.ticket-order .table td {
     outline: 2px solid var(--c-brand) !important;
     border-radius: 5px;
     cursor: pointer;
-    /* transition: 0.3s; */
+    background-color: transparent;
+    transition: 0.3s;
 }
 
 .btn-outline-pink:hover {

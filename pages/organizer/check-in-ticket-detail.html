@@ -16,27 +16,34 @@
     </head>
 
     <body>
-        
+
         <header class="border px-1" id="header">
             <div class="container-fluid px-4">
                 <nav class="d-flex align-items-center justify-content-between">
                     <div class="logo">
                         <a href="../homepage.html">
-                            <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                            <img
+                                src="../../assets/img/logo/Prutika_Logo_text(2).png"
+                                alt>
                         </a>
                     </div>
-                    
-                    
+
                     <div class="dropdown">
-                        <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
-                            id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#"
+                            class="dropdown-toggle fs-3 text-brand d-flex align-items-center"
+                            role="button"
+                            id="accountDropdown" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <i class="bi bi-person-circle"></i>
                             <!-- User Icon -->
                             <span class="ps-1 fs-6" id="userEmail"></span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                            <li><a class="dropdown-item" href="../homepage.html">Switch to Attending</a></li>
-                            
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="accountDropdown">
+                            <li><a class="dropdown-item"
+                                    href="../homepage.html">Switch to
+                                    Attending</a></li>
+
                         </ul>
                     </div>
                 </nav>
@@ -109,31 +116,25 @@
                                 class="btn btn-brand"
                                 data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
-                                <small><i class="fa-solid fa-plus me-1"></i></small> Add Check-in
+                                <small><i
+                                        class="fa-solid fa-plus me-1"></i></small>
+                                Add Check-in
                             </button>
                         </div>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Ticket Id</th>
+                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Price</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
+                                    <th>Status</th>
+                                    <th>Check-in At</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td>$20.00</td>
-                                    <td>2023-10-01</td>
-                                    <td><button type="button"
-                                            class="btn btn-danger rounded-circle"><i class="fa-regular fa-trash-can"></i></button></td>
-                                </tr>
+                            <tbody id="tbody">
+                                
                             </tbody>
                         </table>
-
                     </section>
                 </div>
             </div>
@@ -150,28 +151,30 @@
                             data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="">
+                        <div class>
                             <label for="exampleInputEmail1"
                                 class="form-label">Input Ticket Id:</label>
                             <input type="text" class="form-control"
                                 id="check-in-input"
                                 aria-describedby="emailHelp">
                         </div>
-                        
+
                     </div>
                     <div class="modal-footer border-0 pt-0">
-                        
+
                         <button type="button"
-                            class="btn btn-brand w-100" id="btn-checked-in">Send</button>
+                            class="btn btn-brand w-100"
+                            id="btn-checked-in">Send</button>
                     </div>
                 </div>
             </div>
         </div>
-        
+
+        <script src="../../assets/js/ultilities.js"></script>
+        <script src="../../assets/js/authentication.js"></script>
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>
         <!-- <script type="module" src="../../assets/js/authentication.js"></script> -->
-         <script src="../../assets/js/ultilities.js"></script>
-        <script type="module" src="../../assets/js/organizer/check-in-detail.js"></script>
+        <script src="../../assets/js/organizer/check-in-detail.js"></script>
     </body>
 
 </html>

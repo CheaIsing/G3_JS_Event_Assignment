@@ -111,7 +111,8 @@
                                         <label id="imgInputBtn" for="fileUpload" class="btn-outline-pink"><i
                                                 class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                             Image</label>
-                                        <input class="d-none" id="fileUpload" type="file"></input>
+                                        <input class="d-none" id="fileUpload" accept=".jpg, .jpeg, .png"
+                                            type="file"></input>
                                         <div class="d-flex">
                                             <p id="fileName" class="text-secondary pt-3">No file chosen</p>
                                             <button id="btnRemoveImgFile" type="button"
@@ -151,7 +152,7 @@
 
                                     <div class="category-select d-flex">
                                         <div class="w-25 me-5">
-                                            <h5>Event Categories*</h5> <select class="customized-form"
+                                            <h5>Event Categories*</h5> <select class="form-control customized-form"
                                                 aria-label="Default select example" multiple name="state[]"
                                                 id="categorySelect" placeholder="Select categories">
                                                 <!-- <option value="1">One</option>
@@ -541,7 +542,7 @@
                                         <button type="button" class="btn-outline-pink" onclick="createNewAgenda()"><i
                                                 class="fa-solid fa-plus"></i> Add a new agenda</button>
                                     </div>
-                                    <div class="upload-img-form">
+                                    <div class="upload-img-form d-none">
                                         <h4 class="fw-bold pb-3">Add your image</h4>
                                         <div
                                             class="upload-section d-flex align-items-center justify-content-center p-5 flex-column">
@@ -597,34 +598,34 @@
                                     </div>
                                     <div id="payment-container">
                                         <h5 class="fw-bold mb-3">Payment Method*</h5>
-                                    <div class="upload-img-form mb-5">
-                                        <h5>Add your KHQR image*</h5>
+                                        <div class="upload-img-form mb-5">
+                                            <h5>Add your KHQR image*</h5>
 
-                                        <div class="upload-section d-flex align-items-center justify-content-center p-5 flex-column"
-                                            id="khqr-upload-section">
-                                            <i id="khqrPhotoIcon"
-                                                class="fa-regular fa-image fs-1 text-secondary pb-3"></i>
-                                            <label id="khqrPhotoInputBtn" for="khqrPhotoUpload"
-                                                class="btn-outline-pink"><i
-                                                    class="fa-regular fa-image fs-5 text-secondary"></i> Upload
-                                                Image</label>
-                                            <input class="d-none" id="khqrPhotoUpload" type="file"></input>
-                                            <div class="d-flex">
-                                                <p id="KhqrPhotoName" class="text-secondary pt-3">No file chosen</p>
-                                                <button id="btnRemoveKhqrImg" type="button"
-                                                    class="ms-1 text-secondary fw-bold bg-transparent">X</button>
+                                            <div class="upload-section d-flex align-items-center justify-content-center p-5 flex-column"
+                                                id="khqr-upload-section">
+                                                <i id="khqrPhotoIcon"
+                                                    class="fa-regular fa-image fs-1 text-secondary pb-3"></i>
+                                                <label id="khqrPhotoInputBtn" for="khqrPhotoUpload"
+                                                    class="btn-outline-pink"><i
+                                                        class="fa-regular fa-image fs-5 text-secondary"></i> Upload
+                                                    Image</label>
+                                                <input class="d-none" id="khqrPhotoUpload" type="file"></input>
+                                                <div class="d-flex">
+                                                    <p id="KhqrPhotoName" class="text-secondary pt-3">No file chosen</p>
+                                                    <button id="btnRemoveKhqrImg" type="button"
+                                                        class="ms-1 text-secondary fw-bold bg-transparent">X</button>
+                                                </div>
+                                                <img id="KhqrPhotoDisplay" src="" alt="img preview">
+
                                             </div>
-                                            <img id="KhqrPhotoDisplay" src="" alt="img preview">
-
+                                            <div class="img-format pt-3 w-100">
+                                                <ul type="circle" class="d-flex justify-content-evenly">
+                                                    <li>Recommended image size: 2160 x 1080px</li>
+                                                    <li>Maximum file size: 10MB</li>
+                                                    <li>Supported image files: .JPEG, .PNG</li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div class="img-format pt-3 w-100">
-                                            <ul type="circle" class="d-flex justify-content-evenly">
-                                                <li>Recommended image size: 2160 x 1080px</li>
-                                                <li>Maximum file size: 10MB</li>
-                                                <li>Supported image files: .JPEG, .PNG</li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                     </div>
                                 </div>
 
@@ -643,23 +644,22 @@
     <!-- quillJS -->
     <script src="../../assets/lib/QuilJs/quill.js"></script>
 
-
     <script type="module" src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/ultilities.js"></script>
+    <script src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/image_file_input.js"></script>
     <script src="../../assets/js/form_collapse.js"></script>
     <script src="../../assets/js/form_validation.js"></script>
     <script src="../../assets/js/organizer/create_event.js"></script>
-    <script src="../../assets/plugin/tomJs/tom-select.complete.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             window.descQuill = new Quill('#editor', { theme: 'snow' });
         });
 
-        new TomSelect("#categorySelect", {
-            maxItems: 3
-        });
+        // new TomSelect("#categorySelect", {
+        //     maxItems: 3
+        // });
     </script>
 
 </body>

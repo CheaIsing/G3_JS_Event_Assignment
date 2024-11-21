@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-console.log(document.getElementById("btn-logout"));
 
 if (document.getElementById("btn-logout")) {
   document.getElementById("btn-logout").addEventListener("click", () => {
@@ -86,7 +85,6 @@ if (document.getElementById("btn-logout")) {
 }
 
 function logout() {
-  console.log(localStorage.getItem("authToken"));
 
   fetch(`${API_URL}/api/logout`, {
     method: "DELETE",
@@ -96,7 +94,6 @@ function logout() {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log();
       showToast(json.message, json.result);
 
       if (json.result == true) {
@@ -112,23 +109,6 @@ function loginLink() {
   location.href = "/pages/authentication/login.html";
 }
 
-// document.getElementById('btn-sign-up').onclick = () => {
-//     const full_name = document.getElementById('register-full-name');
-//     const email = document.getElementById('register-email');
-//     const password = document.getElementById('register-password');
-//     const password_confirmation = document.getElementById('register-confirm-password');
-
-//     console.log(full_name, email, password, password_confirmation);
-
-// }
-
-// Function to show toast notifications using Bootstrap 5
-
-// Example usage
-// Success toast
-// showToast("Failed to send your request!", "fail"); // Fail toast
-
-// }
 
 if (document.getElementById("profileForm")) {
   document
@@ -196,4 +176,3 @@ if (document.getElementById("profileForm")) {
     });
 }
 
-document.getElementById("header");

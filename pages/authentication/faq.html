@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browse Vendor Business</title>
+    <title>Section FAQs</title>
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/browse.css">
-    <link rel="stylesheet" href="../../assets/css/card_style.css">
-    <link rel="stylesheet" href="../../assets/css/lim_style.css">
+    <link rel="stylesheet" href="../../assets/css/mainstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
 </head>
 
-<body class="p-browseEvent">
+<body>
     <header class="border" id="header">
         <div class="container">
             <nav class="d-flex align-items-center justify-content-between">
                 <div class="logo">
-                    <a href="../homepage.html">
+                    <a href="homepage.html">
                         <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
                     </a>
                 </div>
@@ -29,7 +27,7 @@
                     <button class="btn-pink text-white"><i
                             class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
                     <ul class="search-dropdown position-absolute" id="search-dropdown">
-
+  
                     </ul>
                 </div>
                 <div class="action-btn d-flex">
@@ -45,7 +43,7 @@
                     <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
                             class="fa-solid fa-ticket pe-1 text-brand"></i>My
                         Ticket</a>
-
+  
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
                         <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
                                 events</a></li>
@@ -53,7 +51,7 @@
                                 vendor recruitments</a></li>
                         <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
                                 vendor services</a></li>
-
+  
                     </ul>
                 </div>
                 <div class="dropdown">
@@ -83,75 +81,95 @@
             </nav>
         </div>
     </header>
+
     <main>
-        <div class="container">
-            <p class="d-flex h-100 align-items-center my-auto">
-                <a href="" class="home-link">Home</a>
-                <i class="fa-solid fa-chevron-right mx-2 "></i>
-                <span class="text-brand">Browse Vendor Business</span>
-            </p>
-        </div>
-        <section class="hero  mb-5 ">
-            <div class="overlay"></div>
-            <h2 class="h-100 d-flex justify-content-center align-items-center text-white">Browse Vendor Business</h2>
-        </section>
-        <section class="browse">
-            <div class="container">
-                <div class="row position-relative">
-                    <div class="col-3 position-sticky top-0">
-                        <div class="filter">
-                            <h6 class="ps-4 py-2 m-0">Filter</h6>
-                            <hr>
-                            <hr>
-                            <hr>
-                            <div class="ps-4 py-2" id="categories-container">
-                                <h6>Service Category</h6>
-
-
-                            </div>
-                            <hr>
-                            <div class=" my-3 me-4 text-end">
-                                <button type="button" class="btn btn-outline-secondary">Clear All</button>
-                                <Button type="button" class="btn btn-brand">Search</Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-9">
-                        <div class="search-result w-100">
-
-                            <div class="d-flex align-items-center justify-content-between mt-2 mb-4">
-                                <h5 class=" show-re mb-0">
-                                    <span class="text-brand" id="vendor-result"></span>
-                                    Results
-                                </h5>
-                                <div class="d-flex align-items-center " style="width: 380px;">
-                                    <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute ms-3"></i>
-                                    <input type="text" class="form-control search-bar ps-5 w-100 " name=""
-                                        id="search-input" aria-describedby="helpId"
-                                        placeholder="Search Business ... " />
-
-                                </div>
-                            </div>
-                            <div class="business-list vendor-card-wrapper">
-
-                            </div>
-                            <div id="pagination"></div>
-                        </div>
-                    </div>
+        <section>
+            <div class="container section-faq">
+                <div class="heading">
+                    <i class="bi bi-stars faq-star"></i>
+                    <h1>FAQs</h1>
                 </div>
+                
+                <div class="faq-item">
+                    <div class="question">
+                        <h4>What is the event schedule?</h4>
+                        <i class="bi bi-plus-circle faq-icon plus-icon"></i>
+                        <i class="bi bi-dash-circle faq-icon minus-icon hidden"></i>
+                    </div>
+                    <p class="para">
+                        The event schedule, including session times and breaks, can be found on our event page [link to schedule].
+                    </p>
+                </div>
+                <hr>
+                <div class="faq-item">
+                    <div class="question">
+                        <h4>Is there a registration fee?</h4>
+                        <i class="bi bi-plus-circle faq-icon plus-icon"></i>
+                        <i class="bi bi-dash-circle faq-icon minus-icon hidden"></i>
+                    </div>
+                    <p class="para">
+                        Details on any fees or free entry options can be found in the registration section.
+                    </p>
+                </div>
+                <hr>
+                <div class="faq-item">
+                    <div class="question">
+                        <h4>What if I cannot attend after registering?</h4>
+                        <i class="bi bi-plus-circle faq-icon plus-icon"></i>
+                        <i class="bi bi-dash-circle faq-icon minus-icon hidden"></i>
+                    </div>
+                    <p class="para">
+                        Please contact us in advance if you cannot attend. This allows us to manage our participant list.
+                    </p>
+                </div>
+                <hr>
+
+                <div class="faq-item">
+                    <div class="question">
+                        <h4>Can I transfer my registration to someone else?</h4>
+                        <i class="bi bi-plus-circle faq-icon plus-icon"></i>
+                        <i class="bi bi-dash-circle faq-icon minus-icon hidden"></i>
+                    </div>
+                    <p class="para">
+                        Yes, but please inform us beforehand to transfer the registration and update participant information.
+                    </p>
+                </div>
+                <hr>
+                <div class="faq-item">
+                    <div class="question">
+                        <h4>What should I do if I experience technical difficulties?</h4>
+                        <i class="bi bi-plus-circle faq-icon plus-icon"></i>
+                        <i class="bi bi-dash-circle faq-icon minus-icon hidden"></i>
+                    </div>
+                    <p class="para">
+                        Please contact our technical support team at prutika@gmail.com.. for assistance.
+                    </p>
+                </div>
+                <hr>
+
+
+               
+
             </div>
         </section>
     </main>
-    <footer></footer>
-
-    <script src="../../assets/js/ultilities.js"></script>
-    <script src="../../assets/js/authentication.js"></script>
-    <script src="../../assets/js/header.js"></script>
-    <script src="../../assets/js/footer.js"></script>
-    <script src="../../assets/js/browseBusiness.js"></script>
 
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/header.js"></script>
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
 
+        faqItems.forEach(item => {
+            const plusIcon = item.querySelector('.plus-icon');
+            const minusIcon = item.querySelector('.minus-icon');
+            const para = item.querySelector('.para');
+
+            item.addEventListener('click', () => {
+                plusIcon.classList.toggle('hidden');
+                minusIcon.classList.toggle('hidden');
+                para.classList.toggle('expanded');
+            });
+        });
+    </script>
 </body>
-
 </html>

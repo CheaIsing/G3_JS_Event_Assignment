@@ -283,6 +283,14 @@ function renderBusinesses(businesses) {
   const businessList = document.querySelector(".business-list");
   businessList.innerHTML = ""; // Clear previous businesses
 
+  if(businesses.length == 0){
+
+    return businessList.innerHTML = `<div class="text-center w-100 my-4">
+              <img src="../../assets/img/noFound.png" alt="..." height="220px;">
+              <h4 class="text-center text-brand mt-2">No Business to Display...</h4>
+            </div>`
+  }
+
   businesses.forEach((business) => {
     // Create a new card for each business
     const newCard = document.createElement("div");
