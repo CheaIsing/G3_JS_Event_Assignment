@@ -142,6 +142,9 @@ function copyEventUrlToClipboard(eventId) {
 }
 //wishlist
 function checkEventInWishlist(eventId) {
+  if(!localStorage.getItem("authToken")){
+    return;
+  }
   return fetch(`${API_URL}/api/wishlists`, {
     method: 'GET',
     headers: {
@@ -167,6 +170,9 @@ function checkEventInWishlist(eventId) {
     });
 }
 function setUpWishBtn() {
+  if(!localStorage.getItem("authToken")){
+    return;
+  }
   const wishButtons = document.querySelectorAll(".add-wish");
   wishButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -184,8 +190,12 @@ function setUpWishBtn() {
   });
 }
 function addWishlist(item) {
+  if(!localStorage.getItem('authToken')){
+    return location.href = '/pages/authentication/login.html'
+  }
   let eventId = item.dataset.id;
   const formData = new FormData();
+
   formData.append("event_id", eventId);
   fetch(`${apiUrl}/api/wishlists/`, {
     method: 'POST',

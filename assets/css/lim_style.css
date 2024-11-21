@@ -582,7 +582,7 @@ footer .contact-info .social-media a:hover {
 
 .card-text {
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -788,6 +788,6 @@ footer .contact-info .social-media a:hover {
     background-color: #e11594;
 }
 
-.recruitmentCard .title{
+.recruitmentCard .title {
     display: none !important;
 }

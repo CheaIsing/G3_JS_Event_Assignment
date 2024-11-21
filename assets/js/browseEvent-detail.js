@@ -123,6 +123,10 @@ fetch(apiUrl + "/api/events/" + id)
     }
 
     document.getElementById("btn-purchase").onclick = () => {
+      if(!localStorage.getItem("authToken")){
+        location.href = "/pages/authentication/login.html"
+        return;
+      }
       sessionStorage.setItem("eventPaidId", id);
       location.href = "qr-payment.html";
     };
