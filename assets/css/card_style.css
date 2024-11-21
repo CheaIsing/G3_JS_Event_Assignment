@@ -158,7 +158,7 @@ footer .contact-info .social-media a:hover {
 
 .card-text{
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
