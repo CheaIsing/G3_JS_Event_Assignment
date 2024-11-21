@@ -13,37 +13,7 @@
     <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        html,
-        body {
-          position: relative;
-          height: 100%;
-        }
-    
-        body {
-          margin: 0;
-          padding: 0;
-        }
-    
-        .swiper {
-          width: 100%;
-          height: 100%;
-        }
-    
-        .swiper-slide {
-          /* text-align: center;
-          font-size: 18px;
-          background: #fff;
-          display: flex;
-          justify-content: center;
-          align-items: center; */
-        }
-    
-        .swiper-slide img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+
       </style>
 </head>
 
@@ -117,7 +87,7 @@
     <main>
         <div class="container">
             <p class="d-flex h-100 align-items-center my-auto">
-                <a href="" class="home-link">Home</a>
+                <a href="../homepage.html" class="home-link">Home</a>
                 <i class="fa-solid fa-chevron-right mx-2 "></i>
                 <a href="browse-event.html" class="home-link">Browse Event</a>
                 <i class="fa-solid fa-chevron-right mx-2 "></i>
@@ -151,7 +121,7 @@
                                 <div class="d-flex py-3 px-4  align-items-center justify-content-between">
                                     <h4 class="m-0">Event Detail</h4>
                                     <div>
-                                        <button class="btn btn-outline-brand add-wish"><i
+                                        <button class="btn btn-outline-brand add-wish" id="wish-ev"><i
                                                 class="fa-regular fa-heart"></i></button>
                                         <button class="btn btn-brand ms-2" id="btn-copylink-event"><i
                                                 class="fa-solid fa-share"></i></button>
@@ -174,7 +144,8 @@
                                         </div>
                                     </li>
                                     <li class="d-flex py-3">
-                                        <i class="fa-regular fa-calendar-xmark fs-2 fw-light ps-2 text-brand w-15"></i>
+                                        <i class="fa-regular fa-clock fs-2 fw-light ps-2 text-brand w-15"></i>
+                                        <!-- <i class="fa-regular fa-calendar-xmark fs-2 fw-light ps-2 text-brand w-15"></i> -->
                                         <div>
                                             <h6 class="m-0">Time</h6>
                                             <p class="m-0 text-body-secondary" id="ev-time"></p>
@@ -188,7 +159,7 @@
                                         </div>
                                     </li>
                                     <li class="d-flex py-3">
-                                        <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15"></i>
+                                        <i class="fa-solid fa-location-dot fs-2 ps-2 text-brand w-15 pe-5"></i>
                                         <div class="">
                                             <h6 class="m-0">Location</h6>
                                             <p class="m-0 text-body-secondary" id="ev-location"></p>
@@ -257,22 +228,18 @@
                     <span class="text-secondary ">You might also love these events.</span>
                 </div>
                 <div class="swiper mySwiper">
-                    <div class="swiper-wrapper row flex-nowrap event-card-wrapper " id="related-events"></div>
-                    <!-- <div class="swiper-pagination"></div> -->
+                    <div class="swiper-wrapper row flex-nowrap event-card-wrapper pt-2" id="related-events"></div>
                   </div>
             </div>
         </section>
-
     </main>
     <footer></footer>
 
     <script src="../../assets/lib/momentjs/moment.min.js"></script>
-
     <script src="../../assets/js/ultilities.js"></script>
     <script src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/header.js"></script>
     <script src="../../assets/js/footer.js"></script>
-
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/browseEvent-detail.js">
     </script>
@@ -283,7 +250,7 @@
   <!-- Initialize Swiper -->
   <script>
     var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 3.7,
+      slidesPerView: 3.5,
     //   centeredSlides: false,
       spaceBetween:0,
       grabCursor: true,
@@ -293,30 +260,6 @@
       },
     });
   </script>
-
-    <!-- <script>
-        // Script to handle ticket count increment and decrement
-        document.getElementById('decrement').addEventListener('click', function () {
-            var countInput = document.getElementById('ticketCount');
-            if (countInput.value > 0) {
-                countInput.value--;
-                updateTotal();
-            }
-        });
-
-        document.getElementById('increment').addEventListener('click', function () {
-            var countInput = document.getElementById('ticketCount');
-            countInput.value++;
-            updateTotal();
-        });
-
-        function updateTotal() {
-            var count = document.getElementById('ticketCount').value;
-            var price = 10.00; // Set price per ticket
-            var total = (count * price).toFixed(2);
-            document.querySelector('.row :nth-child(3) p').textContent = `$${total}`;
-        }
-    </script> -->
 </body>
 
 </html>

@@ -613,6 +613,20 @@ footer .contact-info .social-media a:hover {
     object-fit: cover;
     object-position: center;
 }
+.recruit-card-wrapper .card .card-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.card-recruit-list .card .card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
 .btn-rounded {
     width: 40px;
