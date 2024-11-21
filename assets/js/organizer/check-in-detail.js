@@ -24,7 +24,8 @@ function fetchCheckedIn(status = '') {
               <img src="../../assets/img/noFound.png" alt="" height="220px;">
               <h4 class="text-center text-brand mt-2">No Checked-in to Display...</h4>
             </div></td></tr>`;
-
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
         return;
       }
       let html = "";
