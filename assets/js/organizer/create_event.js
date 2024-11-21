@@ -1,21 +1,11 @@
 let agendaCount = 1;
 let agendaWrapper = document.getElementById("agenda-wrapper");
 document.getElementById("price").onkeyup = (e) => {
-<<<<<<< HEAD
   if (e.target.value == "0") {
     document.getElementById("payment-container").style.display = "none";
   } else {
     document.getElementById("payment-container").style.display = "block";
   }
-=======
-
-
-    if (e.target.value == "0") {
-        document.getElementById("payment-container").style.display = "none";
-    } else {
-        document.getElementById("payment-container").style.display = "block";
-    }
->>>>>>> 405d2257061784260e5e97ffd5ed5c826a9cf2d8
 };
 function createNewAgenda() {
     agendaCount++;

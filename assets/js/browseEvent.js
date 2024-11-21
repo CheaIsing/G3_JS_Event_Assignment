@@ -251,12 +251,12 @@ function displayEvents(events) {
       let pill = ((cata.id - 1) % 5) + 1;
       catas += `<div class="pill pill${pill} me-1">${cata.name}</div>`;
     });
-    listE += `<div class="card mb-4 cursor-pointer" onclick="getEDetail(this)" data-id="${element.id}">
+    listE += `<div class="card mb-4 cursor-pointer">
                             <div class="row g-0">
                                 <div class="col-3 position-relative">
-                                    <img src="${thumbnail}"
+                                    <img src="${thumbnail}" 
                                         class="img-fluid rounded-start " alt="...">
-                                    <div class="i-wish add-wish position-absolute top-0 end-0" data-id="${element.id}">
+                                    <div class="i-wish add-wish position-absolute top-0 end-0 z-3" data-id="${element.id}">
                                         <i class="fa-regular fa-heart"></i>
                                     </div>
                                 </div>
