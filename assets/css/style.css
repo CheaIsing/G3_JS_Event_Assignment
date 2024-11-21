@@ -545,6 +545,7 @@ hr {
     border: none !important;
     margin: 0px 20px 50px 0;
     background-color: transparent !important;
+    cursor: pointer;
 }
 
 .event-card-wrapper .card .card-body {
@@ -632,7 +633,7 @@ hr {
 }
 
 .event-card-wrapper p {
-    margin-bottom: 5px !important;
+    margin-bottom: 7px !important;
     font-size: 14px;
     font-weight: 500;
     color: var(--text-gray);

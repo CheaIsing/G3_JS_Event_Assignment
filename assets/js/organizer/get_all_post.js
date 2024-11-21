@@ -3,7 +3,8 @@ const token2 = localStorage.getItem("authToken");
 
 let id = localStorage.getItem("vendorId");
 
-let placeHolderCard = `<div class="card border-0 px-0">
+let placeHolderCard = `<div class="col-md-3">
+<div class="card border-0 px-0">
                                     <div class="card-content border-0">
                                         <div class="bg-secondary-subtle border rounded-1 placeholder" style="width: 100%; height: 180px;"></div>
                                         <div class="card-body px-0">
@@ -18,7 +19,7 @@ let placeHolderCard = `<div class="card border-0 px-0">
                                         </div>
                                         
                                     </div>
-                                </div>`;
+                                </div></div>`;
 for (i = 1; i <= 2; i++) {
   placeHolderCard += placeHolderCard;
 }
@@ -138,45 +139,37 @@ function loadEventCards() {
     }
 
     const newCard = document.createElement("div");
-    newCard.className = "card h-100";
-    newCard.innerHTML = `       <div class="card-content h-100">
+    newCard.className = "col-md-3 d-flex";
+    newCard.innerHTML = `       <div class="card shadow-sm rounded w-100"> 
                                         <div onclick="showEventDetail(${
                                           element.id
                                         })">
-                                            <img class="card-img-top" src="${thumbnail}" alt="Title" />
-                                        <div class="card-body h-100">
-                                            <div class="d-flex event-pill-wrapper"></div>
-                                            <h5 class="card-title mt-2 mb-1">${
-                                              element.name
-                                            }</h5>
-                                            <p class="card-text">${moment(
-                                              element.start_date
-                                            ).format(
-                                              "ddd, D MMMM • h:mm A"
-                                            )}</p>
-                                            <p class="text-secondary">${
-                                              element.location
-                                            }</p>
-                                            <p>${
+                                            <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
+                                        <div class="card-body">
+                                            <div class="d-flex event-pill-wrapper mb-2"></div>
+                                            <h5 class="card-title">${element.name}</h5>
+                        <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
+                                                        element.start_date
+                                                      ).format("ddd, D MMMM • h:mm A")}</p>
+                        <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
+                                                        element.location
+                                                      }</p>
+                                            <h6 class="text-brand">${
                                               parseFloat(element.ticket_price) >
                                               0
                                                 ? `$${element.ticket_price.toFixed(
                                                     2
                                                   )} per ticket`
                                                 : "Free"
-                                            }</p>
-                                            <div class="profile d-flex align-items-center mt-2">
-                                                <div class="pf-img me-2">
-                                                    <img src="${
-                                                      element.creator.avatar
-                                                    }" alt="Pfp Image">
-                                                </div>
-                                                <p>${
-                                                  element.creator.full_name
-                                                }</p>
-                                            </div>
+                                            }</h6>
+                                           
                                         </div>
-                                        </div>
+                                        
+                                        <div class="card-footer d-flex align-items-center">
+                                        <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
+                                        <span>${element.creator.full_name}</span>
+                                      </div>
+                                      </div>
                                         <div class="card-btn-wrapper h-100 w-100">
                                             <button type="button" class="btn-rounded add-wish" data-id="${
                                               element.id
