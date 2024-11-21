@@ -140,53 +140,44 @@ function loadEventCards() {
     const newCard = document.createElement("div");
     newCard.className = "card h-100";
     newCard.innerHTML = `       <div class="card-content h-100">
-                                        <div onclick="showEventDetail(${
-                                          element.id
-                                        })">
+                                        <div onclick="showEventDetail(${element.id
+      })">
                                             <img class="card-img-top" src="${thumbnail}" alt="Title" />
                                         <div class="card-body h-100">
                                             <div class="d-flex event-pill-wrapper"></div>
-                                            <h5 class="card-title mt-2 mb-1">${
-                                              element.name
-                                            }</h5>
+                                            <h5 class="card-title mt-2 mb-1">${element.name
+      }</h5>
                                             <p class="card-text">${moment(
-                                              element.start_date
-                                            ).format(
-                                              "ddd, D MMMM • h:mm A"
-                                            )}</p>
-                                            <p class="text-secondary">${
-                                              element.location
-                                            }</p>
-                                            <p>${
-                                              parseFloat(element.ticket_price) >
-                                              0
-                                                ? `$${element.ticket_price.toFixed(
-                                                    2
-                                                  )} per ticket`
-                                                : "Free"
-                                            }</p>
+        element.start_date
+      ).format(
+        "ddd, D MMMM • h:mm A"
+      )}</p>
+                                            <p class="text-secondary">${element.location
+      }</p>
+                                            <p>${parseFloat(element.ticket_price) >
+        0
+        ? `$${element.ticket_price.toFixed(
+          2
+        )} per ticket`
+        : "Free"
+      }</p>
                                             <div class="profile d-flex align-items-center mt-2">
                                                 <div class="pf-img me-2">
-                                                    <img src="${
-                                                      element.creator.avatar
-                                                    }" alt="Pfp Image">
+                                                    <img src="${element.creator.avatar
+      }" alt="Pfp Image">
                                                 </div>
-                                                <p>${
-                                                  element.creator.full_name
-                                                }</p>
+                                                <p>${element.creator.full_name
+      }</p>
                                             </div>
                                         </div>
                                         </div>
                                         <div class="card-btn-wrapper h-100 w-100">
-                                            <button type="button" class="btn-rounded add-wish" data-id="${
-                                              element.id
-                                            }" onclick="addWishlist(${
-      element.id
-    })"><i
+                                            <button type="button" class="btn-rounded add-wish" data-id="${element.id
+      }" onclick="addWishlist(${element.id
+      })"><i
                                                     class="fa-regular fa-heart"></i></button>
-                                            <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${
-                                              element.id
-                                            })"><i
+                                            <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id
+      })"><i
                                                     class="fa-solid fa-arrow-up-right-from-square"></i></button>
                                         </div>
                                     </div>`;
@@ -232,35 +223,30 @@ function loadRecruitCards() {
     const element = allRecruitData[currentRecruitIndex];
     const newCard = document.createElement("div");
     newCard.className = "card";
-    newCard.innerHTML = `<div class="card-content px-3" onclick="showRecruitDetail(${
-      element.id
-    })">
+    newCard.innerHTML = `<div class="card-content px-3" onclick="showRecruitDetail(${element.id
+      })">
                                     <div class="card-body">
                                         <div class="profile d-flex align-items-center justify-content-between mb-3">
                                             <div class="d-flex align-items-center">
                                                 <div class="pf-img me-2">
-                                                    <img src="${
-                                                      element.creator.avatar
-                                                    }" alt="">
+                                                    <img src="${element.creator.avatar
+      }" alt="">
                                                 </div>
-                                                <p>${
-                                                  element.creator.full_name
-                                                }</p>
+                                                <p>${element.creator.full_name
+      }</p>
                                             </div>
                                             <div class="d-flex recruit-pill-wrapper"></div>
                                         </div>
-                                        <h5 class="card-title mt-2 mb-0 fw-bold">${
-                                          element.name
-                                        }</h5>
-                                        <div class="card-text py-3">${
-                                          element.description
-                                        }</div>
+                                        <h5 class="card-title mt-2 mb-0 fw-bold">${element.name
+      }</h5>
+                                        <div class="card-text py-3">${element.description
+      }</div>
                                         <div class="duration">
                                             <span class="text-secondary fs-6"><i class="bi bi-calendar fs-6 text-brand"></i> Start Date: ${moment(
-                                              element.start_date
-                                            ).format(
-                                              "ddd, D MMMM • h:mm A"
-                                            )} </span><br>
+        element.start_date
+      ).format(
+        "ddd, D MMMM • h:mm A"
+      )} </span><br>
                                             <span class="location fs-6"><i class="bi bi-geo-alt fs-6 text-brand"></i>
                                                 ${element.location}</span>
                                         </div>
@@ -318,22 +304,25 @@ function loadVendorCards() {
                         <div class="thumbnail">
                             <img src="${thumbnail}" alt="..." width='250' height='270'>
                         </div>
-                        <div class="detail">
+                        <div class="detail px-5 w-100">
                             <h5 class="card-title mb-0 fw-bold">${element.name}</h5>
 
                             <div class="card-text card-desc1">${element.description}</div>
 
                             <p class="location"><i class="bi bi-geo-alt fs-6"></i> ${element.location}</p>
-                            <div class="d-flex vendor-pill-wrapper"></div>
-                            <div class="contact">
+                            
+                            <div class="vendor-contact">
                                 <span class="text-secondary">Phone: ${element.phone} </span><br>
                                 <span class="text-secondary">Email: ${element.email}</span>
                             </div>
-                            <div class="profile d-flex align-items-center mt-3">
-                                <div class="pf-img me-2">
-                                    <img src="${element.creator.avatar}" alt="avatar">
-                                </div>
-                                <p>${element.creator.full_name}</p>
+                            <div class="profile d-flex align-items-center mt-3 justify-content-between w-100">
+                              <div class="d-flex align-items-center" >
+                                  <div class="pf-img me-2">
+                                      <img src="${element.creator.avatar}" alt="avatar">
+                                  </div>
+                                  <p>${element.creator.full_name}</p>
+                              </div>
+                              <div class="d-flex vendor-pill-wrapper"></div>
                             </div>
                         </div>
 

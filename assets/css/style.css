@@ -145,6 +145,33 @@ header #userEmail {
     font-size: 15px;
 }
 
+/* STICKY STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+header.is-sticky {
+    position: fixed;
+    box-shadow: 1px 1px 8px #e1159325;
+    animation: slideDown 0.8s ease-out;
+}
+
+header.is-sticky img {
+    max-width: 80%;
+}
+
+header.is-sticky button {
+    font-size: 14px;
+    padding: 7px 10px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
 .overlay {
     position: fixed;
     width: 100%;
@@ -455,7 +482,7 @@ header .dropdown-menu.show .dropdown-item:hover {
 }
 
 .hero-banner .carousel-inner {
-    background-image: url('../img/party/party1.png');
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.819), #e11593c4, #bb94e3d5, #ff1692d0), url('../img/party/party1.png');
     background-position: center;
     background-size: cover;
 
@@ -463,20 +490,19 @@ header .dropdown-menu.show .dropdown-item:hover {
 
 .hero-banner .carousel-inner .carousel-item {
     height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.819), #e11593c4, #bb94e3d5, #ff1692d0);
 }
 
 .btn-darkpink {
     padding: 15px 25px;
-    outline: 2px solid var(--c-brand);
-    /* outline: 2px solid white; */
-    border-radius: 5px;
+    /* outline: 2px solid var(--c-brand); */
+    outline: 3px solid white;
+    /* border-radius: 5px; */
     cursor: pointer;
     position: relative;
-    background-color: var(--c-brand);
+    background-color: #fff;
     /* background-color: #ffffff7b; */
     /* color: var(--text-gray); */
-    color: white;
+    color: var(--c-brand);
     overflow: hidden;
     z-index: 1;
 }
@@ -488,14 +514,13 @@ header .dropdown-menu.show .dropdown-item:hover {
     height: 100%;
     background-color: var(--c-brand-dark);
     z-index: -1;
-    top: 100%;
-    right: 0;
-    transition: 0.2s;
-
+    top: 0;
+    right: 100%;
+    transition: 0.3s;
 }
 
 .btn-darkpink:hover.btn-darkpink::after {
-    top: 0;
+    right: 0;
 }
 
 .btn-darkpink:hover {
@@ -1060,12 +1085,17 @@ footer .contact-info .social-media a:hover {
 
 .card-desc1 {
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     /* Limit the text to 3 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
+}
+
+
+.vendor-contact span {
+    font-size: 14px;
 }
 
 .recruit-card-wrapper .card .recruit-requiremnt-wrapper,

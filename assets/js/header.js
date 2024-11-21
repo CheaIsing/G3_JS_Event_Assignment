@@ -1,17 +1,29 @@
 const apiUrl1 = "https://mps2.chandalen.dev";
 const token1 = localStorage.getItem("authToken");
 
-window.onscroll = function () {
-  scrollFunction();
-};
+// window.onscroll = function () {
+//   scrollFunction();
+// };
 
-function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    document.getElementById("header").style.boxShadow = "1px 1px 8px #e1159325";
+// function scrollFunction() {
+//   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+//     document.getElementById("header").style.boxShadow = "1px 1px 8px #e1159325";
+//   } else {
+//     document.getElementById("header").style.boxShadow = "none";
+//   }
+// }
+
+const header = document.getElementById('header');
+const toggleClass = "is-sticky";
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 150) {
+    header.classList.add(toggleClass);
   } else {
-    document.getElementById("header").style.boxShadow = "none";
+    header.classList.remove(toggleClass);
   }
-}
+});
 
 let searchClicked = document.getElementById("searchEvent");
 
@@ -110,10 +122,10 @@ function goCreatePost(type = "") {
 function checkAuth() {
   if (!localStorage.getItem("authToken")) {
     console.log(true);
-    
+
     if (document.querySelectorAll(".add-wish")) {
       console.log(true);
-      
+
       document.querySelectorAll(".add-wish").forEach((item) => {
         item.onclick = () => {
           location.href = "/pages/authentication/login.html";
