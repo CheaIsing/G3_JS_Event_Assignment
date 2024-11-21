@@ -29,6 +29,9 @@ function createRecruit(btn) {
     let recruitmentQuillContent = requirementQuill.root.innerHTML;
     let defaultQuillContent = '<p><br></p>';
     // console.log("Editor Content:", descQuillContent);
+    console.log(descQuillContent);
+    console.log(vendorTypeQuillContent);
+    console.log(recruitmentQuillContent);
 
     let description = '';
     if (vendorTypeQuillContent == defaultQuillContent) {
