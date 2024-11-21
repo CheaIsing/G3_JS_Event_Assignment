@@ -141,11 +141,8 @@ function loadEventCards() {
     const newCard = document.createElement("div");
     newCard.className = "col-md-3 d-flex";
     newCard.innerHTML = `       <div class="card shadow-sm rounded w-100"> 
-                                        <div onclick="showEventDetail(${
-                                          element.id
-                                        })">
                                             <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
-                                        <div class="card-body">
+                                        <div class="card-body" onclick="showEventDetail(${element.id})">
                                             <div class="d-flex event-pill-wrapper mb-2"></div>
                                             <h5 class="card-title">${element.name}</h5>
                         <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
@@ -169,8 +166,8 @@ function loadEventCards() {
                                         <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
                                         <span>${element.creator.full_name}</span>
                                       </div>
-                                      </div>
-                                        <div class="card-btn-wrapper h-100 w-100">
+                                      
+                                        <div class="card-btn-wrapper">
                                             <button type="button" class="btn-rounded add-wish" data-id="${
                                               element.id
                                             }" onclick="addWishlist(${
