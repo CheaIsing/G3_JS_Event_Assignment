@@ -535,7 +535,7 @@ hr {
     padding: 15px 30px;
 }
 
-.event-card-wrapper .card{
+.event-card-wrapper .card {
     width: 100%;
     border-radius: 0 0 10px 10px;
     transform: 0.3s;
@@ -543,6 +543,14 @@ hr {
     position: relative;
     overflow: hidden;
 }
+
+.event-card-wrapper .card {
+    width: calc(100% / 4 - 20px);
+    border: none !important;
+    margin: 0px 20px 50px 0;
+    background-color: transparent !important;
+}
+
 .event-card-wrapper .card .card-body {
     padding: 20px 14px 10px !important;
     cursor: pointer;
@@ -556,30 +564,35 @@ hr {
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-} 
-.event-card-wrapper .card .text-loca{
+}
+
+.event-card-wrapper .card .text-loca {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .event-card-wrapper .card:hover {
     border-radius: 0 0 10px 10px;
-    box-shadow: 0px 0px 8px #e115936c!important;
+    box-shadow: 0px 0px 8px #e115936c !important;
 }
+
 .event-card-wrapper .card .card-img-top {
     height: 200px;
     object-fit: cover;
     object-position: center;
 }
+
 .event-card-wrapper .card-footer {
     border-color: rgba(0, 0, 0, 0.075);
     /* box-shadow: var(--bs-box-shadow-sm) !important; */
-    background-color: #ffffff!important;
+    background-color: #ffffff !important;
     padding: 0.75rem 0.9rem;
     font-size: 0.9rem;
 }
+
 .btn-rounded {
     width: 40px;
     height: 40px;
@@ -610,14 +623,17 @@ hr {
     top: 3%;
     right: 3%;
 }
+
 .event-card-wrapper .card:hover .btn-rounded:nth-child(2) {
     right: 3%;
     top: 15%;
 }
+
 .event-card-wrapper .card .pf-img {
     border-radius: 100%;
     border: 1px solid #4032475e;
 }
+
 .event-card-wrapper p {
     margin-bottom: 5px !important;
     font-size: 14px;
@@ -712,7 +728,7 @@ footer .contact-info .social-media a:hover {
 
 .card-text {
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
