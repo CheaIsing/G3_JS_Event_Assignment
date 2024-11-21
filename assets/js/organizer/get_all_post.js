@@ -140,99 +140,79 @@ function loadEventCards() {
     }
 
     const newCard = document.createElement("div");
-    newCard.className = "card h-100";
-    newCard.innerHTML = `       <div class="card-content h-100">
-                                        <div onclick="showEventDetail(${element.id
+    newCard.className = "col-md-3 d-flex";
+    newCard.innerHTML = `       < div class="card shadow-sm rounded w-100 > 
+      < div class="card-content" >
+        <div onclick="showEventDetail(${element.id
       })">
-                                            <img class="card-img-top" src="${thumbnail}" alt="Title" />
-                                        <div class="card-body h-100">
-                                            <div class="d-flex event-pill-wrapper"></div>
-                                            <h5 class="card-title mt-2 mb-1">${element.name
+          <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
+          <div class="card-body">
+            <div class="d-flex event-pill-wrapper mb-2"></div>
+            <h5 class="card-title">${element.name
       }</h5>
-                                            <p class="card-text">${moment(
+            <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
         element.start_date
-      ).format(
-        "ddd, D MMMM • h:mm A"
-      )}</p>
-                                            <p class="text-secondary">${element.location
+      ).format("ddd, D MMMM • h:mm A")}</p>
+            <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${element.location
       }</p>
-                                            <p>${parseFloat(element.ticket_price) >
+            <h6 class="text-brand">${parseFloat(element.ticket_price) >
         0
         ? `$${element.ticket_price.toFixed(
           2
         )} per ticket`
         : "Free"
-      }</p>
-                                            <div class="profile d-flex align-items-center mt-2">
-                                                <div class="pf-img me-2">
-                                                    <img src="${element.creator.avatar
-      }" alt="Pfp Image">
-                                                </div>
-                                                <p>${element.creator.full_name
-      }</p>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        <div class="card-btn-wrapper h-100 w-100">
-                                            <button type="button" class="btn-rounded add-wish" data-id="${element.id
-      }" onclick="addWishlist(${element.id
-      })"><i
-                                                    class="fa-regular fa-heart"></i></button>
-                                            <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id
-      })"><i
-                                                    class="fa-solid fa-arrow-up-right-from-square"></i></button>
-                                        </div>
-    newCard.className = "col-md-3 d-flex";
-    newCard.innerHTML = `       < div class="card shadow-sm rounded w-100 > 
-      < div class="card-content" >
-        <div onclick="showEventDetail(${
-                                            element.id
-                                          })">
-          <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
-          <div class="card-body">
-            <div class="d-flex event-pill-wrapper mb-2"></div>
-            <h5 class="card-title">${
-              element.name
-            }</h5>
-            <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
-              element.start_date
-            ).format("ddd, D MMMM • h:mm A")}</p>
-            <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
-              element.location
-            }</p>
-            <h6 class="text-brand">${
-              parseFloat(element.ticket_price) >
-                0
-                ? `$${element.ticket_price.toFixed(
-                  2
-                )} per ticket`
-                : "Free"
-            }</h6>
+      }</h6>
 
 
             <div class="card-footer bg-transparent d-flex align-items-center">
-              <img src="${
-                                            element.creator.avatar
-                                          }" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
-                <span>${
-                  element.creator.full_name
-                }</span>
+              <img src="${element.creator.avatar
+      }" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
+                <span>${element.creator.full_name
+      }</span>
             </div>
           </div>
 
           <div class="card-btn-wrapper h-100 w-100">
-            <button type="button" class="btn-rounded add-wish" data-id="${
-                                                element.id
-                                              }" onclick="addWishlist(${
-      element.id
-    })"><i
+            <button type="button" class="btn-rounded add-wish" data-id="${element.id
+      }" onclick="addWishlist(${newCard.innerHTML = `       <div class="card shadow-sm rounded w-100"> 
+                                            <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
+                                        <div class="card-body" onclick="showEventDetail(${element.id})">
+                                            <div class="d-flex event-pill-wrapper mb-2"></div>
+                                            <h5 class="card-title">${element.name
+      }</h5>
+                        <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
+        element.start_date
+      ).format("ddd, D MMMM • h:mm A")}</p>
+                        <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${element.location
+      }</p>
+                                            <h6 class="text-brand">${parseFloat(element.ticket_price) >
+        0
+        ? `$${element.ticket_price.toFixed(
+          2
+        )} per ticket`
+        : "Free"
+      }</h6>
+                                           
+                                        </div>
+                                        
+                                        <div class="card-footer d-flex align-items-center">
+                                        <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
+                                        <span>${element.creator.full_name}</span>
+                                      </div>
+                                      
+                                        <div class="card-btn-wrapper">
+                                            <button type="button" class="btn-rounded add-wish" data-id="${element.id
+      }" onclick="addWishlist(${element.id
+      })"><i
                 class="fa-regular fa-heart"></i></button>
-            <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${
-                                                element.id
-                                              })"><i
+            <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id
+      })"><i
                 class="fa-solid fa-arrow-up-right-from-square"></i></button>
           </div>
         </div>
+                                                      class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                                          </div>
+                                        </div>
                                         
                                     </div > `;
     checkEventInWishlist(element.id);
@@ -245,7 +225,7 @@ function loadEventCards() {
     let colorId = 1;
     element.event_categories.slice(0, 3).forEach((categoryElement) => {
       let spanTag = document.createElement("span");
-      spanTag.className = `pill${ colorId } me - 1`;
+      spanTag.className = `pill${colorId} me - 1`;
       spanTag.innerHTML = categoryElement.name;
       eventPillWrapper.appendChild(spanTag);
       colorId++;
@@ -278,7 +258,7 @@ function loadRecruitCards() {
     const newCard = document.createElement("div");
     newCard.className = "card";
     newCard.innerHTML = `< div class="card-content px-3" onclick = "showRecruitDetail(${element.id
-  }) ">
+      }) ">
     < div class="card-body" >
                                         <div class="profile d-flex align-items-center justify-content-between mb-3">
                                             <div class="d-flex align-items-center">
@@ -318,7 +298,7 @@ function loadRecruitCards() {
     let colorId = 1;
     element.categories.slice(0, 3).forEach((categoryElement) => {
       let spanTag = document.createElement("span");
-      spanTag.className = `pill${ colorId } me - 1`;
+      spanTag.className = `pill${colorId} me - 1`;
       spanTag.innerHTML = categoryElement.name;
       recruitPillWrapper.appendChild(spanTag);
       colorId++;
@@ -393,7 +373,7 @@ function loadVendorCards() {
     let colorId = 1;
     element.categories.slice(0, 3).forEach((categoryElement) => {
       let spanTag = document.createElement("span");
-      spanTag.className = `pill${ colorId } me - 1`;
+      spanTag.className = `pill${colorId} me - 1`;
       spanTag.innerHTML = categoryElement.name;
       vendorPillWrapper.appendChild(spanTag);
       colorId++;
@@ -426,3 +406,4 @@ function showServiceDetail(id) {
   sessionStorage.setItem("businessDetailId", id);
   location.href = "/pages/browse/business-detail.html";
 }
+
