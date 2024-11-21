@@ -263,7 +263,7 @@ function displayEvents(events) {
                                 <div class="col-6 ">
                                     <div class="card-body ps-4 pe-0 py-4">
                                         <h3 class="card-title">
-                                            <a onclick="getEDetail(this)" data-id="${element.id}">${element.name}</a>
+                                            <a class="white-nowrap" onclick="getEDetail(this)" data-id="${element.id}">${element.name}</a>
                                         </h3>
                                         <div class="d-flex mb-2">
                                             
@@ -277,7 +277,7 @@ function displayEvents(events) {
                                             <i class="fa-regular fa-calendar text-brand me-2 "></i><small
                                                 class="text-body-secondary m-0">${moment(element.start_date).format('ddd, MMM D • h:mm A')}</small>
                                         </div>
-                                        <div class="d-flex align-items-center">
+                                        <div class="d-flex align-items-center white-nowrap">
                                             <i class="fa-solid fa-location-dot me-2 text-brand"></i> <small
                                                 class="text-body-secondary">${element.location}</small>
                                         </div>

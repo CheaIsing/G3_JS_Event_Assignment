@@ -47,6 +47,8 @@ fetch(apiUrl + "/api/events/" + id)
       moment(data.start_date).format("LT") +
       " - " +
       moment(data.end_date).format("LT");
+    document.getElementById("wish-ev").setAttribute("data-id",data.id);
+    console.log(document.getElementById("wish-ev"));
     document.getElementById("ev-status").innerHTML = status;
     document.getElementById("ev-location").innerHTML = data.location;
     document.getElementById("ev-catagory").innerHTML = catagory;
@@ -65,7 +67,7 @@ fetch(apiUrl + "/api/events/" + id)
       document.getElementById("btn-purchase").disabled = true;
       document.getElementById("btn-purchase").innerHTML = "Sold Out";
     }
-    displayRelatedItems(evCatagoryId);
+    displayRelatedItems(evCatagoryId,data.id);
     if (data.ticket_price === 0) {
       fetch(
         `${API_URL}/api/profile/requested-tickets?sort_col=created_at&sort_dir=desc`,
@@ -132,7 +134,7 @@ fetch(apiUrl + "/api/events/" + id)
     };
   });
 
-function displayRelatedItems(evCatagoryId) {
+function displayRelatedItems(evCatagoryId,detailId) {
   let url = apiUrl + `/api/events?category=${evCatagoryId}&page=1&per_page=10`;
   fetch(url)
     .then((res) => res.json())
@@ -151,7 +153,8 @@ function displayRelatedItems(evCatagoryId) {
       });
       let listE = "";
       data.forEach((element) => {
-        let price =
+        if(element.id!=detailId){
+          let price =
           element.ticket_price == 0
             ? "Free"
             : `$${element.ticket_price.toFixed(2)} per ticket`;
@@ -163,44 +166,74 @@ function displayRelatedItems(evCatagoryId) {
           element.thumbnail && !element.thumbnail.includes("no_photo")
             ? element.thumbnail
             : "../../assets/img/party/party1.png";
-        listE += `
-                        <div class="card swiper-slide mx-1 ">
-                            <div class="card-content">
-                                <img class="card-img-top" src="${thumbnail}" alt="Title" />
-                                <div class="card-body">
-                                    <div class="d-flex event-pill-wrapper">${catas}</div>
-                                    <h5 class="card-title mt-2 mb-0">${
-                                      element.name
-                                    }</h5>
-                                    <p class="card-text">${moment(
-                                      element.start_date
-                                    ).format("ddd, D MMMM • h:mm A")}</p>
-                                    <p class="text-secondary"> ${
-                                      element.location
-                                    }</p>
-                                    <p>${price}</p>
-                                    <div class="profile d-flex align-items-center mt-2">
-                                        <div class="pf-img me-2">
-                                            <img src="${
-                                              element.creator.avatar
-                                            }" alt="">
-                                        </div>
-                                        <p>${element.creator.full_name}</p>
-                                    </div>
-                                </div>
-                                <div class="card-btn-wrapper">
-                                    <button type="button" class="btn-rounded border-0 add-wish" onclick="addWishlist(${
-                                      element.id
-                                    })"><i
+            listE+=`<div class="col-md-4  d-flex  swiper-slide"> 
+                    <div class="card shadow-sm rounded w-100"> 
+                      <img src="${thumbnail}" alt="Event Image" class="card-img-top rounded-top">
+                      <div class="card-body w-100">
+                        <div class="d-flex mb-2 event-pill-wrapper">
+                        ${catas}
+                        </div>
+                        <h5 class="card-title">${element.name}</h5>
+                        <p class="text-muted mb-1"><i class="fa-regular fa-calendar me-1"></i> ${moment(
+                                                        element.start_date
+                                                      ).format("ddd, D MMMM • h:mm A")}</p>
+                        <p class="text-muted text-loca"><i class="fa-solid fa-location-dot me-1"></i> ${
+                                                        element.location
+                                                      }</p>
+                        <h6 class="text-brand">${price}</h6>
+                      </div>
+                      <div class="card-footer d-flex align-items-center">
+                        <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 40px; height: 40px;">
+                        <span>${element.creator.full_name}</span>
+                      </div>
+                      <div class="card-btn-wrapper">
+                                    <button type="button" class="btn-rounded border-0 add-wish" data-id="${element.id}" ><i
                                             class="fa-regular fa-heart"></i></button>
                                     <button type="button" class="btn-rounded border-0" onclick="copyEventUrlToClipboard(${
                                       element.id
                                     })"><i
                                             class="fa-solid fa-arrow-up-right-from-square"></i></button>
                                 </div>
-                            </div>
-                        </div>
-                      `;
+                    </div>
+                  </div>`;
+        // listE += `
+        //                 <div class="card swiper-slide mx-1 ">
+        //                     <div class="card-content">
+        //                         <img class="card-img-top" src="${thumbnail}" alt="Title" />
+        //                         <div class="card-body">
+        //                             <div class="d-flex event-pill-wrapper">${catas}</div>
+        //                             <h5 class="card-title mt-2 mb-0">${
+        //                               element.name
+        //                             }</h5>
+        //                             <p class="card-text text-secondary"><i class="fa-regular fa-calendar pe-2"></i>${moment(
+        //                               element.start_date
+        //                             ).format("ddd, D MMMM • h:mm A")}</p>
+        //                             <p class="text-secondary"><i class="fa-solid fa-location-dot pe-2"></i>${
+        //                               element.location
+        //                             }</p>
+        //                             <p class="text-brand">${price}</p>
+        //                             <div class="card-footer profile d-flex align-items-center mt-2">
+        //                                 <div class="pf-img me-2">
+        //                                     <img src="${
+        //                                       element.creator.avatar
+        //                                     }" alt="" >
+        //                                 </div>
+        //                                 <p>${element.creator.full_name}</p>
+        //                             </div>
+        //                         </div>
+        //                         <div class="card-btn-wrapper">
+        //                             <button type="button" class="btn-rounded border-0 add-wish" data-id="${element.id}" ><i
+        //                                     class="fa-regular fa-heart"></i></button>
+        //                             <button type="button" class="btn-rounded border-0" onclick="copyEventUrlToClipboard(${
+        //                               element.id
+        //                             })"><i
+        //                                     class="fa-solid fa-arrow-up-right-from-square"></i></button>
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //               `;
+        }
+        
         checkEventInWishlist(element.id);
       });
       document.getElementById("related-events").innerHTML = listE;
