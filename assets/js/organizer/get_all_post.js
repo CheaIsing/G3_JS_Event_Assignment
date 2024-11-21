@@ -141,13 +141,9 @@ function loadEventCards() {
 
     const newCard = document.createElement("div");
     newCard.className = "col-md-3 d-flex";
-    newCard.innerHTML = `       <div class="card shadow-sm rounded w-100 > 
-                                        <div class="card-content">
-                                          <div onclick="showEventDetail(${
-                                            element.id
-                                          })">
-                                              <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
-                                        <div class="card-body">
+    newCard.innerHTML = `       <div class="card shadow-sm rounded w-100"> 
+                                            <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
+                                        <div class="card-body" onclick="showEventDetail(${element.id})">
                                             <div class="d-flex event-pill-wrapper mb-2"></div>
                                             <h5 class="card-title">${
                                               element.name
@@ -166,22 +162,18 @@ function loadEventCards() {
                                                   )} per ticket`
                                                 : "Free"
                                             }</h6>
-                                            
-                                          
-                                          <div class="card-footer bg-transparent d-flex align-items-center">
-                                          <img src="${
-                                            element.creator.avatar
-                                          }" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
-                                          <span>${
-                                            element.creator.full_name
-                                          }</span>
-                                          </div>
-                                          </div>
-                                          
-                                          <div class="card-btn-wrapper h-100 w-100">
-                                              <button type="button" class="btn-rounded add-wish" data-id="${
-                                                element.id
-                                              }" onclick="addWishlist(${
+                                           
+                                        </div>
+                                        
+                                        <div class="card-footer d-flex align-items-center">
+                                        <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
+                                        <span>${element.creator.full_name}</span>
+                                      </div>
+                                      
+                                        <div class="card-btn-wrapper">
+                                            <button type="button" class="btn-rounded add-wish" data-id="${
+                                              element.id
+                                            }" onclick="addWishlist(${
       element.id
     })"><i
                                                       class="fa-regular fa-heart"></i></button>
