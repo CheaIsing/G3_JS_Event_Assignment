@@ -73,68 +73,90 @@
                                         Ticket</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="group-collaborate.html">
-                                    <i class="fa-solid fa-user-group"></i>
-                                    <span class="nav-item">Event Group
-                                        Collaborated</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="profile.html">
-                                    <i class="fa-solid fa-user"></i>
-                                    <span class="nav-item">Organizer
-                                        Profile</span>
-                                </a>
-                            </li>
+
                         </ul>
                     </nav>
 
                     <section class="p-4 w-100">
-                        <div class>
+                        <div class="d-flex align-items-center">
+                            <button type="button"
+                                class="btn border-0 ps-0"
+                                onclick="history.back()">
+                                <i
+                                    class="fa-solid fa-angle-left fs-2"></i>
+                            </button>
                             <h2>Check-in Ticket</h2>
                         </div>
                         <div
-                            class="my-4 d-flex w-100 justify-content-between align-content-center">
+                            class="w-100 mt-4 justify-content-center"
+                            style="display: flex;"
+                            id="loading">
                             <div
-                                class>
-                                <h3>Halowinn</h3>
-                                <div
-                                    class="d-inline-flex align-items-center">
-                                    <i
-                                        class="bi bi-calendar-event me-2"></i>
-                                    <span>Sat, Nov 23, 2024, 10:00
-                                        AM</span>
-                                </div>
+                                class="spinner-border text-secondary"
+                                role="status">
+                                <span
+                                    class="visually-hidden">Loading...</span>
                             </div>
                         </div>
-                        <div
-                            class="my-4 d-flex justify-content-between align-items-center">
-                            <h5 class>Ticket Checked-in</h5>
-                            <!-- Button trigger modal -->
-                            <button type="button"
-                                class="btn btn-brand"
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                <small><i
-                                        class="fa-solid fa-plus me-1"></i></small>
-                                Add Check-in
-                            </button>
+                        <div id="content" style="display: none;">
+                            <div
+                                class="my-4 d-flex w-100 justify-content-between align-content-center">
+                                <div
+                                    class>
+                                    <h3 id="title"></h3>
+                                    <div
+                                        class="d-inline-flex align-items-center">
+                                        <i
+                                            class="bi bi-calendar-event me-2"></i>
+                                        <span id="ev-date"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="my-4 d-flex justify-content-between align-items-center">
+                                <select name id="select-status"
+                                    class="form-select" style="width: 200px;">
+                                    <option value>All</option>
+                                    <option value="1">Not Checked-in
+                                        Yet</option>
+                                    <option value="2">Checked-In</option>
+                                </select>
+                                <!-- Button trigger modal -->
+                                <button type="button"
+                                    class="btn btn-brand"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    <small><i
+                                            class="fa-solid fa-plus me-1"></i></small>
+                                    Add Check-in
+                                </button>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Check-in At</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                    <tr>
+                                        <td colspan="5" class="border-0"><div
+                                                class="d-flex w-100 justify-content-center border-0 mt-4">
+                                                <div
+                                                    class="spinner-border text-secondary"
+                                                    role="status">
+                                                    <span
+                                                        class="visually-hidden">Loading...</span>
+                                                </div>
+                                            </div></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Status</th>
-                                    <th>Check-in At</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody">
-                                
-                            </tbody>
-                        </table>
                     </section>
                 </div>
             </div>
@@ -169,7 +191,7 @@
                 </div>
             </div>
         </div>
-
+        <script src="../../assets/lib/momentjs/moment.min.js"></script>
         <script src="../../assets/js/ultilities.js"></script>
         <script src="../../assets/js/authentication.js"></script>
         <script src="../../assets/js/bootstrap.bundle.min.js"></script>

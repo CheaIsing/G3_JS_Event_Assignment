@@ -187,6 +187,7 @@ header .btn-pink {
     border: 0 !important;
 }
 
+
 header .btn-pink .fa-magnifying-glass {
     color: white !important;
     padding: 0 !important;
@@ -257,8 +258,8 @@ header .btn-pink .fa-magnifying-glass {
     color: var(--c-brand) !important;
 }
 
-section.ticket-order .table td,
-section.ticket-order .table td {
+.ticket-order .table td,
+.ticket-order .table td {
     padding-block: 1rem !important;
 }
 
@@ -320,7 +321,7 @@ section.ticket-order .table td {
     outline: 2px solid var(--c-brand) !important;
     border-radius: 5px;
     cursor: pointer;
-    background-color: transparent ;
+    background-color: transparent;
     transition: 0.3s;
 }
 
@@ -654,6 +655,7 @@ footer .contact-info .social-media a {
 footer .contact-info .social-media a:hover {
     color: #e11594;
 }
+
 .pill1 {
     background-color: #e1159322;
     padding: 4px 7px !important;
@@ -863,12 +865,12 @@ footer .contact-info .social-media a:hover {
 }
 
 .vendor-card-wrapper .card .card-content .thumbnail {
-    width: 25%;
-    overflow: hidden;
+    /* width: 25%; */
+    /* overflow: hidden; */
 }
 
 .vendor-card-wrapper .card .card-content .thumbnail img {
-    width: 100%;
+    width: 250px;
     height: 100%;
     object-fit: cover;
 }
@@ -1035,7 +1037,7 @@ footer .contact-info .social-media a:hover {
 
 .card-description {
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     /* Limit the text to 3 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -1044,10 +1046,20 @@ footer .contact-info .social-media a:hover {
 
 }
 
+.card-desc1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* Limit the text to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
 .recruit-card-wrapper .card .recruit-requiremnt-wrapper,
 .recruit-card-wrapper .card .vendor-type-need-wrapper,
-.recruit-card-wrapper .card .detail-title {
-    display: none;
+.recruit-card-wrapper .card .title {
+    display: none !important;
 }
 
 .add-wish:hover,
@@ -1083,4 +1095,21 @@ footer .contact-info .social-media a:hover {
 
 .modal {
     background-color: #5a324b60 !important;
+}
+
+.form-select {
+
+    border-color: #ccc !important;
+}
+
+.form-select:focus {
+    box-shadow: none !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.recruitmentCard .title {
+    display: none !important;
 }

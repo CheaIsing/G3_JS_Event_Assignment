@@ -2,6 +2,74 @@
 // const token = localStorage.getItem("authToken");
 
 function getAllTicket() {
+  document.getElementById("ticket-tbody").innerHTML = `
+  <tr>
+    <td colspan="5">
+      <div class="card border-0" aria-hidden="true">
+        <div class="row g-0">
+          <div class="col-4">
+            <div class="bg-secondary-subtle border rounded-1" style="width: 100%; height: 100%;"></div>
+          </div>
+          <div class="col-8">
+            <div class="card-body py-2">
+              <h5 class="card-title">
+                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              </h5>
+              <p class="card-text">
+                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
+                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5">
+      <div class="card border-0" aria-hidden="true">
+        <div class="row g-0">
+          <div class="col-4">
+            <div class="bg-secondary-subtle border rounded-1" style="width: 100%; height: 100%;"></div>
+          </div>
+          <div class="col-8">
+            <div class="card-body py-2">
+              <h5 class="card-title">
+                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              </h5>
+              <p class="card-text">
+                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
+                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5">
+      <div class="card border-0" aria-hidden="true">
+        <div class="row g-0">
+          <div class="col-4">
+            <div class="bg-secondary-subtle border rounded-1" style="width: 100%; height: 100%;"></div>
+          </div>
+          <div class="col-8">
+            <div class="card-body py-2">
+              <h5 class="card-title">
+                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              </h5>
+              <p class="card-text">
+                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
+                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  `;
   fetch(
     `${API_URL}/api/profile/requested-tickets?sort_col=created_at&sort_dir=desc&page=1&per_page=10000`,
     {
@@ -16,11 +84,14 @@ function getAllTicket() {
 
       if (json.result === true) {
         const { data } = json;
-        console.log(data);
 
         if (data.length <= 0) {
-          document.getElementById("ticket-tbody").innerHTML =
-            '<tr><td colspan="5"><h3 class="text-center w-100 mt-5">No Requested Tickets to Display...</h3></td></tr>';
+          document.getElementById(
+            "ticket-tbody"
+          ).innerHTML = `<tr><td colspan="5"><div class="text-center w-100 my-4">
+              <img src="../../assets/img/noFound.png" alt="..." height="220px;">
+              <h4 class="text-center text-brand mt-2">No Request Ticket to Display...</h4>
+            </div></td></tr>`;
           return;
         }
 
@@ -60,6 +131,84 @@ function getAllTicket() {
 
         function renderCard() {
           let rowsHTML = "";
+          document.getElementById("ticket-tbody").innerHTML = `
+  <tr>
+    <td colspan="5">
+      <div class="card border-0" aria-hidden="true">
+        <div class="row g-0">
+          <div class="col-4">
+            <div class="bg-secondary-subtle border rounded-1" style="width: 100%; height: 100%;"></div>
+          </div>
+          <div class="col-8">
+            <div class="card-body py-2">
+              <h5 class="card-title">
+                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              </h5>
+              <p class="card-text">
+                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
+                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5">
+      <div class="card border-0" aria-hidden="true">
+        <div class="row g-0">
+          <div class="col-4">
+            <div class="bg-secondary-subtle border rounded-1" style="width: 100%; height: 100%;"></div>
+          </div>
+          <div class="col-8">
+            <div class="card-body py-2">
+              <h5 class="card-title">
+                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              </h5>
+              <p class="card-text">
+                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
+                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5">
+      <div class="card border-0" aria-hidden="true">
+        <div class="row g-0">
+          <div class="col-4">
+            <div class="bg-secondary-subtle border rounded-1" style="width: 100%; height: 100%;"></div>
+          </div>
+          <div class="col-8">
+            <div class="card-body py-2">
+              <h5 class="card-title">
+                <span class="placeholder col-11" style="background-color: #D4D4D4;"></span>
+              </h5>
+              <p class="card-text">
+                <span class="placeholder col-10" style="background-color: #D4D4D4;"></span>
+                <span class="placeholder col-12" style="background-color: #D4D4D4;"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  `;
+
+          if (filterData.length == 0) {
+            document.getElementById(
+              "ticket-tbody"
+            ).innerHTML = `<tr><td colspan="6"><div class="text-center w-100 my-4">
+                <img src="../../assets/img/noFound.png" alt="..." height="220px;">
+                <h4 class="text-center text-brand mt-2">No Request Ticket to Display...</h4>
+              </div></td></tr>`;
+            return;
+          }
 
           filterData.forEach((ele) => {
             const { event } = ele;
@@ -120,16 +269,18 @@ function getAllTicket() {
                                                                           event.location
                                                                         }</p>
                                                                     <p
-                                                                        class="text-muted mb-0 small">${
-                                                                          event.start_date
-                                                                        } - ${
-              event.end_date
-            }</p>
+                                                                        class="text-muted mb-0 small">${formatCustomDateWithYear(
+                          event.start_date
+                        )} - ${formatCustomDateWithYear(
+                event.end_date
+              )}, ${formatToHour(event.start_date)} - ${formatToHour(
+                event.end_date
+              )}</p>
                                                                 </div>
                                                             </div></a>
                                                         </td>
                                                         <td>
-                                                            ${event.created_at}
+                                                            ${moment(event.created_at).format('MMM D, YYYY • h:mm A')}
                                                         </td>
                                                         <td>
                                                             ${status}
@@ -141,10 +292,8 @@ function getAllTicket() {
               ele.amount > 1 ? "s" : ""
             } 
                                                         </td>
-                                                        <td>$${
-                                                          ele.amount *
-                                                          ele.event.ticket_price
-                                                        }</td>
+                                                        <td>${parseFloat(ele.ticket_price) > 0 ?  (ele.amount *
+                                                          ele.event.ticket_price).toFixed(2) : "Free"}</td>
                                                         <td>
                                                             ${`<button 
                                                                     class="btn btn-brand position-relative z-3 view-details" data-id="${ele.id}" data-bs-target="#exampleModalToggle-1"

@@ -49,8 +49,8 @@ function loadEventCards() {
                                             <p class="text-secondary">${
                                               element.location
                                             }</p>
-                                            <p>Ticket price: $${
-                                              element.ticket_price
+                                            <p>${
+                                              parseFloat(element.ticket_price) > 0 ? '$'+element.ticket_price.toFixed(2)+' per ticket' : "Free"
                                             }</p>
                                             
                                         </div>
@@ -98,7 +98,7 @@ function loadRecruitCards() {
   allRecruitData.forEach((element, currentRecruitIndex) => {
     const newCard = document.createElement("div");
     newCard.className = "card";
-    newCard.innerHTML = `<div class="card-content px-3">
+    newCard.innerHTML = `<div class="card-content px-3" onclick="showRecruitDetail(${element.id})">
                                     <div class="card-body">
                                         <div class="profile d-flex align-items-center justify-content-between mb-3">
                                             <div class="d-flex recruit-pill-wrapper"></div>
@@ -148,7 +148,7 @@ function loadVendorCards() {
   allVendorData.forEach((element, currentVendorIndex) => {
     const newCard = document.createElement("div");
     newCard.className = "card";
-    newCard.innerHTML = `<div class="card-content">
+    newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${element.id})">
                   <div class="card-body d-flex">
                       <div class="thumbnail">
                           <img src="${
@@ -208,7 +208,6 @@ fetch(`${API_URL}/api/profile/detail/${orgId}`, {
 })
   .then((res) => res.json())
   .then((json) => {
-    // console.log(json);
     const { events, vendor_recruitments, businesses } = json.data;
 
     // console.log(events.length, vendor_recruitments.length, businesses.length);
@@ -294,8 +293,18 @@ fetch(`${API_URL}/api/profile/detail/${orgId}`, {
     loadEventCards();
     loadRecruitCards();
     loadVendorCards();
+
   });
 function showEventDetail(id) {
   sessionStorage.setItem("itemID", id);
-  location.href = "http://127.0.0.1:5503/pages/browse/event-detail.html";
+  location.href = "/pages/browse/event-detail.html";
+}
+function showRecruitDetail(id) {
+  sessionStorage.setItem("recruitDetailId", id);
+  location.href = "/pages/browse/recruitment-detail.html";
+}
+
+function showServiceDetail(id) {
+  sessionStorage.setItem("businessDetailId", id);
+  location.href = "/pages/browse/business-detail.html";
 }

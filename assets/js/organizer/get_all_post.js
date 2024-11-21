@@ -46,8 +46,12 @@ function getAllEventCard() {
   })
     .then((res) => res.json())
     .then((json) => {
-      const { data } = json;
+      let { data } = json;
+      data = data.filter(
+        (element) => new Date(element.start_date) > new Date()
+      );
       allEventData = data;
+
       //hide placeHolder card
       document.getElementById("event-card-wrapper").innerHTML = "";
 
@@ -64,7 +68,10 @@ function getAllRecruitCard() {
   })
     .then((res) => res.json())
     .then((json) => {
-      const { data } = json;
+      let { data } = json;
+      data = data.filter(
+        (element) => new Date(element.start_date) > new Date()
+      );
       allRecruitData = data;
 
       //hide placeHolder card
@@ -123,7 +130,7 @@ function loadEventCards() {
 
     if (
       element.thumbnail ==
-      "http://mps2.chandalen.dev/storage/events/no_photo.jpg"
+      "http://mps2.chandalen.dev/storage/events/no_photo.jpg" || element.thumbnail == null
     ) {
       thumbnail = "../assets/img/party/party1.png";
     } else {
@@ -309,12 +316,12 @@ function loadVendorCards() {
     newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${element.id})">
                     <div class="card-body d-flex">
                         <div class="thumbnail">
-                            <img src="${thumbnail}" alt="">
+                            <img src="${thumbnail}" alt="..." width='250' height='270'>
                         </div>
                         <div class="detail">
                             <h5 class="card-title mb-0 fw-bold">${element.name}</h5>
 
-                            <p class="card-text py-3">${element.description}</p>
+                            <div class="card-text card-desc1">${element.description}</div>
 
                             <p class="location"><i class="bi bi-geo-alt fs-6"></i> ${element.location}</p>
                             <div class="d-flex vendor-pill-wrapper"></div>
@@ -363,45 +370,40 @@ function loadVendorCards() {
 }
 
 function showEventDetail(id) {
-    sessionStorage.setItem('itemID', id);
-    location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
+  sessionStorage.setItem("itemID", id);
+  location.href = "/pages/browse/event-detail.html";
 }
 
 function showRecruitDetail(id) {
-    sessionStorage.setItem('itemID', id);
-    location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
+  sessionStorage.setItem("recruitDetailId", id);
+  location.href = "/pages/browse/recruitment-detail.html";
 }
 
 function showServiceDetail(id) {
-    sessionStorage.setItem('itemID', id);
-    location.href = 'http://127.0.0.1:5503/pages/browse/event-detail.html';
+  sessionStorage.setItem("businessDetailId", id);
+  location.href = "/pages/browse/business-detail.html";
 }
 
-
-function goCreatePost(type = '') {
-    if (type == "event") {
-        if (localStorage.getItem('authToken')) {
-
-            location.href = '/pages/organizer/create-events.html';
-        }
-        else {
-            location.href = '/pages/authentication/login.html';
-        }
+function goCreatePost(type = "") {
+  if (type == "event") {
+    if (localStorage.getItem("authToken")) {
+      location.href = "/pages/organizer/create-events.html";
+    } else {
+      location.href = "/pages/authentication/login.html";
     }
-    if (type == "recruit") {
-        if (localStorage.getItem('authToken')) {
-            location.href = '/pages/organizer/vendor-recruitment.html';
-        }
-        else {
-            location.href = '/pages/authentication/login.html';
-        }
+  }
+  if (type == "recruit") {
+    if (localStorage.getItem("authToken")) {
+      location.href = "/pages/organizer/vendor-recruitment.html";
+    } else {
+      location.href = "/pages/authentication/login.html";
     }
-    if (type == "business") {
-        if (localStorage.getItem('authToken')) {
-            location.href = '/pages/vendor/create_vendor_business.html';
-        }
-        else {
-            location.href = '/pages/authentication/login.html';
-        }
+  }
+  if (type == "business") {
+    if (localStorage.getItem("authToken")) {
+      location.href = "/pages/vendor/create_vendor_business.html";
+    } else {
+      location.href = "/pages/authentication/login.html";
     }
+  }
 }

@@ -11,7 +11,7 @@ function getAllEvent(page = 1, categories = [], searchStr = "") {
   <div class="mb-3">
                                               <div colspan="5">
                                                   <div
-                                                      class="card border-0"
+                                                      class="card border-0 h-100"
                                                       aria-hidden="true">
                                                       <div class="row g-0">
                                                           <div class="col-4">
@@ -56,7 +56,7 @@ function getAllEvent(page = 1, categories = [], searchStr = "") {
                                           <div class="mb-3">
                                               <td colspan="5">
                                                   <div
-                                                      class="card border-0"
+                                                      class="card border-0 h-100"
                                                       aria-hidden="true">
                                                       <div class="row g-0">
                                                           <div class="col-4">
@@ -101,7 +101,7 @@ function getAllEvent(page = 1, categories = [], searchStr = "") {
                                           <div class="mb-3">
                                               <td colspan="5">
                                                   <div
-                                                      class="card border-0"
+                                                      class="card border-0 h-100"
                                                       aria-hidden="true">
                                                       <div class="row g-0">
                                                           <div class="col-4">
@@ -242,14 +242,19 @@ function displayEvents(events) {
   events.forEach((element) => {
     let price = element.ticket_price == 0 ? "Free" : `$${element.ticket_price.toFixed(2)}`;
     let catas = "";
+    let thumbnail =
+      element.thumbnail && !element.thumbnail.includes("no_photo")
+        ? element.thumbnail
+        : "/assets/img/party/party1.png";
+
     element.event_categories.forEach((cata) => {
       let pill = ((cata.id - 1) % 5) + 1;
       catas += `<div class="pill pill${pill} me-1">${cata.name}</div>`;
     });
-    listE += `<div class="card mb-4">
+    listE += `<div class="card mb-4 cursor-pointer" onclick="getEDetail(this)" data-id="${element.id}">
                             <div class="row g-0">
                                 <div class="col-3 position-relative">
-                                    <img src="../../assets/img/test-img/cta-event-search-banner.avif"
+                                    <img src="${thumbnail}"
                                         class="img-fluid rounded-start " alt="...">
                                     <div class="i-wish add-wish position-absolute top-0 end-0" data-id="${element.id}">
                                         <i class="fa-regular fa-heart"></i>
@@ -258,7 +263,7 @@ function displayEvents(events) {
                                 <div class="col-6 ">
                                     <div class="card-body ps-4 pe-0 py-4">
                                         <h3 class="card-title">
-                                            <a href="javascript: void(0)" onclick="getEDetail(this)" data-id="${element.id}">${element.name}</a>
+                                            <a onclick="getEDetail(this)" data-id="${element.id}">${element.name}</a>
                                         </h3>
                                         <div class="d-flex mb-2">
                                             
@@ -373,7 +378,7 @@ function setupPagination(pagination) {
 function updateUrlAndFetch(page) {
   getAllEvent(page);
   window.location.href = `javascript: void(0)`;
-  window.scrollTo({ top: 200, behavior: "instant" });
+  window.scrollTo({ top: 220, behavior: "instant" });
 }
 function filterEventsByCategories() {
   currentPage = 1; // Reset to first page
@@ -393,6 +398,7 @@ document.getElementById("search-input").addEventListener("keypress", (e) => {
 
 document.getElementById("search-events").addEventListener("click", () => {
   filterEventsByCategories(); // Trigger the search when the button is clicked
+  window.scrollTo({ top: 0, behavior: "instant" });
 });
 
 document.getElementById("clear-filters").addEventListener("click", () => {
@@ -403,4 +409,5 @@ document.getElementById("clear-filters").addEventListener("click", () => {
     checkbox.checked = false; // Uncheck all checkboxes
   });
   filterEventsByCategories(); // Trigger the search after clearing
+  window.scrollTo({ top: 0, behavior: "instant" });
 });

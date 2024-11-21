@@ -17,48 +17,15 @@
 </head>
 
 <body>
-    <header class="border" id="header">
-        <div class="container">
+    <header class="border px-1" id="header">
+        <div class="container-fluid px-4">
             <nav class="d-flex align-items-center justify-content-between">
                 <div class="logo">
                     <a href="../homepage.html">
                         <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
                     </a>
                 </div>
-                <div class="d-flex align-items-center w-25 position-relative ">
-                    <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
-                    <input type="text" class="form-control search-bar ps-5 w-100 " name="" id="searchEvent"
-                        aria-describedby="helpId" placeholder="Search Event " />
-                    <button class="btn-pink text-white"><i
-                            class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
-                    <ul class="search-dropdown position-absolute" id="search-dropdown">
-  
-                    </ul>
-                </div>
-                <div class="action-btn d-flex">
-                    <button class="btn-outline-pink ms-3"><i class="fa-solid fa-plus text-brand"></i> <a
-                            href="../../pages/organizer/create-events.html">Create
-                            a
-                            post</a> </button>
-                    <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Browse <i class="fa-solid fa-caret-down text-brand"></i>
-                        <!-- User Icon -->
-                    </a>
-                    <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
-                            class="fa-solid fa-ticket pe-1 text-brand"></i>My
-                        Ticket</a>
-  
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
-                        <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
-                                events</a></li>
-                        <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
-                                vendor recruitments</a></li>
-                        <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
-                                vendor services</a></li>
-  
-                    </ul>
-                </div>
+                
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
                         id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,20 +34,7 @@
                         <span class="ps-1 fs-6" id="userEmail"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                        <li><a class="dropdown-item" href="../organizer/event.html">Manage
-                                as
-                                organizer</a></li>
-                        <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
-                                vendor</a></li>
-                        <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
-                        <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
-                                Setting</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:void(0);" id="btn-logout">Log
-                                out</a>
-                        </li>
+                        <li><a class="dropdown-item" href="../homepage.html">Switch to Attending</a></li>
                     </ul>
                 </div>
             </nav>
@@ -126,12 +80,12 @@
                                 <span class="m-0 ps-2">Back to Vendor</span>
                             </button>
                             <form action="" class="px-5">
-                                <h2 class="mb-5 ps-2">Create a vendor business post</h2>
+                                <h2 class="mb-5 ps-2">Update a vendor business post</h2>
                                 <div class="form-display d-none">
                                     <div class="title">
                                         <h1 class="fw-bold">Add a photo as your thumbnail</h1>
                                     </div>
-                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="">
+                                    <img class="icon-img" src="../../assets/lim_img/icon/plus.png" alt="..">
                                 </div>
                                 <div class="sub-form-wrapper active p-4 border rounded-4 mt-4 ">
                                     <div class="main-form active upload-img-form">
@@ -196,24 +150,7 @@
                                                     <option value="3">Three</option> -->
                                                 </select>
                                             </div>
-                                            <div class="w-25">
-                                                <h5>Business Experience*</h5>
-                                                <select class="form-select customized-form"
-                                                    aria-label="Default select example" id="businessExperience">
-                                                    <option selected>Select a type</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <h5>Service Price*</h5>
-                                        <div class="form-floating mb-5">
-                                            <input type="number" class="form-control customized-form" id="servicePrice"
-                                                placeholder="">
-                                            <label for="floatingInput">$ </label>
-                                            <div id="lblServicePrice"></div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -322,6 +259,7 @@
     <script src="../../assets/js/ultilities.js"></script>
     <script src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="../../assets/js/header.js"></script> -->
     <script src="../../assets/js/form_collapse.js"></script>
     <script src="../../assets/lib/QuilJs/quill.js"></script>
     <script>
@@ -409,9 +347,6 @@ businesses.categories.forEach(category => {
   categorySelect.add(option);
 });
 
-document.getElementById('businessExperience').value = businesses.businessExperience || '';
-
-document.getElementById('servicePrice').value = businesses.servicePrice || '';
 
 descQuill.root.innerHTML = businesses.description || '';
 
@@ -433,7 +368,7 @@ document.getElementById('country').value = businesses.country || '';
 
         function updateBusiness() {
     // Create Vendor Business form variables
-    // let thumbnailFile = document.getElementById('fileUpload').files[0];
+    let thumbnailFile = document.getElementById('fileUpload').files[0];
     // let descPhoto = document.getElementById('photoUpload').files[0];
     // let servicePrice = document.getElementById('servicePrice').value;
     let businessName = document.getElementById('postTitle').value;
@@ -470,6 +405,9 @@ document.getElementById('country').value = businesses.country || '';
 
 
     let eventData = new FormData();
+    if(thumbnailFile){
+        eventData.append('thumbnail', thumbnailFile);
+    }
     eventData.append('name', businessName);
     eventData.append('location', fullAddress);
     eventData.append('description', description);
@@ -488,52 +426,36 @@ document.getElementById('country').value = businesses.country || '';
 
     if(isValid_vendorBusiness() == true){
         fetch(`${API_URL}/api/businesses/${editId}`, {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
                 "Accept": "application/json",
             },
-            body: 
+            body: eventData
             // JSON.stringify(eventData)
-            JSON.stringify({
-                name: businessName,
-                location: fullAddress,
-                description: description,
-                phone: phone,
-                email: email,
-                facebook: facebook,
-                linkedin: linkedin,
-                telegram: telegram,
-                tiktok: tiktok,
-                business_category_ids: JSON.stringify(categoriesList),
-            })
+            // JSON.stringify({
+            //     name: businessName,
+            //     location: fullAddress,
+            //     description: description,
+            //     phone: phone,
+            //     email: email,
+            //     facebook: facebook,
+            //     linkedin: linkedin,
+            //     telegram: telegram,
+            //     tiktok: tiktok,
+            //     business_category_ids: JSON.stringify(categoriesList),
+            // })
         })
             .then(res => res.json())
             .then(json => {
                 showToast(json.message, json.result)
-                console.log(json);
-                
-                // if(json.result){
-                //     setTimeout(()=>{
-                //         location.href = "vendor-business.html";     
-                //     }, 1500);
-                // }           
+                if(json.result == true){
+                    setTimeout(()=>{
+                        location.href = "vendor-business.html";     
+                    }, 1500);
+                }
             })
-            // .then(response => {
-            //     if (!response.ok) {
-            //         // Extract the JSON error message from the response
-            //         return response.json().then(errorData => {
-            //             console.error("Error message:", errorData.message);
-            //             console.error("Detailed error:", errorData.data);
-    
-    
-            //             throw new Error(`HTTP error! Status: ${response.status}`);
-            //         });
-            //     }
-            //     return response.json();
-            // })
-            // .catch(error => console.error('Request Failed:', error));
     }
 
 }

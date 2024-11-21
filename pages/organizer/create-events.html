@@ -64,20 +64,6 @@
                                 Ticket</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="group-collaborate.html">
-                            <i class="fa-solid fa-user-group"></i>
-                            <span class="nav-item">Event Group
-                                Collaborated</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="profile.html">
-                            <i class="fa-solid fa-user"></i>
-                            <span class="nav-item">Organizer
-                                Profile</span>
-                        </a>
-                    </li>
                 </ul>
             </nav>
 
@@ -151,7 +137,7 @@
 
                                     <div class="category-select d-flex">
                                         <div class="w-25 me-5">
-                                            <h5>Event Categories*</h5> <select class="customized-form"
+                                            <h5>Event Categories*</h5> <select class="form-control customized-form"
                                                 aria-label="Default select example" multiple name="state[]"
                                                 id="categorySelect" placeholder="Select categories">
                                                 <!-- <option value="1">One</option>
@@ -642,8 +628,6 @@
     </main>
     <!-- quillJS -->
     <script src="../../assets/lib/QuilJs/quill.js"></script>
-
-    <script src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/ultilities.js"></script>
     <script src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
@@ -651,15 +635,11 @@
     <script src="../../assets/js/form_collapse.js"></script>
     <script src="../../assets/js/form_validation.js"></script>
     <script src="../../assets/js/organizer/create_event.js"></script>
-    <script src="../../assets/plugin/tomJs/tom-select.complete.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             window.descQuill = new Quill('#editor', { theme: 'snow' });
         });
 
-        new TomSelect("#categorySelect", {
-            maxItems: 3
-        });
     </script>
 
 </body>

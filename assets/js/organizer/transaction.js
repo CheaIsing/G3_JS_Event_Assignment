@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
         }
       }
-      console.log(transaction);
 
       fetch(`${apiUrl}/api/profile/detail/${transaction.requester.id}`, {
         headers: {
@@ -29,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
       })
         .then((res) => res.json())
         .then((json) => {
-          console.log(json.data.email);
 
           let status = "";
           switch (transaction.status) {
@@ -112,14 +110,15 @@ document.addEventListener("DOMContentLoaded", () => {
                                     } ticket${
             transaction.amount > 1 ? "s" : ""
           }</span></p>
-                                    <p>Price per tickets: <span id="price-unit">$${
-                                      (transaction.event.ticket_price).toFixed(2)
+                                    <p>Price per ticket: <span id="price-unit">${parseFloat(transaction.event.ticket_price) > 0 ?
+                                      '$'+(transaction.event.ticket_price *
+                                        transaction.amount).toFixed(2) : 'Free'
                                     }</span></p>
-                                    <p>Total: <span id="total">$${
-                                      (transaction.event.ticket_price *
-                                        transaction.amount).toFixed(2)
+                                    <p>Total: <span id="total">${parseFloat(transaction.event.ticket_price) > 0 ?
+                                      '$'+(transaction.event.ticket_price *
+                                        transaction.amount).toFixed(2) : 'Free'
                                     }</span></p>
-                                    <p id="label-Reject" class="w-25 ${transaction.reject_reason != null ? '' : 'd-none'} ${transaction.status != 3 ? 'd-none':'d-block'}">Reject Reason: ${transaction.reject_reason != null ? transaction.reject_reason : ''} </p>
+                                    ${parseFloat(transaction.event.ticket_price) > 0 ? `<p id="label-Reject" class="w-25 ${transaction.reject_reason != null ? '' : 'd-none'} ${transaction.status != 3 ? 'd-none':'d-block'}">Reject Reason: ${transaction.reject_reason != null ? transaction.reject_reason : ''} </p>
                                     <h5>Transaction File:</h5>
                                     <img
                                         src="${
@@ -127,7 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                             ? transaction.transaction_file
                                             : "../../assets/img/no-image.png"
                                         }"
-                                        class="border border-2" alt="transaction-img" id="transaction-img" width="400">
+                                        class="border border-2" alt="transaction-img" id="transaction-img" width="400">` : ''}
+                                    
                                 </div>`;
 
           document.querySelector(".btn-disapprove").onclick = () => {
@@ -167,7 +167,7 @@ function approveRequest(id) {
       showToast(json.message, json.result);
       if(json.result){
         setTimeout(() => {
-          history.back();
+          location.href = 'request-ticket-detail.html'
         }, 1400);
       }
     });
@@ -196,7 +196,7 @@ function disapproveRequest(id, reason) {
       disapproveModal.hide();
       if(json.result){
         setTimeout(() => {
-          history.back();
+          location.href = 'request-ticket-detail.html'
         }, 1400);
       }
     });

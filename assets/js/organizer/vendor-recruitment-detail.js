@@ -1,5 +1,4 @@
-const apiUrl = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
+
 
 let id = sessionStorage.getItem("vendorId");
 console.log(id);
@@ -37,23 +36,18 @@ function getVendorRecruitmentDetail(apiUrl, id) {
     },
   })
     .then((res) => res.json())
-    .then((json) => {
-      // console.log(json);
+    .then((json1) => {
 
-      const { data } = json;
+      const { data } = json1;
       const { location, start_date, end_date, name, categories } = data;
       const vendorId = data.id;
       console.log(data);
       document.getElementById("vendor-title").innerHTML = name;
       document.getElementById(
         "start-end-date"
-      ).innerHTML = `${formatCustomDateWithYear(
-        start_date
-      )} - ${formatCustomDateWithYear(end_date)}, ${formatToHour(
-        start_date
-      )} - ${formatToHour(end_date)}`;
+      ).innerHTML = `${moment(start_date).format('ddd, MMM D, YYYY, h:mm A')}`;
 
-      document.getElementById("location").innerHTML = location;
+
 
       fetch(`${apiUrl}/api/vendors/candidates/${vendorId}`, {
         headers: {
@@ -63,80 +57,75 @@ function getVendorRecruitmentDetail(apiUrl, id) {
         },
       })
         .then((res) => res.json())
-        .then((json) => {
-          if(json.data.length <= 0){
+        .then((json2) => {
+          
+          if(json2.data.length <= 0){
             document.getElementById("vendor-request-tbody").innerHTML = `
-            <tr><td colspan=5><div class="text-center">
+            <tr><td colspan='6'><div class="text-center">
               <img src="../../assets/img/noFound.png" alt="" height="220px;">
               <h4 class="text-center text-brand mt-2">No Vendor Request to Display...</h4>
             </div></td></tr>
             `
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
             return;
           }
+          
           let rowsHTML = "";
 
-          json.data.forEach((ele) => {
-            rowsHTML += `<tr
-                                            class="border-bottom position-relative">
-                                            <td class>
-                                                <a href="event-details.html"
-                                                    class="stretched-link text-decoration-none bg-transparent"
-                                                    style="color: inherit;">
-                                                    1
-                                                </a>
-                                            </td>
-                                            <td>
-                                                ${ele.candidate.full_name}
-                                            </td>
-                                            <td>
-                                                cheaising@gmail.com
-                                            </td>
-                                            <td>
-                                                Food Services
-                                            </td>
-                                            <td>
-                                                ${ele.applied_at}
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="dropstart position-relative z-3">
-                                                    <button
-                                                        class="btn btn-light"
-                                                        type="button"
-                                                        id="dropdownMenu1"
-                                                        data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i
-                                                            class="bi bi-three-dots"></i>
-                                                    </button>
-                                                    <ul
-                                                        class="dropdown-menu dropdown-menu-end"
-                                                        aria-labelledby="dropdownMenu1">
-                                                        <li><a
-                                                                class="dropdown-item"
-                                                                href="#">Promote
-                                                                to
-                                                                website</a>
-                                                        </li>
-                                                        <li><a
-                                                                class="dropdown-item"
-                                                                href="#">Edit</a></li>
-                                                        <li><a
-                                                                class="dropdown-item"
-                                                                href="#">Delete</a></li>
-                                                        <li><a
-                                                                class="dropdown-item"
-                                                                href="#">View</a></li>
-                                                        <li><a
-                                                                class="dropdown-item"
-                                                                href="#">Copy
-                                                                Link</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>`;
+          json2.data.forEach((ele) => {
+            fetch(`${apiUrl}/api/profile/detail/${ele.candidate.id}`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            .then(res=>res.json())
+            .then(json3 =>{
+
+              rowsHTML += `<tr
+                                              class="border-bottom position-relative">
+                                              <td class>
+                                                  <a href="event-details.html"
+                                                      class="stretched-link text-decoration-none bg-transparent"
+                                                      style="color: inherit;">
+                                                      1
+                                                  </a>
+                                              </td>
+                                              
+                                              <td>
+                                                  <img src="${ele.candidate.avatar}" alt="pfp" width="40" height="40" class="object-fit-cover rounded-circle border">
+                                              </td>
+                                              <td>
+                                                  ${ele.candidate.full_name}
+                                              </td>
+                                              <td>
+                                                  ${json3.data.email}
+                                              </td>
+                                              <td>
+                                              ${moment(ele.applied_at).format('MMM D, YYYY • h:mm A')}
+                                              </td>
+                                              <td>
+                                                  <div
+                                                      class="dropstart position-relative z-3">
+                                                      <button
+                                                          class="btn btn-brand"
+                                                          type="button" onclick="viewProfile(${ele.candidate.id})"
+                                                          >
+                                                          View Profile
+                                                      </button>
+                                                      
+                                                      </ul>
+                                                  </div>
+                                              </td>
+                                          </tr>`;
+                                          
+            })
+            .then(()=>{
+              document.getElementById("vendor-request-tbody").innerHTML = rowsHTML;
+              document.getElementById('loading').style.display = 'none';
+              document.getElementById('content').style.display = 'block';
+            })
           });
-          document.getElementById("vendor-request-tbody").innerHTML = rowsHTML;
         });
 
       // vendor-title
@@ -362,9 +351,7 @@ const manageAsOrganizer = {
   getAllVendorRecruitment,
 };
 
-function copyLink() {
-  var copyText = document.getElementById("eventLink");
-  copyText.select();
-  document.execCommand("copy");
-  alert("Link copied to clipboard");
+function viewProfile(id) {
+  sessionStorage.setItem('orgID', id)
+  location.href = '../authentication/view-profile.html'
 }

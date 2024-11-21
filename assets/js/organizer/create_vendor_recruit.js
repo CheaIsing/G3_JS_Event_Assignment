@@ -1,8 +1,5 @@
-const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem("authToken");
-// console.log(token);
 
-function createRecruit() {
+function createRecruit(btn) {
     // Create event form variables
     let eventName = document.getElementById('postTitle').value;
     let startDate = document.getElementById('startDate').value;
@@ -25,53 +22,52 @@ function createRecruit() {
         }
     }
 
-    let recruitRequirement = document.getElementById('requirement').value;
-    let vendorNeed = document.getElementById('vendorNeed').value;
     //get text from Qill form
 
     let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
     let vendorTypeQuillContent = vendorTypeQuill.root.innerHTML;
     let recruitmentQuillContent = requirementQuill.root.innerHTML;
+    let defaultQuillContent = '<p><br></p>';
     // console.log("Editor Content:", descQuillContent);
 
     let description = '';
-    if (vendorNeed == '') {
-        description = `<h2 class="detail-title text-brand fw-bold">Detail</h2> 
+    if (vendorTypeQuillContent == defaultQuillContent) {
+        description = `<h2 class="title text-brand fw-bold">Detail</h2> 
                 <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
                     ${descQuillContent}
                 </div>
-                <h2 class="text-brand fw-bold mt-4">Requirement</h2>
+                <h2 class="title text-brand fw-bold mt-4">Requirement</h2>
                 <div id="recruit-requiremnt" class="recruit-requiremnt-wrapper">
                     ${recruitmentQuillContent} 
                 </div>`;
     }
-    else if (recruitRequirement == '') {
-        description = `<h2 detail-title class="text-brand fw-bold">Detail</h2> 
+    else if (recruitmentQuillContent == defaultQuillContent) {
+        description = `<h2 title class="title text-brand fw-bold">Detail</h2> 
                 <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
                     ${descQuillContent}
                 </div>
-                <h2 class="text-brand fw-bold mt-4">Vendor Type needed</h2>
+                <h2 class="title text-brand fw-bold mt-4">Vendor Type needed</h2>
                 <div id="vendor-type-need" class="vendor-type-need-wrapper">
                     ${vendorTypeQuillContent} <
                 </div>
                 `;
     }
-    else if (vendorNeed == '' && recruitRequirement == '') {
-        description = `<h2 class="detail-title text-brand fw-bold">Detail</h2> 
+    else if (vendorTypeQuillContent == defaultQuillContent && recruitmentQuillContent == defaultQuillContent) {
+        description = `<h2 class="title text-brand fw-bold">Detail</h2> 
                 <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
                     ${descQuillContent}
                 </div>`;
     }
     else {
-        description = `<h2 class="detail-title text-brand fw-bold">Detail</h2> 
+        description = `<h2 class="title text-brand fw-bold">Detail</h2> 
                 <div id="recruit-full-desc" class="recruit-full-desc-wrapper">
                     ${descQuillContent}
                 </div>
-                <h2 class="text-brand fw-bold mt-4">Requirement</h2>
+                <h2 class="title text-brand fw-bold mt-4">Requirement</h2>
                 <div id="recruit-requiremnt" class="recruit-requiremnt-wrapper">
                     ${recruitmentQuillContent} 
                 </div>
-                <h2 class="text-brand fw-bold mt-4">Vendor Type needed</h2>
+                <h2 class="title text-brand fw-bold mt-4">Vendor Type needed</h2>
                 <div id="vendor-type-need" class="vendor-type-need-wrapper">
                     ${vendorTypeQuillContent}
                 </div>
@@ -81,7 +77,6 @@ function createRecruit() {
 
     let eventData = new FormData();
     eventData.append('name', eventName);
-    // eventData.append('thumbnail', thumbnailFile);
     eventData.append('start_date', fullStartDate);
     eventData.append('end_date', fullEndDate);
     eventData.append('location', fullAddress);
@@ -94,6 +89,8 @@ function createRecruit() {
     })
 
     if (isValid_Recruit() == true) {
+        btn.disabled = true;
+        document.body.style.cursor = 'wait'
         fetch(`${apiUrl}/api/vendors`, {
             method: 'POST',
             headers: {
@@ -104,8 +101,14 @@ function createRecruit() {
         })
             .then(res => res.json())
             .then(json => {
-                alert('Success created');
-
+                btn.disabled = false;
+        document.body.style.cursor = 'default'
+                showToast(json.message, json.result)
+                if (json.result === true) {
+                    setTimeout(() => {
+                        location.href = 'recruitment.html'
+                    }, 1500)
+                }
             })
         // .then(response => {
         //     if (!response.ok) {
