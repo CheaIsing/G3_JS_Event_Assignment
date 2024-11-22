@@ -203,6 +203,9 @@ header .dropdown-menu.show .dropdown-item {
 header .dropdown-menu.show .dropdown-item:hover {
     background-color: #e1159325 !important;
 }
+header .dropdown-menu-end{
+    padding-block: 0!important;
+}
 
 /* Lim code */
 
