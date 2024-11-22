@@ -145,6 +145,36 @@ header #userEmail {
     font-size: 15px;
 }
 
+/* STICKY STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+header.is-sticky {
+    position: fixed;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    backdrop-filter: blur(10px);
+    animation: slideDown 0.7s ease-out;
+}
+
+header.is-sticky img {
+    max-width: 80%;
+}
+
+header.is-sticky button {
+    font-size: 14px;
+    padding: 7px 10px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+
 .overlay {
     position: fixed;
     width: 100%;
@@ -186,6 +216,7 @@ header .btn-pink {
     top: 1px;
     border: 0 !important;
 }
+
 
 header .btn-pink .fa-magnifying-glass {
     color: white !important;
@@ -272,8 +303,8 @@ header .dropdown-menu-end{
     color: var(--c-brand) !important;
 }
 
-section.ticket-order .table td,
-section.ticket-order .table td {
+.ticket-order .table td,
+.ticket-order .table td {
     padding-block: 1rem !important;
 }
 
@@ -457,7 +488,7 @@ section.ticket-order .table td {
 }
 
 .hero-banner .carousel-inner {
-    background-image: url('../img/party/party1.png');
+    /* background-image: url('../img/party/party1.png'); */
     background-position: center;
     background-size: cover;
 
@@ -465,20 +496,25 @@ section.ticket-order .table td {
 
 .hero-banner .carousel-inner .carousel-item {
     height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.819), #e11593c4, #bb94e3d5, #ff1692d0);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.819), #e11593c4, #bb94e3d5, #ff1692d0), url('../img/party/party1.png');
+}
+
+.hero-banner .carousel-inner .carousel-item:nth-child(2) {
+    height: 100%;
+    background: linear-gradient(to right, #00000022, #6c6a6a68), url('../img/party/wedding-planner-working-ceremony.jpg');
 }
 
 .btn-darkpink {
     padding: 15px 25px;
-    outline: 2px solid var(--c-brand);
-    /* outline: 2px solid white; */
+    /* outline: 2px solid var(--c-brand); */
+    outline: 2px solid white;
     border-radius: 5px;
     cursor: pointer;
     position: relative;
     background-color: var(--c-brand);
-    /* background-color: #ffffff7b; */
+    background-color: #fff;
     /* color: var(--text-gray); */
-    color: white;
+    color: var(--c-brand-dark);
     overflow: hidden;
     z-index: 1;
 }
@@ -490,14 +526,14 @@ section.ticket-order .table td {
     height: 100%;
     background-color: var(--c-brand-dark);
     z-index: -1;
-    top: 100%;
-    right: 0;
+    top: 0;
+    right: 100%;
     transition: 0.2s;
 
 }
 
 .btn-darkpink:hover.btn-darkpink::after {
-    top: 0;
+    right: 0;
 }
 
 .btn-darkpink:hover {
@@ -648,7 +684,23 @@ hr {
     color: var(--text-gray);
 }
 
+.event-card-wrapper .date-tag {
+    position: absolute;
+    background-color: #ff1694;
+    z-index: 0;
+    top: 35%;
+    right: 5%;
+}
+
+.event-card-wrapper .date-tag h6 {
+    font-weight: bold;
+    margin: 0 !important;
+    color: white;
+}
+
 footer {
+    /* background: url('/assets/img/bg-img/footer_bg_1.png'); */
+    /* background-size: cover; */
     background-color: var(--text-gray);
     color: white;
 }
@@ -900,7 +952,6 @@ footer .contact-info .social-media a:hover {
     height: 100%;
     object-fit: cover;
 }
-
 .vendor-card-wrapper .card .detail {
     padding: 20px;
 }
@@ -1083,7 +1134,7 @@ footer .contact-info .social-media a:hover {
 .recruit-card-wrapper .card .recruit-requiremnt-wrapper,
 .recruit-card-wrapper .card .vendor-type-need-wrapper,
 .recruit-card-wrapper .card .title {
-    display: none;
+    display: none !important;
 }
 
 .add-wish:hover,
@@ -1119,4 +1170,41 @@ footer .contact-info .social-media a:hover {
 
 .modal {
     background-color: #5a324b60 !important;
+}
+
+.form-select {
+
+    border-color: #ccc !important;
+}
+
+.form-select:focus {
+    box-shadow: none !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.recruitmentCard .title {
+    display: none !important;
+}
+
+/* service_area */
+.service_area .service_area_wrapper {
+    padding: 30px 150px;
+}
+
+.service_area .service_area_wrapper .service_feature_detail {
+    width: 80%;
+    word-wrap: break-word;
+}
+
+.service_area .service_area_wrapper .service_feature_detail h4 {
+    color: var(--c-brand);
+}
+
+.service_area .service_area_wrapper .service_feature_detail p {
+    margin: 0 !important;
+    font-weight: 100 !important;
+    font-size: 14px;
 }

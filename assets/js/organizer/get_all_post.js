@@ -131,7 +131,7 @@ function loadEventCards() {
 
     if (
       element.thumbnail ==
-        "http://mps2.chandalen.dev/storage/events/no_photo.jpg" ||
+      "http://mps2.chandalen.dev/storage/events/no_photo.jpg" ||
       element.thumbnail == null
     ) {
       thumbnail = "../assets/img/party/party1.png";
@@ -145,23 +145,20 @@ function loadEventCards() {
                                             <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
                                         <div class="card-body" onclick="showEventDetail(${element.id})">
                                             <div class="d-flex event-pill-wrapper mb-2"></div>
-                                            <h5 class="card-title">${
-                                              element.name
-                                            }</h5>
+                                            <h5 class="card-title">${element.name
+      }</h5>
                         <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
-                          element.start_date
-                        ).format("ddd, D MMMM • h:mm A")}</p>
-                        <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
-                          element.location
-                        }</p>
-                                            <h6 class="text-brand">${
-                                              parseFloat(element.ticket_price) >
-                                              0
-                                                ? `$${element.ticket_price.toFixed(
-                                                    2
-                                                  )} per ticket`
-                                                : "Free"
-                                            }</h6>
+        element.start_date
+      ).format("ddd, D MMMM • h:mm A")}</p>
+                        <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${element.location
+      }</p>
+                                            <h6 class="text-brand">${parseFloat(element.ticket_price) >
+        0
+        ? `$${element.ticket_price.toFixed(
+          2
+        )} per ticket`
+        : "Free"
+      }</h6>
                                            
                                         </div>
                                         
@@ -171,18 +168,20 @@ function loadEventCards() {
                                       </div>
                                       
                                         <div class="card-btn-wrapper">
-                                            <button type="button" class="btn-rounded add-wish" data-id="${
-                                              element.id
-                                            }" onclick="addWishlist(${
-      element.id
-    })"><i
+                                            <button type="button" class="btn-rounded add-wish" data-id="${element.id
+      }" onclick="addWishlist(${element.id
+      })"><i
                                                       class="fa-regular fa-heart"></i></button>
-                                              <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${
-                                                element.id
-                                              })"><i
+                                              <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id
+      })"><i
                                                       class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                                              <div class="date-tag text-center p-2">
+                                                <h6>${moment(element.start_date).format("D")}</h6>
+                                                <h6>${moment(element.start_date).format("MMMM")}</h6>
+                                              </div>
                                           </div>
                                         </div>
+      
                                         
                                     </div>`;
     checkEventInWishlist(element.id);
