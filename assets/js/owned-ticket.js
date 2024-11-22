@@ -126,7 +126,7 @@ function getOwnedTickets() {
                                                                   ele.event.name
                                                                 }</h5>
                                                             <p
-                                                                class="text-muted mb-0">${
+                                                                class="text-muted mb-0 w-75">${
                                                                   ele.event
                                                                     .location
                                                                 }</p>
@@ -210,7 +210,7 @@ function displayTicket(button) {
                                             <div class="card border h-100">
                                                 <div
                                                     class="card-header text-center border-0 bg-brand-light">
-                                                    <h6>${eventName}</h6>
+                                                    <h6 class="mb-0">${eventName}</h6>
                                                 </div>
                                                 <div class="card-body">
                                                     <div
@@ -227,8 +227,7 @@ function displayTicket(button) {
                                                                     class="text-brand">Event:</h5>
                                                                 <h6
                                                                     class>${eventName}</h6>
-                                                                <hr
-                                                                    style="width:95%; height: 5px;text-align:left;margin-left:0;background-color: black;">
+                                                                
                                                             </div>
                                                         </div>
                                                         <div
@@ -250,15 +249,14 @@ function displayTicket(button) {
                                                                 <h5
                                                                     class="text-brand">Location:</h5>
                                                                 <h6>${location}</h6>
-                                                                <hr
-                                                                    style="width:95%; height: 5px;text-align:left;margin-left:0;background-color: black;">
+                                                               
 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="card-footer border-0 bg-transparent">
+                                                    class="card-footer border-top bg-transparent">
                                                     <div class="row">
                                                         <div
                                                             class="col-4">
@@ -282,7 +280,6 @@ function displayTicket(button) {
                                                             </h6>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -290,7 +287,7 @@ function displayTicket(button) {
                                             <div class="card h-100">
                                                 <div
                                                     class="card-header text-center border-0 bg-brand-light">
-                                                    <h6>${eventName}</h6>
+                                                    <h6 class="mb-0">${eventName}</h6>
                                                 </div>
                                                 <div
                                                     class="card-body d-flex align-items-center justify-content-center">
