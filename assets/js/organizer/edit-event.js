@@ -32,6 +32,7 @@ function renderEditEventHTML() {
         .then((json2) => {
           const { data: datas } = json2;
 
+
           let eventCatSelect = document.getElementById("categorySelect");
           eventCatSelect.innerHTML = "";
           datas.forEach((element) => {
@@ -189,6 +190,9 @@ function renderEditEventHTML() {
       document.getElementById("city").value = city;
       document.getElementById("province").value = province;
       document.getElementById("country").value = country;
+      document.getElementById("KhqrPhotoDisplay").src = data.qr_img
+      document.getElementById("KhqrPhotoDisplay").style.display = 'block'
+      
 
       document.getElementById("ticketQuantity").value = data.ticket_opacity;
       document.getElementById("price").value = data.ticket_price;
@@ -399,7 +403,8 @@ function updateEvent() {
               json.result == true ? "Event Updated Sucessfully." : json.message,
               json.result
             );
-            if (json.result) {
+            
+            if (json.result == true) {
               setTimeout(() => {
                 location.href = "event.html";
               }, 1500);

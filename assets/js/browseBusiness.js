@@ -299,40 +299,41 @@ function renderBusinesses(businesses) {
       ? business.thumbnail
       : "../../assets/img/party/party1.png";
     const newCard = document.createElement("div");
-    newCard.className = "card recruitmentCard";
+    newCard.className = "col-12 ";
     newCard.innerHTML = `
-        <div class="card-content" onclick="viewBusinessDetail(${business.id})">
-          <div class="card-body d-flex">
-            <div class="thumbnail">
-              <img src="${thumbnail}" class="object-fit-cover" width="250" height="270" alt="Thumbnail">
+    <div class="card d-flex  w-100 recruitmentCard" onclick="viewBusinessDetail(${business.id})">
+          <div class="card-body w-100 d-flex">
+            <div class="col-4  thumbnail">
+              <img src="${thumbnail}" class="object-fit-cover"  alt="Thumbnail">
             </div>
-            <div class="detail">
-              <h5 class="card-title mb-0 fw-bold">${business.name}</h5>
-              <div class=" card-desc1">${business.description}</div>
-              <p class="location"><i class="bi bi-geo-alt fs-5"></i> ${
+            <div class="col-8 detail">
+              <h4 class="card-title fw-bold text-brand mb-0 fs-3">${business.name}</h4>
+              <div class=" card-desc1 my-3">${business.description}</div>
+              <p class="location"><i class="fa-solid fa-location-dot fs-5 me-1 text-brand"></i> ${
                 business.location || "Unknown location"
               }</p>
-              <div class="d-flex vendor-pill-wrapper"></div>
+              
               <div class="contact">
-                <span class="text-secondary">Phone: ${
+                <span class="text-secondary"><i class="fa-solid fa-phone me-1 text-brand"></i> ${
                   business.phone || "N/A"
                 }</span><br>
-                <span class="text-secondary">Email: ${
+                <span class="text-secondary"><i class="fa-solid fa-envelope me-1 text-brand"></i> ${
                   business.email || "N/A"
                 }</span>
               </div>
-              <div class="profile d-flex align-items-center mt-3">
-                <div class="pf-img me-2">
-                  <img src="${
-                    business.creator?.avatar ||
-                    "../../assets/img/default-avatar.png"
-                  }" alt="Creator Avatar">
-                </div>
-                <p>${business.creator?.full_name || "Unknown creator"}</p>
-              </div>
+              <div class="profile d-flex align-items-center mt-3 justify-content-between w-100">
+                              <div class="d-flex align-items-center" >
+                                  <div class="pf-img me-2">
+                                      <img src="${business.creator?.avatar || "../../assets/img/default-avatar.png"}" alt="Creator Avatar">
+                                  </div>
+                                  <p>${business.creator?.full_name || "Unknown creator"}</p>
+                              </div>
+                              <div class="d-flex vendor-pill-wrapper"></div>
+                            </div>
             </div>
           </div>
-        </div>
+            </div>
+
       `;
 
     // Add the new card to the list

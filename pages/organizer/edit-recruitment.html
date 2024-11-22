@@ -164,15 +164,17 @@
                                     <div class="main-form active">
                                         <h4 class="fw-bold pb-3">Vendor
                                             Recruitment Post Overview</h4>
-                                        <h5>Post Title*</h5>
-                                        <div class="form-floating mb-5">
-                                            <input type="text"
-                                                class="form-control customized-form"
-                                                id="postTitle" placeholder>
-                                            <label for="postTitle">Your post
-                                                title <span
-                                                    class="text-danger">*</span></label>
-                                        </div>
+                                            <h5>Post Title*</h5>
+                                            <div class="form-floating mb-5">
+                                                <input type="text"
+                                                    class="form-control customized-form"
+                                                    id="postTitle"
+                                                    placeholder>
+                                                <label for="floatingInput">Your
+                                                    post title <span
+                                                        class="text-danger">*</span></label>
+                                                <div id="lblPostTitle"></div>
+                                            </div>
 
                                         <div
                                             class="category-select d-flex mb-5">
@@ -239,43 +241,58 @@
                                     <div class="main-form">
                                         <h4 class="fw-bold pb-3">Date and
                                             Location</h4>
-                                        <h5>Date and time*</h5>
-                                        <div class="datetime d-flex">
-                                            <div
-                                                class="form-floating mb-3 w-25 me-5">
-                                                <input type="date"
-                                                    class="form-control customized-form"
-                                                    id="startDate" placeholder>
-                                                <label for="startDate">Start
-                                                    Date</label>
+                                            <h5>Date and time*</h5>
+                                            <div class="datetime d-flex">
+                                                <div
+                                                    class="form-floating mb-3 w-25 me-5">
+                                                    <input type="date"
+                                                        class="form-control customized-form"
+                                                        id="startDate"
+                                                        placeholder>
+                                                    <label
+                                                        for="floatingInput">Start
+                                                        Date </label>
+                                                    <div
+                                                        id="lblStartDate"></div>
+                                                </div>
+                                                <div
+                                                    class="form-floating mb-3 me-5">
+                                                    <input type="time"
+                                                        class="form-control customized-form"
+                                                        id="startTime"
+                                                        placeholder>
+                                                    <label
+                                                        for="floatingInput">Start
+                                                        Time </label>
+                                                    <div
+                                                        id="lblStartTime"></div>
+                                                </div>
+
                                             </div>
-                                            <div
-                                                class="form-floating mb-3 me-5">
-                                                <input type="time"
-                                                    class="form-control customized-form"
-                                                    id="startTime" placeholder>
-                                                <label for="startTime">Start
-                                                    Time</label>
+                                            <div class="datetime d-flex mb-3">
+                                                <div
+                                                    class="form-floating mb-3 w-25 me-5">
+                                                    <input type="date"
+                                                        class="form-control customized-form"
+                                                        id="endDate"
+                                                        placeholder>
+                                                    <label
+                                                        for="floatingInput">End
+                                                        Date </label>
+                                                    <div id="lblEndDate"></div>
+                                                </div>
+                                                <div
+                                                    class="form-floating mb-3 me-5">
+                                                    <input type="time"
+                                                        class="form-control customized-form"
+                                                        id="endTime"
+                                                        placeholder>
+                                                    <label
+                                                        for="floatingInput">End
+                                                        Time </label>
+                                                    <div id="lblEndTime"></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="datetime d-flex mb-3">
-                                            <div
-                                                class="form-floating mb-3 w-25 me-5">
-                                                <input type="date"
-                                                    class="form-control customized-form"
-                                                    id="endDate" placeholder>
-                                                <label for="endDate">End
-                                                    Date</label>
-                                            </div>
-                                            <div
-                                                class="form-floating mb-3 me-5">
-                                                <input type="time"
-                                                    class="form-control customized-form"
-                                                    id="endTime" placeholder>
-                                                <label for="endTime">End
-                                                    Time</label>
-                                            </div>
-                                        </div>
                                         <h5>Location*</h5>
                                         <div
                                             class="location-info d-flex flex-wrap">
@@ -772,9 +789,9 @@ requirementQuill.root.innerHTML = vendorType;
             if(data.result == true){
 
                 showToast('Vendor Recruitment post updated successfully', true);
-                // setTimeout(()=>{
-                //     location.href = "recruitment.html";
-                // }, 1500);
+                setTimeout(()=>{
+                    location.href = "recruitment.html";
+                }, 1500);
             }
             else{
                 showToast('Failed to update vendor Recruitment post', false);

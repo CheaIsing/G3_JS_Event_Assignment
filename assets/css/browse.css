@@ -28,10 +28,15 @@
 }
 .overlay{
     width: 100%;
-    height: 100%;
+    height:100%;
     position: absolute;
     z-index: -1;
+    top: 0;
+    left: 0;
     background-color: rgba(0, 0, 0,0.65);
+}
+.hero h2{
+    position: relative;
 }
 .fr-icon{
     width: 90px;
@@ -96,12 +101,12 @@ body {
     height: 100%;
     object-fit: cover;
   }
-.hero img{
+/* .hero img{
     width: 100%;
     height: 180px;
     object-fit: cover;
     filter: brightness(0.2);
-}
+} */
 .browse .filter{
     border-radius: 5px;
     border: 1px solid black;
@@ -138,10 +143,20 @@ hr{
     height: 180px;
     overflow: hidden;
 }
+.search-result .card-list .card .card-title:hover{
+    cursor: pointer;
+}
 .search-result .card-list .card img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.card-recruit-list .card .card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .white-nowrap{
     width: 100%;
@@ -263,4 +278,10 @@ input[type='checkbox']:checked + .button {
     font-weight: bold;
     background-color: var(--c-brand);
     color: white;
+}
+#org-name{
+    transition: 0.1s;
+}
+#org-name:hover{
+    color: var(--c-brand);
 }
