@@ -542,6 +542,8 @@ hr {
     border: none;
     position: relative;
     overflow: hidden;
+    /* box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.075); */
+    /* box-shadow:0 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); */
 }
 
 .event-card-wrapper .card {
@@ -552,6 +554,8 @@ hr {
 }
 
 .event-card-wrapper .card .card-body {
+    /* box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.075); */
+
     padding: 20px 14px 10px !important;
     cursor: pointer;
 
@@ -720,13 +724,13 @@ footer .contact-info .social-media a:hover {
 
 .card .card-body .card-title {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.card-text {
+/* .card-text {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -734,8 +738,14 @@ footer .contact-info .social-media a:hover {
     overflow: hidden;
     padding: 0 !important;
     margin: 15px 0 !important;
+} */
+.recruit-card-wrapper .card-recruit-list .card .card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
-
 .recruit-card-wrapper .card .card-content {
     width: 100%;
     border-radius: 10px;
@@ -843,19 +853,11 @@ footer .contact-info .social-media a:hover {
 .vendor-card-wrapper .card {
     /* width: calc(100% / 2 - 20px); */
     width: 100%;
-    border: none !important;
+    /* border: none !important; */
     margin-bottom: 20px;
     background: transparent !important;
 }
-
-.vendor-card-wrapper .card .card-body {
-    padding: 0 !important;
-
-}
-
-
-
-.vendor-card-wrapper .card .card-content {
+.vendor-card-wrapper .card {
     width: 100%;
     border-radius: 10px;
     transform: 0.3s;
@@ -865,45 +867,55 @@ footer .contact-info .social-media a:hover {
     border: 3px solid #40324710;
     overflow: hidden;
     background-color: #fff;
+
 }
 
-.vendor-card-wrapper .card .card-content:hover {
+.vendor-card-wrapper .card .card-body {
+    padding: 0 !important;
+}
+.vendor-card-wrapper .card .card-desc1{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vendor-card-wrapper .card:hover {
     border-radius: 10px;
     /* outline: 2px solid var(--c-brand) !important; */
-    box-shadow: 0px 0px 9px #e115934a;
-
+    box-shadow: 0px 0px 9px #e115934a!important;
     border-color: white;
 }
 
-.vendor-card-wrapper .card .card-content .thumbnail {
-    width: 25%;
-    overflow: hidden;
+.vendor-card-wrapper .card  .thumbnail {
+    height: 280px;
 }
 
-.vendor-card-wrapper .card .card-content .thumbnail img {
+.vendor-card-wrapper .card  .thumbnail img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.vendor-card-wrapper .card .card-content .detail {
+.vendor-card-wrapper .card .detail {
     padding: 20px;
 }
 
 .vendor-card-wrapper .card .card-img-top {
-    height: 180px;
+    /* height: 180px; */
     object-fit: cover;
     object-position: center;
 }
 
-.vendor-card-wrapper .card .card-content .pf-img {
+.vendor-card-wrapper .card  .pf-img {
     width: 30px;
     height: 30px;
     border-radius: 100%;
     border: 1px solid #4032475e;
 }
 
-.vendor-card-wrapper .card .card-content .pf-img img {
+.vendor-card-wrapper .card .pf-img img {
     width: 100%;
     height: 100%;
     border-radius: 100%;
@@ -917,11 +929,11 @@ footer .contact-info .social-media a:hover {
     color: var(--text-gray);
 }
 
-.vendor-card-wrapper .card .card-content .profile p {
+.vendor-card-wrapper .card  .profile p {
     margin: 0 !important;
 }
 
-.vendor-card-wrapper .card-content .duration span {
+.vendor-card-wrapper  .duration span {
     font-size: 14px;
 }
 
@@ -1043,7 +1055,7 @@ footer .contact-info .social-media a:hover {
 
 .recruitmentCard:hover {
     box-shadow: 0px 0px 8px #e1159340;
-    border-color: transparent;
+    /* border-color: transparent; */
 }
 
 .card-description {

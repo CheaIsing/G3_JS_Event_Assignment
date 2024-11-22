@@ -251,7 +251,7 @@ function displayEvents(events) {
       let pill = ((cata.id - 1) % 5) + 1;
       catas += `<div class="pill pill${pill} me-1">${cata.name}</div>`;
     });
-    listE += `<div class="card mb-4 cursor-pointer">
+    listE += `<div class="card mb-4 ">
                             <div class="row g-0">
                                 <div class="col-3 position-relative">
                                     <img src="${thumbnail}" 
@@ -261,12 +261,11 @@ function displayEvents(events) {
                                     </div>
                                 </div>
                                 <div class="col-6 ">
-                                    <div class="card-body ps-4 pe-0 py-4">
+                                    <div class="card-body ps-4 pe-0 py-4" >
                                         <h3 class="card-title">
-                                            <a class="white-nowrap" onclick="getEDetail(this)" data-id="${element.id}">${element.name}</a>
+                                            <a class="white-nowrap " onclick="getEDetail(this)" data-id="${element.id}">${element.name}</a>
                                         </h3>
                                         <div class="d-flex mb-2">
-                                            
                                             <div class="d-flex event-pill-wrapper">${catas}</div>
                                             <div class=" ms-5 border-start border-danger ps-5 m-0 fs-18 text-brand fw-medium">
                                                 <i class="fa-solid fa-tag me-2 fs-18"></i><span

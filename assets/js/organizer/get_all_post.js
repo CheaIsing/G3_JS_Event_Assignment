@@ -302,22 +302,23 @@ function loadVendorCards() {
         ? element.thumbnail
         : "/assets/img/party/party1.png";
     const newCard = document.createElement("div");
-    newCard.className = "card";
-    newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${element.id})">
+    newCard.className = "col-12";
+    newCard.innerHTML = `<div  class="card d-flex  w-100 recruitmentCard" onclick="showServiceDetail(${element.id})">
                     <div class="card-body d-flex">
-                        <div class="thumbnail">
-                            <img src="${thumbnail}" alt="..." width='250' height='270'>
-                        </div>
-                        <div class="detail px-5 w-100">
-                            <h5 class="card-title mb-0 fw-bold">${element.name}</h5>
+                    <div class="col-4  thumbnail">
+              <img src="${thumbnail}" class="object-fit-cover"  alt="Thumbnail">
+            </div>
+                        
+                        <div class=" col-8 detail">
+                            <h5 class="card-title mb-0 fw-bold text-brand mb-0 fs-3">${element.name}</h5>
 
-                            <div class="card-text card-desc1">${element.description}</div>
+                            <div class="card-text card-desc1 my-3">${element.description}</div>
 
-                            <p class="location"><i class="bi bi-geo-alt fs-6"></i> ${element.location}</p>
+                            <p class="location"><i class="fa-solid fa-location-dot fs-5 me-1 text-brand"></i> ${element.location}</p>
                             
                             <div class="vendor-contact">
-                                <span class="text-secondary">Phone: ${element.phone} </span><br>
-                                <span class="text-secondary">Email: ${element.email}</span>
+                                <span class="text-secondary"><i class="fa-solid fa-phone me-1 text-brand"></i> ${element.phone} </span><br>
+                                <span class="text-secondary"><i class="fa-solid fa-envelope me-1 text-brand"></i> ${element.email}</span>
                             </div>
                             <div class="profile d-flex align-items-center mt-3 justify-content-between w-100">
                               <div class="d-flex align-items-center" >
