@@ -270,17 +270,21 @@ function getAllTicket() {
                                                                         }</p>
                                                                     <p
                                                                         class="text-muted mb-0 small">${formatCustomDateWithYear(
-                          event.start_date
-                        )} - ${formatCustomDateWithYear(
-                event.end_date
-              )}, ${formatToHour(event.start_date)} - ${formatToHour(
-                event.end_date
-              )}</p>
+                                                                          event.start_date
+                                                                        )} - ${formatCustomDateWithYear(
+              event.end_date
+            )}, ${formatToHour(event.start_date)} - ${formatToHour(
+              event.end_date
+            )}</p>
                                                                 </div>
                                                             </div></a>
                                                         </td>
                                                         <td>
-                                                            ${moment(event.created_at).format('MMM D, YYYY • h:mm A')}
+                                                            ${moment(
+                                                              event.created_at
+                                                            ).format(
+                                                              "MMM D, YYYY • h:mm A"
+                                                            )}
                                                         </td>
                                                         <td>
                                                             ${status}
@@ -292,8 +296,17 @@ function getAllTicket() {
               ele.amount > 1 ? "s" : ""
             } 
                                                         </td>
-                                                        <td>${parseFloat(ele.ticket_price) > 0 ?  (ele.amount *
-                                                          ele.event.ticket_price).toFixed(2) : "Free"}</td>
+                                                        <td>${
+                                                          parseFloat(
+                                                            ele.ticket_price
+                                                          ) > 0
+                                                            ? (
+                                                                ele.amount *
+                                                                ele.event
+                                                                  .ticket_price
+                                                              ).toFixed(2)
+                                                            : "Free"
+                                                        }</td>
                                                         <td>
                                                             ${`<button 
                                                                     class="btn btn-brand position-relative z-3 view-details" data-id="${ele.id}" data-bs-target="#exampleModalToggle-1"
@@ -368,11 +381,18 @@ function getTransaction(id) {
         ticketDetail.transaction_file
           ? ticketDetail.transaction_file
           : "../../assets/img/no-image.png";
+      if (parseFloat(ticketDetail.event.ticket_price) == 0) {
+        document.getElementById("title-trans").style.display = "none";
+        document.getElementById("transaction-file").style.display = "none";
+      }
 
       document.getElementById("price").innerHTML =
-        "$" + ticketDetail.event.ticket_price;
+        parseFloat(ticketDetail.event.ticket_price) > 0
+          ? "$" + ticketDetail.event.ticket_price
+          : "Free";
       document.getElementById("total").innerHTML =
-        "$" + ticketDetail.event.ticket_price * ticketDetail.amount;
+        "$" +
+        (ticketDetail.event.ticket_price * ticketDetail.amount).toFixed(2);
 
       if (ticketDetail.rejected_reason != null) {
         document.getElementById("rejected-reason-col").innerHTML = `

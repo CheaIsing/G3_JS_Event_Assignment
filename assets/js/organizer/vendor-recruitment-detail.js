@@ -1,5 +1,3 @@
-
-
 let id = sessionStorage.getItem("vendorId");
 console.log(id);
 
@@ -37,17 +35,14 @@ function getVendorRecruitmentDetail(apiUrl, id) {
   })
     .then((res) => res.json())
     .then((json1) => {
-
       const { data } = json1;
       const { location, start_date, end_date, name, categories } = data;
       const vendorId = data.id;
       console.log(data);
       document.getElementById("vendor-title").innerHTML = name;
-      document.getElementById(
-        "start-end-date"
-      ).innerHTML = `${moment(start_date).format('ddd, MMM D, YYYY, h:mm A')}`;
-
-
+      document.getElementById("start-end-date").innerHTML = `${moment(
+        start_date
+      ).format("ddd, MMM D, YYYY, h:mm A")}`;
 
       fetch(`${apiUrl}/api/vendors/candidates/${vendorId}`, {
         headers: {
@@ -58,42 +53,40 @@ function getVendorRecruitmentDetail(apiUrl, id) {
       })
         .then((res) => res.json())
         .then((json2) => {
-          
-          if(json2.data.length <= 0){
+          if (json2.data.length <= 0) {
             document.getElementById("vendor-request-tbody").innerHTML = `
             <tr><td colspan='6'><div class="text-center">
               <img src="../../assets/img/noFound.png" alt="" height="220px;">
               <h4 class="text-center text-brand mt-2">No Vendor Request to Display...</h4>
             </div></td></tr>
-            `
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
+            `;
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("content").style.display = "block";
             return;
           }
-          
+
           let rowsHTML = "";
 
-          json2.data.forEach((ele) => {
+          json2.data.forEach((ele,i) => {
             fetch(`${apiUrl}/api/profile/detail/${ele.candidate.id}`, {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
             })
-            .then(res=>res.json())
-            .then(json3 =>{
-
-              rowsHTML += `<tr
-                                              class="border-bottom position-relative">
+              .then((res) => res.json())
+              .then((json3) => {
+                rowsHTML += `<tr
+                                              class="border-bottom">
                                               <td class>
-                                                  <a href="event-details.html"
-                                                      class="stretched-link text-decoration-none bg-transparent"
-                                                      style="color: inherit;">
-                                                      1
-                                                  </a>
+                                                  
+                                                      ${i+1}
+                                                  
                                               </td>
                                               
                                               <td>
-                                                  <img src="${ele.candidate.avatar}" alt="pfp" width="40" height="40" class="object-fit-cover rounded-circle border">
+                                                  <img src="${
+                                                    ele.candidate.avatar
+                                                  }" alt="pfp" width="40" height="40" class="object-fit-cover rounded-circle border">
                                               </td>
                                               <td>
                                                   ${ele.candidate.full_name}
@@ -102,14 +95,18 @@ function getVendorRecruitmentDetail(apiUrl, id) {
                                                   ${json3.data.email}
                                               </td>
                                               <td>
-                                              ${moment(ele.applied_at).format('MMM D, YYYY • h:mm A')}
+                                              ${moment(ele.applied_at).format(
+                                                "MMM D, YYYY • h:mm A"
+                                              )}
                                               </td>
                                               <td>
                                                   <div
                                                       class="dropstart position-relative z-3">
                                                       <button
                                                           class="btn btn-brand"
-                                                          type="button" onclick="viewProfile(${ele.candidate.id})"
+                                                          type="button" onclick="viewProfile(${
+                                                            ele.candidate.id
+                                                          })"
                                                           >
                                                           View Profile
                                                       </button>
@@ -118,13 +115,13 @@ function getVendorRecruitmentDetail(apiUrl, id) {
                                                   </div>
                                               </td>
                                           </tr>`;
-                                          
-            })
-            .then(()=>{
-              document.getElementById("vendor-request-tbody").innerHTML = rowsHTML;
-              document.getElementById('loading').style.display = 'none';
-              document.getElementById('content').style.display = 'block';
-            })
+              })
+              .then(() => {
+                document.getElementById("vendor-request-tbody").innerHTML =
+                  rowsHTML;
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("content").style.display = "block";
+              });
           });
         });
 
@@ -352,6 +349,6 @@ const manageAsOrganizer = {
 };
 
 function viewProfile(id) {
-  sessionStorage.setItem('orgID', id)
-  location.href = '../authentication/view-profile.html'
+  sessionStorage.setItem("orgID", id);
+  location.href = "../authentication/view-profile.html";
 }

@@ -146,7 +146,7 @@ function getOwnedTickets() {
                                                 ${checkedIn}
                                             </td>
                                             <td>
-                                                $${ele.ticket_price.toFixed(2)}
+                                                ${parseFloat(ele.ticket_price) > 0 ? '$'+ele.ticket_price.toFixed(2) : "Free"}
                                             </td>
                                             <td>
                                                 ${formatDate(ele.expired_at)}
@@ -243,7 +243,7 @@ function displayTicket(button) {
                                                                 <h6
                                                                     class="text-brand">Price
                                                                     : <span
-                                                                        class>$${parseFloat(price).toFixed(2)}</span>
+                                                                        class>${parseFloat(price) > 0 ?'$'+ price.toFixed(2) : 'Free'}</span>
                                                                 </h6>
                                                             </div>
                                                             <div class="mt-4">

@@ -970,6 +970,14 @@ footer .contact-info .social-media a:hover {
     background-color: #ff16920f;
 }
 
+.card-desc1{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* .agenda-card:nth-child(2) {
     background: linear-gradient(to top left, #FFD6A5, #fff);
 }
