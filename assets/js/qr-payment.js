@@ -182,9 +182,8 @@ fetch(`${API_URL}/api/events/${eventId}`, {
               document.body.style.cursor = "default";
             if (json1.result === true) {
               showToast("Redeem Ticket Sucessfully", json1.result);
-              document.getElementById("btn-purchase").disabled = true;
               setTimeout(() => {
-                history.back();
+                location.href = 'event-detail.html';
               }, 1500);
             } else {
               showToast(json1, json1.result);

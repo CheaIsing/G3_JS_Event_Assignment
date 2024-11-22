@@ -5,19 +5,16 @@ const token1 = localStorage.getItem("authToken");
 //   scrollFunction();
 // };
 
-
-
 function scrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     document.getElementById("header").style.boxShadow = "1px 1px 8px #e1159325";
   } else {
     header.classList.remove(toggleClass);
   }
-});
+}
 
 let searchClicked = document.getElementById("searchEvent");
 console.log(searchClicked);
-
 
 searchClicked.addEventListener("focus", () => {
   console.log(true);
@@ -38,7 +35,7 @@ searchClicked.addEventListener("blur", () => {
 document.getElementById("searchEvent").addEventListener("keyup", function () {
   let searchEventbyName = document.getElementById("searchEvent").value;
   console.log(searchEventbyName);
-  
+
   document.getElementById("search-dropdown").style.display = "block";
   if (searchEventbyName == "") {
     document.querySelector(".search-dropdown").style.display = "none";
@@ -55,7 +52,7 @@ document.getElementById("searchEvent").addEventListener("keyup", function () {
     .then((json) => {
       const { data } = json;
       console.log(data);
-      
+
       let searchList = "";
       if (data.length == 0) {
         searchList = `<li class="search-dropdown-item">
@@ -71,7 +68,6 @@ document.getElementById("searchEvent").addEventListener("keyup", function () {
         });
       }
       document.getElementById("search-dropdown").innerHTML = searchList;
-      
     });
 });
 
