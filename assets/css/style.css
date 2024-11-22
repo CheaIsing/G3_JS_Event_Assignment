@@ -943,17 +943,15 @@ footer .contact-info .social-media a:hover {
     border-color: white;
 }
 
-.vendor-card-wrapper .card .card-content .thumbnail {
-    /* width: 25%; */
-    /* overflow: hidden; */
+.vendor-card-wrapper .card  .thumbnail {
+    height: 280px;
 }
 
-.vendor-card-wrapper .card .card-content .thumbnail img {
-    width: 250px;
+.vendor-card-wrapper .card  .thumbnail img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
 .vendor-card-wrapper .card .detail {
     padding: 20px;
 }
