@@ -1,18 +1,13 @@
 const apiUrl1 = "https://mps2.chandalen.dev";
 const token1 = localStorage.getItem("authToken");
 
-// window.onscroll = function () {
-//   scrollFunction();
-// };
-window.onscroll = function () {
-  scrollFunction();
-};
+const header = document.getElementById('header');
+const toggleClass = "is-sticky";
 
-
-
-function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    document.getElementById("header").style.boxShadow = "1px 1px 8px #e1159325";
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 150) {
+    header.classList.add(toggleClass);
   } else {
     header.classList.remove(toggleClass);
   }

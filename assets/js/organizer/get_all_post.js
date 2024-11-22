@@ -141,40 +141,7 @@ function loadEventCards() {
 
     const newCard = document.createElement("div");
     newCard.className = "col-md-3 d-flex";
-    newCard.innerHTML = `       < div class="card shadow-sm rounded w-100 > 
-      < div class="card-content" >
-        <div onclick="showEventDetail(${element.id
-      })">
-          <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
-          <div class="card-body">
-            <div class="d-flex event-pill-wrapper mb-2"></div>
-            <h5 class="card-title">${element.name
-      }</h5>
-            <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
-        element.start_date
-      ).format("ddd, D MMMM • h:mm A")}</p>
-            <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${element.location
-      }</p>
-            <h6 class="text-brand">${parseFloat(element.ticket_price) >
-        0
-        ? `$${element.ticket_price.toFixed(
-          2
-        )} per ticket`
-        : "Free"
-      }</h6>
-
-
-            <div class="card-footer bg-transparent d-flex align-items-center">
-              <img src="${element.creator.avatar
-      }" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
-                <span>${element.creator.full_name
-      }</span>
-            </div>
-          </div>
-
-          <div class="card-btn-wrapper h-100 w-100">
-            <button type="button" class="btn-rounded add-wish" data-id="${element.id
-      }" onclick="addWishlist(${newCard.innerHTML = `       <div class="card shadow-sm rounded w-100"> 
+    newCard.innerHTML = `       <div class="card shadow-sm rounded w-100"> 
                                             <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
                                         <div class="card-body" onclick="showEventDetail(${element.id})">
                                             <div class="d-flex event-pill-wrapper mb-2"></div>
@@ -204,17 +171,19 @@ function loadEventCards() {
                                             <button type="button" class="btn-rounded add-wish" data-id="${element.id
       }" onclick="addWishlist(${element.id
       })"><i
-                class="fa-regular fa-heart"></i></button>
-            <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id
+                                                      class="fa-regular fa-heart"></i></button>
+                                              <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id
       })"><i
-                class="fa-solid fa-arrow-up-right-from-square"></i></button>
-          </div>
-        </div>
                                                       class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                                              <div class="date-tag text-center p-2">
+                                                <h6>${moment(element.start_date).format("D")}</h6>
+                                                <h6>${moment(element.start_date).format("MMMM")}</h6>
+                                              </div>
                                           </div>
                                         </div>
+      
                                         
-                                    </div > `;
+                                    </div>`;
     checkEventInWishlist(element.id);
     cardContainer.appendChild(newCard);
     let eventPillWrapper = document.querySelectorAll(".event-pill-wrapper")[
@@ -225,7 +194,7 @@ function loadEventCards() {
     let colorId = 1;
     element.event_categories.slice(0, 3).forEach((categoryElement) => {
       let spanTag = document.createElement("span");
-      spanTag.className = `pill${colorId} me - 1`;
+      spanTag.className = `pill${colorId} me-1`;
       spanTag.innerHTML = categoryElement.name;
       eventPillWrapper.appendChild(spanTag);
       colorId++;
@@ -257,9 +226,9 @@ function loadRecruitCards() {
     const element = allRecruitData[currentRecruitIndex];
     const newCard = document.createElement("div");
     newCard.className = "card";
-    newCard.innerHTML = `< div class="card-content px-3" onclick = "showRecruitDetail(${element.id
-      }) ">
-    < div class="card-body" >
+    newCard.innerHTML = `<div class="card-content px-3" onclick="showRecruitDetail(${element.id
+      })">
+                                    <div class="card-body">
                                         <div class="profile d-flex align-items-center justify-content-between mb-3">
                                             <div class="d-flex align-items-center">
                                                 <div class="pf-img me-2">
@@ -285,8 +254,8 @@ function loadRecruitCards() {
                                                 ${element.location}</span>
                                         </div>
 
-                                    </div >
-                                </div > `;
+                                    </div>
+                                </div>`;
 
     cardContainer.appendChild(newCard);
 
@@ -298,7 +267,7 @@ function loadRecruitCards() {
     let colorId = 1;
     element.categories.slice(0, 3).forEach((categoryElement) => {
       let spanTag = document.createElement("span");
-      spanTag.className = `pill${colorId} me - 1`;
+      spanTag.className = `pill${colorId} me-1`;
       spanTag.innerHTML = categoryElement.name;
       recruitPillWrapper.appendChild(spanTag);
       colorId++;
@@ -333,35 +302,35 @@ function loadVendorCards() {
         : "/assets/img/party/party1.png";
     const newCard = document.createElement("div");
     newCard.className = "card";
-    newCard.innerHTML = `< div class="card-content" onclick = "showServiceDetail(${element.id})" >
-    <div class="card-body d-flex">
-      <div class="thumbnail">
-        <img src="${thumbnail}" alt="..." width='250' height='270'>
-      </div>
-      <div class="detail px-5 w-100">
-        <h5 class="card-title mb-0 fw-bold">${element.name}</h5>
+    newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${element.id})">
+                    <div class="card-body d-flex">
+                        <div class="thumbnail">
+                            <img src="${thumbnail}" alt="..." width='250' height='270'>
+                        </div>
+                        <div class="detail px-5 w-100">
+                            <h5 class="card-title mb-0 fw-bold">${element.name}</h5>
 
-        <div class="card-text card-desc1">${element.description}</div>
+                            <div class="card-text card-desc1">${element.description}</div>
 
-        <p class="location"><i class="bi bi-geo-alt fs-6"></i> ${element.location}</p>
+                            <p class="location"><i class="bi bi-geo-alt fs-6"></i> ${element.location}</p>
+                            
+                            <div class="vendor-contact">
+                                <span class="text-secondary">Phone: ${element.phone} </span><br>
+                                <span class="text-secondary">Email: ${element.email}</span>
+                            </div>
+                            <div class="profile d-flex align-items-center mt-3 justify-content-between w-100">
+                              <div class="d-flex align-items-center" >
+                                  <div class="pf-img me-2">
+                                      <img src="${element.creator.avatar}" alt="avatar">
+                                  </div>
+                                  <p>${element.creator.full_name}</p>
+                              </div>
+                              <div class="d-flex vendor-pill-wrapper"></div>
+                            </div>
+                        </div>
 
-        <div class="vendor-contact">
-          <span class="text-secondary">Phone: ${element.phone} </span><br>
-            <span class="text-secondary">Email: ${element.email}</span>
-        </div>
-        <div class="profile d-flex align-items-center mt-3 justify-content-between w-100">
-          <div class="d-flex align-items-center" >
-            <div class="pf-img me-2">
-              <img src="${element.creator.avatar}" alt="avatar">
-            </div>
-            <p>${element.creator.full_name}</p>
-          </div>
-          <div class="d-flex vendor-pill-wrapper"></div>
-        </div>
-      </div>
-
-    </div>
-                </div > `;
+                    </div>
+                </div>`;
 
     cardContainer.appendChild(newCard);
 
@@ -373,7 +342,7 @@ function loadVendorCards() {
     let colorId = 1;
     element.categories.slice(0, 3).forEach((categoryElement) => {
       let spanTag = document.createElement("span");
-      spanTag.className = `pill${colorId} me - 1`;
+      spanTag.className = `pill${colorId} me-1`;
       spanTag.innerHTML = categoryElement.name;
       vendorPillWrapper.appendChild(spanTag);
       colorId++;
