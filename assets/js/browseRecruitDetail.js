@@ -34,6 +34,11 @@ fetch(`${API_URL}/api/vendors/${recruitId}`)
           .then((res) => res.json())
           .then((json) => {
             showToast(json.message, json.result);
+            if(json.result){
+              document.querySelectorAll(".btn-apply-now").forEach((btn)=>{
+                btn.disabled = true;
+              })
+            }
           });
       };
     });

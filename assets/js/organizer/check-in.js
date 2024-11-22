@@ -162,11 +162,16 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
             .then((res) => res.json())
             .then((json2) => {
               let status = "";
+              console.log(json2.data);
+              
 
               let dataCheckin = json2.data.filter(element=>element.event.id == ele.id)
-              let dataCheckedIn = dataCheckin.filter(element=>element.status == 2)
+              let dataCheckedIn = dataCheckin.filter(element=>element.is_checked_in == 2)
 
               let checkedInCount = dataCheckedIn.length
+
+              console.log(checkedInCount);
+              
               
 
               const startDate = new Date(ele.start_date.replace(" ", "T"));
@@ -264,7 +269,9 @@ document.getElementById("btn-checked-in").onclick = (e) => {
         bootstrap.Modal.getInstance(
           document.getElementById("exampleModal")
         ).hide();
-        location.reload(true)
+        setTimeout(() => {
+          location.reload(true)
+        }, 1500);
       }
     });
 };

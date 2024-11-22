@@ -344,12 +344,21 @@
                 document.getElementById('telegram').value = businesses.telegram || '';
                 document.getElementById('tiktok').value = businesses.tiktok || '';
                 document.getElementById('linkedin').value = businesses.linkedin || '';
+                const str = businesses.location;
 
-                document.getElementById('address1').value = businesses.address1 || '';
-                document.getElementById('address2').value = businesses.address2 || '';
-                document.getElementById('city').value = businesses.city || '';
-                document.getElementById('province').value = businesses.province || '';
-                document.getElementById('country').value = businesses.country || '';
+// Split the string into an array of values by using `split` with the comma and space as the delimiter
+const parts = str.split(", ");
+
+// Assign each part to a separate variable
+const [address1, address2, city, province, country] = parts;
+                
+                document.getElementById('address1').value = address1 || '';
+                document.getElementById('address2').value = address2 || '';
+                document.getElementById('city').value = city || '';
+                document.getElementById('province').value = province || '';
+                document.getElementById('country').value = country || '';
+                document.getElementById("imageDisplay").src = businesses.thumbnail
+                document.getElementById("imageDisplay").style.display = 'block'
 
 
             })
@@ -390,7 +399,8 @@
 
             let description = descQuillContent;
 
-
+            console.log(description);
+            
 
             let eventData = new FormData();
             if (thumbnailFile) {
@@ -398,7 +408,7 @@
             }
             eventData.append('name', businessName);
             eventData.append('location', fullAddress);
-            eventData.append('description', description);
+            eventData.append('description', descQuill.root.innerHTML);
             eventData.append('phone', phone);
             eventData.append('email', email);
             eventData.append('facebook', facebook);
@@ -417,7 +427,6 @@
                     method: 'POST',
                     headers: {
                         Authorization: `Bearer ${token}`,
-                        "Content-Type": "application/json",
                         "Accept": "application/json",
                     },
                     body: eventData
@@ -437,12 +446,14 @@
                 })
                     .then(res => res.json())
                     .then(json => {
+                        console.log(json);
+                        
                         showToast(json.message, json.result)
-                        if (json.result == true) {
-                            setTimeout(() => {
-                                location.href = "vendor-business.html";
-                            }, 1500);
-                        }
+                        // if (json.result == true) {
+                        //     setTimeout(() => {
+                        //         location.href = "vendor-business.html";
+                        //     }, 1500);
+                        // }
                     })
             }
 
