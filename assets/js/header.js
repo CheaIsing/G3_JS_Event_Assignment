@@ -11,7 +11,7 @@ window.addEventListener("scroll", () => {
   } else {
     header.classList.remove(toggleClass);
   }
-}
+})
 
 let searchClicked = document.getElementById("searchEvent");
 console.log(searchClicked);

@@ -54,6 +54,8 @@ function createBusiness() {
   // })
 
   if (isValid_vendorBusiness() == true) {
+    document.getElementById('btn-create-bu').disabled = true
+    document.body.style.cursor = 'wait'
     fetch(`${apiUrl}/api/businesses`, {
       method: "POST",
       headers: {
@@ -64,7 +66,8 @@ function createBusiness() {
     })
       .then((res) => res.json())
       .then((json) => {
-        
+        document.getElementById('btn-create-bu').disabled = false
+    document.body.style.cursor = 'default'
         showToast(json.message, json.result);
         if (json.result) {
           setTimeout(() => {
@@ -100,6 +103,7 @@ fetch(
   .then((json) => {
     const { data } = json;
     let eventCatSelect = document.getElementById("categorySelect");
+    eventCatSelect.innerHTML = ''
     data.forEach((element) => {
       let opt = document.createElement("option");
       opt.value = element.id;
