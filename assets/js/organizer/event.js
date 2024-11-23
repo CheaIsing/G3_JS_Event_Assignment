@@ -205,7 +205,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                       }" alt="Event Image" class="rounded object-fit-cover" width="150" height="85">
                       <div class="ms-3">
                         <h5 class="mb-0">${ele.name}</h5>
-                        <p class="text-muted mb-0">${ele.location}</p>
+                        <p class="text-muted mb-0 w-75">${ele.location}</p>
                         <p class="text-muted mb-0 small">${formatCustomDateWithYear(
                           ele.start_date
                         )} - ${formatCustomDateWithYear(
@@ -217,12 +217,12 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                     </div>
                   </a>
                 </td>
-                <td>${status}</td>
-                <td>${json2.data.total_ticket} ticket${
+                <td class="text-nowrap">${status}</td>
+                <td class="text-nowrap">${json2.data.total_ticket} ticket${
                 json2.data.total_ticket > 1 ? "s" : ""
               }</td>
-                <td>$${json2.data.total_income.toFixed(2)}</td>
-                <td>${participatedCount} participated</td>
+                <td class="text-nowrap">$${json2.data.total_income.toFixed(2)}</td>
+                <td class="text-nowrap" >${participatedCount} participated</td>
                 <td>
                   <div class="dropstart position-relative z-3">
                     <button class="btn btn-brand" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">

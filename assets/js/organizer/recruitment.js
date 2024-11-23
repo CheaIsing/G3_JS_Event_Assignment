@@ -205,10 +205,10 @@ function getAllRecruitmentCard(apiUrl, id, searchE = "", searchV = "all") {
                                   </div>
                                 </div>
                               </td>
-                              <td>
+                              <td class="text-nowrap">
                                 ${status}
                               </td>
-                              <td>
+                              <td class="text-nowrap">
                                 <div>${candidateCount} apply</div>
                               </td>
                               <td>

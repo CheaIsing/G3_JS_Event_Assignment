@@ -196,6 +196,8 @@ function renderEditEventHTML() {
       if (document.getElementById("price").value == 0) {
         document.getElementById("qr-img-container").style.display = "none";
       }
+      console.log(agendaCount);
+      
     });
 }
 
@@ -299,14 +301,19 @@ function updateEvent() {
   let descPhoto = document.getElementById("photoUpload").files[0];
   let categoriesSelect = document.getElementById("categorySelect");
   let categoriesList = [];
+  for (let catOption of categoriesSelect.options) {
+    if (catOption.selected) {
+      categoriesList.push(catOption.value);
+    }
+  }
 
   //get text from Qill form
   let descQuillContent = descQuill.root.innerHTML; // or use quill.getText() for plain text
 
-  let description = `<div class="descQill">${descQuillContent}`;
+  let description = `<div class="descQill">${descQuillContent}</div>`;
   if (
     document.getElementById(`agendaStarttime1`).value ||
-    document.getElementById(`agenda1`).value
+    document.getElementById(`agendaTitle1`).value
   ) {
     description += `<h2 class="text-brand">Agenda</h2>`;
     for (let i = 1; i <= agendaCount; i++) {

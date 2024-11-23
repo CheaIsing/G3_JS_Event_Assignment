@@ -279,24 +279,24 @@ function getAllTicket() {
                                                                 </div>
                                                             </div></a>
                                                         </td>
-                                                        <td>
+                                                        <td class="text-nowrap">
                                                             ${moment(
                                                               event.created_at
                                                             ).format(
                                                               "MMM D, YYYY • h:mm A"
                                                             )}
                                                         </td>
-                                                        <td>
+                                                        <td class="text-nowrap">
                                                             ${status}
                                                         </td>
-                                                        <td>
+                                                        <td class="text-nowrap">
                                                             ${
                                                               ele.amount
                                                             } ticket${
               ele.amount > 1 ? "s" : ""
             } 
                                                         </td>
-                                                        <td>${
+                                                        <td class="text-nowrap">${
                                                           parseFloat(
                                                             ele.ticket_price
                                                           ) > 0
@@ -312,9 +312,6 @@ function getAllTicket() {
                                                                     class="btn btn-brand position-relative z-3 view-details" data-id="${ele.id}" data-bs-target="#exampleModalToggle-1"
                                                                       data-bs-toggle="modal">View
                                                                     Detail</button>`}
-    
-                                                                
-                                                            
                                                         </td>
                                                     </tr>`;
           });
