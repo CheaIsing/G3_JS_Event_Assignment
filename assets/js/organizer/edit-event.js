@@ -19,7 +19,6 @@ function renderEditEventHTML() {
   })
     .then((res) => res.json())
     .then((json) => {
-
       fetch(
         `${apiUrl}/api/event-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search`,
         {
@@ -31,7 +30,6 @@ function renderEditEventHTML() {
         .then((res) => res.json())
         .then((json2) => {
           const { data: datas } = json2;
-
 
           let eventCatSelect = document.getElementById("categorySelect");
           eventCatSelect.innerHTML = "";
@@ -190,9 +188,8 @@ function renderEditEventHTML() {
       document.getElementById("city").value = city;
       document.getElementById("province").value = province;
       document.getElementById("country").value = country;
-      document.getElementById("KhqrPhotoDisplay").src = data.qr_img
-      document.getElementById("KhqrPhotoDisplay").style.display = 'block'
-      
+      document.getElementById("KhqrPhotoDisplay").src = data.qr_img;
+      document.getElementById("KhqrPhotoDisplay").style.display = "block";
 
       document.getElementById("ticketQuantity").value = data.ticket_opacity;
       document.getElementById("price").value = data.ticket_price;
@@ -298,7 +295,7 @@ function updateEvent() {
   let city = document.getElementById("city").value;
   let province = document.getElementById("province").value;
   let country = document.getElementById("country").value;
-  let fullAddress = `${address1}, ${address2}, ${city}, ${province}, ${country}`;
+  let fullAddress = `${address1}, ${address2}, ${province}, ${city}, ${country}`;
   let descPhoto = document.getElementById("photoUpload").files[0];
   let categoriesSelect = document.getElementById("categorySelect");
   let categoriesList = [];
@@ -372,8 +369,8 @@ function updateEvent() {
     eventData.append("qr_img", khqrImg);
   }
 
-  document.getElementById("btn-update-ev").disabled = true
-  document.body.style.cursor = 'wait'
+  document.getElementById("btn-update-ev").disabled = true;
+  document.body.style.cursor = "wait";
   fetch(`${apiUrl}/api/events/info/${sessionStorage.getItem("editEventId")}`, {
     method: "POST",
     headers: {
@@ -386,8 +383,8 @@ function updateEvent() {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
-       document.getElementById("btn-update-ev").disabled = false
-  document.body.style.cursor = 'default'
+      document.getElementById("btn-update-ev").disabled = false;
+      document.body.style.cursor = "default";
 
       if (thumbnailFile) {
         let imgFIle = new FormData();
@@ -407,7 +404,7 @@ function updateEvent() {
               json.result == true ? "Event Updated Sucessfully." : json.message,
               json.result
             );
-            
+
             if (json.result == true) {
               setTimeout(() => {
                 location.href = "event.html";

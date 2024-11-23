@@ -215,7 +215,7 @@ function createNewEvent() {
         })
           .then((res) => res.json())
           .then((json) => {
-            showToast(json.message, json.result);
+            showToast(json.result ?"Create Event Sucessfully." :json.message, json.result);
             if (json.result) {
               setTimeout(() => {
                 location.href = "event.html";
