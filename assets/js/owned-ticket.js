@@ -242,7 +242,7 @@ function displayTicket(button) {
                                                                 <h6
                                                                     class="text-brand">Price
                                                                     : <span
-                                                                        class>${parseFloat(price) > 0 ?'$'+ price.toFixed(2) : 'Free'}</span>
+                                                                        class>${parseFloat(price) > 0 ?'$'+ parseFloat(price).toFixed(2) : 'Free'}</span>
                                                                 </h6>
                                                             </div>
                                                             <div class="mt-4">

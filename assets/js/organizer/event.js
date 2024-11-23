@@ -173,8 +173,21 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
               } else {
                 status = `<span class="rounded-pill text-danger"><i class="fa-solid fa-hourglass-half me-1"></i>Past</span>`;
               }
-
-              rowsHTML += `<tr class="border-bottom position-relative">
+              
+              fetch(
+                `${apiUrl}/api/tickets?page=1&per_page=10000&event=${ele.id}`,
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              ).then((res) => res.json())
+              .then((json3)=>{
+                const checkedInAll = json3.data.filter(element=>element.event.id == ele.id)
+                console.log(checkedInAll);
+                
+                const participatedCount =checkedInAll.filter(element=>element.is_checked_in == 2).length
+                rowsHTML += `<tr class="border-bottom position-relative" data-participated="${participatedCount}">
                 <td>
                   <a href="javascript:void(0)" class="stretched-link text-decoration-none bg-transparent link-event-details"
                      style="color: inherit;" data-event-detail-id="${ele.id}">
@@ -209,7 +222,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                 json2.data.total_ticket > 1 ? "s" : ""
               }</td>
                 <td>$${json2.data.total_income.toFixed(2)}</td>
-                <td>${json2.data.total_attendant} people</td>
+                <td>${participatedCount} participated</td>
                 <td>
                   <div class="dropstart position-relative z-3">
                     <button class="btn btn-brand" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -233,7 +246,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                 </td>
               </tr>`;
 
-              document.getElementById("event-tobody").innerHTML = rowsHTML;
+                document.getElementById("event-tobody").innerHTML = rowsHTML;
 
               // Event detail and actions
               document
@@ -242,6 +255,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                   link.onclick = (e) => {
                     let eventId = link.dataset.eventDetailId;
                     sessionStorage.setItem("eventId", eventId);
+                    sessionStorage.setItem("participated", link.closest('[data-participated]').dataset.participated)
                     location.href = "event-details.html";
                   };
                 });
@@ -269,9 +283,11 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                     console.log(id);
 
                     sessionStorage.setItem("itemID", id);
+                    
                     location.href = "../browse/event-detail.html";
                   };
                 });
+              })              
             });
         });
       }

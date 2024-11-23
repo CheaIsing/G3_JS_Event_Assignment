@@ -26,7 +26,7 @@ fetch(`${API_URL}/api/events/${eventId}`, {
                           "ddd, D MMMM • h:mm A"
                         )}</p>
                         <p><i class="bi bi-geo-alt text-brand"></i> ${data.location}</p>
-                        <p><i class="bi bi-ticket text-brand"></i> ${parseFloat(data.ticket_price) > 0 ? `$${data.ticket_price} per ticket` : "Free Ticket"}</p>
+                        <p><i class="bi bi-ticket text-brand"></i> ${parseFloat(data.ticket_price) > 0 ? `$${data.ticket_price.toFixed(2)} per ticket` : "Free Ticket"}</p>
                         <p><i class="bi bi-people text-brand"></i> ${
                           data.ticket_opacity - data.ticket_bought
                         } tickets available</p>
@@ -155,8 +155,8 @@ fetch(`${API_URL}/api/events/${eventId}`, {
                   true
                 );
                 setTimeout(() => {
-                  history.back();
-                }, 1600);
+                  location.href = "event-detail.html"
+                }, 1700);
               } else {
                 showToast("Purchased ticket fail. Please try again.", false);
               }

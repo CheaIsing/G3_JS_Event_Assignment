@@ -1,6 +1,7 @@
 
 
 let id = sessionStorage.getItem("eventId");
+let participated = parseInt(sessionStorage.getItem('participated'))
 
 getEventDetail(apiUrl, id);
 
@@ -30,9 +31,9 @@ function getEventDetail(apiUrl, id) {
           document.getElementById("total-income").innerHTML =
             `$${json2.data.total_income.toFixed(2)}`;
           document.getElementById("total-attendant").innerHTML =
-            `${json2.data.total_attendant} attendant`;
+            `${participated} attendant`;
           document.getElementById("not-attending").innerHTML =
-            `${json2.data.total_ticket - json2.data.total_attendant}`;
+            `${json2.data.total_ticket - participated}`;
 
           document.getElementById("btn-copylink").onclick = () => {
             copyEventUrlToClipboard(json.data.id);
