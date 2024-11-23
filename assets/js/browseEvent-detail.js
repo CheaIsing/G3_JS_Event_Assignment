@@ -130,7 +130,7 @@ fetch(apiUrl + "/api/events/" + id)
       };
     }
 
-    if(new Date(data.end_date) < newDate() ){
+    if(new Date(data.end_date) < new Date() ){
       document.getElementById("btn-purchase").disabled = true;
     }
 
