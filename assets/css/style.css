@@ -1234,3 +1234,13 @@ footer .contact-info .social-media a:hover {
     white-space: normal;
 
 }
+
+.card-descc-3{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* Limit the text to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
