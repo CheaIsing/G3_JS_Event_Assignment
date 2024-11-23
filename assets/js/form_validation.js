@@ -6,7 +6,7 @@ function isValid_Event() {
     let startTime = document.getElementById('startTime');
     let endDate = document.getElementById('endDate');
     let endTime = document.getElementById('endTime');
-    // let address1 = document.getElementById('address1');
+    let categorySelect = document.getElementById('categorySelect');
     // let address2 = document.getElementById('address2');
     // let city = document.getElementById('city');
     // let province = document.getElementById('province');
@@ -20,7 +20,7 @@ function isValid_Event() {
     let lblStartTime = document.getElementById('lblStartTime');
     let lblEndDate = document.getElementById('lblEndDate');
     let lblEndTime = document.getElementById('lblEndTime');
-    // let lblAddress1 = document.getElementById('lblAddress1');
+    let lblCategorySelect = document.getElementById('lblCategorySelect');
     // let lblAddress2 = document.getElementById('lblAddress2');
     // let lblCity = document.getElementById('lblCity');
     // let lblProvince = document.getElementById('lblProvince');
@@ -29,8 +29,22 @@ function isValid_Event() {
     let lblPrice = document.getElementById('lblPrice');
 
 
+    if (categorySelect.value == '') {
+        lblCategorySelect.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
+        categorySelect.style.borderColor = 'red';
+        categorySelect.style.borderWidth = '2px';
+        categorySelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        categorySelect.focus();
+        valid = false;
+    }
+    else {
+        lblCategorySelect.innerHTML = '';
+        postTitle.style.borderColor = '#DEE2E6';
+        postTitle.style.borderWidth = '2px';
+    }
+
     if (postTitle.value == '') {
-        lblPostTitle.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblPostTitle.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         postTitle.style.borderColor = 'red';
         postTitle.style.borderWidth = '2px';
         postTitle.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -44,7 +58,7 @@ function isValid_Event() {
     }
 
     if (startDate.value == '') {
-        lblStartDate.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblStartDate.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         startDate.style.borderColor = 'red';
         startDate.style.borderWidth = '2px';
         startDate.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -58,7 +72,7 @@ function isValid_Event() {
     }
 
     if (startTime.value == '') {
-        lblStartTime.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblStartTime.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         startTime.style.borderColor = 'red';
         startTime.style.borderWidth = '2px';
         startTime.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -72,7 +86,7 @@ function isValid_Event() {
     }
 
     if (endDate.value == '') {
-        lblEndDate.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblEndDate.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         endDate.style.borderColor = 'red';
         endDate.style.borderWidth = '2px';
         endDate.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -86,7 +100,7 @@ function isValid_Event() {
     }
 
     if (endTime.value == '') {
-        lblEndTime.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblEndTime.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         endTime.style.borderColor = 'red';
         endTime.style.borderWidth = '2px';
         endTime.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -100,7 +114,7 @@ function isValid_Event() {
     }
 
     if (ticketQuantity.value != '' && isNaN(Number(ticketQuantity.value))) {
-        lblTicketQuantity.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblTicketQuantity.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         ticketQuantity.style.borderColor = 'red';
         ticketQuantity.style.borderWidth = '2px';
         ticketQuantity.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -108,7 +122,7 @@ function isValid_Event() {
         valid = false;
     }
     else if (ticketQuantity.value == '') {
-        lblTicketQuantity.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblTicketQuantity.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         ticketQuantity.style.borderColor = 'red';
         ticketQuantity.style.borderWidth = '2px';
         ticketQuantity.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -122,7 +136,7 @@ function isValid_Event() {
     }
 
     if (price.value != '' && isNaN(Number(price.value))) {
-        lblPrice.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblPrice.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         price.style.borderColor = 'red';
         price.style.borderWidth = '2px';
         price.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -130,7 +144,7 @@ function isValid_Event() {
         valid = false;
     }
     else if (price.value == '') {
-        lblPrice.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblPrice.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         price.style.borderColor = 'red';
         price.style.borderWidth = '2px';
         price.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -153,7 +167,7 @@ function isValid_Event() {
             thumbnailUploadSection = '2px';
             fileUpload.scrollIntoView({ behavior: 'smooth', block: 'center' });
             fileUpload.focus();
-            thumbnailFileName.innerHTML = `<span class="text-danger fw-lighter" style="font-size: 14px;">Invalid file type: <span class= "text-black"> ${fileUpload.files[0].name}. </span> Only JPEG and PNG are allowed.</span>`;
+            thumbnailFileName.innerHTML = `<span class="text-danger fw-bolder" style="font-size: 14px;">Invalid file type: <span class= "text-black"> ${fileUpload.files[0].name}. </span> Only JPEG and PNG are allowed.</span>`;
         }
     }
 
@@ -166,11 +180,11 @@ function isValid_Event() {
             khqrUploadSection = '2px';
             khqrPhotoUpload.scrollIntoView({ behavior: 'smooth', block: 'center' });
             khqrPhotoUpload.focus();
-            KhqrPhotoName.innerHTML = `<span class="text-danger fw-lighter" style="font-size: 14px;">Invalid file type: <span class= "text-black"> ${khqrPhotoUpload.files[0].name}. </span> Only JPEG and PNG are allowed.</span>`;
+            KhqrPhotoName.innerHTML = `<span class="text-danger fw-bolder" style="font-size: 14px;">Invalid file type: <span class= "text-black"> ${khqrPhotoUpload.files[0].name}. </span> Only JPEG and PNG are allowed.</span>`;
         }
     }
     else if ((khqrPhotoUpload.files).length === 0) {
-        KhqrPhotoName.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        KhqrPhotoName.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         khqrUploadSection = 'red';
         khqrUploadSection = '2px';
     }
@@ -183,14 +197,29 @@ function isValid_vendorBusiness() {
     let postTitle = document.getElementById('postTitle');
     let email = document.getElementById('email');
     let phone = document.getElementById('phone');
-    // let categorySelect = document.getElementById('categorySelect');
+    let categorySelect = document.getElementById('categorySelect');
 
     let lblPostTitle = document.getElementById('lblPostTitle');
     let lblEmail = document.getElementById('lblEmail');
     let lblPhone = document.getElementById('lblPhone');
+    let lblCategorySelect = document.getElementById('lblCategorySelect');
+
+    if (categorySelect.value == '') {
+        lblCategorySelect.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
+        categorySelect.style.borderColor = 'red';
+        categorySelect.style.borderWidth = '2px';
+        categorySelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        categorySelect.focus();
+        valid = false;
+    }
+    else {
+        lblCategorySelect.innerHTML = '';
+        postTitle.style.borderColor = '#DEE2E6';
+        postTitle.style.borderWidth = '2px';
+    }
 
     if (phone.value != '' && isNaN(Number(phone.value))) {
-        lblPhone.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblPhone.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         phone.style.borderColor = 'red';
         phone.style.borderWidth = '2px';
         phone.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -198,7 +227,7 @@ function isValid_vendorBusiness() {
         valid = false;
     }
     else if (phone.value == '') {
-        lblPhone.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblPhone.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         phone.style.borderColor = 'red';
         phone.style.borderWidth = '2px';
         phone.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -213,7 +242,7 @@ function isValid_vendorBusiness() {
 
     let emailRegex = /^[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\.[a-zA-Z]{2,}([.\w]{2,})?$/;
     if (!(emailRegex.test(email.value)) && email.value != '') {
-        lblEmail.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* Invalid Email.( <i>example@gmial.com</i> )</span>';
+        lblEmail.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* Invalid Email.( <i>example@gmial.com</i> )</span>';
         email.style.borderColor = 'red';
         email.style.borderWidth = '2px';
         email.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -221,7 +250,7 @@ function isValid_vendorBusiness() {
         valid = false;
     }
     else if (email.value == '') {
-        lblEmail.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblEmail.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         email.style.borderColor = 'red';
         email.style.borderWidth = '2px';
         email.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -235,7 +264,7 @@ function isValid_vendorBusiness() {
     }
 
     if (postTitle.value == '') {
-        lblPostTitle.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblPostTitle.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         postTitle.style.borderColor = 'red';
         postTitle.style.borderWidth = '2px';
         postTitle.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -260,16 +289,32 @@ function isValid_Recruit() {
     let startTime = document.getElementById('startTime');
     let endDate = document.getElementById('endDate');
     let endTime = document.getElementById('endTime');
+    let categorySelect = document.getElementById('categorySelect');
 
     let lblPostTitle = document.getElementById('lblPostTitle');
     let lblStartDate = document.getElementById('lblStartDate');
     let lblStartTime = document.getElementById('lblStartTime');
     let lblEndDate = document.getElementById('lblEndDate');
     let lblEndTime = document.getElementById('lblEndTime');
+    let lblCategorySelect = document.getElementById('lblCategorySelect');
 
+
+    if (categorySelect.value == '') {
+        lblCategorySelect.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
+        categorySelect.style.borderColor = 'red';
+        categorySelect.style.borderWidth = '2px';
+        categorySelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        categorySelect.focus();
+        valid = false;
+    }
+    else {
+        lblCategorySelect.innerHTML = '';
+        postTitle.style.borderColor = '#DEE2E6';
+        postTitle.style.borderWidth = '2px';
+    }
 
     if (postTitle.value == '') {
-        lblPostTitle.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblPostTitle.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         postTitle.style.borderColor = 'red';
         postTitle.style.borderWidth = '2px';
         postTitle.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -283,7 +328,7 @@ function isValid_Recruit() {
     }
 
     if (startDate.value == '') {
-        lblStartDate.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblStartDate.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         startDate.style.borderColor = 'red';
         startDate.style.borderWidth = '2px';
         startDate.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -297,7 +342,7 @@ function isValid_Recruit() {
     }
 
     if (startTime.value == '') {
-        lblStartTime.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblStartTime.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         startTime.style.borderColor = 'red';
         startTime.style.borderWidth = '2px';
         startTime.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -311,7 +356,7 @@ function isValid_Recruit() {
     }
 
     if (endDate.value == '') {
-        lblEndDate.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblEndDate.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         endDate.style.borderColor = 'red';
         endDate.style.borderWidth = '2px';
         endDate.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -325,7 +370,7 @@ function isValid_Recruit() {
     }
 
     if (endTime.value == '') {
-        lblEndTime.innerHTML = '<span class="text-danger fw-lighter" style="font-size: 14px;">* This field is required.</span>';
+        lblEndTime.innerHTML = '<span class="text-danger fw-bolder" style="font-size: 14px;">* This field is required.</span>';
         endTime.style.borderColor = 'red';
         endTime.style.borderWidth = '2px';
         endTime.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -338,6 +383,6 @@ function isValid_Recruit() {
         endTime.style.borderWidth = '2px';
     }
 
-    
+
     return valid;
 }
