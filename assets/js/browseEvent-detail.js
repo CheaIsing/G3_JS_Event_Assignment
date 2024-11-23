@@ -159,8 +159,8 @@ function displayRelatedItems(evCatagoryId,detailId) {
             ? "Free"
             : `$${element.ticket_price.toFixed(2)} per ticket`;
         let catas = "";
-        element.event_categories.forEach((cata) => {
-          catas += `<div class="pill${cata.id} me-1">${cata.name}</div>`;
+        element.event_categories.forEach((cata, i) => {
+          catas += `<div class="pill${i+1} me-1">${cata.name}</div>`;
         });
         let thumbnail =
           element.thumbnail && !element.thumbnail.includes("no_photo")
@@ -168,7 +168,7 @@ function displayRelatedItems(evCatagoryId,detailId) {
             : "../../assets/img/party/party1.png";
             listE+=`<div class="col-md-4  d-flex  swiper-slide"> 
                     <div class="card shadow-sm rounded w-100" > 
-                      <img src="${thumbnail}" alt="Event Image" class="card-img-top rounded-top">
+                      <img onclick="showEventDetail(${element.id})" src="${thumbnail}" alt="Event Image" class="card-img-top cursor-pointer rounded-top">
                       <div class="card-body w-100" onclick="showEventDetail(${element.id})">
                         <div class="d-flex mb-2 event-pill-wrapper">
                         ${catas}
@@ -182,7 +182,7 @@ function displayRelatedItems(evCatagoryId,detailId) {
                                                       }</p>
                         <h6 class="text-brand">${price}</h6>
                       </div>
-                      <div class="card-footer d-flex align-items-center">
+                      <div class="card-footer d-flex align-items-center cursor-pointer" onclick="showEventDetail(${element.id})">
                         <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 40px; height: 40px;">
                         <span>${element.creator.full_name}</span>
                       </div>
@@ -193,6 +193,10 @@ function displayRelatedItems(evCatagoryId,detailId) {
                                       element.id
                                     })"><i
                                             class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                                            <div class="date-tag text-center p-2">
+                                                <h6>${moment(element.start_date).format("D")}</h6>
+                                                <h6>${moment(element.start_date).format("MMMM")}</h6>
+                                              </div>
                                 </div>
                     </div>
                   </div>`;
