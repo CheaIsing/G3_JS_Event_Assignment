@@ -410,7 +410,7 @@ function updateEvent() {
           .then((res) => res.json())
           .then((json) => {
             showToast(
-              json.result == true ? "Event Updated Sucessfully." : json.message,
+              json.result == true ? "Updated Event Sucessfully." : json.message,
               json.result
             );
 

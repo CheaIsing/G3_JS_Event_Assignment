@@ -4,7 +4,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Create Vendor Recruitment Post</title>
+    <link rel="icon" type="image/jpg" href="../../assets/img/logo/Pruttikar_Logo2.png">
+
+        <title>Pruttika | Update Vendor Recruitment</title>
         <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
@@ -786,9 +788,10 @@ requirementQuill.root.innerHTML = vendorType;
         .then(data => {
             document.getElementById('btn-update').disabled = false;
         document.body.style.cursor = 'default';
+
             if(data.result == true){
 
-                showToast('Vendor Recruitment post updated successfully', true);
+                showToast('Updated Vendor Recruitment Successfully.', true);
                 setTimeout(()=>{
                     location.href = "recruitment.html";
                 }, 1500);
