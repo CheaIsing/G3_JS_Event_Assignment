@@ -304,7 +304,7 @@ function renderBusinesses(businesses) {
     <div class="card d-flex  w-100 recruitmentCard" onclick="viewBusinessDetail(${business.id})">
           <div class="card-body w-100 d-flex">
             <div class="col-4  thumbnail">
-              <img src="${thumbnail}" class="object-fit-cover"  alt="Thumbnail">
+              <img src="${thumbnail}" style="height: 310px !important;" class="object-fit-cover"  alt="Thumbnail">
             </div>
             <div class="col-8 detail">
               <h4 class="card-title fw-bold text-brand mb-0 fs-3">${business.name}</h4>
