@@ -8,7 +8,76 @@ let allVendorData = []; // Array to hold the fetched Vendor Business data from t
 
 function loadEventCards() {
   const cardContainer = document.querySelector(".event-card-wrapper");
-  document.querySelector(".event-card-wrapper").innerHTML = ``;
+  document.querySelector(".event-card-wrapper").innerHTML = `
+  <div class="col-md-3">
+<div class="card border-0 px-0 w-100">
+                                    <div class="card-content border-0">
+                                        <div class="bg-secondary-subtle border rounded-1 placeholder" style="width: 100%; height: 180px;"></div>
+                                        <div class="card-body px-0">
+                                        <span class="placeholder col-7 px-0" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-4" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-4" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-6" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-8" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-11 px-0" style="background-color: #D4D4D4;"></span> 
+                                                
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div></div>
+  <div class="col-md-3">
+<div class="card border-0 px-0 w-100">
+                                    <div class="card-content border-0">
+                                        <div class="bg-secondary-subtle border rounded-1 placeholder" style="width: 100%; height: 180px;"></div>
+                                        <div class="card-body px-0">
+                                        <span class="placeholder col-7 px-0" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-4" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-4" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-6" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-8" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-11 px-0" style="background-color: #D4D4D4;"></span> 
+                                                
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div></div>
+  <div class="col-md-3">
+<div class="card border-0 px-0 w-100">
+                                    <div class="card-content border-0">
+                                        <div class="bg-secondary-subtle border rounded-1 placeholder" style="width: 100%; height: 180px;"></div>
+                                        <div class="card-body px-0">
+                                        <span class="placeholder col-7 px-0" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-4" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-4" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-6" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-8" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-11 px-0" style="background-color: #D4D4D4;"></span> 
+                                                
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div></div>
+  <div class="col-md-3">
+<div class="card border-0 px-0 w-100">
+                                    <div class="card-content border-0">
+                                        <div class="bg-secondary-subtle border rounded-1 placeholder" style="width: 100%; height: 180px;"></div>
+                                        <div class="card-body px-0">
+                                        <span class="placeholder col-7 px-0" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-4" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-4" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-6" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-8" style="background-color: #D4D4D4;"></span> 
+                                        <span class="placeholder col-11 px-0" style="background-color: #D4D4D4;"></span> 
+                                                
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div></div>
+                                `;
 
   if (allEventData.length <= 0) {
     return (document.querySelector(
@@ -19,48 +88,81 @@ function loadEventCards() {
             </div>`);
   }
 
+
+  
+  document.querySelector(".event-card-wrapper").innerHTML = ``
   allEventData.forEach((element, currentIndex) => {
+    let thumbnail = "";
     if (
       element.thumbnail ==
       "http://mps2.chandalen.dev/storage/events/no_photo.jpg"
     ) {
       element.thumbnail = "../../assets/img/party/party1.png";
     } else {
-      element.thumbnail = element.thumbnail;
+      thumbnail = element.thumbnail;
     }
+    console.log(element);
 
     const newCard = document.createElement("div");
-    newCard.className = "card";
-    newCard.innerHTML = `       <div class="card-content h-100">
-                                        <div onclick="showEventDetail(${
+    newCard.className = "col-md-3 d-flex";
+    newCard.innerHTML = `       <div class="card shadow-sm rounded w-100"> 
+                                            <img class="card-img-top rounded-top cursor-pointer" onclick="showEventDetail(${
+                                              element.id
+                                            })" src="${thumbnail}" alt="Title" />
+                                        <div class="card-body" onclick="showEventDetail(${
                                           element.id
                                         })">
-                                        <img class="card-img-top" src="${
-                                          element.thumbnail
-                                        }" alt="Title" />
-                                        <div class="card-body">
-                                            <div class="d-flex event-pill-wrapper"></div>
-                                            <h5 class="card-title mt-2 mb-4">${
+                                            <div class="d-flex event-pill-wrapper mb-2"></div>
+                                            <h5 class="card-title">${
                                               element.name
                                             }</h5>
-                                            <p class="card-text">${formatDate(
-                                              element.start_date
-                                            )}</p>
-                                            <p class="text-secondary">${
-                                              element.location
-                                            }</p>
-                                            <p>${
-                                              parseFloat(element.ticket_price) > 0 ? '$'+element.ticket_price.toFixed(2)+' per ticket' : "Free"
-                                            }</p>
-                                            
+                        <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
+                          element.start_date
+                        ).format("ddd, D MMMM • h:mm A")}</p>
+                        <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
+                          element.location
+                        }</p>
+                                            <h6 class="text-brand">${
+                                              parseFloat(element.ticket_price) >
+                                              0
+                                                ? `$${element.ticket_price.toFixed(
+                                                    2
+                                                  )} per ticket`
+                                                : "Free"
+                                            }</h6>
+                                           
                                         </div>
+                                        
+                                        <div class="d-none" onclick="showEventDetail(${
+                                          element.id
+                                        })" class="card-footer cursor-pointer d-flex align-items-center">
+                                        <img src="${""}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
+                                        <span>${""}</span>
+                                      </div>
+                                      
+                                        <div class="card-btn-wrapper">
+                                            <button type="button" class="btn-rounded add-wish" data-id="${
+                                              element.id
+                                            }" onclick="addWishlist(${
+      element.id
+    })"><i
+                                                      class="fa-regular fa-heart"></i></button>
+                                              <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${
+                                                element.id
+                                              })"><i
+                                                      class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                                              <div class="date-tag text-center p-2">
+                                                <h6>${moment(
+                                                  element.start_date
+                                                ).format("D")}</h6>
+                                                <h6>${moment(
+                                                  element.start_date
+                                                ).format("MMMM")}</h6>
+                                              </div>
+                                          </div>
                                         </div>
-                                        <div class="card-btn-wrapper h-100 w-100">
-                                            <button type="button" class="btn-rounded add-wish" data-id="${element.id}" onclick="addWishlist(${element.id})"><i
-                                                    class="fa-regular fa-heart"></i></button>
-                                            <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id})"><i
-                                                    class="fa-solid fa-arrow-up-right-from-square"></i></button>
-                                        </div>
+      
+                                        
                                     </div>`;
     checkEventInWishlist(element.id);
     cardContainer.appendChild(newCard);
@@ -77,7 +179,6 @@ function loadEventCards() {
       eventPillWrapper.appendChild(spanTag);
       colorId++;
     });
-    
   });
   setUpWishBtn();
 }
@@ -148,7 +249,9 @@ function loadVendorCards() {
   allVendorData.forEach((element, currentVendorIndex) => {
     const newCard = document.createElement("div");
     newCard.className = "card";
-    newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${element.id})">
+    newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${
+      element.id
+    })">
                   <div class="card-body d-flex">
                       <div class="thumbnail">
                           <img src="${
@@ -198,6 +301,8 @@ function loadVendorCards() {
     });
   });
 }
+
+
 
 fetch(`${API_URL}/api/profile/detail/${orgId}`, {
   headers: {
@@ -293,7 +398,6 @@ fetch(`${API_URL}/api/profile/detail/${orgId}`, {
     loadEventCards();
     loadRecruitCards();
     loadVendorCards();
-
   });
 function showEventDetail(id) {
   sessionStorage.setItem("itemID", id);
