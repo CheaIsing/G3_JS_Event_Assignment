@@ -18,6 +18,10 @@ body {
     --text-gray: #403247;
 }
 
+button{
+    cursor: pointer;
+}
+
 .bg-brand-light-50 {
     background-color: #ffcbeb54 !important;
 }
@@ -246,7 +250,7 @@ header .dropdown-menu-end{
     background-color: var(--c-brand);
     color: white;
     border-radius: 5px;
-    cursor: pointer;
+    /* cursor: pointer; */
     /* transition: 0.3s; */
 }
 
