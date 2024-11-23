@@ -219,11 +219,11 @@ function createNewEvent() {
               json.result ? "Create Event Sucessfully." : json.message,
               json.result
             );
-            if (json.result) {
-              setTimeout(() => {
-                location.href = "event.html";
-              }, 1500);
-            }
+            // if (json.result) {
+            //   setTimeout(() => {
+            //     location.href = "event.html";
+            //   }, 1500);
+            // }
           });
       });
   }

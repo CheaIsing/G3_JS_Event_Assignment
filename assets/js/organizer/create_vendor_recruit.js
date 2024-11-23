@@ -107,11 +107,11 @@ function createRecruit(btn) {
                 btn.disabled = false;
         document.body.style.cursor = 'default'
         showToast(json.result == true ?  "Create Vendor Recruitment Successfully.":json.message, json.result)
-                if (json.result === true) {
-                    setTimeout(() => {
-                        location.href = 'recruitment.html'
-                    }, 1500)
-                }
+                // if (json.result === true) {
+                //     setTimeout(() => {
+                //         location.href = 'recruitment.html'
+                //     }, 1500)
+                // }
             })
         // .then(response => {
         //     if (!response.ok) {
