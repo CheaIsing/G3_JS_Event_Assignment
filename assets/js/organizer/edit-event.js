@@ -365,8 +365,11 @@ function updateEvent() {
   eventData.append("ticket_opacity", ticketQty);
   eventData.append("ticket_price", ticketPrice);
   eventData.append("event_category_ids", JSON.stringify(categoriesList));
+
   if (parseFloat(ticketPrice) > 0) {
-    eventData.append("qr_img", khqrImg);
+    if (khqrImg) {
+      eventData.append("qr_img", khqrImg);
+    }
   }
 
   document.getElementById("btn-update-ev").disabled = true;
@@ -376,7 +379,6 @@ function updateEvent() {
     headers: {
       Authorization: `Bearer ${token}`,
       Accept: "application/json",
-      "Content-Type": "application/json",
     },
     body: eventData,
   })
