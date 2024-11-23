@@ -142,7 +142,7 @@ function loadEventCards() {
     const newCard = document.createElement("div");
     newCard.className = "col-md-3 d-flex";
     newCard.innerHTML = `       <div class="card shadow-sm rounded w-100"> 
-                                            <img class="card-img-top rounded-top" src="${thumbnail}" alt="Title" />
+                                            <img class="card-img-top rounded-top cursor-pointer" onclick="showEventDetail(${element.id})" src="${thumbnail}" alt="Title" />
                                         <div class="card-body" onclick="showEventDetail(${element.id})">
                                             <div class="d-flex event-pill-wrapper mb-2"></div>
                                             <h5 class="card-title">${element.name
@@ -162,7 +162,7 @@ function loadEventCards() {
                                            
                                         </div>
                                         
-                                        <div class="card-footer d-flex align-items-center">
+                                        <div onclick="showEventDetail(${element.id})" class="card-footer cursor-pointer d-flex align-items-center">
                                         <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
                                         <span>${element.creator.full_name}</span>
                                       </div>
