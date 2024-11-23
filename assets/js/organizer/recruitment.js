@@ -156,7 +156,7 @@ function getAllRecruitmentCard(apiUrl, id, searchE = "", searchV = "all") {
           const endDate = new Date(ele.end_date.replace(" ", "T"));
 
           if (startDate > currentDate) {
-            status = `<span class="rounded-pill text-primary"><i class="fa-solid fa-hourglass-half me-1"></i>Upcoming</span>`;
+            status = `<span class="rounded-pill text-brand"><i class="fa-solid fa-hourglass-half me-1"></i>Upcoming</span>`;
           } else if (currentDate >= startDate && currentDate <= endDate) {
             status = `<span class="rounded-pill text-success"><i class="fa-solid fa-hourglass-half me-1"></i>Showing</span>`;
           } else {

@@ -21,7 +21,7 @@ fetch(`${API_URL}/api/vendors/${recruitId}`)
 
     document
       .getElementById("ev-org-name")
-      .setAttribute("data-orgID", json.data.creator.id);
+      .setAttribute("data-org-id", json.data.creator.id);
     document.querySelectorAll(".btn-apply-now").forEach((btn) => {
       btn.onclick = () => {
         fetch(`${API_URL}/api/vendors/apply/${recruitId}`, {
@@ -45,7 +45,7 @@ fetch(`${API_URL}/api/vendors/${recruitId}`)
   });
 
 function viewOrgDetail(org) {
-  let id = org.dataset.id;
+  let id = org.dataset.orgId;
   sessionStorage.setItem("orgID", id);
   location.href = "/pages/authentication/view-profile.html";
 }

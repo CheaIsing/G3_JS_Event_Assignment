@@ -131,7 +131,7 @@ function loadEventCards() {
 
     if (
       element.thumbnail ==
-      "http://mps2.chandalen.dev/storage/events/no_photo.jpg" ||
+        "http://mps2.chandalen.dev/storage/events/no_photo.jpg" ||
       element.thumbnail == null
     ) {
       thumbnail = "../assets/img/party/party1.png";
@@ -142,42 +142,62 @@ function loadEventCards() {
     const newCard = document.createElement("div");
     newCard.className = "col-md-3 d-flex";
     newCard.innerHTML = `       <div class="card shadow-sm rounded w-100"> 
-                                            <img class="card-img-top rounded-top cursor-pointer" onclick="showEventDetail(${element.id})" src="${thumbnail}" alt="Title" />
-                                        <div class="card-body" onclick="showEventDetail(${element.id})">
+                                            <img class="card-img-top rounded-top cursor-pointer" onclick="showEventDetail(${
+                                              element.id
+                                            })" src="${thumbnail}" alt="Title" />
+                                        <div class="card-body" onclick="showEventDetail(${
+                                          element.id
+                                        })">
                                             <div class="d-flex event-pill-wrapper mb-2"></div>
-                                            <h5 class="card-title">${element.name
-      }</h5>
+                                            <h5 class="card-title">${
+                                              element.name
+                                            }</h5>
                         <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
-        element.start_date
-      ).format("ddd, D MMMM • h:mm A")}</p>
-                        <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${element.location
-      }</p>
-                                            <h6 class="text-brand">${parseFloat(element.ticket_price) >
-        0
-        ? `$${element.ticket_price.toFixed(
-          2
-        )} per ticket`
-        : "Free"
-      }</h6>
+                          element.start_date
+                        ).format("ddd, D MMMM • h:mm A")}</p>
+                        <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
+                          element.location
+                        }</p>
+                                            <h6 class="text-brand">${
+                                              parseFloat(element.ticket_price) >
+                                              0
+                                                ? `$${element.ticket_price.toFixed(
+                                                    2
+                                                  )} per ticket`
+                                                : "Free"
+                                            }</h6>
                                            
                                         </div>
                                         
-                                        <div onclick="showEventDetail(${element.id})" class="card-footer cursor-pointer d-flex align-items-center">
-                                        <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
-                                        <span>${element.creator.full_name}</span>
+                                        <div onclick="showEventDetail(${
+                                          element.id
+                                        })" class="card-footer cursor-pointer d-flex align-items-center">
+                                        <img src="${
+                                          element.creator.avatar
+                                        }" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 32px; height: 32px;">
+                                        <span>${
+                                          element.creator.full_name
+                                        }</span>
                                       </div>
                                       
                                         <div class="card-btn-wrapper">
-                                            <button type="button" class="btn-rounded add-wish" data-id="${element.id
-      }" onclick="addWishlist(${element.id
-      })"><i
+                                            <button type="button" class="btn-rounded add-wish" data-id="${
+                                              element.id
+                                            }" onclick="addWishlist(${
+      element.id
+    })"><i
                                                       class="fa-regular fa-heart"></i></button>
-                                              <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${element.id
-      })"><i
+                                              <button type="button" class="btn-rounded" onclick="copyEventUrlToClipboard(${
+                                                element.id
+                                              })"><i
                                                       class="fa-solid fa-arrow-up-right-from-square"></i></button>
                                               <div class="date-tag text-center p-2">
-                                                <h6>${moment(element.start_date).format("D")}</h6>
-                                                <h6>${moment(element.start_date).format("MMMM")}</h6>
+                                                <h6>${moment(
+                                                  element.start_date
+                                                ).format("D")}</h6>
+                                                <h6>${moment(
+                                                  element.start_date
+                                                ).format("MMMM")}</h6>
                                               </div>
                                           </div>
                                         </div>
@@ -226,30 +246,35 @@ function loadRecruitCards() {
     const element = allRecruitData[currentRecruitIndex];
     const newCard = document.createElement("div");
     newCard.className = "card";
-    newCard.innerHTML = `<div class="card-content px-3" onclick="showRecruitDetail(${element.id
-      })">
+    newCard.innerHTML = `<div class="card-content px-3" onclick="showRecruitDetail(${
+      element.id
+    })">
                                     <div class="card-body">
                                         <div class="profile d-flex align-items-center justify-content-between mb-3">
                                             <div class="d-flex align-items-center">
                                                 <div class="pf-img me-2">
-                                                    <img src="${element.creator.avatar
-      }" alt="">
+                                                    <img src="${
+                                                      element.creator.avatar
+                                                    }" alt="">
                                                 </div>
-                                                <p>${element.creator.full_name
-      }</p>
+                                                <p>${
+                                                  element.creator.full_name
+                                                }</p>
                                             </div>
                                             <div class="d-flex recruit-pill-wrapper"></div>
                                         </div>
-                                        <h5 class="card-title mt-2 mb-0 fw-bold">${element.name
-      }</h5>
-                                        <div class="card-text py-3">${element.description
-      }</div>
+                                        <h5 class="card-title mt-2 mb-0 fw-bold">${
+                                          element.name
+                                        }</h5>
+                                        <div class="card-text py-3">${
+                                          element.description
+                                        }</div>
                                         <div class="duration">
                                             <span class="text-secondary fs-6"><i class="bi bi-calendar fs-6 text-brand"></i> Start Date: ${moment(
-        element.start_date
-      ).format(
-        "ddd, D MMMM • h:mm A"
-      )} </span><br>
+                                              element.start_date
+                                            ).format(
+                                              "ddd, D MMMM • h:mm A"
+                                            )} </span><br>
                                             <span class="location fs-6"><i class="bi bi-geo-alt fs-6 text-brand"></i>
                                                 ${element.location}</span>
                                         </div>
@@ -305,7 +330,7 @@ function loadVendorCards() {
     newCard.innerHTML = `<div  class="card d-flex  w-100 recruitmentCard" onclick="showServiceDetail(${element.id})">
                     <div class="card-body d-flex">
                     <div class="col-4  thumbnail">
-              <img src="${thumbnail}" class="object-fit-cover"  alt="Thumbnail">
+              <img src="${thumbnail}" class="object-fit-cover" style="height: 310px !important;" alt="Thumbnail">
             </div>
                         
                         <div class=" col-8 detail">
@@ -376,4 +401,3 @@ function showServiceDetail(id) {
   sessionStorage.setItem("businessDetailId", id);
   location.href = "/pages/browse/business-detail.html";
 }
-

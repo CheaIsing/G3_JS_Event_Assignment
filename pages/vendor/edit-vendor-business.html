@@ -219,12 +219,12 @@
                                             <div class="form-floating mb-3 me-5">
                                                 <input type="text" class="form-control customized-form" id="city"
                                                     placeholder="">
-                                                <label for="floatingInput">City </label>
+                                                <label for="floatingInput">District </label>
                                             </div>
                                             <div class="form-floating mb-3 me-5">
                                                 <input type="text" class="form-control customized-form" id="province"
                                                     placeholder="">
-                                                <label for="floatingInput">State/Province </label>
+                                                <label for="floatingInput">City/Province </label>
                                             </div>
                                             <div class="form-floating mb-3 me-5">
                                                 <input type="text" class="form-control customized-form" id="country"
@@ -384,7 +384,7 @@ const [address1, address2, city, province, country] = parts;
             let city = document.getElementById('city').value;
             let province = document.getElementById('province').value;
             let country = document.getElementById('country').value;
-            let fullAddress = `${address1}, ${address2}, ${province}, ${city}, ${country}`;
+            let fullAddress = `${address1}, ${address2}, ${city}, ${province}, ${country}`;
 
             let categoriesSelect = document.getElementById('categorySelect');
 

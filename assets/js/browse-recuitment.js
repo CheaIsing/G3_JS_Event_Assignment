@@ -163,7 +163,7 @@ function getAllRecruitments(page, searchStr='') {
                   <div class="pf-img me-2">
                     <img src="${
                       element.creator.avatar
-                    }" alt="avatar" width="30px" height="30px">
+                    }" alt="avatar" class="rounded-circle" width="30px" height="30px">
                   </div>
                   <p class="mb-0 pb-0">${element.creator.full_name}</p>
                 </div>

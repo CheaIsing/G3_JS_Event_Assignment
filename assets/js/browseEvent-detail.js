@@ -15,6 +15,8 @@ fetch(apiUrl + "/api/events/" + id)
   .then((res) => res.json())
   .then((json) => {
     let data = json.data;
+
+    
     
 
     let thumbnail =
@@ -63,6 +65,7 @@ fetch(apiUrl + "/api/events/" + id)
     document.getElementById("ev-price1").innerHTML = price;
     evCatagoryId = data.event_categories[0].id;
     ticketPrice = data.ticket_price;
+   
     if(parseInt(data.ticket_opacity) == 0){
       document.getElementById("btn-purchase").disabled = true;
       document.getElementById("btn-purchase").innerHTML = "Sold Out";
@@ -79,6 +82,9 @@ fetch(apiUrl + "/api/events/" + id)
       )
         .then((res) => res.json())
         .then((json4) => {
+          if(json4.data.length == 0){
+            return;
+          }
           for (let ele of json4.data) {
             if (ele.event.id == id) {
               console.log(ele);
@@ -122,6 +128,10 @@ fetch(apiUrl + "/api/events/" + id)
             showToast(err, false);
           });
       };
+    }
+
+    if(new Date(data.end_date) < newDate() ){
+      document.getElementById("btn-purchase").disabled = true;
     }
 
     document.getElementById("btn-purchase").onclick = () => {
