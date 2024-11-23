@@ -142,16 +142,16 @@ function getOwnedTickets() {
                                                     </div>
                                                 
                                             </td>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 ${checkedIn}
                                             </td>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 ${parseFloat(ele.ticket_price) > 0 ? '$'+ele.ticket_price.toFixed(2) : "Free"}
                                             </td>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 ${formatDate(ele.expired_at)}
                                             </td>
-                                            <td>
+                                            <td class="text-nowrap">
                                                 <div class>
 
                                                     <button

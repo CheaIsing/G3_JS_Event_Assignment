@@ -203,8 +203,8 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                     </div>
                   </a>
                 </td>
-                <td>${status}</td>
-                <td>${checkedInCount} / ${dataCheckin.length}</td>
+                <td class="text-nowrap">${status}</td>
+                <td class="text-nowrap">${checkedInCount} / ${dataCheckin.length}</td>
               </tr>`;
 
               document.getElementById("event-tobody").innerHTML = rowsHTML;

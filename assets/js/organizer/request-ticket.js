@@ -192,8 +192,8 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                     </div>
                   </a>
                 </td>
-                <td>${status}</td>
-                <td>${json2.data.length} request</td>
+                <td class="text-nowrap">${status}</td>
+                <td class="text-nowrap">${json2.data.length} request</td>
               </tr>`;
 
               document.getElementById("event-tobody").innerHTML = rowsHTML;
