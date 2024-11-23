@@ -285,3 +285,7 @@ input[type='checkbox']:checked + .button {
 #org-name:hover{
     color: var(--c-brand);
 }
+
+.brief-detail li{
+    border: 0 !important;
+}
