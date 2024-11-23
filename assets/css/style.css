@@ -1224,7 +1224,7 @@ footer .contact-info .social-media a:hover {
     cursor: wait !important;
 }
 
-.card-descc-1{
+.card-descc-1 {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     /* Limit the text to 3 lines */
@@ -1235,7 +1235,7 @@ footer .contact-info .social-media a:hover {
 
 }
 
-.card-descc-3{
+.card-descc-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     /* Limit the text to 3 lines */
@@ -1243,4 +1243,9 @@ footer .contact-info .social-media a:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
+}
+
+td .dropstart ul li a:hover {
+    background-color: var(--c-brand) !important;
+    color: #fff !important;
 }
