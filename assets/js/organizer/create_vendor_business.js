@@ -2,7 +2,7 @@ function createBusiness() {
   // Create Vendor Business form variables
   let thumbnailFile = document.getElementById("fileUpload").files[0];
   console.log(thumbnailFile);
-  
+
   // let descPhoto = document.getElementById('photoUpload').files[0];
   // let servicePrice = document.getElementById('servicePrice').value;
   let businessName = document.getElementById("postTitle").value;
@@ -36,7 +36,6 @@ function createBusiness() {
   let description = descQuillContent;
 
   let eventData = new FormData();
-  eventData.append("thumbnail", thumbnailFile);
   eventData.append("name", businessName);
   eventData.append("location", fullAddress);
   eventData.append("description", description);
@@ -47,6 +46,7 @@ function createBusiness() {
   eventData.append("telegram", telegram);
   eventData.append("tiktok", tiktok);
   eventData.append("business_category_ids", JSON.stringify(categoriesList));
+  eventData.append("thumbnail", thumbnailFile);
 
   // eventData.forEach((element, key) => {
   //     console.log(element, key);
@@ -67,7 +67,7 @@ function createBusiness() {
       .then((res) => res.json())
       .then((json) => {
         document.getElementById('btn-create-bu').disabled = false
-    document.body.style.cursor = 'default'
+        document.body.style.cursor = 'default'
         showToast(json.message, json.result);
         if (json.result) {
           setTimeout(() => {

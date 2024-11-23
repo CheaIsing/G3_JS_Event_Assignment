@@ -70,7 +70,7 @@ function createRecruit(btn) {
                 <div id="recruit-requiremnt" class="recruit-requiremnt-wrapper">
                     ${recruitmentQuillContent} 
                 </div>
-                <h2 class="title text-brand fw-bold mt-4">Vendor Type needed</h2>
+                <h2 class="title text-brand fw-bold mt-4">Benefit</h2>
                 <div id="vendor-type-need" class="vendor-type-need-wrapper">
                     ${vendorTypeQuillContent}
                 </div>
@@ -105,7 +105,7 @@ function createRecruit(btn) {
             .then(res => res.json())
             .then(json => {
                 btn.disabled = false;
-        document.body.style.cursor = 'default'
+                document.body.style.cursor = 'default'
                 showToast(json.message, json.result)
                 if (json.result === true) {
                     setTimeout(() => {
