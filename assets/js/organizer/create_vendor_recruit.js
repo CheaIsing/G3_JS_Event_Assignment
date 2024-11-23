@@ -106,7 +106,7 @@ function createRecruit(btn) {
             .then(json => {
                 btn.disabled = false;
         document.body.style.cursor = 'default'
-                showToast(json.message, json.result)
+        showToast(json.result == true ?  "Create Vendor Recruitment Successfully.":json.message, json.result)
                 if (json.result === true) {
                     setTimeout(() => {
                         location.href = 'recruitment.html'

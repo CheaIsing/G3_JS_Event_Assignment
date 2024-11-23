@@ -68,7 +68,7 @@ function createBusiness() {
       .then((json) => {
         document.getElementById('btn-create-bu').disabled = false
     document.body.style.cursor = 'default'
-        showToast(json.message, json.result);
+    showToast(json.result == true ?  "Create Business Successfully.":json.message, json.result)
         if (json.result) {
           setTimeout(() => {
             location.href = "vendor-business.html";
