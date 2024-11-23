@@ -88,9 +88,7 @@ function loadEventCards() {
             </div>`);
   }
 
-
-  
-  document.querySelector(".event-card-wrapper").innerHTML = ``
+  document.querySelector(".event-card-wrapper").innerHTML = ``;
   allEventData.forEach((element, currentIndex) => {
     let thumbnail = "";
     if (
@@ -248,7 +246,7 @@ function loadVendorCards() {
 
   allVendorData.forEach((element, currentVendorIndex) => {
     const newCard = document.createElement("div");
-    newCard.className = "card";
+    newCard.className = "card px-0";
     newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${
       element.id
     })">
@@ -258,14 +256,16 @@ function loadVendorCards() {
                             element.thumbnail
                               ? element.thumbnail
                               : "../../assets/img/party/party1.png"
-                          }" alt="...">
+                          }" alt="..." class="img-fluid" style="width: 510px !important">
                       </div>
                       <div class="detail">
                           <h5 class="card-title mb-0 fw-bold">${
                             element.name
                           }</h5>
 
-                          <p class="card-text py-3">${element.description}</p>
+                          <div class="card-descc-3 py-3 ">${
+                            element.description
+                          }</div>
 
                           <p class="location"><i class="bi bi-geo-alt fs-5"></i> ${
                             element.location
@@ -301,8 +301,6 @@ function loadVendorCards() {
     });
   });
 }
-
-
 
 fetch(`${API_URL}/api/profile/detail/${orgId}`, {
   headers: {
