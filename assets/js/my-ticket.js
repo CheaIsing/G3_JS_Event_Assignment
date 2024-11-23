@@ -296,17 +296,7 @@ function getAllTicket() {
               ele.amount > 1 ? "s" : ""
             } 
                                                         </td>
-                                                        <td class="text-nowrap">${
-                                                          parseFloat(
-                                                            ele.ticket_price
-                                                          ) > 0
-                                                            ? (
-                                                                ele.amount *
-                                                                ele.event
-                                                                  .ticket_price
-                                                              ).toFixed(2)
-                                                            : "Free"
-                                                        }</td>
+                                                        <td class="text-nowrap">${parseFloat(event.ticket_price) > 0 ? '$'+(parseFloat(event.ticket_price) * parseFloat(ele.amount)).toFixed(2) : 'Free'}</td>
                                                         <td>
                                                             ${`<button 
                                                                     class="btn btn-brand position-relative z-3 view-details" data-id="${ele.id}" data-bs-target="#exampleModalToggle-1"
@@ -385,7 +375,7 @@ function getTransaction(id) {
 
       document.getElementById("price").innerHTML =
         parseFloat(ticketDetail.event.ticket_price) > 0
-          ? "$" + ticketDetail.event.ticket_price
+          ? "$" + ticketDetail.event.ticket_price.toFixed(2)
           : "Free";
       document.getElementById("total").innerHTML =
         "$" +
