@@ -298,7 +298,7 @@ function updateEvent() {
   let city = document.getElementById("city").value;
   let province = document.getElementById("province").value;
   let country = document.getElementById("country").value;
-  let fullAddress = `${address1}, ${address2}, ${province}, ${city}, ${country}`;
+  let fullAddress = `${address1}, ${address2}, ${city}, ${province}, ${country}`;
   let descPhoto = document.getElementById("photoUpload").files[0];
   let categoriesSelect = document.getElementById("categorySelect");
   let categoriesList = [];
@@ -372,6 +372,8 @@ function updateEvent() {
     eventData.append("qr_img", khqrImg);
   }
 
+  document.getElementById("btn-update-ev").disabled = true
+  document.body.style.cursor = 'wait'
   fetch(`${apiUrl}/api/events/info/${sessionStorage.getItem("editEventId")}`, {
     method: "POST",
     headers: {
@@ -384,6 +386,8 @@ function updateEvent() {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
+       document.getElementById("btn-update-ev").disabled = false
+  document.body.style.cursor = 'default'
 
       if (thumbnailFile) {
         let imgFIle = new FormData();
