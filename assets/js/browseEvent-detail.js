@@ -159,8 +159,8 @@ function displayRelatedItems(evCatagoryId,detailId) {
             ? "Free"
             : `$${element.ticket_price.toFixed(2)} per ticket`;
         let catas = "";
-        element.event_categories.forEach((cata) => {
-          catas += `<div class="pill${cata.id} me-1">${cata.name}</div>`;
+        element.event_categories.forEach((cata, i) => {
+          catas += `<div class="pill${i+1} me-1">${cata.name}</div>`;
         });
         let thumbnail =
           element.thumbnail && !element.thumbnail.includes("no_photo")
