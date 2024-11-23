@@ -128,7 +128,7 @@ function getAllBusinessCard(apiUrl, id, searhB = "") {
                                                         <p
                                                             class="text-muted mb-0">${ele.location}</p>
                                                         <div
-                                                            class="text-muted mb-0 card-desc1">${ele.description}</div>
+                                                            class="text-muted mb-0 card-descc-1">${ele.description}</div>
                                                         
                                                     </div>
                                                 </div>

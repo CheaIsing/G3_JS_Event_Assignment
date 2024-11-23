@@ -17,7 +17,7 @@ function createBusiness() {
   let city = document.getElementById("city").value;
   let province = document.getElementById("province").value;
   let country = document.getElementById("country").value;
-  let fullAddress = `${address1}, ${address2}, ${province}, ${city}, ${country}`;
+  let fullAddress = `${address1}, ${address2}, ${city}, ${province},  ${country}`;
 
   let categoriesSelect = document.getElementById("categorySelect");
 

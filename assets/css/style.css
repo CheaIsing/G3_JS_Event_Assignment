@@ -1223,3 +1223,14 @@ footer .contact-info .social-media a:hover {
     opacity: 0.8 !important;
     cursor: wait !important;
 }
+
+.card-descc-1{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* Limit the text to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+
+}
