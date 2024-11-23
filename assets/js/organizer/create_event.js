@@ -102,7 +102,7 @@ function createNewEvent() {
   let city = document.getElementById("city").value;
   let province = document.getElementById("province").value;
   let country = document.getElementById("country").value;
-  let fullAddress = `${address1}, ${address2}, ${city}, ${province}, ${country}`;
+  let fullAddress = `${address1}, ${address2}, ${province}, ${city} , ${country}`;
   let descPhoto = document.getElementById("photoUpload").files[0];
   let categoriesSelect = document.getElementById("categorySelect");
   let categoriesList = [];
@@ -215,7 +215,10 @@ function createNewEvent() {
         })
           .then((res) => res.json())
           .then((json) => {
-            showToast(json.result ?"Create Event Sucessfully." :json.message, json.result);
+            showToast(
+              json.result ? "Create Event Sucessfully." : json.message,
+              json.result
+            );
             if (json.result) {
               setTimeout(() => {
                 location.href = "event.html";
