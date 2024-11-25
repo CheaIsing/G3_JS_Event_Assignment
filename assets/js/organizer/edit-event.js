@@ -196,7 +196,6 @@ function renderEditEventHTML() {
       if (document.getElementById("price").value == 0) {
         document.getElementById("qr-img-container").style.display = "none";
       }
-      console.log(agendaCount);
       
     });
 }
@@ -354,8 +353,7 @@ function updateEvent() {
   } else {
     description = `<div class="descQill">${descQuillContent}</div>`;
   }
-  // console.log(description);
-  // document.getElementById('test').innerHTML = description;
+
 
   // add ticket form variables
   let ticketQty = document.getElementById("ticketQuantity").value;

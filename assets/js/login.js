@@ -109,7 +109,6 @@ document.getElementById('toggleConfirmPassword').addEventListener('click', funct
           document.body.style.cursor = 'default';
           document.getElementById('btn-log-in').disabled = false;
           showToast(json.message, json.result);
-          console.log(json);
           if(json.result == true){
 
             let token = json.data.token;
@@ -169,7 +168,6 @@ document.getElementById('toggleConfirmPassword').addEventListener('click', funct
         .then((json) => {
           document.body.style.cursor = "default"; // Reset the cursor
           document.getElementById("btn-send-email-forgot-pass").disabled = false;
-          console.log(json);
 
           // Check if the response was successful
           if (json.result === true) {

@@ -74,7 +74,6 @@ function getMe(searhB = "") {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json);
 
       getAllBusinessCard(apiUrl, json.data.id, searhB);
     });
@@ -92,7 +91,6 @@ function getAllBusinessCard(apiUrl, id, searhB = "") {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.data);
       if (json.data.length <= 0) {
         document.getElementById(
           "business-tbody"
@@ -103,7 +101,6 @@ function getAllBusinessCard(apiUrl, id, searhB = "") {
       }
       let rowsHTML = "";
       json.data.forEach((ele) => {
-        // console.log(json.data);
         
         let thumbnail =
           ele.thumbnail && !ele.thumbnail.includes("no_photo")
@@ -170,7 +167,6 @@ function getAllBusinessCard(apiUrl, id, searhB = "") {
         document.querySelectorAll(".delete-btn").forEach((btn) => {
           btn.onclick = () => {
             let id = btn.closest("[data-id]").dataset.id;
-            console.log(id);
             fetch(`${apiUrl}/api/businesses/${id}`, {
               method: "DELETE",
               headers: { Authorization: `Bearer ${token}` },
@@ -200,7 +196,6 @@ function editBusiness(id) {
 }
 
 document.getElementById("searchInput").addEventListener("keypress", (e) => {
-  console.log(e.target.value);
   
   if (e.code == "Enter") {
     getMe(e.target.value);

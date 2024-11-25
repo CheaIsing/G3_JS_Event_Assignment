@@ -300,31 +300,12 @@
     <script>
 
         let editId = sessionStorage.getItem('editBusinessid')
-        // Fetch business Categories
-        // fetch(`${API_URL}/api/business-categories`, {
-        //     headers: {
-        //         Authorization: `Bearer ${token}`
-        //     }
-        // })
-        //     .then(res => res.json())
-        //     .then(json => {
-        //         const { data } = json;
-        //         console.log(data);
-                
-        //         let eventCatSelect = document.getElementById('categorySelect');
-        //         eventCatSelect.innerHTML = ''
-        //         data.forEach(element => {
-        //             let opt = document.createElement('option');
-        //             opt.value = element.id;
-        //             opt.innerHTML = element.name;
-        //             eventCatSelect.appendChild(opt);
-        //         });
-        //     })
+
 
         fetch(`${API_URL}/api/businesses?pages=1&per_page=10000`)
             .then(res => res.json())
             .then(json => {
-                // console.log(json.data);
+
 
                 let businesses = json.data.filter(ele => ele.id == editId)[0];
                 // Populate form fields
@@ -398,12 +379,11 @@ const [address1, address2, city, province, country] = parts;
             //get text from Qill form
 
             let descQuillContent = descQuill.root.innerHTML;  // or use quill.getText() for plain text
-            // console.log("Editor Content:", descQuillContent);
+
 
 
             let description = descQuillContent;
 
-            console.log(description);
             
 
             let eventData = new FormData();
@@ -420,11 +400,6 @@ const [address1, address2, city, province, country] = parts;
             eventData.append('telegram', telegram);
             eventData.append('tiktok', tiktok);
             eventData.append('business_category_ids', JSON.stringify(categoriesList));
-
-            // eventData.forEach((element, key) => {
-            //     console.log(element, key);
-
-            // })
 
             if (isValid_vendorBusiness() == true) {
                     document.getElementById('btn-update-bu').disabled = true

@@ -80,7 +80,6 @@ function getAllTicket() {
   )
     .then((res) => res.json())
     .then((json) => {
-      // console.log(json);
 
       if (json.result === true) {
         const { data } = json;
@@ -310,7 +309,6 @@ function getAllTicket() {
           document.querySelectorAll(".view-details").forEach((link) => {
             link.onclick = () => {
               let id = link.dataset.id;
-              console.log(id);
 
               getTransaction(id);
             };
@@ -322,7 +320,6 @@ function getAllTicket() {
 }
 
 function getTransaction(id) {
-  // console.log(id);
 
   fetch(`${API_URL}/api/profile/requested-tickets?page=1&per_page=10000`, {
     headers: {
@@ -332,7 +329,6 @@ function getTransaction(id) {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
-      console.log(data);
 
       let ticketDetail = {};
 
@@ -343,7 +339,6 @@ function getTransaction(id) {
         }
       }
 
-      console.log(ticketDetail);
 
       let status = "";
       switch (ticketDetail.status) {
@@ -360,7 +355,6 @@ function getTransaction(id) {
         }
       }
 
-      console.log(ticketDetail);
 
       document.getElementById("amount").innerHTML = ticketDetail.amount;
       document.getElementById("status").innerHTML = status;

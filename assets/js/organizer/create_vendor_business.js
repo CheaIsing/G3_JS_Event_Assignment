@@ -1,7 +1,6 @@
 function createBusiness() {
   // Create Vendor Business form variables
   let thumbnailFile = document.getElementById("fileUpload").files[0];
-  console.log(thumbnailFile);
 
   // let descPhoto = document.getElementById('photoUpload').files[0];
   // let servicePrice = document.getElementById('servicePrice').value;
@@ -48,10 +47,6 @@ function createBusiness() {
   eventData.append("business_category_ids", JSON.stringify(categoriesList));
   eventData.append("thumbnail", thumbnailFile);
 
-  // eventData.forEach((element, key) => {
-  //     console.log(element, key);
-
-  // })
 
   if (isValid_vendorBusiness() == true) {
     document.getElementById('btn-create-bu').disabled = true

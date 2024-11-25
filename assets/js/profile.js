@@ -87,7 +87,6 @@ function Getme() {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.data);
       populateUserData(json.data);
     });
 }
@@ -186,7 +185,6 @@ function DeleteProfile(btn) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       btn.disabled = false;
       document.body.style.cursor = "default";
       if (data.result == true && data.code === 1) {
@@ -545,7 +543,6 @@ function updatePassword() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
 
         document.body.style.cursor = "default";
         showToast(data.message, data.result);
@@ -586,7 +583,6 @@ function deleteAccount() {
       .then((res) => res.json())
       .then((json) => {
         showToast(json.message, json.result);
-        console.log(json);
 
         if (json.result) {
           localStorage.removeItem("authToken");

@@ -2,7 +2,6 @@ let recruitId = sessionStorage.getItem("recruitDetailId");
 fetch(`${API_URL}/api/vendors/${recruitId}`)
   .then((response) => response.json())
   .then((json) => {
-    console.log(json);
     document.getElementById("recruit-name").innerHTML = json.data.name;
     document.getElementById("ev-startDate").innerHTML = moment(
       json.data.start_date

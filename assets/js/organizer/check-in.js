@@ -96,7 +96,6 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
-      console.log(data);
 
       let rowsHTML = "";
       if (data.length <= 0) {
@@ -162,15 +161,12 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
             .then((res) => res.json())
             .then((json2) => {
               let status = "";
-              console.log(json2.data);
               
 
               let dataCheckin = json2.data.filter(element=>element.event.id == ele.id)
               let dataCheckedIn = dataCheckin.filter(element=>element.is_checked_in == 2)
 
               let checkedInCount = dataCheckedIn.length
-
-              console.log(checkedInCount);
               
               
 
@@ -244,7 +240,6 @@ document.getElementById("btn-checked-in").onclick = (e) => {
 
   if (!ticketToken) return;
 
-  // console.log(sessionStorage.getItem('checkinDetailId'));
 
   e.target.disabled = true
   document.body.style.cursor = 'wait'

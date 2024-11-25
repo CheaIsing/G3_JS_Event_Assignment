@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   )
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.data);
       let transaction;
       for (let ele of json.data) {
         if (ele.id == sessionStorage.getItem("transactionId")) {
@@ -132,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           document.querySelector(".btn-disapprove").onclick = () => {
             let reason = document.getElementById("reason-disapprove").value;
-            console.log(reason);
 
             if (reason) {
               document

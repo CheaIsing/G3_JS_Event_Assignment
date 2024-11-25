@@ -50,7 +50,6 @@ fetch(apiUrl + "/api/events/" + id)
       " - " +
       moment(data.end_date).format("LT");
     document.getElementById("wish-ev").setAttribute("data-id",data.id);
-    console.log(document.getElementById("wish-ev"));
     document.getElementById("ev-status").innerHTML = status;
     document.getElementById("ev-location").innerHTML = data.location;
     document.getElementById("ev-catagory").innerHTML = catagory;
@@ -87,7 +86,6 @@ fetch(apiUrl + "/api/events/" + id)
           }
           for (let ele of json4.data) {
             if (ele.event.id == id) {
-              console.log(ele);
               document.getElementById("btn-purchase").disabled = true;
               document.getElementById("btn-purchase").innerHTML =
                 "Redeemed Ticket";

@@ -16,7 +16,6 @@ function fetchCheckedIn(status = '') {
   )
     .then((response) => response.json())
     .then((json) => {
-      console.log(json);
       document.getElementById('title').innerHTML = sessionStorage.getItem('checkinEventName')
       document.getElementById('ev-date').innerHTML = moment(sessionStorage.getItem('checkinEventDate')).format('ddd, MMM D, YYYY, h:mm A')
       if (json.data.length == 0) {

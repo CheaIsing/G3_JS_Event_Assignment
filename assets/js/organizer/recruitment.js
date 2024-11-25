@@ -242,7 +242,6 @@ function getAllRecruitmentCard(apiUrl, id, searchE = "", searchV = "all") {
           .forEach((link) => {
             link.onclick = () => {
               let id = link.dataset.vendorRecruitmentId;
-              console.log(id);
 
               deleteVendorRecruitmentPost(id);
             };

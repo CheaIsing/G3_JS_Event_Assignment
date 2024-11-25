@@ -9,12 +9,10 @@ function getAllWish() {
         .then(res => res.json())
         .then(json => {
             let data = json.data;
-            // console.log(dEvent);
             let listE = '';
             let eNum = 0;
             data.forEach(element => {
                 let dEvent = element.event;
-                console.log(dEvent);
                 let price = dEvent.ticket_price == 0 ? 'Free' : `${dEvent.ticket_price}`;
                 let catagory = dEvent.event_categories.map(cata => cata.name).join(' &nbsp; ');
                 listE += `<div class="card mb-4">

@@ -96,7 +96,6 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
-      console.log(data);
 
       let rowsHTML = "";
       if (data.length <= 0) {

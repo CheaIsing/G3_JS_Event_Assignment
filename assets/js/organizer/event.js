@@ -98,7 +98,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
-      console.log(data);
+
 
       let rowsHTML = "";
       if (data.length <= 0) {
@@ -184,7 +184,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
               ).then((res) => res.json())
               .then((json3)=>{
                 const checkedInAll = json3.data.filter(element=>element.event.id == ele.id)
-                console.log(checkedInAll);
+
                 
                 const participatedCount =checkedInAll.filter(element=>element.is_checked_in == 2).length
                 rowsHTML += `<tr class="border-bottom position-relative" data-participated="${participatedCount}">
@@ -280,7 +280,6 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                 .forEach((detail) => {
                   detail.onclick = () => {
                     let id = detail.dataset.id;
-                    console.log(id);
 
                     sessionStorage.setItem("itemID", id);
                     
@@ -297,7 +296,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
 }
 
 function deleteEventPost(id) {
-  console.log(id);
+
 
   fetch(`${apiUrl}/api/events/${id}`, {
     method: "DELETE",
@@ -309,7 +308,7 @@ function deleteEventPost(id) {
     .then((json) => {
       showToast(json.message, json.result);
       getMe();
-      console.log(apiUrl, id, token);
+
     });
 }
 
