@@ -159,8 +159,6 @@ function createNewEvent() {
   } else {
     description = `<div class="descQill">${descQuillContent}</div>`;
   }
-  // console.log(description);
-  // document.getElementById('test').innerHTML = description;
 
   // add ticket form variables
   let ticketQty = document.getElementById("ticketQuantity").value;
@@ -180,11 +178,6 @@ function createNewEvent() {
   if (parseFloat(ticketPrice) > 0) {
     eventData.append("qr_img", qr_img); // add this line if you want to upload KHQR image with the event
   }
-
-  // eventData.forEach((element, key) => {
-  //     console.log(element, key);
-
-  // })
 
   if (isValid_Event()) {
     document.getElementById("btn-create-ev").disabled = true;
@@ -263,6 +256,3 @@ fetch(
     });
   });
 
-// console.log("Editor Content:", descQuillContent);
-// let agendaQuillContent = agendaQuill.root.innerHTML;  // or use quill.getText() for plain text
-// console.log("Editor Content:", agendaQuillContent);

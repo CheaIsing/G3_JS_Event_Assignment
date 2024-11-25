@@ -14,10 +14,9 @@ window.addEventListener("scroll", () => {
 })
 
 let searchClicked = document.getElementById("searchEvent");
-console.log(searchClicked);
+
 
 searchClicked.addEventListener("focus", () => {
-  console.log(true);
   let searchEventbyName = document.getElementById("searchEvent").value;
   if (searchEventbyName == "") {
     document.querySelector(".search-dropdown").style.display = "none";
@@ -34,7 +33,6 @@ searchClicked.addEventListener("blur", () => {
 
 document.getElementById("searchEvent").addEventListener("keyup", function () {
   let searchEventbyName = document.getElementById("searchEvent").value;
-  console.log(searchEventbyName);
 
   document.getElementById("search-dropdown").style.display = "block";
   if (searchEventbyName == "") {
@@ -51,7 +49,6 @@ document.getElementById("searchEvent").addEventListener("keyup", function () {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
-      console.log(data);
 
       let searchList = "";
       if (data.length == 0) {
@@ -72,7 +69,6 @@ document.getElementById("searchEvent").addEventListener("keyup", function () {
 });
 
 function showEventDetail(id) {
-  console.log("z.ljfnv.ksfj");
 
   sessionStorage.setItem("itemID", id);
   location.href = "/pages/browse/event-detail.html";
@@ -122,10 +118,8 @@ function goCreatePost(type = "") {
 
 function checkAuth() {
   if (!localStorage.getItem("authToken")) {
-    console.log(true);
 
     if (document.querySelectorAll(".add-wish")) {
-      console.log(true);
 
       document.querySelectorAll(".add-wish").forEach((item) => {
         item.onclick = () => {
@@ -133,7 +127,6 @@ function checkAuth() {
         };
       });
       if (document.getElementById("btn-purchase")) {
-        console.log(true);
         document.getElementById("btn-purchase").onclick = () => {
           location.href = "/pages/authentication/login.html";
         };

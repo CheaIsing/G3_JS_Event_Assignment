@@ -10,7 +10,6 @@ function getMe(searhE = "", searchV = "") {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.data.id);
       manageAsOrganizer.getAllEventCard(apiUrl, json.data.id, searhE);
       manageAsOrganizer.getAllVendorRecruitment(apiUrl, json.data.id, searchV);
     });
@@ -30,7 +29,6 @@ function getAllEventCard(apiUrl, id, searchStr = "") {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
-      console.log(data);
 
       let rowsHTML = "";
       if (data.length <= 0) {
@@ -49,7 +47,6 @@ function getAllEventCard(apiUrl, id, searchStr = "") {
         .getElementById("event-filter")
         .addEventListener("change", (e) => {
           const currentDate = new Date();
-          console.log(e.target.value);
 
           switch (e.target.value) {
             case "all":
@@ -329,7 +326,6 @@ const manageAsOrganizer = {
       .then((res) => res.json())
       .then((json) => {
         const { data } = json;
-        console.log(data);
 
         let rowsHTML = "";
 
@@ -409,7 +405,6 @@ const manageAsOrganizer = {
           .forEach((link) => {
             link.onclick = () => {
               let id = link.dataset.vendorRecruitmentId;
-              console.log(id);
 
               deleteVendorRecruitmentPost(id);
             };

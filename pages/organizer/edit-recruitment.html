@@ -650,7 +650,6 @@
             document.getElementById('country').value = vendorData.location.split(',')[4].trim() || '';
             const desc = vendorData.description;
             // Create a temporary DOM element to parse the HTML string
-            console.log(desc);
             
             const parser = new DOMParser();
             const doc = parser.parseFromString(desc, 'text/html');
@@ -719,7 +718,6 @@ requirementQuill.root.innerHTML = vendorType;
     let vendorTypeQuillContent = vendorTypeQuill.root.innerHTML;
     let recruitmentQuillContent = requirementQuill.root.innerHTML;
     let defaultQuillContent = '<p><br></p>';
-    // console.log("Editor Content:", descQuillContent);
 
     let description = '';
     if (vendorTypeQuillContent == defaultQuillContent) {

@@ -99,7 +99,6 @@ function loadEventCards() {
     } else {
       thumbnail = element.thumbnail;
     }
-    console.log(element);
 
     const newCard = document.createElement("div");
     newCard.className = "col-md-3 d-flex";
@@ -313,7 +312,6 @@ fetch(`${API_URL}/api/profile/detail/${orgId}`, {
   .then((json) => {
     const { events, vendor_recruitments, businesses } = json.data;
 
-    // console.log(events.length, vendor_recruitments.length, businesses.length);
 
     document.getElementById("event-sum").innerHTML = events.length;
     document.getElementById("vendor-sum").innerHTML =
@@ -332,7 +330,6 @@ fetch(`${API_URL}/api/profile/detail/${orgId}`, {
     allEventData = events;
     allRecruitData = vendor_recruitments;
     allVendorData = businesses;
-    console.log(allVendorData);
 
     const currentDate = new Date();
     document.querySelector("#events-filter").onchange = (e) => {

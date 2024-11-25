@@ -80,7 +80,6 @@ fetch(
     document.querySelectorAll(".views-transaction").forEach((link) => {
       link.onclick = () => {
         let id = link.dataset.transactionId;
-        console.log(id);
         sessionStorage.setItem("transactionId", id);
         location.href = "transaction.html";
       };

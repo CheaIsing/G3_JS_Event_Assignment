@@ -28,10 +28,7 @@ function createRecruit(btn) {
     let vendorTypeQuillContent = vendorTypeQuill.root.innerHTML;
     let recruitmentQuillContent = requirementQuill.root.innerHTML;
     let defaultQuillContent = '<p><br></p>';
-    // console.log("Editor Content:", descQuillContent);
-    console.log(descQuillContent);
-    console.log(vendorTypeQuillContent);
-    console.log(recruitmentQuillContent);
+
 
     let description = '';
     if (vendorTypeQuillContent == defaultQuillContent) {
@@ -86,10 +83,6 @@ function createRecruit(btn) {
     eventData.append('description', description);
     eventData.append('vendor_category_ids', JSON.stringify(categoriesList));
 
-    eventData.forEach((element, key) => {
-        console.log(element, key);
-
-    })
 
     if (isValid_Recruit() == true) {
         btn.disabled = true;

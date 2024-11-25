@@ -74,7 +74,6 @@ function getOwnedTickets() {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.data);
       let rowsHtml = "";
 
       if(json.data.length <= 0){
@@ -203,7 +202,7 @@ function displayTicket(button) {
 
   document.querySelector("#exampleModalToggle-1 .ticket-modal").innerHTML = "";
 
-      // console.log(json);
+
       let rowsHTML = `<div class="col-12">
                                     <div class="row g-0">
                                         <div class="col-8">
@@ -307,7 +306,6 @@ function displayTicket(button) {
                                         </div>
                                     </div>
                                 </div>`;
-      // console.log(rowsHTML);
 
       document.querySelector("#exampleModalToggle-1 .ticket-modal").innerHTML =
         rowsHTML;

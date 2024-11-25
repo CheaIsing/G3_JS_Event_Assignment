@@ -108,7 +108,6 @@ fetch(`${API_URL}/api/events/${eventId}`, {
       document.getElementById("total").innerHTML = `$${parseInt(
         e.target.value * data.ticket_price
       ).toFixed(2)}`;
-      // console.log(parseInt(e.target.value * data.ticket_price));
     };
     document.getElementById("submitButton").onclick = (e) => {
       document.getElementById("submitButton").disabled = true;

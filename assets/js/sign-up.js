@@ -107,7 +107,6 @@
           .then(json => {
             signUpBtn.disabled = false;
             document.body.style.cursor = 'default';
-            console.log(json);
             showToast(typeof json.data.email != 'string' ? json.data.email[0] : json.message, json.result);
             if(json.result === true){
               localStorage.setItem('authToken', json.data.token)

@@ -1,5 +1,5 @@
 let id = sessionStorage.getItem("vendorId");
-console.log(id);
+
 
 // getEventDetail(apiUrl, id);
 getVendorRecruitmentDetail(apiUrl, id);
@@ -19,8 +19,6 @@ function getEventDetail(apiUrl, id) {
       })
         .then((res) => res.jGITson())
         .then((json2) => {
-          console.log(json);
-          console.log(json2);
         });
     });
 }
@@ -38,7 +36,6 @@ function getVendorRecruitmentDetail(apiUrl, id) {
       const { data } = json1;
       const { location, start_date, end_date, name, categories } = data;
       const vendorId = data.id;
-      console.log(data);
       document.getElementById("vendor-title").innerHTML = name;
       document.getElementById("start-end-date").innerHTML = `${moment(
         start_date
@@ -140,7 +137,6 @@ function getMe() {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.data.id);
       manageAsOrganizer.getAllEventCard(apiUrl, json.data.id);
     });
 }
@@ -153,8 +149,7 @@ function getAllEventCard(apiUrl, id) {
   })
     .then((res) => res.json())
     .then((json) => {
-      const { data } = json;
-      console.log(json);
+      const { data } = json
       let rowsHTML = "";
 
       data.forEach((ele) => {
@@ -165,9 +160,6 @@ function getAllEventCard(apiUrl, id) {
         })
           .then((res) => res.json())
           .then((json2) => {
-            //   console.log(json);
-            //   console.log(json2);
-
             rowsHTML += `<tr class="border-bottom position-relative" >
                                                     <td class>
                                                         <a href="event-details.html"
@@ -265,7 +257,6 @@ function getAllVendorRecruitment(url, id) {
     .then((res) => res.json())
     .then((json) => {
       const { data } = json;
-      // console.log(data);
 
       let rowsHTML = "";
 

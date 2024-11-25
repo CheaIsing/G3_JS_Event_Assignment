@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       location.href = "/pages/homepage.html";
     }
   } else {
-    console.log("helo");
+    
 
     if (location.pathname.includes("homepage.html")) {
       location.href = "/index.html";

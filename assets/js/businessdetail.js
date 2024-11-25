@@ -2,9 +2,7 @@ let businessId = sessionStorage.getItem('businessDetailId')
 fetch(`${API_URL}/api/businesses/?per_page=1000`)
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
     let business = data.data.filter(ele=>ele.id == businessId)[0];
-    console.log(business);
     let thumbnail =
     business.thumbnail && !business.thumbnail.includes("no_photo")
       ? business.thumbnail
