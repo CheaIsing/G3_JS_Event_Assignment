@@ -1,5 +1,3 @@
-
-
 function getMe(searchE = "", searchV = "all") {
   // Show placeholder cards while loading
   document.getElementById("event-tobody").innerHTML = `
@@ -108,7 +106,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
       }
 
       let filterData = data;
-      
+
       // Apply filter based on searchV (the dropdown value)
       const currentDate = new Date();
       switch (searchV) {
@@ -140,8 +138,6 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
       // Function to render filtered data
       function renderCard() {
         rowsHTML = ``;
-
-        
 
         if (filterData.length === 0) {
           document.getElementById("event-tobody").innerHTML = `
@@ -176,36 +172,56 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
               rowsHTML += `<tr class="border-bottom position-relative">
                 <td>
                   <a href="javascript:void(0)" class="stretched-link text-decoration-none bg-transparent link-request-detail"
-                     style="color: inherit;" data-event-detail-id="${ele.id}" data-event-name="${ele.name}" data-event-date="${ele.start_date}">
+                     style="color: inherit;" data-event-detail-id="${
+                       ele.id
+                     }" data-event-name="${ele.name}" data-event-date="${
+                ele.start_date
+              }">
                     <div class="d-flex align-items-center">
                       <div class="me-3">
-                        <div class="text-center text-brand fw-bold">${formatDateStringMonth(ele.start_date)}</div>
-                        <div class="text-center text-brand fw-bold">${formatDateStringDay(ele.start_date)}</div>
+                        <div class="text-center text-brand fw-bold">${formatDateStringMonth(
+                          ele.start_date
+                        )}</div>
+                        <div class="text-center text-brand fw-bold">${formatDateStringDay(
+                          ele.start_date
+                        )}</div>
                       </div>
-                      <img src="${ele.thumbnail}" alt="Event Image" class="rounded object-fit-cover" width="150" height="85">
+                      <img src="${
+                        ele.thumbnail
+                      }" alt="Event Image" class="rounded object-fit-cover" width="150" height="85">
                       <div class="ms-3">
                         <h5 class="mb-0">${ele.name}</h5>
                         <p class="text-muted mb-0">${ele.location}</p>
-                        <p class="text-muted mb-0 small">${formatCustomDateWithYear(ele.start_date)} - ${formatCustomDateWithYear(ele.end_date)}, ${formatToHour(ele.start_date)} - ${formatToHour(ele.end_date)}</p>
+                        <p class="text-muted mb-0 small">${formatCustomDateWithYear(
+                          ele.start_date
+                        )} - ${formatCustomDateWithYear(
+                ele.end_date
+              )}, ${formatToHour(ele.start_date)} - ${formatToHour(
+                ele.end_date
+              )}</p>
                       </div>
                     </div>
                   </a>
                 </td>
                 <td class="text-nowrap">${status}</td>
-                <td class="text-nowrap">${json2.data.length} request</td>
+                <td class="text-nowrap">${
+                  json2.data.filter((element) => element.status == 1).length
+                } request</td>
               </tr>`;
 
               document.getElementById("event-tobody").innerHTML = rowsHTML;
 
-              document.querySelectorAll('.link-request-detail').forEach(link=>{
-                link.onclick = ()=>{
-                  let id = link.dataset.eventDetailId;
-                  sessionStorage.setItem('requestDetailId', id);
-                  sessionStorage.setItem('eventName', link.dataset.eventName);
-                  sessionStorage.setItem('eventdate', link.dataset.eventDate);
-                  location.href = 'request-ticket-detail.html'
-                }
-              })
+              document
+                .querySelectorAll(".link-request-detail")
+                .forEach((link) => {
+                  link.onclick = () => {
+                    let id = link.dataset.eventDetailId;
+                    sessionStorage.setItem("requestDetailId", id);
+                    sessionStorage.setItem("eventName", link.dataset.eventName);
+                    sessionStorage.setItem("eventdate", link.dataset.eventDate);
+                    location.href = "request-ticket-detail.html";
+                  };
+                });
             });
         });
       }

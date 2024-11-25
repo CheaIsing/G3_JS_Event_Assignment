@@ -8,6 +8,7 @@ fetch(
 )
   .then((res) => res.json())
   .then((json) => {
+    
     document.getElementById("title").innerHTML =
     sessionStorage.getItem("eventName");
   document.getElementById("ev-date").innerHTML = moment(
@@ -28,6 +29,7 @@ fetch(
    
 
     let rowsHTML = "";
+    json.data.sort((a, b) => a.status - b.status);
     json.data.forEach((d, i) => {
       let status = "";
       switch (d.status) {

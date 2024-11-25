@@ -13,12 +13,12 @@ function getAllWish() {
             let eNum = 0;
             data.forEach(element => {
                 let dEvent = element.event;
-                let price = dEvent.ticket_price == 0 ? 'Free' : `${dEvent.ticket_price}`;
+                let price = dEvent.ticket_price == 0 ? 'Free' : `$${dEvent.ticket_price.toFixed(2)}`;
                 let catagory = dEvent.event_categories.map(cata => cata.name).join(' &nbsp; ');
                 listE += `<div class="card mb-4">
                                     <div class="row g-0">
                                         <div class="col-3 position-relative">
-                                            <img src="../../assets/img/test-img/cta-event-search-banner.avif"
+                                            <img src="${element.event.thumbnail}"
                                                 class="img-fluid rounded-start " alt="...">
                                             
                                         </div>
@@ -39,7 +39,9 @@ function getAllWish() {
                                                 </div>
                                                 <div class="mb-2 d-flex align-items-center fs-18">
                                                     <i class="fa-regular fa-calendar text-brand me-2 "></i><small
-                                                        class="text-body-secondary m-0">${dEvent.start_date}</small>
+                                                        class="text-body-secondary m-0">${moment(
+                                                            element.start_date
+                                                          ).format("ddd, D MMMM • h:mm A")}</small>
                                                 </div>
                                                 <div class="d-flex align-items-center">
                                                     <i class="fa-solid fa-location-dot me-2 text-brand"></i> <small
