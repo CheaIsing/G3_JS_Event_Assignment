@@ -78,6 +78,7 @@ function showEventDetail(id) {
   location.href = "/pages/browse/event-detail.html";
 }
 
+let userPfImg = document.getElementById('userImgPf');
 function setUserEmail() {
   if (localStorage.getItem("authToken")) {
     fetch(`${apiUrl1}/api/me`, {
@@ -89,6 +90,7 @@ function setUserEmail() {
       .then((json) => {
         const { data } = json;
         document.getElementById("userEmail").innerText = data.full_name;
+        userPfImg.src = `${data.avatar}`;
       });
   }
 }
