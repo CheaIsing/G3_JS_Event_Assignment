@@ -244,44 +244,36 @@ function loadVendorCards() {
   }
 
   allVendorData.forEach((element, currentVendorIndex) => {
+    let thumbnail =
+      element.thumbnail && !element.thumbnail.includes("no_photo")
+        ? element.thumbnail
+        : "/assets/img/party/party1.png";
     const newCard = document.createElement("div");
-    newCard.className = "card px-0";
-    newCard.innerHTML = `<div class="card-content" onclick="showServiceDetail(${
-      element.id
-    })">
-                  <div class="card-body d-flex">
-                      <div class="thumbnail">
-                          <img src="${
-                            element.thumbnail
-                              ? element.thumbnail
-                              : "../../assets/img/party/party1.png"
-                          }" alt="..." class="img-fluid" style="width: 510px !important">
-                      </div>
-                      <div class="detail">
-                          <h5 class="card-title mb-0 fw-bold">${
-                            element.name
-                          }</h5>
+    newCard.className = "col-12";
+    newCard.innerHTML = `<div  class="card d-flex w-100 recruitmentCard" style="border: 2px solid #eee !important;" onclick="showServiceDetail(${element.id})">
+                    <div class="card-body d-flex">
+                    <div class="col-4  thumbnail">
+              <img src="${thumbnail}" class="object-fit-cover" style="height: 310px !important;" alt="Thumbnail">
+            </div>
+                        
+                        <div class=" col-8 detail">
+                            <h5 class="card-title mb-0 fw-bold text-brand mb-0 fs-3">${element.name}</h5>
 
-                          <div class="card-descc-3 py-3 ">${
-                            element.description
-                          }</div>
+                            <div class="card-text card-desc1 my-3">${element.description}</div>
 
-                          <p class="location"><i class="bi bi-geo-alt fs-5"></i> ${
-                            element.location
-                          }</p>
-                          <div class="d-flex vendor-pill-wrapper"></div>
-                          <div class="contact">
-                              <span class="text-secondary">Phone: ${
-                                element.phone
-                              } </span><br>
-                              <span class="text-secondary">Email: ${
-                                element.email
-                              }</span>
-                          </div>
-                      </div>
+                            <p class="location"><i class="fa-solid fa-location-dot fs-5 me-1 text-brand"></i> ${element.location}</p>
+                            
+                            <div class="vendor-contact">
+                                <span class="text-secondary"><i class="fa-solid fa-phone me-1 text-brand"></i> ${element.phone} </span><br>
+                                <span class="text-secondary"><i class="fa-solid fa-envelope me-1 text-brand"></i> ${element.email}</span>
+                            </div>
+                            
+                              <div class="d-flex vendor-pill-wrapper mt-2"></div>
+                            </div>
+                        </div>
 
-                  </div>
-              </div>`;
+                    </div>
+                </div>`;
 
     cardContainer.appendChild(newCard);
 
@@ -311,7 +303,6 @@ fetch(`${API_URL}/api/profile/detail/${orgId}`, {
   .then((res) => res.json())
   .then((json) => {
     const { events, vendor_recruitments, businesses } = json.data;
-
 
     document.getElementById("event-sum").innerHTML = events.length;
     document.getElementById("vendor-sum").innerHTML =

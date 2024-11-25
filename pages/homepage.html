@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pruttika | Homepage</title>
+    <title>Pruttika | Home</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" href="../assets/lib/bootstrap-icon/bootstrap-icons.css">
@@ -60,7 +60,10 @@
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
                         id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle"></i>
+                        <!-- <i class="bi bi-person-circle"></i> -->
+                        <div class="userImgPf-wrapper">
+                            <img id="userImgPf" src="" alt="pfp">
+                        </div>
                         <!-- User Icon -->
                         <span class="ps-1" id="userEmail"></span>
                     </a>
@@ -153,8 +156,8 @@
                             <h1 class="text-white fw-bold display-2 mb-3">It's
                                 Time to <br> <span class="text-white display-1 fw-bold">Celebrate!</span></h1>
                             <div class="hero-button">
-                                <button class="btn-darkpink"><a href="../pages/organizer/create-events.html"
-                                        class="fw-semibold ">Create your event
+                                <button class="btn-darkpink position-relative"><a class="stretched-link fw-semibold" href="../pages/organizer/create-events.html"
+                                        >Create your event
                                         now!</a></button>
                             </div>
                         </div>
@@ -172,8 +175,8 @@
                                     with Us!</span>
                             </h1>
                             <div class="hero-button text-start">
-                                <button class="btn-darkpink"><a href="../pages/vendor/create_vendor_business.html"
-                                        class="fw-semibold ">Promote yours now!</a></button>
+                                <button class="btn-darkpink position-relative"><a href="../pages/vendor/create_vendor_business.html"
+                                        class="fw-semibold stretched-link">Promote yours now!</a></button>
                             </div>
                         </div>
                     </div>
