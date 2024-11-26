@@ -1,6 +1,3 @@
-// import { showToast } from "../ultilities.js";
-const apiUrl = "https://mps2.chandalen.dev";
-const token = localStorage.getItem("authToken");
 
 function getMe(searchE = "", searchV = "all") {
   // Show placeholder cards while loading

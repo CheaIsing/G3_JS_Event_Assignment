@@ -72,11 +72,8 @@ a.home-link:hover{
 .w-15{
     width: 15%;
 }
-li{
-    border-bottom: 1px solid rgb(191, 189, 189);
-}
 li:last-child{
-    border: none;
+    border-top: 1px solid #ccc;
 }
 body {
     position: relative;

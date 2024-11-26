@@ -15,58 +15,61 @@ window.addEventListener("scroll", () => {
 
 let searchClicked = document.getElementById("searchEvent");
 
+if(searchClicked){
 
-searchClicked.addEventListener("focus", () => {
-  let searchEventbyName = document.getElementById("searchEvent").value;
-  if (searchEventbyName == "") {
-    document.querySelector(".search-dropdown").style.display = "none";
-  } else {
-    document.querySelector(".search-dropdown").style.display = "block";
-    document.querySelector(".overlay").style.display = "block";
-  }
-});
-
-searchClicked.addEventListener("blur", () => {
-  document.querySelector(".overlay").style.display = "none";
-  // document.querySelector('.search-dropdown').style.display = 'none';
-});
-
-document.getElementById("searchEvent").addEventListener("keyup", function () {
-  let searchEventbyName = document.getElementById("searchEvent").value;
-
-  document.getElementById("search-dropdown").style.display = "block";
-  if (searchEventbyName == "") {
-    document.querySelector(".search-dropdown").style.display = "none";
-  }
-  fetch(
-    `${apiUrl1}/api/events?page=1&per_page=10000&search=${searchEventbyName}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token1}`,
-      },
+  searchClicked.addEventListener("focus", () => {
+    let searchEventbyName = document.getElementById("searchEvent").value;
+    if (searchEventbyName == "") {
+      document.querySelector(".search-dropdown").style.display = "none";
+    } else {
+      document.querySelector(".search-dropdown").style.display = "block";
+      document.querySelector(".overlay").style.display = "block";
     }
-  )
-    .then((res) => res.json())
-    .then((json) => {
-      const { data } = json;
-
-      let searchList = "";
-      if (data.length == 0) {
-        searchList = `<li class="search-dropdown-item">
-                              <i class="fa-solid fa-magnifying-glass text-brand fs-6 pe-2"></i>
-                              <span>No result</span>
-                          </li>`;
-      } else {
-        data.slice(0, 5).forEach((element) => {
-          searchList += `<li class="search-dropdown-item" onclick="showEventDetail(${element.id})">
-                                <i class="fa-solid fa-magnifying-glass text-brand fs-6 pe-2"></i>
-                                <span>${element.name}</span>
-                            </li>`;
-        });
+  });
+  
+  searchClicked.addEventListener("blur", () => {
+    document.querySelector(".overlay").style.display = "none";
+    // document.querySelector('.search-dropdown').style.display = 'none';
+  });
+  document.getElementById("searchEvent").addEventListener("keyup", function () {
+    let searchEventbyName = document.getElementById("searchEvent").value;
+  
+    document.getElementById("search-dropdown").style.display = "block";
+    if (searchEventbyName == "") {
+      document.querySelector(".search-dropdown").style.display = "none";
+    }
+    fetch(
+      `${apiUrl1}/api/events?page=1&per_page=10000&search=${searchEventbyName}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token1}`,
+        },
       }
-      document.getElementById("search-dropdown").innerHTML = searchList;
-    });
-});
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        const { data } = json;
+  
+        let searchList = "";
+        if (data.length == 0) {
+          searchList = `<li class="search-dropdown-item">
+                                <i class="fa-solid fa-magnifying-glass text-brand fs-6 pe-2"></i>
+                                <span>No result</span>
+                            </li>`;
+        } else {
+          data.slice(0, 5).forEach((element) => {
+            searchList += `<li class="search-dropdown-item" onclick="showEventDetail(${element.id})">
+                                  <i class="fa-solid fa-magnifying-glass text-brand fs-6 pe-2"></i>
+                                  <span>${element.name}</span>
+                              </li>`;
+          });
+        }
+        document.getElementById("search-dropdown").innerHTML = searchList;
+      });
+  });
+}
+
+
 
 function showEventDetail(id) {
 
