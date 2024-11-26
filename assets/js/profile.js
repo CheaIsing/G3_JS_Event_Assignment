@@ -163,6 +163,11 @@ function uploadProfileImage(event) {
 
           // Show Toast after both updates are done
           showToast("Profile avatar updated successfully.", true);
+          
+            setTimeout(()=>{
+              location.reload(true);
+            }, 1200)
+          
 
           if (document.getElementById("profile-pic").src.includes("no_photo")) {
             document.getElementById("btn-delete-profile").style.display =
@@ -201,6 +206,9 @@ function DeleteProfile(btn) {
             "inline-block";
         }
         showToast("Profile avatar deleted successfully.", data.result);
+        setTimeout(()=>{
+          location.reload(true);
+        }, 1200)
         // showToast(json.message, json.result)
       }
     });
@@ -543,7 +551,6 @@ function updatePassword() {
     })
       .then((res) => res.json())
       .then((data) => {
-
         document.body.style.cursor = "default";
         showToast(data.message, data.result);
         document.getElementById("btn-change-pass").disabled = false;
