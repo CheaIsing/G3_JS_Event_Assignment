@@ -1,222 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pruttika | Business</title>
-        <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-        <link rel="stylesheet" href="../../assets/css/style.css">
-        <link rel="stylesheet"
-            href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
-        <link rel="stylesheet" href="../../assets/css/organizer.css">
-        <link rel="icon" type="image/jpg" href="../../assets/img/logo/Pruttikar_Logo2.png">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruttika | Business</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/organizer.css">
+    <link rel="icon" type="image/jpg" href="../../assets/img/logo/Pruttikar_Logo2.png">
 
-    </head>
+</head>
 
-    <body>
-        <header class="border px-1" id="header">
-            <div class="container-fluid px-4">
-                <nav class="d-flex align-items-center justify-content-between">
-                    <div class="logo">
-                        <a href="../homepage.html">
-                            <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
-                        </a>
-                    </div>
-                    
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
-                            id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <!-- <i class="bi bi-person-circle"></i> -->
-                            <div class="userImgPf-wrapper">
-                                <img id="userImgPf" src="http://mps2.chandalen.dev/storage/avatars/no_photo.jpg" alt="pfp">
-                            </div>
-                            <!-- User Icon -->
-                            <span class="ps-1 fs-6" id="userEmail"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                            <li><a class="dropdown-item" href="../homepage.html">Switch to Attending</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
-        <main>
-            <div class>
-                <div class="d-flex">
-                    <nav class="shadow sidebar">
-                        <ul>
-                            <li>
-                                <a href="vendor-business.html" class="active">
-                                    <i class="fas fa-menorah"></i>
-                                    <span class="nav-item">Vendor Business</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-
-                    <section class="p-4 w-100">
-                        <div class>
-                            <h2>Vendor Business</h2>
-                        </div>
-                        
-                        <div class="row my-4 justify-content-between align-items-center">
-                            <div class="col-5 col-md-3">
-                                <div class="form-group mb-3">
-                                    <input type="text"
-                                        class="form-control"
-                                        placeholder="Search" id="searchInput">
-                                </div>
-                            </div>
-                            <div class="col-3 d-flex justify-content-end">
-                                <a href="create_vendor_business.html" role="button" class="btn btn-brand">+ Create Vendor Business</a>
-                            </div>
-                        </div>
-
-                        <div class="my-4">
-                            <table
-                                class="table table-borderless align-middle">
-                                <thead class>
-                                    <tr class="border-bottom">
-                                        <th scope="col">Vendor Business</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="business-tbody">
-                                    <!-- First Event Row -->
-                                    <tr>
-                                        <td colspan="5">
-                                            <div
-                                                class="card border-0"
-                                                aria-hidden="true">
-                                                <div class="row g-0">
-                                                    <div class="col-4">
-                                                        <div
-                                                            class="bg-secondary-subtle border rounded-1"
-                                                            style="width: 100%; height: 100%;">
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-8">
-                                                        <div
-                                                            class="card-body py-2">
-                                                            <h5
-                                                                class="card-title ">
-                                                                <span
-                                                                    class="placeholder col-11 "
-                                                                    style="background-color: #D4D4D4;"></span>
-                                                            </h5>
-                                                            <p
-                                                                class="card-text ">
-                                                                <span
-                                                                    class="placeholder col-10"
-                                                                    style="background-color: #D4D4D4;"></span>
-                                                                <span
-                                                                    class="placeholder col-12"
-                                                                    style="background-color: #D4D4D4;"></span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="5">
-                                            <div
-                                                class="card border-0"
-                                                aria-hidden="true">
-                                                <div class="row g-0">
-                                                    <div class="col-4">
-                                                        <div
-                                                            class="bg-secondary-subtle border rounded-1"
-                                                            style="width: 100%; height: 100%;">
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-8">
-                                                        <div
-                                                            class="card-body py-2">
-                                                            <h5
-                                                                class="card-title ">
-                                                                <span
-                                                                    class="placeholder col-11 "
-                                                                    style="background-color: #D4D4D4;"></span>
-                                                            </h5>
-                                                            <p
-                                                                class="card-text ">
-                                                                <span
-                                                                    class="placeholder col-10"
-                                                                    style="background-color: #D4D4D4;"></span>
-                                                                <span
-                                                                    class="placeholder col-12"
-                                                                    style="background-color: #D4D4D4;"></span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="5">
-                                            <div
-                                                class="card border-0"
-                                                aria-hidden="true">
-                                                <div class="row g-0">
-                                                    <div class="col-4">
-                                                        <div
-                                                            class="bg-secondary-subtle border rounded-1"
-                                                            style="width: 100%; height: 100%;">
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-8">
-                                                        <div
-                                                            class="card-body py-2">
-                                                            <h5
-                                                                class="card-title ">
-                                                                <span
-                                                                    class="placeholder col-11 "
-                                                                    style="background-color: #D4D4D4;"></span>
-                                                            </h5>
-                                                            <p
-                                                                class="card-text ">
-                                                                <span
-                                                                    class="placeholder col-10"
-                                                                    style="background-color: #D4D4D4;"></span>
-                                                                <span
-                                                                    class="placeholder col-12"
-                                                                    style="background-color: #D4D4D4;"></span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </td>
-                                    </tr>
-
-                                    <!-- Repeat the structure for the second event -->
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </section>
+<body>
+    <div id="loader-overlay" class="loader-overlay">
+        <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt="Logo" class="loader-logo" />
+    </div>
+    <header class="border px-1" id="header">
+        <div class="container-fluid px-4">
+            <nav class="d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <a href="../homepage.html">
+                        <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                    </a>
                 </div>
+
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
+                        id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- <i class="bi bi-person-circle"></i> -->
+                        <div class="userImgPf-wrapper">
+                            <img id="userImgPf" src="http://mps2.chandalen.dev/storage/avatars/no_photo.jpg" alt="pfp">
+                        </div>
+                        <!-- User Icon -->
+                        <span class="ps-1 fs-6" id="userEmail"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                        <li><a class="dropdown-item" href="../homepage.html">Switch to Attending</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class>
+            <div class="d-flex">
+                <nav class="shadow sidebar">
+                    <ul>
+                        <li>
+                            <a href="vendor-business.html" class="active">
+                                <i class="fas fa-menorah"></i>
+                                <span class="nav-item">Vendor Business</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <section class="p-4 w-100">
+                    <div class>
+                        <h2>Vendor Business</h2>
+                    </div>
+
+                    <div class="row my-4 justify-content-between align-items-center">
+                        <div class="col-5 col-md-3">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" placeholder="Search" id="searchInput">
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <a href="create_vendor_business.html" role="button" class="btn btn-brand">+ Create Vendor
+                                Business</a>
+                        </div>
+                    </div>
+
+                    <div class="my-4">
+                        <table class="table table-borderless align-middle">
+                            <thead class>
+                                <tr class="border-bottom">
+                                    <th scope="col">Vendor Business</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="business-tbody">
+                                <!-- First Event Row -->
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="card border-0" aria-hidden="true">
+                                            <div class="row g-0">
+                                                <div class="col-4">
+                                                    <div class="bg-secondary-subtle border rounded-1"
+                                                        style="width: 100%; height: 100%;">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="card-body py-2">
+                                                        <h5 class="card-title ">
+                                                            <span class="placeholder col-11 "
+                                                                style="background-color: #D4D4D4;"></span>
+                                                        </h5>
+                                                        <p class="card-text ">
+                                                            <span class="placeholder col-10"
+                                                                style="background-color: #D4D4D4;"></span>
+                                                            <span class="placeholder col-12"
+                                                                style="background-color: #D4D4D4;"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="card border-0" aria-hidden="true">
+                                            <div class="row g-0">
+                                                <div class="col-4">
+                                                    <div class="bg-secondary-subtle border rounded-1"
+                                                        style="width: 100%; height: 100%;">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="card-body py-2">
+                                                        <h5 class="card-title ">
+                                                            <span class="placeholder col-11 "
+                                                                style="background-color: #D4D4D4;"></span>
+                                                        </h5>
+                                                        <p class="card-text ">
+                                                            <span class="placeholder col-10"
+                                                                style="background-color: #D4D4D4;"></span>
+                                                            <span class="placeholder col-12"
+                                                                style="background-color: #D4D4D4;"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="card border-0" aria-hidden="true">
+                                            <div class="row g-0">
+                                                <div class="col-4">
+                                                    <div class="bg-secondary-subtle border rounded-1"
+                                                        style="width: 100%; height: 100%;">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="card-body py-2">
+                                                        <h5 class="card-title ">
+                                                            <span class="placeholder col-11 "
+                                                                style="background-color: #D4D4D4;"></span>
+                                                        </h5>
+                                                        <p class="card-text ">
+                                                            <span class="placeholder col-10"
+                                                                style="background-color: #D4D4D4;"></span>
+                                                            <span class="placeholder col-12"
+                                                                style="background-color: #D4D4D4;"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+                                <!-- Repeat the structure for the second event -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
             </div>
-        </main>
-        <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+        </div>
+    </main>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 
-        <script src="../../assets/js/ultilities.js"></script>
+    <script src="../../assets/js/ultilities.js"></script>
 
-        <script src="../../assets/js/authentication.js"></script>
-        <script src="../../assets/js/header.js"></script>
-        <script src="../../assets/js/organizer/business.js"></script>
-    </body>
+    <script src="../../assets/js/authentication.js"></script>
+    <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/organizer/business.js"></script>
+    <script src="../../assets/js/pageLoader.js"></script>
+</body>
 
 </html>
