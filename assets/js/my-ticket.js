@@ -1,6 +1,3 @@
-// const API_URL = "https://mps2.chandalen.dev";
-// const token = localStorage.getItem("authToken");
-
 function getAllTicket() {
   document.getElementById("ticket-tbody").innerHTML = `
   <tr>
@@ -80,7 +77,6 @@ function getAllTicket() {
   )
     .then((res) => res.json())
     .then((json) => {
-
       if (json.result === true) {
         const { data } = json;
 
@@ -295,7 +291,21 @@ function getAllTicket() {
               ele.amount > 1 ? "s" : ""
             } 
                                                         </td>
-                                                        <td class="text-nowrap">${parseFloat(event.ticket_price) > 0 ? '$'+(parseFloat(event.ticket_price) * parseFloat(ele.amount)).toFixed(2) : 'Free'}</td>
+                                                        <td class="text-nowrap">${
+                                                          parseFloat(
+                                                            event.ticket_price
+                                                          ) > 0
+                                                            ? "$" +
+                                                              (
+                                                                parseFloat(
+                                                                  event.ticket_price
+                                                                ) *
+                                                                parseFloat(
+                                                                  ele.amount
+                                                                )
+                                                              ).toFixed(2)
+                                                            : "Free"
+                                                        }</td>
                                                         <td>
                                                             ${`<button 
                                                                     class="btn btn-brand position-relative z-3 view-details" data-id="${ele.id}" data-bs-target="#exampleModalToggle-1"
@@ -320,7 +330,6 @@ function getAllTicket() {
 }
 
 function getTransaction(id) {
-
   fetch(`${API_URL}/api/profile/requested-tickets?page=1&per_page=10000`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -339,7 +348,6 @@ function getTransaction(id) {
         }
       }
 
-
       let status = "";
       switch (ticketDetail.status) {
         case 1: {
@@ -354,7 +362,6 @@ function getTransaction(id) {
           status = "Rejected";
         }
       }
-
 
       document.getElementById("amount").innerHTML = ticketDetail.amount;
       document.getElementById("status").innerHTML = status;
@@ -384,4 +391,12 @@ function getTransaction(id) {
     });
 }
 
-getAllTicket();
+
+document.addEventListener('DOMContentLoaded', ()=>{
+
+  if (!token) {
+    location.href = "/pages/authentication/login.html";
+  } else {
+    getAllTicket();
+  }
+})

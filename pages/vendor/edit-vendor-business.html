@@ -141,6 +141,7 @@
                                                     <option value="2">Two</option>
                                                     <option value="3">Three</option> -->
                                                 </select>
+                                                <div id="lblCategorySelect"></div>
                                             </div>
 
                                         </div>
@@ -248,6 +249,8 @@
             </div>
         </div>
     </main>
+    <footer></footer>
+    <script src="../../assets/js/footer.js"></script>
     <script src="../../assets/js/ultilities.js"></script>
     <script src="../../assets/js/authentication.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
@@ -259,7 +262,6 @@
             window.descQuill = new Quill('#editor', { theme: 'snow' });
         });
     </script>
-    <script src="../../assets/js/organizer/create_vendor_business.js"></script>
     <script>
         // Upload File in create event
         let fileInput = document.getElementById('fileUpload');
@@ -301,11 +303,30 @@
     </script>
     <script src="../../assets/js/form_validation.js"></script>
     <script>
+       
 
         let editId = sessionStorage.getItem('editBusinessid')
+        fetch(
+  `${apiUrl}/api/business-categories?page=1&per_page=50&sort_col=name&sort_dir=asc&search`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+)
+  .then((res) => res.json())
+  .then((json1) => {
+    const { data } = json1;
+    let eventCatSelect = document.getElementById("categorySelect");
+    eventCatSelect.innerHTML = ''
+    data.forEach((element) => {
+      let opt = document.createElement("option");
+      opt.value = element.id;
+      opt.innerHTML = element.name;
+      eventCatSelect.appendChild(opt);
+    });
 
-
-        fetch(`${API_URL}/api/businesses?pages=1&per_page=10000`)
+    fetch(`${API_URL}/api/businesses?pages=1&per_page=10000`)
             .then(res => res.json())
             .then(json => {
 
@@ -319,9 +340,18 @@
                     const option = document.createElement('option');
                     option.value = category.id;
                     option.text = category.name;
-                    option.setAttribute('selected', '')
                     categorySelect.add(option);
                 });
+
+                 // Set the category select to the vendor's categories if available
+    if (businesses.categories && businesses.categories.length > 0) {
+        businesses.categories.forEach(category => {
+            const selectedOption = document.querySelector(`option[value="${category.id}"]`);
+            if (selectedOption) {
+                selectedOption.setAttribute('selected', '');
+            }
+        });
+    }
 
 
                 descQuill.root.innerHTML = businesses.description || '';
@@ -350,6 +380,11 @@ const [address1, address2, city, province, country] = parts;
 
 
             })
+
+
+  });
+
+
 
         function updateBusiness() {
             // Create Vendor Business form variables
