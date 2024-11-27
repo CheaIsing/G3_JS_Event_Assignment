@@ -391,12 +391,4 @@ function getTransaction(id) {
     });
 }
 
-
-document.addEventListener('DOMContentLoaded', ()=>{
-
-  if (!token) {
-    location.href = "/pages/authentication/login.html";
-  } else {
-    getAllTicket();
-  }
-})
+getAllTicket();
