@@ -226,16 +226,16 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                       <i class="bi bi-three-dots"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu1">
-                      <li><a class="dropdown-item edit-event-btn" href="javascript:void(0);" data-event-detail-id="${
+                      <li><a class="dropdown-item edit-event-btn cursor-pointer" href="javascript:void(0);" data-event-detail-id="${
                         ele.id
                       }">Edit</a></li>
-                      <li><a class="dropdown-item delete-event-btn" href="javascript:void(0);" data-event-detail-id="${
+                      <li><a class="dropdown-item delete-event-btn cursor-pointer" href="javascript:void(0);" data-event-detail-id="${
                         ele.id
                       }">Delete</a></li>
-                      <li><a class="dropdown-item views-event-detail" data-id="${
+                      <li><a class="dropdown-item views-event-detail cursor-pointer" data-id="${
                         ele.id
                       }">View</a></li>
-                      <li><a class="dropdown-item" onclick="copyEventUrlToClipboard(${
+                      <li><a class="dropdown-item cursor-pointer" onclick="copyEventUrlToClipboard(${
                         ele.id
                       })">Copy Link</a></li>
                     </ul>

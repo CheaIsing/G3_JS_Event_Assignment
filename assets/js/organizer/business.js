@@ -148,13 +148,13 @@ function getAllBusinessCard(apiUrl, id, searhB = "") {
                                                     class="dropdown-menu dropdown-menu-end" data-id="${ele.id}"
                                                     aria-labelledby="dropdownMenu1">
                                                     <li><a onclick="editBusiness(${ele.id})"
-                                                            class="dropdown-item"
+                                                            class="dropdown-item cursor-pointer"
                                                             >Edit</a></li>
                                                     <li><a href="javascript:void(0);"
-                                                            class="dropdown-item delete-btn"
+                                                            class="dropdown-item delete-btn cursor-pointer"
                                                             href="#">Delete</a></li>
                                                     <li><a
-                                                            class="dropdown-item"
+                                                            class="dropdown-item cursor-pointer"
                                                             onclick="viewBusinessDetail(${ele.id})">View</a></li>
                                                     
                                                 </ul>
