@@ -79,10 +79,10 @@
                 <section class="event-info">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center">
-                            <button type="button" class="btn border-0 ps-0 d-flex align-items-center mb-5"
-                                onclick="history.back()">
+                            <button type="button" class="btn border-0 ps-0 d-flex align-items-center mb-5">
                                 <i class="fa-solid fa-angle-left fs-6 m-0 p-0 "></i>
-                                <span class="m-0 ps-2">Back to Event</span>
+                                <span class="m-0 ps-2"><a href="../../pages/organizer/event.html">Back to
+                                        Event</a></span>
                             </button>
                         </div>
                         <form action="" class="px-5">
@@ -105,8 +105,7 @@
                                         <label id="imgInputBtn" for="fileUpload" class="btn-outline-pink"><i
                                                 class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                             Image</label>
-                                        <input class="d-none" id="fileUpload" accept=".jpg, .jpeg"
-                                            type="file"></input>
+                                        <input class="d-none" id="fileUpload" accept=".jpg, .jpeg" type="file"></input>
                                         <div class="d-flex">
                                             <p id="fileName" class="text-secondary pt-3">No file chosen</p>
                                             <button id="btnRemoveImgFile" type="button"
@@ -548,7 +547,7 @@
                                             <label id="photoInputBtn" for="photoUpload" class="btn-outline-pink"><i
                                                     class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                                 Image</label>
-                                            <input class="d-none" id="photoUpload" type="file" ></input>
+                                            <input class="d-none" id="photoUpload" type="file"></input>
                                             <div class="d-flex">
                                                 <p id="photoName" class="text-secondary pt-3">No file chosen</p>
                                                 <button id="btnRemoveImg" type="button"
@@ -607,7 +606,8 @@
                                                     class="btn-outline-pink"><i
                                                         class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                                     Image</label>
-                                                <input class="d-none" id="khqrPhotoUpload" type="file" accept=".jpg, .jepg"></input>
+                                                <input class="d-none" id="khqrPhotoUpload" type="file"
+                                                    accept=".jpg, .jepg"></input>
                                                 <div class="d-flex">
                                                     <p id="KhqrPhotoName" class="text-secondary pt-3">No file chosen</p>
                                                     <button id="btnRemoveKhqrImg" type="button"
