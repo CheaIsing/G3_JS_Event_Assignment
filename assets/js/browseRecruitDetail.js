@@ -22,23 +22,30 @@ fetch(`${API_URL}/api/vendors/${recruitId}`)
       .getElementById("ev-org-name")
       .setAttribute("data-org-id", json.data.creator.id);
     document.querySelectorAll(".btn-apply-now").forEach((btn) => {
+     
       btn.onclick = () => {
-        fetch(`${API_URL}/api/vendors/apply/${recruitId}`, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((json) => {
-            showToast(json.message, json.result);
-            if(json.result){
-              document.querySelectorAll(".btn-apply-now").forEach((btn)=>{
-                btn.disabled = true;
-              })
-            }
-          });
+        if(token){
+        
+          fetch(`${API_URL}/api/vendors/apply/${recruitId}`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((json) => {
+              showToast(json.message, json.result);
+              if(json.result){
+                document.querySelectorAll(".btn-apply-now").forEach((btn)=>{
+                  btn.disabled = true;
+                })
+              }
+            });
+        }
+        else{
+          location.href = '/pages/authentication/login.html'
+        }
       };
     });
   });

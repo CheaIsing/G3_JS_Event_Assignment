@@ -2,7 +2,20 @@ const API_URL = "https://mps2.chandalen.dev";
 const apiUrl = "https://mps2.chandalen.dev";
 const token = localStorage.getItem("authToken");
 
+
 document.addEventListener("DOMContentLoaded", () => {
+  if(document.getElementById('preload')){
+    document.getElementsByTagName("header")[0].style.display = "none";
+    document.getElementsByTagName("main")[0].style.display = "none";
+    document.getElementsByTagName("footer")[0].style.display = "none";
+      setTimeout(() => {
+        document.getElementById("preload").classList.add('d-none')
+        document.getElementsByTagName("header")[0].style.display = "block";
+        document.getElementsByTagName("main")[0].style.display = "block";
+        document.getElementsByTagName("footer")[0].style.display = "block";
+      }, 1200);
+  }
+ 
   if (localStorage.getItem("authToken")) {
     if (
       location.pathname.includes("index.html") ||
@@ -12,27 +25,29 @@ document.addEventListener("DOMContentLoaded", () => {
       location.href = "/pages/homepage.html";
     }
   } else {
-    
-
     if (location.pathname.includes("homepage.html")) {
       location.href = "/index.html";
     }
 
     if (!location.pathname.includes("index.html")) {
-      document.querySelector(
-        "#header .logo"
-      ).innerHTML = `<a href="/pages/homepage.html">
-                              <img
-                                  src="../../assets/lim_img/logo/Prutika_Logo_text(2).png"
-                                  alt>
-                          </a>`;
+      if (document.querySelector("#header .logo")) {
+        document.querySelector(
+          "#header .logo"
+        ).innerHTML = `<a href="/pages/homepage.html">
+                                <img
+                                    src="../../assets/lim_img/logo/Prutika_Logo_text(2).png"
+                                    alt>
+                            </a>`;
+      }
 
-      document.querySelector(
-        "#header nav div:last-child"
-      ).innerHTML = `<a href="../../pages/authentication/login.html"
-                              class="btn btn-brand me-2">Log In</a>
-                          <a href="../../pages/authentication/Signup.html"
-                              class="btn btn-outline-brand text-dark">Register</a>`;
+      if (document.querySelector("#header nav div:last-child")) {
+        document.querySelector(
+          "#header nav div:last-child"
+        ).innerHTML = `<a href="../../pages/authentication/login.html"
+                                class="btn btn-brand me-2">Log In</a>
+                            <a href="../../pages/authentication/Signup.html"
+                                class="btn btn-outline-brand text-dark">Register</a>`;
+      }
     }
   }
 });

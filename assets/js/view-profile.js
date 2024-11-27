@@ -293,98 +293,105 @@ function loadVendorCards() {
   });
 }
 
-fetch(`${API_URL}/api/profile/detail/${orgId}`, {
-  headers: {
-    Authorization: `Bearer ${token}`,
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-})
-  .then((res) => res.json())
-  .then((json) => {
-    const { events, vendor_recruitments, businesses } = json.data;
 
-    document.getElementById("event-sum").innerHTML = events.length;
-    document.getElementById("vendor-sum").innerHTML =
-      vendor_recruitments.length;
-    document.getElementById("business-sum").innerHTML = businesses.length;
 
-    document.getElementById("avarta").src = json.data.avatar;
-    document.getElementById("fullname").innerHTML = json.data.full_name;
-    document.getElementById("email").innerHTML = json.data.email
-      ? json.data.email
-      : "None";
-    document.getElementById("tel").innerHTML = json.data.phone_number
-      ? json.data.phone_number
-      : "None";
-
-    allEventData = events;
-    allRecruitData = vendor_recruitments;
-    allVendorData = businesses;
-
-    const currentDate = new Date();
-    document.querySelector("#events-filter").onchange = (e) => {
-      switch (e.target.value) {
-        case "all":
-          allEventData = events;
-          break;
-        case "upcoming":
-          allEventData = events.filter(
-            (ele) => new Date(ele.start_date.replace(" ", "T")) > currentDate
-          );
-          break;
-        case "showing":
-          allEventData = events.filter((ele) => {
-            const startDate = new Date(ele.start_date.replace(" ", "T"));
-            const endDate = new Date(ele.end_date.replace(" ", "T"));
-            return currentDate >= startDate && currentDate <= endDate;
-          });
-          break;
-        case "past":
-          allEventData = events.filter(
-            (ele) => new Date(ele.end_date.replace(" ", "T")) < currentDate
-          );
-          break;
-        default:
-          allEventData = events;
-          break;
-      }
+if(token){
+  fetch(`${API_URL}/api/profile/detail/${orgId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      const { events, vendor_recruitments, businesses } = json.data;
+  
+      document.getElementById("event-sum").innerHTML = events.length;
+      document.getElementById("vendor-sum").innerHTML =
+        vendor_recruitments.length;
+      document.getElementById("business-sum").innerHTML = businesses.length;
+  
+      document.getElementById("avarta").src = json.data.avatar;
+      document.getElementById("fullname").innerHTML = json.data.full_name;
+      document.getElementById("email").innerHTML = json.data.email
+        ? json.data.email
+        : "None";
+      document.getElementById("tel").innerHTML = json.data.phone_number
+        ? json.data.phone_number
+        : "None";
+  
+      allEventData = events;
+      allRecruitData = vendor_recruitments;
+      allVendorData = businesses;
+  
+      const currentDate = new Date();
+      document.querySelector("#events-filter").onchange = (e) => {
+        switch (e.target.value) {
+          case "all":
+            allEventData = events;
+            break;
+          case "upcoming":
+            allEventData = events.filter(
+              (ele) => new Date(ele.start_date.replace(" ", "T")) > currentDate
+            );
+            break;
+          case "showing":
+            allEventData = events.filter((ele) => {
+              const startDate = new Date(ele.start_date.replace(" ", "T"));
+              const endDate = new Date(ele.end_date.replace(" ", "T"));
+              return currentDate >= startDate && currentDate <= endDate;
+            });
+            break;
+          case "past":
+            allEventData = events.filter(
+              (ele) => new Date(ele.end_date.replace(" ", "T")) < currentDate
+            );
+            break;
+          default:
+            allEventData = events;
+            break;
+        }
+        loadEventCards();
+      };
+  
+      document.getElementById("vendors-filter").onchange = (e) => {
+        switch (e.target.value) {
+          case "all":
+            allRecruitData = vendor_recruitments;
+            break;
+          case "upcoming":
+            allRecruitData = vendor_recruitments.filter(
+              (ele) => new Date(ele.start_date.replace(" ", "T")) > currentDate
+            );
+            break;
+          case "showing":
+            allRecruitData = vendor_recruitments.filter((ele) => {
+              const startDate = new Date(ele.start_date.replace(" ", "T"));
+              const endDate = new Date(ele.end_date.replace(" ", "T"));
+              return currentDate >= startDate && currentDate <= endDate;
+            });
+            break;
+          case "past":
+            allRecruitData = vendor_recruitments.filter(
+              (ele) => new Date(ele.end_date.replace(" ", "T")) < currentDate
+            );
+            break;
+          default:
+            allRecruitData = vendor_recruitments;
+            break;
+        }
+        loadRecruitCards();
+      };
+  
       loadEventCards();
-    };
-
-    document.getElementById("vendors-filter").onchange = (e) => {
-      switch (e.target.value) {
-        case "all":
-          allRecruitData = vendor_recruitments;
-          break;
-        case "upcoming":
-          allRecruitData = vendor_recruitments.filter(
-            (ele) => new Date(ele.start_date.replace(" ", "T")) > currentDate
-          );
-          break;
-        case "showing":
-          allRecruitData = vendor_recruitments.filter((ele) => {
-            const startDate = new Date(ele.start_date.replace(" ", "T"));
-            const endDate = new Date(ele.end_date.replace(" ", "T"));
-            return currentDate >= startDate && currentDate <= endDate;
-          });
-          break;
-        case "past":
-          allRecruitData = vendor_recruitments.filter(
-            (ele) => new Date(ele.end_date.replace(" ", "T")) < currentDate
-          );
-          break;
-        default:
-          allRecruitData = vendor_recruitments;
-          break;
-      }
       loadRecruitCards();
-    };
-
-    loadEventCards();
-    loadRecruitCards();
-    loadVendorCards();
-  });
+      loadVendorCards();
+    });
+}
+else{
+  location.href="/pages/authentication/login.html"
+}
 function showEventDetail(id) {
   sessionStorage.setItem("itemID", id);
   location.href = "/pages/browse/event-detail.html";

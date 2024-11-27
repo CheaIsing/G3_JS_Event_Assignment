@@ -101,7 +101,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
       if (data.length <= 0) {
         document.getElementById("event-tobody").innerHTML = `
           <tr><td colspan=5><div class="text-center">
-            <img src="../../assets/img/noFound.png" alt="" height="220px;">
+            <img src="../../assets/img/noFound.png" alt="im" height="220px;">
             <h4 class="text-center text-brand mt-2">No Event to Display...</h4>
           </div></td></tr>`;
         return;
@@ -181,7 +181,7 @@ function getAllEventCard(apiUrl, id, searchE = "", searchV = "all") {
                 status = `<span class="rounded-pill text-danger"><i class="fa-solid fa-hourglass-half me-1"></i>Past</span>`;
               }
 
-              rowsHTML += `<tr class="border-bottom position-relative">
+              rowsHTML += `<tr class="border-bottom position-relative cursor-pointer">
                 <td>
                   <a class="stretched-link text-decoration-none bg-transparent link-request-detail"
                      style="color: inherit;" data-event-detail-id="${ele.id}" data-event-name="${ele.name}" data-event-date="${ele.start_date}">

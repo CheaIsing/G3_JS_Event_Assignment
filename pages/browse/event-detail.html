@@ -19,6 +19,20 @@
 </head>
 
 <body class="p-eventDetail">
+    <div id="preload" class="position-absolute top-0 start-0 end-0 bottom-0 w-100 vh-100 d-flex align-items-center justify-content-center bg-white" style="z-index: 9999999;">
+       <div>
+        <div class="spinner-grow spinner-grow-sm text-brand mx-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        <div class="spinner-grow spinner-grow-sm text-brand mx-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        <div class="spinner-grow spinner-grow-sm text-brand mx-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        
+       </div>
+    </div>
     <header class="border" id="header">
         <div class="container">
             <nav class="d-flex align-items-center justify-content-between">
@@ -47,7 +61,7 @@
                         Browse <i class="fa-solid fa-caret-down text-brand"></i>
                         <!-- User Icon -->
                     </a>
-                    <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
+                    <a href="../ticket/myticket.html" id="my-ticket-link" class="btn-outline-pink ms-3 d-flex align-items-center"><i
                             class="fa-solid fa-ticket pe-1 text-brand"></i>My
                         Ticket</a>
 

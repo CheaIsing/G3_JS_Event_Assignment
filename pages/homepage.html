@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    <div id="loader-overlay" class="loader-overlay">
+        <img src="../assets/img/logo/Prutika_Logo_text(2).png" alt="Logo" class="loader-logo" />
+    </div>
     <header class="border" id="header">
         <div class="container">
             <nav class="d-flex align-items-center justify-content-between">
@@ -156,8 +159,8 @@
                             <h1 class="text-white fw-bold display-2 mb-3">It's
                                 Time to <br> <span class="text-white display-1 fw-bold">Celebrate!</span></h1>
                             <div class="hero-button">
-                                <button class="btn-darkpink position-relative"><a class="stretched-link fw-semibold" href="../pages/organizer/create-events.html"
-                                        >Create your event
+                                <button class="btn-darkpink position-relative"><a class="stretched-link fw-semibold"
+                                        href="../pages/organizer/create-events.html">Create your event
                                         now!</a></button>
                             </div>
                         </div>
@@ -175,7 +178,8 @@
                                     with Us!</span>
                             </h1>
                             <div class="hero-button text-start">
-                                <button class="btn-darkpink position-relative"><a href="../pages/vendor/create_vendor_business.html"
+                                <button class="btn-darkpink position-relative"><a
+                                        href="../pages/vendor/create_vendor_business.html"
                                         class="fw-semibold stretched-link">Promote yours now!</a></button>
                             </div>
                         </div>
@@ -396,7 +400,34 @@
                 </div>
             </div>
         </div>
+        <section class="about-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="img-wrapper">
+                            <img src="../assets/img/party/conference.png" alt="">
+                            <img src="../assets/img/party/party2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <span class="pe-3">About us</span>
+                            <hr>
+                        </div>
+                        <h1>Welcome to <span class="text-brand fw-bolder">PRUTTIKA</span>:</h1>
+                        <h1 class="fw-bold">Your One-Stop Platform for All Things Events!</h1>
+                        <p class="mt-4 fs-5">Pruttika is an innovative, user-friendly website designed to empower users
+                            with
+                            complete
+                            control over their events. From ideation to execution, Pruttika provides a comprehensive
+                            suite of tools to create events, manage tickets, and promote services effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+
     <footer>
         <div class="container">
             <div class="row py-5">
@@ -412,6 +443,7 @@
                     </div>
                 </div>
                 <div class="col-4 contact-info d-flex flex-column justify-content-end align-items-start ps-5">
+                    <h4 class="pb-2 text-brand fw-bold">Contact Info</h4>
                     <p>Tel: +855-12-123-456</p>
                     <p><a href="mailto:goole.gmail.com">Email:
                             pruttikaKH@gmail.com</a></p>
@@ -426,14 +458,14 @@
                     <h4 class="py-4 text-brand fw-bold">Quick Links</h4>
                     <div class="d-flex">
                         <div class="d-flex flex-column w-50 pe-5">
-                            <a href>Contact us</a>
-                            <a href>Events</a>
-                            <a href>About us</a>
+                            <a href="authentication/contact.html">Contact us</a>
+                            <a href="browse/browse-event.html">Events</a>
+                            <a href="authentication/about.html">About us</a>
                         </div>
                         <div class="d-flex flex-column w-50 pe-5">
-                            <a href>Our Policy</a>
-                            <a href>Our Team</a>
-                            <a href>FAQs</a>
+                            <a href="#">Our Policy</a>
+                            <a href="authentication/about.html">Our Team</a>
+                            <a href="authentication/faq.html">FAQs</a>
                         </div>
                     </div>
                 </div>
@@ -451,6 +483,7 @@
 <script src="../assets/js/header.js"></script>
 <!-- <script src="../assets/js/footer.js"></script> -->
 <script src="../assets/js/organizer/get_all_post.js"></script>
+<script src="../assets/js/pageLoader.js"></script>
 <script>
 
 </script>

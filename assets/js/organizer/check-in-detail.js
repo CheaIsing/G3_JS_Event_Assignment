@@ -19,7 +19,7 @@ function fetchCheckedIn(status = '') {
       document.getElementById('title').innerHTML = sessionStorage.getItem('checkinEventName')
       document.getElementById('ev-date').innerHTML = moment(sessionStorage.getItem('checkinEventDate')).format('ddd, MMM D, YYYY, h:mm A')
       if (json.data.length == 0) {
-        document.getElementById("tbody").innerHTML = `<tr><td colspan=6><div class="text-center">
+        document.getElementById("tbody").innerHTML = `<tr class="border-0"><td class="border-0" colspan=6><div class="text-center">
               <img src="../../assets/img/noFound.png" alt="" height="220px;">
               <h4 class="text-center text-brand mt-2">No Checked-in to Display...</h4>
             </div></td></tr>`;

@@ -69,6 +69,9 @@ if(searchClicked){
   });
 }
 
+if(document.getElementById('my-ticket-link')){
+  document.getElementById('my-ticket-link').href = '/pages/authentication/login.html'
+}
 
 
 function showEventDetail(id) {

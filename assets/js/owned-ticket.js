@@ -1,3 +1,10 @@
+
+if(!token){
+  location.href ="/pages/authentication/login.html"
+}
+else{
+  getOwnedTickets();
+}
 function getOwnedTickets() {
     document.getElementById("ticket-tbody").innerHTML = `
   <tr>
@@ -189,7 +196,7 @@ function getOwnedTickets() {
     });
 }
 
-getOwnedTickets();
+
 
 function displayTicket(button) {
   const creatorId = button.dataset.id;

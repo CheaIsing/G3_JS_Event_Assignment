@@ -217,11 +217,11 @@ function getAllRecruitmentCard(apiUrl, id, searchE = "", searchV = "all") {
                                     <i class="bi bi-three-dots"></i>
                                   </button>
                                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu1">
-                                    <li><a class="dropdown-item" onclick="editRecruit(${ele.id})">Edit</a></li>
-                                    <li><a class="dropdown-item delete-vendor-recruitment-post" data-vendor-recruitment-id="${
+                                    <li><a class="dropdown-item cursor-pointer" onclick="editRecruit(${ele.id})">Edit</a></li>
+                                    <li><a class="dropdown-item delete-vendor-recruitment-post cursor-pointer" data-vendor-recruitment-id="${
                                       ele.id
                                     }" href="javascript:void(0);">Delete</a></li>
-                                    <li><a class="dropdown-item" onclick="viewRecruitDetail(${ele.id})">View</a></li>
+                                    <li><a class="dropdown-item cursor-pointer" onclick="viewRecruitDetail(${ele.id})">View</a></li>
                                   </ul>
                                 </div>
                               </td>

@@ -18,6 +18,9 @@
 </head>
 
 <body>
+    <div id="loader-overlay" class="loader-overlay">
+        <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt="Logo" class="loader-logo" />
+    </div>
     <header class="border px-1" id="header">
         <div class="container-fluid px-4">
             <nav class="d-flex align-items-center justify-content-between">
@@ -102,7 +105,7 @@
                                         <label id="imgInputBtn" for="fileUpload" class="btn-outline-pink"><i
                                                 class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                             Image</label>
-                                        <input class="d-none" id="fileUpload" accept=".jpg, .jpeg, .png"
+                                        <input class="d-none" id="fileUpload" accept=".jpg, .jpeg"
                                             type="file"></input>
                                         <div class="d-flex">
                                             <p id="fileName" class="text-secondary pt-3">No file chosen</p>
@@ -545,7 +548,7 @@
                                             <label id="photoInputBtn" for="photoUpload" class="btn-outline-pink"><i
                                                     class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                                 Image</label>
-                                            <input class="d-none" id="photoUpload" type="file"></input>
+                                            <input class="d-none" id="photoUpload" type="file" ></input>
                                             <div class="d-flex">
                                                 <p id="photoName" class="text-secondary pt-3">No file chosen</p>
                                                 <button id="btnRemoveImg" type="button"
@@ -604,7 +607,7 @@
                                                     class="btn-outline-pink"><i
                                                         class="fa-regular fa-image fs-5 text-secondary"></i> Upload
                                                     Image</label>
-                                                <input class="d-none" id="khqrPhotoUpload" type="file"></input>
+                                                <input class="d-none" id="khqrPhotoUpload" type="file" accept=".jpg, .jepg"></input>
                                                 <div class="d-flex">
                                                     <p id="KhqrPhotoName" class="text-secondary pt-3">No file chosen</p>
                                                     <button id="btnRemoveKhqrImg" type="button"
@@ -637,7 +640,9 @@
             </div>
         </div>
     </main>
+    <footer></footer>
     <!-- quillJS -->
+    <script src="../../assets/js/footer.js"></script>
     <script src="../../assets/lib/QuilJs/quill.js"></script>
     <script src="../../assets/js/ultilities.js"></script>
     <script src="../../assets/js/authentication.js"></script>
@@ -647,6 +652,7 @@
     <script src="../../assets/js/form_collapse.js"></script>
     <script src="../../assets/js/form_validation.js"></script>
     <script src="../../assets/js/organizer/create_event.js"></script>
+    <script src="../../assets/js/pageLoader.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             window.descQuill = new Quill('#editor', { theme: 'snow' });

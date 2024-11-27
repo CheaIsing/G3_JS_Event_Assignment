@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruttika | About</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/mainstyle.css">
+    <link rel="stylesheet" href="../../assets/css/lim_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet"
+      href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+      <!-- <link rel="stylesheet" href="../../assets/css/lim_style.css"> -->
+      <link rel="icon" type="image/jpg" href="../../assets/img/logo/Pruttikar_Logo2.png">
+
+  </head>
+  <body>
+    <header class="border" id="header">
+      <div class="container">
+          <nav class="d-flex align-items-center justify-content-between">
+              <div class="logo">
+                  <a href="../homepage.html">
+                      <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                  </a>
+              </div>
+              <div class="d-flex align-items-center w-25 position-relative ">
+                  <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
+                  <input type="text" class="form-control search-bar ps-5 w-100 " id="searchEvent"
+                      placeholder="Search Event " />
+                  <button class="btn-pink text-white"><i
+                          class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
+                  <ul class="search-dropdown position-absolute" id="search-dropdown">
+
+                  </ul>
+              </div>
+              <div class="action-btn d-flex">
+                  <button class="btn-outline-pink ms-3" data-bs-toggle="modal" data-bs-target="#createPostModal"><i
+                          class="fa-solid fa-plus text-brand"></i> Create
+                      a
+                      post</button>
+                  <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Browse <i class="fa-solid fa-caret-down text-brand"></i>
+                      <!-- User Icon -->
+                  </a>
+                  <a href="../ticket/myticket.html" id="my-ticket-link" class="btn-outline-pink ms-3 d-flex align-items-center"><i
+                          class="fa-solid fa-ticket pe-1 text-brand"></i>My
+                      Ticket</a>
+
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
+                      <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
+                              events</a></li>
+                      <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
+                              vendor recruitments</a></li>
+                      <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
+                              vendor services</a></li>
+
+                  </ul>
+              </div>
+              <div class="dropdown">
+                  <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
+                      id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      <!-- <i class="bi bi-person-circle"></i> -->
+                      <div class="userImgPf-wrapper">
+                        <img id="userImgPf" src="http://mps2.chandalen.dev/storage/avatars/no_photo.jpg" alt="pfp">
+                    </div>
+                      <!-- User Icon -->
+                      <span class="ps-1" id="userEmail"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                      <li><a class="dropdown-item" href="../organizer/event.html">Manage
+                              as
+                              organizer</a></li>
+                      <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
+                              vendor</a></li>
+                      <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
+                      <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
+                              Setting</a></li>
+
+                      <li><a class="dropdown-item border-top" href="javascript:void(0);" id="btn-logout">Log
+                              out</a>
+                      </li>
+                  </ul>
+              </div>
+          </nav>
+      </div>
+  </header>
+  <!-- Modal -->
+  <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+              <div class="modal-header border border-0">
+                  <h1 class="modal-title fs-5" id="createPostModalLabel"></h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <h5 class="text-center">What do you want to create ?</h5>
+                  <div class="row p-3">
+                      <div class="col-4">
+                          <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                              onclick="goCreatePost('event')">
+                              <div class="icon">
+                                  <i class="fs-4 text-brand fa-regular fa-calendar-days"></i>
+                              </div>
+                              <h6 class="fw-bold">
+                                  Create an event
+                              </h6>
+                              <span class="post-choice-detail text-center text-secondary">
+                                  Create an event which will be publiced on website for free.
+                              </span>
+                          </div>
+                      </div>
+                      <div class="col-4">
+                          <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                              onclick="goCreatePost('recruit')">
+                              <div class="icon">
+                                  <i class="fs-4 text-brand fa-solid fa-magnifying-glass-dollar"></i>
+                              </div>
+                              <h6 class="fw-bold">
+                                  Create a recuitment
+                              </h6>
+                              <span class="post-choice-detail text-center text-secondary">
+                                  Post what you need and recuit vendors for your events organising.
+                              </span>
+                          </div>
+                      </div>
+                      <div class="col-4">
+                          <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                              onclick="goCreatePost('business')">
+                              <a href=""></a>
+                              <div class="icon">
+                                  <i class="fs-4 text-brand fa-solid fa-shop"></i>
+                              </div>
+                              <h6 class="fw-bold">
+                                  Create a business post
+                              </h6>
+                              <span class="post-choice-detail text-center text-secondary">
+                                  Promote yourself and your businesses as an event service provider
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+<main>
+    <section>
+        <div class="container bg-conatiner mt-5 p-4">
+            <div class="row">
+                <div class="col-4 text-center align-content-center">
+                    <h2 class="fw-bold">Welcome!</h2>
+                    <p class="fs-5">Please fill in your information or contact us via social media below to get in
+                        touch with us.</p>
+                    <div class="social-media">
+                        <a href><i class="fa-brands my-icon fa-facebook fs-3 me-3"></i></a>
+                        <a href><i class="fa-brands my-icon fa-square-x-twitter fs-3 me-3 "></i></a>
+                        <a href><i class="fa-brands my-icon fa-telegram fs-3 me-3"></i></a>
+                        <a href><i class="fa-brands my-icon fa-instagram fs-3 me-3"></i></a>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <h1 class="text-center display-6 fw-bold ">Contact Us</h1>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Full Name">
+                        <label for="floatingInput">Full Name</label>
+                        <small id="nameError" class="text-danger"></small>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingemail" placeholder="name@example.com">
+                        <label for="floatingemail">Email address</label>
+                        <small id="emailError" class="text-danger"></small>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="floatingPhone" placeholder="Phone Number">
+                        <label for="floatingPhone">Phone Number</label>
+                        <small id="phoneError" class="text-danger"></small>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                            style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Comments</label>
+                        <small id="commentError" class="text-danger"></small>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn-brand btn me-2" id="submitBtn">Send</button>
+                        <!-- <button type="button" class="btn-brand btn">Cancel</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer></footer>
+
+
+
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/ultilities.js"></script>
+  <script src="../../assets/js/authentication.js"></script>
+  <script src="../../assets/js/header.js"></script>
+  <script src="../../assets/js/footer.js"></script>
+</body>
+
+</html>
