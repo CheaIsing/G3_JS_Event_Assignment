@@ -1,7 +1,7 @@
 const apiUrl1 = "https://mps2.chandalen.dev";
 const token1 = localStorage.getItem("authToken");
 
-const header = document.getElementById('header');
+const header = document.getElementById("header");
 const toggleClass = "is-sticky";
 
 window.addEventListener("scroll", () => {
@@ -11,12 +11,11 @@ window.addEventListener("scroll", () => {
   } else {
     header.classList.remove(toggleClass);
   }
-})
+});
 
 let searchClicked = document.getElementById("searchEvent");
 
-if(searchClicked){
-
+if (searchClicked) {
   searchClicked.addEventListener("focus", () => {
     let searchEventbyName = document.getElementById("searchEvent").value;
     if (searchEventbyName == "") {
@@ -26,14 +25,14 @@ if(searchClicked){
       document.querySelector(".overlay").style.display = "block";
     }
   });
-  
+
   searchClicked.addEventListener("blur", () => {
     document.querySelector(".overlay").style.display = "none";
     // document.querySelector('.search-dropdown').style.display = 'none';
   });
   document.getElementById("searchEvent").addEventListener("keyup", function () {
     let searchEventbyName = document.getElementById("searchEvent").value;
-  
+
     document.getElementById("search-dropdown").style.display = "block";
     if (searchEventbyName == "") {
       document.querySelector(".search-dropdown").style.display = "none";
@@ -49,7 +48,7 @@ if(searchClicked){
       .then((res) => res.json())
       .then((json) => {
         const { data } = json;
-  
+
         let searchList = "";
         if (data.length == 0) {
           searchList = `<li class="search-dropdown-item">
@@ -68,19 +67,19 @@ if(searchClicked){
       });
   });
 }
-
-if(document.getElementById('my-ticket-link')){
-  document.getElementById('my-ticket-link').href = '/pages/authentication/login.html'
+if (!token1) {
+  if (document.getElementById("my-ticket-link")) {
+    document.getElementById("my-ticket-link").href =
+      "/pages/authentication/login.html";
+  }
 }
 
-
 function showEventDetail(id) {
-
   sessionStorage.setItem("itemID", id);
   location.href = "/pages/browse/event-detail.html";
 }
 
-let userPfImg = document.getElementById('userImgPf');
+let userPfImg = document.getElementById("userImgPf");
 function setUserEmail() {
   if (localStorage.getItem("authToken")) {
     fetch(`${apiUrl1}/api/me`, {
@@ -126,9 +125,7 @@ function goCreatePost(type = "") {
 
 function checkAuth() {
   if (!localStorage.getItem("authToken")) {
-
     if (document.querySelectorAll(".add-wish")) {
-
       document.querySelectorAll(".add-wish").forEach((item) => {
         item.onclick = () => {
           location.href = "/pages/authentication/login.html";
