@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruttika | About</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/mainstyle.css">
+    <link rel="stylesheet" href="../../assets/css/lim_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet"
+      href="../../assets/lib/bootstrap-icon/bootstrap-icons.css">
+      <!-- <link rel="stylesheet" href="../../assets/css/lim_style.css"> -->
+      <link rel="icon" type="image/jpg" href="../../assets/img/logo/Pruttikar_Logo2.png">
+      <link rel="stylesheet" href="../../assets/css/heng-style.css">
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <header class="border" id="header">
+      <div class="container">
+          <nav class="d-flex align-items-center justify-content-between">
+              <div class="logo">
+                  <a href="../homepage.html">
+                      <img src="../../assets/img/logo/Prutika_Logo_text(2).png" alt>
+                  </a>
+              </div>
+              <div class="d-flex align-items-center w-25 position-relative ">
+                  <i class="fa-solid fa-magnifying-glass text-brand fs-6 position-absolute"></i>
+                  <input type="text" class="form-control search-bar ps-5 w-100 " id="searchEvent"
+                      placeholder="Search Event " />
+                  <button class="btn-pink text-white"><i
+                          class="fa-solid fa-magnifying-glass text-brand fs-6"></i></button>
+                  <ul class="search-dropdown position-absolute" id="search-dropdown">
+
+                  </ul>
+              </div>
+              <div class="action-btn d-flex">
+                  <button class="btn-outline-pink ms-3" data-bs-toggle="modal" data-bs-target="#createPostModal"><i
+                          class="fa-solid fa-plus text-brand"></i> Create
+                      a
+                      post</button>
+                  <a href="#" class=" btn-outline-pink ms-3" role="button" id="browseDropdown"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Browse <i class="fa-solid fa-caret-down text-brand"></i>
+                      <!-- User Icon -->
+                  </a>
+                  <a href="../ticket/myticket.html" class="btn-outline-pink ms-3 d-flex align-items-center"><i
+                          class="fa-solid fa-ticket pe-1 text-brand"></i>My
+                      Ticket</a>
+
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="browseDropdown">
+                      <li><a class="dropdown-item" href="../browse/browse-event.html">Browse
+                              events</a></li>
+                      <li><a class="dropdown-item" href="../browse/browse-recruitment.html">Browse
+                              vendor recruitments</a></li>
+                      <li><a class="dropdown-item" href="../browse/browse-vendor.html">Browse
+                              vendor services</a></li>
+
+                  </ul>
+              </div>
+              <div class="dropdown">
+                  <a href="#" class="dropdown-toggle fs-3 text-brand d-flex align-items-center" role="button"
+                      id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      <!-- <i class="bi bi-person-circle"></i> -->
+                      <div class="userImgPf-wrapper">
+                        <img id="userImgPf" src="http://mps2.chandalen.dev/storage/avatars/no_photo.jpg" alt="pfp">
+                    </div>
+                      <!-- User Icon -->
+                      <span class="ps-1" id="userEmail"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                      <li><a class="dropdown-item" href="../organizer/event.html">Manage
+                              as
+                              organizer</a></li>
+                      <li><a class="dropdown-item" href="../vendor/vendor-business.html">Manage as
+                              vendor</a></li>
+                      <li><a class="dropdown-item" href="../browse/wishlist.html">Wishlist</a></li>
+                      <li><a class="dropdown-item" href="../authentication/accountsetting.html">Account
+                              Setting</a></li>
+
+                      <li><a class="dropdown-item border-top" href="javascript:void(0);" id="btn-logout">Log
+                              out</a>
+                      </li>
+                  </ul>
+              </div>
+          </nav>
+      </div>
+  </header>
+  <!-- Modal -->
+  <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+              <div class="modal-header border border-0">
+                  <h1 class="modal-title fs-5" id="createPostModalLabel"></h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <h5 class="text-center">What do you want to create ?</h5>
+                  <div class="row p-3">
+                      <div class="col-4">
+                          <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                              onclick="goCreatePost('event')">
+                              <div class="icon">
+                                  <i class="fs-4 text-brand fa-regular fa-calendar-days"></i>
+                              </div>
+                              <h6 class="fw-bold">
+                                  Create an event
+                              </h6>
+                              <span class="post-choice-detail text-center text-secondary">
+                                  Create an event which will be publiced on website for free.
+                              </span>
+                          </div>
+                      </div>
+                      <div class="col-4">
+                          <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                              onclick="goCreatePost('recruit')">
+                              <div class="icon">
+                                  <i class="fs-4 text-brand fa-solid fa-magnifying-glass-dollar"></i>
+                              </div>
+                              <h6 class="fw-bold">
+                                  Create a recuitment
+                              </h6>
+                              <span class="post-choice-detail text-center text-secondary">
+                                  Post what you need and recuit vendors for your events organising.
+                              </span>
+                          </div>
+                      </div>
+                      <div class="col-4">
+                          <div class="post-choice d-flex justify-content-center flex-column align-items-center p-3 border rounded-4"
+                              onclick="goCreatePost('business')">
+                              <a href=""></a>
+                              <div class="icon">
+                                  <i class="fs-4 text-brand fa-solid fa-shop"></i>
+                              </div>
+                              <h6 class="fw-bold">
+                                  Create a business post
+                              </h6>
+                              <span class="post-choice-detail text-center text-secondary">
+                                  Promote yourself and your businesses as an event service provider
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <main id="main">
+    <section class="ab-banner vh-50 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 text-center">
+                    <h1 class="mt-5 text-brand display-1 fw-bold">WELCOME</h1>
+                    <hr class="bg-brand">
+                    <p class="text-banner fw-medium mt-5 mb-5">We are students in the Information Technology field
+                        and
+                        recipients of a scholarship at <span class="text-brand">ANT Technology Training
+                            Center</span>, where we are studying web development.<br> We created this website to
+                        showcase our abilities and work after spending some time studying and exploring in the past
+                    </p>
+                    <hr class="bg-brand">
+                </div>
+                <div class="col-6 ab-img">
+                    <img src="../../assets/img/bg-img/webpage_on_pc.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="ab-banner">
+        <div class="container bg-conatiner mt-5">
+            <div class="row text-center">
+                <h2 class="mt-5 display-6 fw-bold">Statement of Gratitude</h2>
+                <p class="textline fw-medium mt-4" style="font-size: 20px;">
+                    Our team would like to express our heartfelt gratitude to the<br> MINISTRY OF POST AND
+                    TELECOMMUNICATIONS <br> The CBRD FUND , And the ANT TECHNOLOGY TRAINING . <br>
+                    We are very pleased to have received a scholarship in web development.<br> This scholarship
+                    has
+                    significantly alleviated our financial burdens related to our studies. <br>
+                    The team is committed to studying diligently to build their skills and contribute to society
+                    in the
+                    future.</p>
+                <div class="col mt-5 scholarship-logo">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-4">
+                            <img src="../../assets/img/school-logo/ant-logo-removebg-preview.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img src="../../assets/img/school-logo/mptc-Logo-label.jpeg" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img src="../../assets/img/school-logo/CBRD Fund Logo Final.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <div class="container ">
+            <div class="row">
+                <div class="mt-5 text-center">
+                    <h1 class="fw-bold">OUR TEAM</h1>
+                    <p>Welcome! Come to our website development team.</p>
+                </div>
+
+                <div class="col-6 out-team-item">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-4">
+                                <img src="../../assets/img/ising.jpg" class="img-fluid" class="img-fluid" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body ">
+                                    <h4 class="card-title fw-bold">Chea Ising</h4>
+                                    <div class="our-team-info">
+                                        <p class="">I am a student from the Royal University of Phnom Penh
+                                            (RUPP), in the third year of the Information Technology department
+                                            I am currently studying a Web Development scholarship at ANT
+                                            Technology
+                                            Training.
+                                        </p>
+                                    </div>
+                                    <div class="social-icons">
+                                        <a href="https://www.facebook.com/share/14Jy1LFgHQ/?mibextid=LQQJ4d"><i
+                                                class="fa-brands fa-facebook"></i></a>
+                                        <a href="https://t.me/munisophak"><i class="fa-brands fa-twitter"></i></a>
+                                        <a href="https://t.me/munisophak"><i class="fa-brands fa-telegram"></i></a>
+                                        <a href="#"><i class="fa-solid fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 out-team-item">
+                    <div class="card mb-3 ">
+                        <div class="row g-0">
+                            <div class="col-4">
+                                <img src="../../assets/img/munisophak.jpg" class="img-fluid" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body ">
+                                    <h4 class="card-title fw-bold">Rith Munisophak</h4>
+                                    <div class="our-team-info">
+                                        <p class="">I am a student from the Royal University of Law and
+                                            Economics ( RULE ), in the third year of the Information Technology
+                                            department,and I am currently studying a Web Development
+                                            scholarship at
+                                            ANT Technology Training.
+                                        </p>
+                                    </div>
+                                    <div class="social-icons">
+                                        <a href="https://www.facebook.com/share/14Jy1LFgHQ/?mibextid=LQQJ4d"><i
+                                                class="fa-brands fa-facebook"></i></a>
+                                        <a href="https://t.me/munisophak"><i class="fa-brands fa-twitter"></i></a>
+                                        <a href="https://t.me/munisophak"><i class="fa-brands fa-telegram"></i></a>
+                                        <a href="#"><i class="fa-solid fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6  out-team-item">
+                    <div class="card ">
+                        <div class="row g-0">
+                            <div class="col-4">
+                                <img src="../../assets/img/seaklim.jpg" class="img-fluid" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title fw-bold">Ren SeakLim</h4>
+                                    <div class="out-team-info">
+                                        <p class="card-text">I am a student from the Royal University of Phnom Penh
+                                            (RUPP), in the fourth year of the Information Technology department,
+                                            <br>and
+                                            I am currently studying a Web Development scholarship at ANT Technology
+                                            Training.
+                                        </p>
+                                    </div>
+                                    <div class="social-icons ">
+                                        <a href="https://www.facebook.com/share/1B5KYxoAMr/?mibextid=LQQJ4d"><i
+                                                class="fa-brands fa-facebook"></i></a>
+                                        <a href="https://t.me/seaklim02"><i class="fa-brands fa-twitter"></i></a>
+                                        <a href="https://t.me/seaklim02"><i class="fa-brands fa-telegram"></i></a>
+                                        <a href="#"><i class="fa-solid fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 out-team-item">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-4">
+                                <img src="../../assets/img/chenny.jpg" class="img-fluid" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title  fw-bold">Ngoun Chenny</h4>
+                                    <div class="out-team-info">
+                                        <p class="card-text">I am a student from the Royal University of Phnom Penh
+                                            (RUPP), in the second year of the Information Technology department,
+                                            <br>and
+                                            I am currently studying a Web Development scholarship at ANT Technology
+                                            Training
+                                        </p>
+                                    </div>
+                                    <div class="social-icons">
+                                        <a href="https://www.facebook.com/share/1XbnKZxXDD/?mibextid=LQQJ4d"><i
+                                                class="fa-brands fa-facebook"></i></a>
+                                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                        <a href="https://t.me/chennyngoun"><i class="fa-brands fa-telegram"></i></a>
+                                        <a href="#"><i class="fa-solid fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-6 out-team-item">
+                        <div class="card ">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <img src="../../assets/img/layheng.jpg" class="img-fluid" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h4 class="card-title p-0 fw-bold">Lim Layheng</h4>
+                                        <div class="out-team-info">
+                                            <p class=" p-0">I am a student from the Cambodian Institute of
+                                                Technology (SETEC), in the third year of the Information Technology
+                                                department, and I am currently studying a Web Development
+                                                scholarship at
+                                                ANT Technology Training.</p>
+                                        </div>
+                                        <div class="social-icons p-0">
+                                            <a href="https://www.facebook.com/share/1E9VDv4h2x/?mibextid=LQQJ4d"><i
+                                                    class="fa-brands fa-facebook"></i></a>
+                                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                            <a href="https://t.me/MRHENG27"><i
+                                                    class="fa-brands fa-telegram"></i></a>
+                                            <a href="#"><i class="fa-solid fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+    <footer class="mt-5">
+      
+  </footer>
+
+
+
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/ultilities.js"></script>
+    <script src="../../assets/js/authentication.js"></script>
+    <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/profile.js"></script>
+    <script src="../../assets/js/footer.js"></script>
+  </body>
+
+</html>

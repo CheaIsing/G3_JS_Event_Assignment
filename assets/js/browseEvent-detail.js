@@ -1,4 +1,3 @@
-
 //get info event
 let ticketPrice = 0;
 let evCatagoryId;
@@ -15,9 +14,6 @@ fetch(apiUrl + "/api/events/" + id)
   .then((res) => res.json())
   .then((json) => {
     let data = json.data;
-
-    
-    
 
     let thumbnail =
       data.thumbnail && !data.thumbnail.includes("no_photo")
@@ -49,7 +45,7 @@ fetch(apiUrl + "/api/events/" + id)
       moment(data.start_date).format("LT") +
       " - " +
       moment(data.end_date).format("LT");
-    document.getElementById("wish-ev").setAttribute("data-id",data.id);
+    document.getElementById("wish-ev").setAttribute("data-id", data.id);
     document.getElementById("ev-status").innerHTML = status;
     document.getElementById("ev-location").innerHTML = data.location;
     document.getElementById("ev-catagory").innerHTML = catagory;
@@ -64,77 +60,83 @@ fetch(apiUrl + "/api/events/" + id)
     document.getElementById("ev-price1").innerHTML = price;
     evCatagoryId = data.event_categories[0].id;
     ticketPrice = data.ticket_price;
-   
-    if(parseInt(data.ticket_opacity) == 0){
+
+    if (parseInt(data.ticket_opacity) == 0) {
       document.getElementById("btn-purchase").disabled = true;
       document.getElementById("btn-purchase").innerHTML = "Sold Out";
     }
-    displayRelatedItems(evCatagoryId,data.id);
-    if (data.ticket_price === 0) {
-      fetch(
-        `${API_URL}/api/profile/requested-tickets?sort_col=created_at&sort_dir=desc`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((json4) => {
-          if(json4.data.length == 0){
+    displayRelatedItems(evCatagoryId, data.id);
+    if (token) {
+      if (data.ticket_price === 0) {
+        fetch(
+          `${API_URL}/api/profile/requested-tickets?sort_col=created_at&sort_dir=desc`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+          .then((res) => res.json())
+          .then((json4) => {
+            if (json4.data.length == 0) {
+              return;
+            }
+            for (let ele of json4.data) {
+              if (ele.event.id == id) {
+                document.getElementById("btn-purchase").disabled = true;
+                document.getElementById("btn-purchase").innerHTML =
+                  "Redeemed Ticket";
+              }
+            }
+          });
+
+        document
+          .getElementById("btn-purchase")
+          .removeAttribute("data-bs-target");
+        document
+          .getElementById("btn-purchase")
+          .removeAttribute("data-bs-toggle");
+        document.getElementById("btn-purchase").innerHTML = "Redeem Ticket";
+        document.getElementById("btn-purchase").onclick = () => {
+          if (!localStorage.getItem("authToken")) {
+            location.href = "/pages/authentication/login.html";
             return;
           }
-          for (let ele of json4.data) {
-            if (ele.event.id == id) {
-              document.getElementById("btn-purchase").disabled = true;
-              document.getElementById("btn-purchase").innerHTML =
-                "Redeemed Ticket";
-            }
-          }
-        });
-
-      document.getElementById("btn-purchase").removeAttribute("data-bs-target");
-      document.getElementById("btn-purchase").removeAttribute("data-bs-toggle");
-      document.getElementById("btn-purchase").innerHTML = "Redeem Ticket";
-      document.getElementById("btn-purchase").onclick = () => {
-        if(!localStorage.getItem("authToken")){
-          location.href = "/pages/authentication/login.html"
-          return;
-        }
-        fetch(`${apiUrl}/api/tickets/request-buy`, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            event_id: parseInt(id),
-            amount: 1,
-          }),
-        })
-          .then((res) => res.json())
-          .then((json1) => {
-            if (json1.result === true) {
-              showToast("Redeem Ticket Sucessfully", json1.result);
-              document.getElementById("btn-purchase").disabled = true;
-            } else {
-              showToast(json1, json1.result);
-            }
+          fetch(`${apiUrl}/api/tickets/request-buy`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              event_id: parseInt(id),
+              amount: 1,
+            }),
           })
-          .catch((err) => {
-            showToast(err, false);
-          });
-      };
+            .then((res) => res.json())
+            .then((json1) => {
+              if (json1.result === true) {
+                showToast("Redeem Ticket Sucessfully", json1.result);
+                document.getElementById("btn-purchase").disabled = true;
+              } else {
+                showToast(json1, json1.result);
+              }
+            })
+            .catch((err) => {
+              showToast(err, false);
+            });
+        };
+      }
     }
 
-    if(new Date(data.end_date) < new Date() ){
+    if (new Date(data.end_date) < new Date()) {
       document.getElementById("btn-purchase").disabled = true;
     }
 
     document.getElementById("btn-purchase").onclick = () => {
-      if(!localStorage.getItem("authToken")){
-        location.href = "/pages/authentication/login.html"
+      if (!localStorage.getItem("authToken")) {
+        location.href = "/pages/authentication/login.html";
         return;
       }
       sessionStorage.setItem("eventPaidId", id);
@@ -142,7 +144,7 @@ fetch(apiUrl + "/api/events/" + id)
     };
   });
 
-function displayRelatedItems(evCatagoryId,detailId) {
+function displayRelatedItems(evCatagoryId, detailId) {
   let url = apiUrl + `/api/events?category=${evCatagoryId}&page=1&per_page=10`;
   fetch(url)
     .then((res) => res.json())
@@ -161,123 +163,137 @@ function displayRelatedItems(evCatagoryId,detailId) {
       });
       let listE = "";
       data.forEach((element) => {
-        if(element.id!=detailId){
+        if (element.id != detailId) {
           let price =
-          element.ticket_price == 0
-            ? "Free"
-            : `$${element.ticket_price.toFixed(2)} per ticket`;
-        let catas = "";
-        element.event_categories.forEach((cata, i) => {
-          catas += `<div class="pill${i+1} me-1">${cata.name}</div>`;
-        });
-        let thumbnail =
-          element.thumbnail && !element.thumbnail.includes("no_photo")
-            ? element.thumbnail
-            : "../../assets/img/party/party1.png";
-            listE+=`<div class="col-md-4  d-flex  swiper-slide"> 
+            element.ticket_price == 0
+              ? "Free"
+              : `$${element.ticket_price.toFixed(2)} per ticket`;
+          let catas = "";
+          element.event_categories.forEach((cata, i) => {
+            catas += `<div class="pill${i + 1} me-1">${cata.name}</div>`;
+          });
+          let thumbnail =
+            element.thumbnail && !element.thumbnail.includes("no_photo")
+              ? element.thumbnail
+              : "../../assets/img/party/party1.png";
+          listE += `<div class="col-md-4  d-flex  swiper-slide"> 
                     <div class="card shadow-sm rounded w-100" > 
-                      <img onclick="showEventDetail(${element.id})" src="${thumbnail}" alt="Event Image" class="card-img-top cursor-pointer rounded-top">
-                      <div class="card-body w-100" onclick="showEventDetail(${element.id})">
+                      <img onclick="showEventDetail(${
+                        element.id
+                      })" src="${thumbnail}" alt="Event Image" class="card-img-top cursor-pointer rounded-top">
+                      <div class="card-body w-100" onclick="showEventDetail(${
+                        element.id
+                      })">
                         <div class="d-flex mb-2 event-pill-wrapper">
                         ${catas}
                         </div>
                         <h5 class="card-title">${element.name}</h5>
                         <p class="text-muted "><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
-                                                        element.start_date
-                                                      ).format("ddd, D MMMM • h:mm A")}</p>
+                          element.start_date
+                        ).format("ddd, D MMMM • h:mm A")}</p>
                         <p class="text-muted text-loca "><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
-                                                        element.location
-                                                      }</p>
+                          element.location
+                        }</p>
                         <h6 class="text-brand">${price}</h6>
                       </div>
-                      <div class="card-footer d-flex align-items-center cursor-pointer" onclick="showEventDetail(${element.id})">
-                        <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 40px; height: 40px;">
+                      <div class="card-footer d-flex align-items-center cursor-pointer" onclick="showEventDetail(${
+                        element.id
+                      })">
+                        <img src="${
+                          element.creator.avatar
+                        }" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 40px; height: 40px;">
                         <span>${element.creator.full_name}</span>
                       </div>
                       <div class="card-btn-wrapper">
-                                    <button type="button" class="btn-rounded border-0 add-wish" data-id="${element.id}" ><i
+                                    <button type="button" class="btn-rounded border-0 add-wish" data-id="${
+                                      element.id
+                                    }" ><i
                                             class="fa-regular fa-heart"></i></button>
                                     <button type="button" class="btn-rounded border-0" onclick="copyEventUrlToClipboard(${
                                       element.id
                                     })"><i
                                             class="fa-solid fa-arrow-up-right-from-square"></i></button>
                                             <div class="date-tag text-center p-2">
-                                                <h6>${moment(element.start_date).format("D")}</h6>
-                                                <h6>${moment(element.start_date).format("MMMM")}</h6>
+                                                <h6>${moment(
+                                                  element.start_date
+                                                ).format("D")}</h6>
+                                                <h6>${moment(
+                                                  element.start_date
+                                                ).format("MMMM")}</h6>
                                               </div>
                                 </div>
                     </div>
                   </div>`;
-            // listE+=`<div class="col-md-4  d-flex  swiper-slide"> 
-            //         <div class="card d-flex shadow-sm rounded w-100"> 
-            //           <div onclick="showEventDetail(${element.id})">
-            //             <img src="${thumbnail}" alt="Event Image" class="card-img-top rounded-top">
-            //           <div class="card-body w-100">
-            //             <div class="d-flex mb-2 event-pill-wrapper">
-            //             ${catas}
-            //             </div>
-            //             <h5 class="card-title">${element.name}</h5>
-            //             <p class="text-muted mb-1"><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
-            //                                             element.start_date
-            //                                           ).format("ddd, D MMMM • h:mm A")}</p>
-            //             <p class="text-muted text-loca"><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
-            //                                             element.location
-            //                                           }</p>
-            //             <h6 class="text-brand">${price}</h6>
-            //           </div>
-            //           <div class="card-footer d-flex align-items-center">
-            //             <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 36px; height: 36px;">
-            //             <span>${element.creator.full_name}</span>
-            //           </div>
-            //           </div>
-            //           <div class="card-btn-wrapper">
-            //                         <button type="button" class="btn-rounded border-0 add-wish" data-id="${element.id}" ><i
-            //                                 class="fa-regular fa-heart"></i></button>
-            //                         <button type="button" class="btn-rounded border-0" onclick="copyEventUrlToClipboard(${
-            //                           element.id
-            //                         })"><i
-            //                                 class="fa-solid fa-arrow-up-right-from-square"></i></button>
-            //                     </div>
-            //         </div>
-            //       </div>`;
-        // listE += `
-        //                 <div class="card swiper-slide mx-1 ">
-        //                     <div class="card-content">
-        //                         <img class="card-img-top" src="${thumbnail}" alt="Title" />
-        //                         <div class="card-body">
-        //                             <div class="d-flex event-pill-wrapper">${catas}</div>
-        //                             <h5 class="card-title mt-2 mb-0">${
-        //                               element.name
-        //                             }</h5>
-        //                             <p class="card-text text-secondary"><i class="fa-regular fa-calendar pe-2"></i>${moment(
-        //                               element.start_date
-        //                             ).format("ddd, D MMMM • h:mm A")}</p>
-        //                             <p class="text-secondary"><i class="fa-solid fa-location-dot pe-2"></i>${
-        //                               element.location
-        //                             }</p>
-        //                             <p class="text-brand">${price}</p>
-        //                             <div class="card-footer profile d-flex align-items-center mt-2">
-        //                                 <div class="pf-img me-2">
-        //                                     <img src="${
-        //                                       element.creator.avatar
-        //                                     }" alt="" >
-        //                                 </div>
-        //                                 <p>${element.creator.full_name}</p>
-        //                             </div>
-        //                         </div>
-        //                         <div class="card-btn-wrapper">
-        //                             <button type="button" class="btn-rounded border-0 add-wish" data-id="${element.id}" ><i
-        //                                     class="fa-regular fa-heart"></i></button>
-        //                             <button type="button" class="btn-rounded border-0" onclick="copyEventUrlToClipboard(${
-        //                               element.id
-        //                             })"><i
-        //                                     class="fa-solid fa-arrow-up-right-from-square"></i></button>
-        //                         </div>
-        //                     </div>
-        //                 </div>
-        //               `;
+          // listE+=`<div class="col-md-4  d-flex  swiper-slide">
+          //         <div class="card d-flex shadow-sm rounded w-100">
+          //           <div onclick="showEventDetail(${element.id})">
+          //             <img src="${thumbnail}" alt="Event Image" class="card-img-top rounded-top">
+          //           <div class="card-body w-100">
+          //             <div class="d-flex mb-2 event-pill-wrapper">
+          //             ${catas}
+          //             </div>
+          //             <h5 class="card-title">${element.name}</h5>
+          //             <p class="text-muted mb-1"><i class="fa-regular fa-calendar me-1 text-brand"></i> ${moment(
+          //                                             element.start_date
+          //                                           ).format("ddd, D MMMM • h:mm A")}</p>
+          //             <p class="text-muted text-loca"><i class="fa-solid fa-location-dot me-1 text-brand"></i> ${
+          //                                             element.location
+          //                                           }</p>
+          //             <h6 class="text-brand">${price}</h6>
+          //           </div>
+          //           <div class="card-footer d-flex align-items-center">
+          //             <img src="${element.creator.avatar}" alt="Organizer" class="rounded-circle me-2 pf-img" style="width: 36px; height: 36px;">
+          //             <span>${element.creator.full_name}</span>
+          //           </div>
+          //           </div>
+          //           <div class="card-btn-wrapper">
+          //                         <button type="button" class="btn-rounded border-0 add-wish" data-id="${element.id}" ><i
+          //                                 class="fa-regular fa-heart"></i></button>
+          //                         <button type="button" class="btn-rounded border-0" onclick="copyEventUrlToClipboard(${
+          //                           element.id
+          //                         })"><i
+          //                                 class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          //                     </div>
+          //         </div>
+          //       </div>`;
+          // listE += `
+          //                 <div class="card swiper-slide mx-1 ">
+          //                     <div class="card-content">
+          //                         <img class="card-img-top" src="${thumbnail}" alt="Title" />
+          //                         <div class="card-body">
+          //                             <div class="d-flex event-pill-wrapper">${catas}</div>
+          //                             <h5 class="card-title mt-2 mb-0">${
+          //                               element.name
+          //                             }</h5>
+          //                             <p class="card-text text-secondary"><i class="fa-regular fa-calendar pe-2"></i>${moment(
+          //                               element.start_date
+          //                             ).format("ddd, D MMMM • h:mm A")}</p>
+          //                             <p class="text-secondary"><i class="fa-solid fa-location-dot pe-2"></i>${
+          //                               element.location
+          //                             }</p>
+          //                             <p class="text-brand">${price}</p>
+          //                             <div class="card-footer profile d-flex align-items-center mt-2">
+          //                                 <div class="pf-img me-2">
+          //                                     <img src="${
+          //                                       element.creator.avatar
+          //                                     }" alt="" >
+          //                                 </div>
+          //                                 <p>${element.creator.full_name}</p>
+          //                             </div>
+          //                         </div>
+          //                         <div class="card-btn-wrapper">
+          //                             <button type="button" class="btn-rounded border-0 add-wish" data-id="${element.id}" ><i
+          //                                     class="fa-regular fa-heart"></i></button>
+          //                             <button type="button" class="btn-rounded border-0" onclick="copyEventUrlToClipboard(${
+          //                               element.id
+          //                             })"><i
+          //                                     class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          //                         </div>
+          //                     </div>
+          //                 </div>
+          //               `;
         }
-        
+
         checkEventInWishlist(element.id);
       });
       document.getElementById("related-events").innerHTML = listE;

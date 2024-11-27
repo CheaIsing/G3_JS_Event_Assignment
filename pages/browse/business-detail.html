@@ -23,6 +23,21 @@
 </head>
 
 <body class="p-eventDetail">
+    
+    <div id="preload" class="position-absolute top-0 start-0 end-0 bottom-0 w-100 vh-100 d-flex align-items-center justify-content-center bg-white" style="z-index: 9999999;">
+        <div>
+         <div class="spinner-grow spinner-grow-sm text-brand mx-1" role="status">
+             <span class="visually-hidden">Loading...</span>
+           </div>
+         <div class="spinner-grow spinner-grow-sm text-brand mx-1" role="status">
+             <span class="visually-hidden">Loading...</span>
+           </div>
+         <div class="spinner-grow spinner-grow-sm text-brand mx-1" role="status">
+             <span class="visually-hidden">Loading...</span>
+           </div>
+         
+        </div>
+     </div>
     <header class="border" id="header">
         <div class="container">
             <nav class="d-flex align-items-center justify-content-between">
@@ -182,14 +197,21 @@
                             <h3 id="title"  class="my-2 px-3 text-brand"></h3>
                             <div class="mb-4 d-flex row px-3">
                                     <div class="col-6 d-flex py-3">
-                                        <i class="fa-regular fa-folder-open fs-4 fw-light d-flex align-items-center p-0 m-0 justify-content-center rounded-2 text-brand d-flex border-brand" style="width: 70px;height: 70px;"></i>
+                                        <div class="d-flex align-items-center justify-content-center rounded-2 text-brand border-brand" style="width: 70px;height: 70px;">
+
+                                            <i class="fa-regular fa-folder-open fs-4 fw-light p-0 m-0 "></i>
+                                        </div>
                                         <div class="py-2 ms-3">
                                             <h4 class="m-0 pb-1">Category</h4>
                                             <p class="m-0 text-body-secondary" id="catagory"></p>
                                         </div>
                                     </div>
                                     <div class="col-6 d-flex py-3">
-                                        <i class="fa-solid fa-location-dot fs-4 d-flex align-items-center p-0 m-0 justify-content-center rounded-2 text-brand d-flex border-brand" style="width: 70px;height: 70px;"></i>
+                                        <div class="d-flex align-items-center justify-content-center rounded-2 text-brand border-brand" style="width: 78px;height: 70px;">
+
+                                            
+                                            <i class="fa-solid fa-location-dot fs-4 p-0 m-0 "></i>
+                                        </div>
                                         <div class="py-2 ms-3">
                                             <h4 class="m-0 pb-1">Location</h4>
                                             <p class="m-0 text-body-secondary" id="location"></p>
