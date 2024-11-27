@@ -50,7 +50,7 @@ function getAllWish() {
                                             </div>
                                         </div>
                                         <div class="col-1 py-4 d-flex justify-content-center ">
-                                            <button class="btn" onclick="deleteItem(this)" data-id="${element.id}"><i class="fa-solid fa-trash-can fs-3 text-brand"></i></button>
+                                            <button class="btn border-0" onclick="deleteItem(this)" data-id="${element.id}"><i class="fa-solid fa-trash-can fs-3 text-brand"></i></button>
                                             
                                         </div>
                                     </div>
